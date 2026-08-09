@@ -1,0 +1,13 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#001f3f;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#0074D9;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#7FDBFF;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <rect width="1920" height="1080" fill="url(#oceanGrad)" />
+    
+    <!-- Moving Wave -->
+    <path d="M0,540 Q480,360 960,540 T1920,540 L1920,1080 L0,1080 Z" fill="#001122" opacity="0.6"/>
+  </svg>

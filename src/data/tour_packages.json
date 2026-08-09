@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Ayodhya Tour",
+    "days": "02 Nights / 03 Days",
+    "priceINR": 15000,
+    "img": "/images/ayodhya.png",
+    "highlights": "Ayodhya"
+  },
+  {
+    "id": 2,
+    "name": "Mumbai & Aurangabad",
+    "days": "06 Nights / 07 Days",
+    "priceINR": 45000,
+    "img": "/images/mumbai.jpg",
+    "highlights": "Mumbai - Nasik - Shirdi - Aurangabad - Ajanta - Elora - Mumbai"
+  },
+  {
+    "id": 3,
+    "name": "Classical Gujarat Tour",
+    "days": "11 Nights / 12 Days",
+    "priceINR": 75000,
+    "img": "/images/gujarat.webp",
+    "highlights": "Ahmedabad - Dasda - Bhuj - Rajkot - sasangir - somnath - Diu - Bhavnagar - Palitana - Vadodara"
+  },
+  {
+    "id": 4,
+    "name": "Andaman & Nicobar",
+    "days": "06 Nights / 07 Days",
+    "priceINR": 55000,
+    "img": "/images/andaman.jpg",
+    "highlights": "Port Blair - Havelock - Radha Nagar beach - Neil Island – Port Blair"
+  },
+  {
+    "id": 5,
+    "name": "Leh & Ladakh",
+    "days": "06 Nights / 07 Days",
+    "priceINR": 65000,
+    "img": "/images/ladakh.jpg",
+    "highlights": "Leh - Sham - Nubra - Pangong - Leh"
+  },
+  {
+    "id": 6,
+    "name": "Sikkim & Darjeeling",
+    "days": "06 Nights / 07 Days",
+    "priceINR": 50000,
+    "img": "/images/darjeeling.jpg",
+    "highlights": "Bagdogra - Gangtok – Darjeeling - Kalimpong - Bagdogra"
+  }
+]

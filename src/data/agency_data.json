@@ -1,0 +1,48 @@
+{
+  "agency": {
+    "name": "Monks & Monkeys Travels",
+    "founded": "2008",
+    "founder": "Dr. Sharad Kumar Jindal",
+    "mission": "Founded in the year 2008 by Dr. Sharad Kumar Jindal with the mission to discover a better way to travel. The vision by which we serve our clients will leave them content and in a profound bliss. We promise that travelling with us will redefine the idea of travel to the picturesque locales that we have to offer.",
+    "description": "It’s one of the most popular Tour Operators in India. With its experienced, efficient and multilingual staff available 24 x 7 round the year to draw a complete tailor-made programme to suit your needs and to supervise every stage of the tour and event.",
+    "contact": {
+      "email": "concierge@mnmtravels.com",
+      "phone": "+91 (123) 456-7890",
+      "address": "Delhi, India"
+    }
+  },
+  "services": [
+    {
+      "title": "Adventure & Wildlife",
+      "desc": "India is the only country where the big cats tiger and lion exist in the wild."
+    },
+    {
+      "title": "Beaches",
+      "desc": "Here is the Best Beach Package for a perfect beachside vacation."
+    },
+    {
+      "title": "Ayurveda & Yoga",
+      "desc": "Ayurveda and Yoga together encompass healing disciplines in the body."
+    },
+    {
+      "title": "Buddhist Circuit",
+      "desc": "The Buddhist circuit is a route that follows in the footsteps of the Buddha."
+    },
+    {
+      "title": "Forts & Palaces",
+      "desc": "Rajasthan attracts tourists for its historical forts, palaces, art and culture."
+    },
+    {
+      "title": "Temple of India",
+      "desc": "We provide tour packages for Spiritual Trips."
+    },
+    {
+      "title": "The Himalayas",
+      "desc": "In the shadow of the world's tallest peaks, you'll find charming hill stations."
+    },
+    {
+      "title": "Backwaters",
+      "desc": "The scenic backwaters of Kerala comprise a serene stretch of lakes, canals and lagoons."
+    }
+  ]
+}
