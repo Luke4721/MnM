@@ -5,8 +5,9 @@ import 'lenis/dist/lenis.css';
 export const SmoothScroll: React.FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // fluid, weightless momentum
+      lerp: 0.08,
+      smoothWheel: true,
+      wheelMultiplier: 1,
       orientation: 'vertical',
     });
 

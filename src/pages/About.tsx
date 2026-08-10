@@ -8,7 +8,8 @@ export const About: React.FC = () => {
 
   return (
     <PageTransition>
-      <div className="page-content" style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
+      <div style={{ height: '120px', width: '100%', flexShrink: 0 }}></div>
+      <div className="page-content pt-32 md:pt-40" style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

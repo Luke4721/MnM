@@ -11,7 +11,8 @@ export const Services: React.FC = () => {
 
   return (
     <PageTransition>
-      <div className="page-content" style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem' }}>
+      <div style={{ height: '120px', width: '100%', flexShrink: 0 }}></div>
+      <div className="page-content pt-32 md:pt-40" style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem' }}>
         <h1 style={{ fontSize: '4rem', marginBottom: '4rem', textAlign: 'center' }}>Holiday <span className="text-gradient">Ideas</span></h1>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

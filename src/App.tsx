@@ -1,103 +1,77 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { Globe } from 'lucide-react';
+import db from './data/mnm_database.json';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
+import PackageDetails from './pages/PackageDetails.tsx';
+import Packages from './pages/Packages.tsx';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { LocalizationModal } from './components/LocalizationModal';
 import { SmoothScroll } from './components/SmoothScroll';
-import { MagneticButton } from './components/MagneticButton';
 
-const links = [
-  { path: '/', label: 'HOME' },
-  { path: '/about', label: 'ABOUT' },
-  { path: '/services', label: 'SERVICES' },
-  { path: '/contact', label: 'CONTACT' },
-];
 
 function App() {
   const location = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
-  // Show modal on first load if no currency is set (or just demoing it here)
   useEffect(() => {
-    // In a real app we check localStorage
-    const hasSeenModal = sessionStorage.getItem('hasSeenLocalization');
-    if (!hasSeenModal) {
-      setModalOpen(true);
-      sessionStorage.setItem('hasSeenLocalization', 'true');
-    }
+    if (isDark) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  }, [isDark]);
+
+  // Modal state strictly relies on user interaction
+  useEffect(() => {
+    // Purged rogue persistence logic
   }, []);
 
   return (
     <SmoothScroll>
-      <header className="pill-header">
-        <MagneticButton radius={15}>
-          <div style={{ fontSize: '1.2rem', fontWeight: 600, letterSpacing: '0.1em', padding: '0 1rem' }}>
-            <NavLink to="/">MNM TRAVELS</NavLink>
-          </div>
-        </MagneticButton>
-        <nav className="pill-nav-links">
-          {links.map((link) => (
-            <MagneticButton key={link.path} radius={10}>
-              <NavLink 
-                to={link.path} 
-                style={{ position: 'relative' }}
-                className={({ isActive }) => isActive ? 'active' : ''}
-              >
-                <span style={{ position: 'relative', zIndex: 1 }}>{link.label}</span>
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="pill-nav"
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      backgroundColor: 'rgba(255,255,255,0.1)',
-                      borderRadius: '999px',
-                      zIndex: 0
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </NavLink>
-            </MagneticButton>
-          ))}
-        </nav>
-        
-        {/* Localization Globe Button */}
-        <MagneticButton radius={15}>
-          <button 
+      <div className="fixed inset-0 z-[-5] backdrop-blur-2xl bg-white/10 dark:bg-black/40 border-y border-white/20 pointer-events-none" />
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] bg-white/70 dark:bg-zinc-900/40 backdrop-blur-2xl border border-white/40 dark:border-white/10 rounded-full px-8 py-4 flex items-center justify-between shadow-2xl transition-all duration-300">
+        <NavLink to="/" className="flex items-center gap-3 cursor-pointer text-gray-900 dark:text-white no-underline transition-colors duration-300">
+          <img src={db.company.logo_url} alt={db.company.name} className="h-9 w-auto object-contain" />
+          <span className="font-bold text-lg tracking-widest">MNM TRAVELS</span>
+        </NavLink>
+
+        <div className="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-widest text-gray-800 dark:text-white/80 transition-colors duration-300">
+          <NavLink to="/" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">HOME</NavLink>
+          <NavLink to="/packages" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">PACKAGES</NavLink>
+          <NavLink to="/about" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">ABOUT</NavLink>
+          <NavLink to="/services" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">SERVICES</NavLink>
+          <NavLink to="/contact" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">CONTACT</NavLink>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <button
             onClick={() => setModalOpen(true)}
-            style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '999px',
-              padding: '0.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              cursor: 'pointer',
-              marginLeft: '1rem'
-            }}
+            className="p-2 bg-gray-200/50 dark:bg-white/10 rounded-full hover:bg-gray-300/50 dark:hover:bg-white/20 transition-colors text-gray-800 dark:text-white border border-gray-300/50 dark:border-white/10 cursor-pointer"
           >
             <Globe size={18} />
           </button>
-        </MagneticButton>
-      </header>
+          <button onClick={() => setIsDark(!isDark)} className="w-14 h-7 rounded-full bg-gray-300 dark:bg-gray-700 relative transition-colors duration-300 flex items-center px-1 cursor-pointer shadow-inner">
+            <div className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ${isDark ? 'translate-x-7' : 'translate-x-0'}`} />
+          </button>
+        </div>
+      </nav>
 
       <LocalizationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </AnimatePresence>
+      <div className="!pt-[120px] min-h-screen w-full relative z-10">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/packages" element={<Packages />} />
+            <Route path="/package/:id" element={<PackageDetails />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </AnimatePresence>
+      </div>
     </SmoothScroll>
   );
 }

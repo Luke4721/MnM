@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface AnimatedNumberProps {
   value: number;
@@ -7,18 +7,26 @@ interface AnimatedNumberProps {
 }
 
 export const AnimatedNumber: React.FC<AnimatedNumberProps> = ({ value, formatFn }) => {
-  const springValue = useSpring(value, { stiffness: 50, damping: 20 });
-  const [displayValue, setDisplayValue] = useState(formatFn(value));
+  const [displayString, setDisplayString] = useState(formatFn(value));
 
   useEffect(() => {
-    springValue.set(value);
-  }, [value, springValue]);
+    setDisplayString(formatFn(value));
+  }, [value, formatFn]);
 
-  useEffect(() => {
-    return springValue.onChange((v) => {
-      setDisplayValue(formatFn(v));
-    });
-  }, [springValue, formatFn]);
-
-  return <motion.span>{displayValue}</motion.span>;
+  return (
+    <span style={{ display: 'inline-block', position: 'relative', overflow: 'hidden' }}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={displayString}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          style={{ display: 'inline-block', fontVariantNumeric: 'tabular-nums' }}
+        >
+          {displayString}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
 };

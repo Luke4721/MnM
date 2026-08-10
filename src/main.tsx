@@ -5,6 +5,10 @@ import App from './App.tsx'
 import './index.css'
 import { CurrencyProvider } from './context/CurrencyProvider.tsx'
 
+// NUCLEAR PURGE: Prevent old ghost states from loading on F5
+localStorage.clear();
+sessionStorage.clear();
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
