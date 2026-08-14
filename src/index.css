@@ -6,6 +6,12 @@
 @theme {
   --color-brand: #D97736;
   --color-brand-hover: #E88A4A;
+  --animate-kenburns: kenburns 10s ease-out forwards;
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
 }
 
 body { 

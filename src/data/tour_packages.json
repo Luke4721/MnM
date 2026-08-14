@@ -11,8 +11,8 @@
     "priceINR": 15000,
     "category": "Temple of India",
     "type": "Domestic",
-    "image": "/images/ayodhya.png",
-    "img": "/images/ayodhya.png"
+    "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=2400&q=85",
+    "img": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=2400&q=85"
   },
   {
     "id": 2,

@@ -32,9 +32,9 @@ function App() {
     <SmoothScroll>
       <div className="fixed inset-0 z-[-5] backdrop-blur-2xl bg-white/10 dark:bg-black/40 border-y border-white/20 pointer-events-none" />
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] bg-white/70 dark:bg-zinc-900/40 backdrop-blur-2xl border border-white/40 dark:border-white/10 rounded-full px-8 py-4 flex items-center justify-between shadow-2xl transition-all duration-300">
-        <NavLink to="/" className="flex items-center gap-3 cursor-pointer text-gray-900 dark:text-white no-underline transition-colors duration-300">
-          <img src={db.company.logo_url} alt={db.company.name} className="h-9 w-auto object-contain" />
-          <span className="font-bold text-lg tracking-widest">MNM TRAVELS</span>
+        <NavLink to="/" className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105 cursor-pointer text-gray-900 dark:text-white no-underline">
+          <img src={db.company.logo_url} alt={db.company.name} className="h-9 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(217,119,54,0.8)]" />
+          <span className="font-bold text-lg tracking-widest transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(217,119,54,0.8)] group-hover:text-[#D97736]">MNM TRAVELS</span>
         </NavLink>
 
         <div className="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-widest text-gray-800 dark:text-white/80 transition-colors duration-300">
@@ -60,7 +60,7 @@ function App() {
 
       <LocalizationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
-      <div className="!pt-[120px] min-h-screen w-full relative z-10">
+      <div className={`${location.pathname === '/' ? '' : '!pt-[120px]'} min-h-screen w-full relative z-10`}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />

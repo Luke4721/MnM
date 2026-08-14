@@ -8,8 +8,7 @@ export const About: React.FC = () => {
 
   return (
     <PageTransition>
-      <div style={{ height: '120px', width: '100%', flexShrink: 0 }}></div>
-      <div className="page-content pt-32 md:pt-40" style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
+      <div className="page-content pt-36 pb-16" style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,7 +44,8 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
-            style={{ position: 'relative', height: '600px', borderRadius: '24px', overflow: 'hidden' }}
+            className="rounded-3xl shadow-2xl border border-gray-200/50 dark:border-white/10"
+            style={{ position: 'relative', height: '600px', overflow: 'hidden' }}
           >
             <img
               src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&q=80&w=800"
