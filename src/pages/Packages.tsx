@@ -106,64 +106,86 @@ export const Packages: React.FC = () => {
           </div>
 
           {/* Grid Layout (grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayedPackages.map((pkg, index) => (
-              <motion.div
-                key={pkg.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: (index % 6) * 0.05 }}
-              >
-                <Link to={`/package/${pkg.id}`} style={{ textDecoration: 'none' }}>
-                  <TiltCard>
-                    <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
-                      <div style={{ height: '240px', position: 'relative' }}>
-                        <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image} alt={pkg.title || pkg.name} />
-                        <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: '999px', color: 'white', fontSize: '0.8rem', fontWeight: 600 }}>
-                          <MapPin size={12} style={{ display: 'inline', marginRight: '4px' }} />
-                          {pkg.nights || pkg.duration}
-                        </div>
-                      </div>
-                      <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                        <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{pkg.title || pkg.name}</h3>
-                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-1 mb-3" style={{ flex: 1 }}>{pkg.location || pkg.locations}</p>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
-                          <div>
-                            <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>Starting from</span>
-                            <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97736' }}>
-                              <AnimatedNumber
-                                value={convertPrice(pkg.priceINR, true) as number}
-                                formatFn={(val: number) => {
-                                  const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
-                                  return `${symbol}${Math.round(val).toLocaleString()}`;
-                                }}
-                              />
-                            </div>
+          {displayedPackages.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayedPackages.map((pkg, index) => (
+                <motion.div
+                  key={pkg.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: (index % 6) * 0.05 }}
+                >
+                  <Link to={`/package/${pkg.id}`} style={{ textDecoration: 'none' }}>
+                    <TiltCard>
+                      <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
+                        <div style={{ height: '240px', position: 'relative' }}>
+                          <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image} alt={pkg.title || pkg.name} />
+                          <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: '999px', color: 'white', fontSize: '0.8rem', fontWeight: 600 }}>
+                            <MapPin size={12} style={{ display: 'inline', marginRight: '4px' }} />
+                            {pkg.nights || pkg.duration}
                           </div>
-                          <button style={{
-                            background: 'var(--text-color)',
-                            color: 'var(--bg-color)',
-                            border: 'none',
-                            width: '2.75rem',
-                            height: '2.75rem',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer'
-                          }}>
-                            <ArrowRight size={18} />
-                          </button>
+                        </div>
+                        <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{pkg.title || pkg.name}</h3>
+                          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-1 mb-3" style={{ flex: 1 }}>{pkg.location || pkg.locations}</p>
+  
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
+                            <div>
+                              <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>Starting from</span>
+                              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97736' }}>
+                                <AnimatedNumber
+                                  value={convertPrice(pkg.priceINR, true) as number}
+                                  formatFn={(val: number) => {
+                                    const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
+                                    return `${symbol}${Math.round(val).toLocaleString()}`;
+                                  }}
+                                />
+                              </div>
+                            </div>
+                            <button style={{
+                              background: 'var(--text-color)',
+                              color: 'var(--bg-color)',
+                              border: 'none',
+                              width: '2.75rem',
+                              height: '2.75rem',
+                              borderRadius: '50%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: 'pointer'
+                            }}>
+                              <ArrowRight size={18} />
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </TiltCard>
+                    </TiltCard>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-24 text-center bg-white/50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-white/10 shadow-sm backdrop-blur-sm">
+              <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">No exact packages found</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto text-lg">
+                We couldn't find exactly what you were looking for. Please browse our related packages or request a custom itinerary tailored just for you!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={() => { setSearchQuery(''); setFilters({ destination: '', month: '', duration: '', budget: '' }); setActiveCategory('All'); }}
+                  className="px-8 py-3 rounded-full bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white font-bold tracking-widest text-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all shadow-sm"
+                >
+                  VIEW ALL PACKAGES
+                </button>
+                <Link to="/contact">
+                  <button className="px-8 py-3 rounded-full bg-[#D97736] text-white font-bold tracking-widest text-sm shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:scale-105 transition-all">
+                    REQUEST CUSTOM PACKAGE
+                  </button>
                 </Link>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+          )}
 
           {/* Pagination */}
           {visibleCount < filteredPackages.length && (
@@ -176,6 +198,16 @@ export const Packages: React.FC = () => {
               </button>
             </div>
           )}
+
+          {/* Custom Trip Button - Permanent */}
+          <div className="mt-20 mb-10 flex flex-col items-center justify-center pt-10 border-t border-gray-200 dark:border-white/10">
+            <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Can't find exactly what you're looking for?</h4>
+            <Link to="/contact">
+              <button className="px-8 py-3 rounded-full bg-[#D97736] text-white font-bold tracking-widest text-sm shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:scale-105 transition-all">
+                REQUEST A CUSTOM TRIP
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </PageTransition>

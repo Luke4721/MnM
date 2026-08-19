@@ -9,6 +9,8 @@ import PackageDetails from './pages/PackageDetails.tsx';
 import Packages from './pages/Packages.tsx';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
+import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
 import { LocalizationModal } from './components/LocalizationModal';
 import { SmoothScroll } from './components/SmoothScroll';
 
@@ -39,9 +41,10 @@ function App() {
 
         <div className="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-widest text-gray-800 dark:text-white/80 transition-colors duration-300">
           <NavLink to="/" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">HOME</NavLink>
-          <NavLink to="/packages" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">PACKAGES</NavLink>
+          <NavLink to="/packages" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">DESTINATIONS</NavLink>
+          <NavLink to="/packages" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">TOURS</NavLink>
           <NavLink to="/about" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">ABOUT</NavLink>
-          <NavLink to="/services" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">SERVICES</NavLink>
+          <NavLink to="/blog" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">BLOG</NavLink>
           <NavLink to="/contact" className="hover:text-black dark:hover:text-white transition-colors no-underline text-inherit">CONTACT</NavLink>
         </div>
 
@@ -69,6 +72,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Routes>
         </AnimatePresence>
       </div>

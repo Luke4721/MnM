@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Plane, MapPin, ArrowRight, Star, Compass, Map, Camera, Heart, Shield, Calendar, Bed, Coffee } from 'lucide-react';
+import { Plane, ArrowRight, Star, Compass, Camera, Heart, Shield, MapPin, Map } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import db from '../data/mnm_database.json';
-import { AnimatedNumber } from '../components/AnimatedNumber';
-import { TiltCard } from '../components/TiltCard';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
+import blogsData from '../data/blogs_database.json';
 
 
 export const Home: React.FC = () => {
@@ -26,18 +25,14 @@ export const Home: React.FC = () => {
 
   const activePackage = heroPackages[currentSlide];
 
-  // Prime Destinations Logic (Masonry style grid)
-  const primeDestinations = db.packages.slice(3, 7); // Pick 4
+  // Prime Destinations Logic (8 items)
+  const primeDestinations = db.packages.slice(0, 8); // Pick 8
 
   // Popular Packages Logic
   const popularPackages = db.packages.slice(7, 10); // Pick 3
 
-  // Travel Blogs (Placeholder data)
-  const blogs = [
-    { id: 1, title: "10 Hidden Gems in Europe", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=600&auto=format&fit=crop", date: "Aug 10, 2026", author: "Sarah Jenkins" },
-    { id: 2, title: "A Culinary Journey through Asia", image: "https://images.unsplash.com/photo-1548624317-a006db23a1d9?q=80&w=600&auto=format&fit=crop", date: "Aug 05, 2026", author: "Mike Chen" },
-    { id: 3, title: "The Ultimate Guide to Safari", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=600&auto=format&fit=crop", date: "Jul 28, 2026", author: "Emma Stone" }
-  ];
+  // Travel Blogs (From scraped data)
+  const blogs = blogsData.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black w-full relative z-10 transition-colors duration-500">
@@ -62,7 +57,7 @@ export const Home: React.FC = () => {
         ))}
 
         {/* Hero Overlay Text */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none pb-20">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -70,35 +65,37 @@ export const Home: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-col items-center text-center px-4"
+              className="flex flex-col items-center text-center px-4 relative"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-semibold uppercase tracking-wider mb-4"><span className="w-2 h-2 rounded-full bg-[#D97736] animate-pulse"></span>FEATURED DESTINATION</div>
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-md">
-                {activePackage.category.toUpperCase()}
+              <h1 className="text-7xl md:text-[10rem] text-white drop-shadow-xl" style={{ fontFamily: 'var(--font-cursive)' }}>
+                {activePackage.category}
               </h1>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Floating Glass Metric Pills */}
-        <div className="absolute bottom-32 left-8 z-10 hidden md:flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/10 dark:bg-black/30 backdrop-blur-xl border border-white/20 text-white text-sm shadow-xl">
-          <span>📍 {activePackage.location}</span><span className="opacity-50">|</span><span>⭐ 4.9 (1.2k)</span>
-        </div>
-
         {/* Bottom Hero Overlay Bar */}
-        <div className="absolute bottom-0 left-0 w-full z-20 backdrop-blur-3xl bg-white/70 dark:bg-zinc-900/40 border-t border-white/20 dark:border-white/10 shadow-xl p-6 md:p-8">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex-1">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">{activePackage.name}</h2>
-              <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
-                <span className="flex items-center gap-1 text-[#D97736]"><Star size={18} className="fill-current" /><Star size={18} className="fill-current" /><Star size={18} className="fill-current" /><Star size={18} className="fill-current" /><Star size={18} className="fill-current" /></span>
-                <span className="flex items-center gap-1"><MapPin size={16} /> {activePackage.location}</span>
-                <span className="flex items-center gap-1"><Calendar size={16} /> {activePackage.duration}</span>
-              </div>
+        <div className="absolute bottom-0 left-0 w-full z-20 bg-black/40 backdrop-blur-md border-t border-white/20">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center py-6 px-8 text-white divide-y md:divide-y-0 md:divide-x divide-white/20">
+            <div className="flex-1 py-4 md:py-0 px-6 flex flex-col">
+              <span className="text-xl font-bold">{activePackage.name}</span>
+              <span className="text-sm text-gray-300 flex items-center gap-1"><MapPin size={14}/> {activePackage.location}</span>
             </div>
-            <button onClick={() => navigate(`/package/${activePackage.id}`)} className="bg-[#D97736] hover:bg-[#E88A4A] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 pointer-events-auto">
-              BOOK NOW
-            </button>
+            <div className="flex-1 py-4 md:py-0 px-6 flex flex-col items-center">
+              <span className="text-lg font-bold">{activePackage.duration}</span>
+              <span className="text-sm text-gray-300 uppercase tracking-wider text-[10px]">Duration</span>
+            </div>
+            <div className="flex-1 py-4 md:py-0 px-6 flex flex-col items-center">
+              <span className="flex items-center gap-1 text-[#D97736]">
+                <Star size={16} className="fill-current" /><Star size={16} className="fill-current" /><Star size={16} className="fill-current" /><Star size={16} className="fill-current" /><Star size={16} className="fill-current" />
+              </span>
+              <span className="text-sm text-gray-300 uppercase tracking-wider text-[10px] mt-1">Superb Hotel</span>
+            </div>
+            <div className="flex-1 py-4 md:py-0 px-6 flex items-center justify-end">
+              <button onClick={() => navigate(`/package/${activePackage.id}`)} className="text-white font-bold tracking-widest text-lg hover:text-[#D97736] transition-colors flex items-center gap-2 pointer-events-auto">
+                Book holiday <ArrowRight size={20} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -111,135 +108,168 @@ export const Home: React.FC = () => {
       {/* Phase 3: Agency Intro & Popular Packages */}
       <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
         {/* Intro Split Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div>
-            <h4 className="text-[#D97736] font-bold tracking-widest uppercase mb-4">About MNM Travels</h4>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
-              Discover the world's leading travel agency
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              We specialize in creating unforgettable experiences. From the moment you start planning to the day you return home, our dedicated team ensures every detail is perfect. Travel because life is too short to stay in one place.
-            </p>
-            <Link to="/about">
-              <button className="bg-[#D97736] hover:bg-[#E88A4A] text-white px-8 py-3 rounded-full font-bold tracking-widest transition-all duration-300 shadow-[0_10px_30px_rgba(217,119,54,0.3)] hover:shadow-[0_15px_40px_rgba(217,119,54,0.5)] hover:scale-105">
-                READ MORE
-              </button>
-            </Link>
-          </div>
-          <div className="relative">
-            <div className="aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl relative">
-              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1200&auto=format&fit=crop" alt="Travel Agency" className="w-full h-full object-cover" />
+        <div className="flex flex-col lg:flex-row gap-12 items-center mb-24 relative">
+          
+          <div className="flex-1 flex gap-8">
+            <div className="hidden lg:block">
+               <div className="text-[#D97736] font-bold tracking-widest text-sm whitespace-nowrap transform -rotate-90 origin-bottom-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12">
+                 EXPLORE THE WORLD FOR YOURSELF
+               </div>
             </div>
-            {/* 4-icon grid absolute overlay */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] backdrop-blur-3xl bg-white/70 dark:bg-zinc-900/40 border border-white/20 dark:border-white/10 shadow-xl rounded-[2rem] p-6">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="flex flex-col items-center text-center p-2">
-                  <Compass className="text-[#D97736] mb-2" size={28} />
-                  <span className="text-sm font-semibold text-gray-900 dark:text-white">Expert Guides</span>
-                </div>
-                <div className="flex flex-col items-center text-center p-2">
-                  <Shield className="text-[#D97736] mb-2" size={28} />
-                  <span className="text-sm font-semibold text-gray-900 dark:text-white">Safe Travel</span>
-                </div>
-                <div className="flex flex-col items-center text-center p-2">
-                  <Map className="text-[#D97736] mb-2" size={28} />
-                  <span className="text-sm font-semibold text-gray-900 dark:text-white">Custom Plans</span>
-                </div>
-                <div className="flex flex-col items-center text-center p-2">
-                  <Heart className="text-[#D97736] mb-2" size={28} />
-                  <span className="text-sm font-semibold text-gray-900 dark:text-white">Memories</span>
-                </div>
+            
+            <div className="pl-0 lg:pl-16">
+              <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-6 font-serif">
+                Discover the <br/>world's leading <br/>travel agency.
+              </h2>
+              <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-md">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/about">
+                  <button className="bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-3.5 rounded-full font-bold tracking-wider text-xs transition-transform hover:scale-105">
+                    ABOUT COMPANY
+                  </button>
+                </Link>
+                <Link to="/packages">
+                  <button className="bg-transparent border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white px-8 py-3.5 rounded-full font-bold tracking-wider text-xs hover:border-gray-900 dark:hover:border-white transition-all hover:scale-105">
+                    DISCOVER TOUR
+                  </button>
+                </Link>
               </div>
+            </div>
+          </div>
+
+          <div className="flex-1 relative">
+            <div className="relative rounded-t-[10rem] overflow-hidden aspect-[4/5] shadow-2xl max-w-md ml-auto mr-12">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Travel Agency" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute top-1/4 -left-8 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900">
+               <span className="text-[#D97736] font-bold text-xs">SINCE</span>
+               <span className="text-3xl font-extrabold text-gray-900 dark:text-white">1990</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 4-icon grid features */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-200 dark:border-gray-800 pb-20">
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 shrink-0">
+               <Star size={18} />
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-1">Superior service</h4>
+              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 shrink-0">
+               <Map size={18} />
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-1">Cheapest package</h4>
+              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 shrink-0">
+               <Compass size={18} />
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-1">Greatest guides</h4>
+              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 shrink-0">
+               <Shield size={18} />
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-1">Fully protected</h4>
+              <p className="text-sm text-gray-500">Lorem ipsum text</p>
             </div>
           </div>
         </div>
 
         {/* Popular Packages */}
-        <div className="mt-40 mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Popular Packages</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Hand-picked destinations for your next adventure.</p>
-          </div>
-          <Link to="/packages">
-            <button className="px-6 py-2 border-2 border-[#D97736] text-[#D97736] rounded-full font-bold tracking-widest hover:bg-[#D97736] hover:text-white transition-all duration-300">
-              VIEW ALL
-            </button>
-          </Link>
+        <div className="mt-32 mb-16 text-center flex flex-col items-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Popular packages</h2>
+          <div className="w-12 h-1 bg-[#D97736] mb-8"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {popularPackages.map((pkg, index) => (
-            <motion.div
-              key={pkg.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Link to={`/package/${pkg.id}`} className="block h-full group">
-                <TiltCard>
-                  <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full group hover:-translate-y-2">
-                    <div className="h-64 relative overflow-hidden">
-                      <img src={pkg.img || pkg.image_url || pkg.image} alt={pkg.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
-                      <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-bold flex items-center gap-1">
-                        <MapPin size={14} /> {pkg.duration}
+          {popularPackages.map((pkg, index) => {
+            const originalPrice = Math.round((convertPrice(pkg.priceINR, true) as number) * 1.3);
+            const currentPrice = Math.round(convertPrice(pkg.priceINR, true) as number);
+            const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
+
+            return (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link to={`/package/${pkg.id}`} className="block h-full group">
+                  <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-2xl transition-all duration-300 h-full group hover:-translate-y-1">
+                    <div className="h-56 relative overflow-hidden">
+                      <img src={pkg.img || pkg.image_url || pkg.image} alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                      <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
+                        30% OFF
+                      </div>
+                      <div className="absolute top-4 right-4 bg-[#f1f1f1] text-gray-900 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
+                        {pkg.duration}
                       </div>
                     </div>
-                    <div className="p-8 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{pkg.name}</h3>
-                      <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-1 mb-3">{pkg.highlights || pkg.location}</p>
+                    <div className="p-8 flex flex-col">
+                      <div className="flex items-end gap-2 mb-2">
+                         <span className="text-gray-400 line-through text-sm font-semibold">{symbol}{originalPrice.toLocaleString()}</span>
+                         <span className="text-[#D97736] text-2xl font-extrabold">{symbol}{currentPrice.toLocaleString()}</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 line-clamp-2">{pkg.name}</h3>
                       
-                      <div className="mt-6 pt-6 border-t border-gray-200 dark:border-white/10 flex justify-between items-center">
-                        <div>
-                          <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider block">Starting from</span>
-                          <span className="text-2xl font-bold text-[#D97736]">
-                            <AnimatedNumber 
-                              value={Math.round(convertPrice(pkg.priceINR, true) as number)} 
-                              formatFn={(val) => {
-                                const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
-                                return `${symbol}${Math.round(val).toLocaleString()}`;
-                              }} 
-                            />
-                          </span>
-                        </div>
-                        <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-900 dark:text-white group-hover:bg-[#D97736] group-hover:text-white transition-colors duration-300">
-                          <ArrowRight size={20} />
+                      <div className="flex items-center justify-between border-t border-gray-100 dark:border-zinc-800 pt-4 mt-auto">
+                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">50 REVIEWS</span>
+                        <div className="flex items-center text-[#D97736]">
+                           <Star size={12} className="fill-current" /><Star size={12} className="fill-current" /><Star size={12} className="fill-current" /><Star size={12} className="fill-current" /><Star size={12} className="fill-current" />
                         </div>
                       </div>
                     </div>
                   </div>
-                </TiltCard>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
 
       {/* Phase 4: Prime Destinations Grid */}
-      <div className="bg-white/50 dark:bg-zinc-900/20 py-24 border-y border-white/20 dark:border-white/10">
+      <div className="py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Prime Destinations</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Curated domestic and international experiences.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Prime destination</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {primeDestinations.map((dest, i) => (
               <motion.div 
                 key={dest.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="aspect-square relative rounded-[2rem] overflow-hidden group cursor-pointer"
+                transition={{ delay: i * 0.05 }}
+                className="aspect-square relative overflow-hidden group cursor-pointer"
               >
-                <img src={dest.img || dest.image_url || dest.image} alt={dest.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
-                  <h3 className="drop-shadow-lg text-white font-bold tracking-tight text-xl md:text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{dest.category}</h3>
-                  <p className="text-white/80 text-sm md:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">{dest.name}</p>
+                <img src={dest.img || dest.image_url || dest.image} alt={dest.location} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm px-6 py-2 border border-white/20 uppercase tracking-widest text-white text-xs font-bold">
+                  {dest.location}
                 </div>
               </motion.div>
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-gray-500 dark:text-gray-400 text-lg">World's hottest destinations for <span className="font-bold text-gray-900 dark:text-white">independent tours.</span></p>
           </div>
         </div>
       </div>
@@ -247,117 +277,150 @@ export const Home: React.FC = () => {
       {/* Phase 5: CTA, Blogs & Footer */}
       
       {/* Parallax CTA */}
-      <div className="relative py-32 mt-20 mb-32">
+      <div className="relative py-40 mt-10">
         <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2000&auto=format&fit=crop)' }}>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 backdrop-brightness-90 z-0"></div>
+          <div className="absolute inset-0 bg-black/40 z-0"></div>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8">Get ready to explore the world with us</h2>
-          <button className="bg-[#D97736] hover:bg-[#E88A4A] text-white px-10 py-4 rounded-full font-bold tracking-widest transition-all duration-300 shadow-[0_10px_30px_rgba(217,119,54,0.4)] hover:shadow-[0_15px_40px_rgba(217,119,54,0.6)] hover:scale-105">
-            START PLANNING
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col items-center">
+          <h4 className="text-white text-xs font-bold tracking-[0.2em] mb-4 uppercase">Finding the perfect trails</h4>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-12">Get ready to explore and <br/>discover your world.</h2>
+          <button className="w-20 h-20 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 ml-1">
+               <path d="M8 5v14l11-7z" />
+            </svg>
           </button>
         </div>
+      </div>
 
-        {/* Overlapping Service Icons */}
-        <div className="absolute left-1/2 -translate-x-1/2 -bottom-16 w-[90%] z-20">
-          <div className="relative z-10 grid grid-cols-5 gap-3 max-w-4xl mx-auto p-4 rounded-3xl bg-white/80 dark:bg-black/60 backdrop-blur-2xl border border-white/30 dark:border-white/10 shadow-2xl">
-            <div className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-white/20 dark:hover:bg-white/10 transition-all cursor-pointer">
-              <Plane className="text-gray-500 dark:text-gray-400 group-hover:text-[#D97736] transition-colors mb-3" size={32} />
-              <span className="font-semibold text-gray-900 dark:text-white">Flights</span>
+      {/* Category Icons */}
+      <div className="bg-white dark:bg-black py-16 border-b border-gray-100 dark:border-gray-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+            <div className="flex flex-col items-center justify-center cursor-pointer group">
+              <div className="w-16 h-16 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center mb-4 group-hover:border-[#D97736] transition-colors">
+                 <Compass className="text-gray-400 group-hover:text-[#D97736] transition-colors" size={24} />
+              </div>
+              <span className="font-bold text-xs tracking-widest uppercase text-gray-900 dark:text-white">Adventure</span>
             </div>
-            <div className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-white/20 dark:hover:bg-white/10 transition-all cursor-pointer">
-              <Bed className="text-gray-500 dark:text-gray-400 group-hover:text-[#D97736] transition-colors mb-3" size={32} />
-              <span className="font-semibold text-gray-900 dark:text-white">Hotels</span>
+            <div className="flex flex-col items-center justify-center cursor-pointer group">
+              <div className="w-16 h-16 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center mb-4 group-hover:border-[#D97736] transition-colors">
+                 <Heart className="text-gray-400 group-hover:text-[#D97736] transition-colors" size={24} />
+              </div>
+              <span className="font-bold text-xs tracking-widest uppercase text-gray-900 dark:text-white">Friendly</span>
             </div>
-            <div className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-white/20 dark:hover:bg-white/10 transition-all cursor-pointer">
-              <Camera className="text-gray-500 dark:text-gray-400 group-hover:text-[#D97736] transition-colors mb-3" size={32} />
-              <span className="font-semibold text-gray-900 dark:text-white">Activities</span>
+            <div className="flex flex-col items-center justify-center cursor-pointer group">
+              <div className="w-16 h-16 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center mb-4 group-hover:border-[#D97736] transition-colors">
+                 <Star className="text-gray-400 group-hover:text-[#D97736] transition-colors" size={24} />
+              </div>
+              <span className="font-bold text-xs tracking-widest uppercase text-gray-900 dark:text-white">Popular</span>
             </div>
-            <div className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-white/20 dark:hover:bg-white/10 transition-all cursor-pointer">
-              <Coffee className="text-gray-500 dark:text-gray-400 group-hover:text-[#D97736] transition-colors mb-3" size={32} />
-              <span className="font-semibold text-gray-900 dark:text-white">Dining</span>
+            <div className="flex flex-col items-center justify-center cursor-pointer group">
+              <div className="w-16 h-16 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center mb-4 group-hover:border-[#D97736] transition-colors">
+                 <Plane className="text-gray-400 group-hover:text-[#D97736] transition-colors" size={24} />
+              </div>
+              <span className="font-bold text-xs tracking-widest uppercase text-gray-900 dark:text-white">Beaches</span>
             </div>
-            <div className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-white/20 dark:hover:bg-white/10 transition-all cursor-pointer">
-              <Map className="text-gray-500 dark:text-gray-400 group-hover:text-[#D97736] transition-colors mb-3" size={32} />
-              <span className="font-semibold text-gray-900 dark:text-white">Tours</span>
+            <div className="flex flex-col items-center justify-center cursor-pointer group">
+              <div className="w-16 h-16 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center mb-4 group-hover:border-[#D97736] transition-colors">
+                 <Heart className="text-gray-400 group-hover:text-[#D97736] transition-colors" size={24} />
+              </div>
+              <span className="font-bold text-xs tracking-widest uppercase text-gray-900 dark:text-white">Honeymoon</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Happy Traveller Split Section */}
-      <div className="max-w-7xl mx-auto px-6 py-24 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative h-[500px]">
-            <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=800&auto=format&fit=crop" alt="Happy traveller" className="absolute top-0 left-0 w-2/3 h-4/5 object-cover rounded-[3rem] shadow-2xl z-10" />
-            <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=800&auto=format&fit=crop" alt="Happy traveller 2" className="absolute bottom-0 right-0 w-2/3 h-4/5 object-cover rounded-[3rem] shadow-2xl z-20 border-8 border-gray-50 dark:border-black" />
-          </div>
-          <div className="order-1 lg:order-2">
-            <h4 className="text-[#D97736] font-bold tracking-widest uppercase mb-4">Testimonials</h4>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
-              Our happy travellers
+      <div className="max-w-7xl mx-auto px-6 py-24">
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+          
+          <div className="flex-1 flex flex-col justify-center items-start">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-[1.2] mb-8">
+              Our happy <br/>traveller.
             </h2>
-            <div className="relative backdrop-blur-3xl bg-white/70 dark:bg-zinc-900/40 border border-white/20 dark:border-white/10 shadow-xl rounded-[2rem] p-8">
-              <QuoteIcon className="absolute top-4 right-8 text-[#D97736]/20 w-16 h-16" />
-              <p className="text-xl text-gray-700 dark:text-gray-300 italic relative z-10 mb-6">
-                "An absolutely flawless experience. From the initial booking to the final transfer, MNM Travels took care of every single detail. I felt completely relaxed."
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" alt="User" className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 dark:text-white">Emily Richards</h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Travelled to The Maldives</p>
-                </div>
-              </div>
+            <div className="flex gap-4">
+              <button className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-[#D97736] hover:text-white hover:border-[#D97736] transition-colors">
+                <ArrowRight size={20} className="transform rotate-180" />
+              </button>
+              <button className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-[#D97736] hover:text-white hover:border-[#D97736] transition-colors">
+                <ArrowRight size={20} />
+              </button>
             </div>
           </div>
+
+          <div className="flex-1 relative flex justify-center">
+             <div className="relative w-64 h-64 rounded-full border-[12px] border-white dark:border-zinc-900 shadow-2xl overflow-hidden z-10">
+               <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=600&auto=format&fit=crop" alt="Happy traveller" className="w-full h-full object-cover" />
+             </div>
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-32 z-20">
+                <span className="text-6xl text-[#D97736] drop-shadow-md" style={{ fontFamily: 'var(--font-cursive)' }}>Amazing</span>
+             </div>
+             <div className="absolute top-1/2 -translate-y-1/2 -left-12 -z-0 text-gray-100 dark:text-zinc-800 font-serif text-9xl tracking-tighter select-none rotate-90 opacity-50">
+               ALEXANDER
+             </div>
+          </div>
+
+          <div className="flex-1 pt-12 md:pt-0">
+             <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 font-medium leading-relaxed">
+               Our Africa travel specialist planned the most <span className="font-bold text-gray-900 dark:text-white border-b-2 border-yellow-400">amazing trip</span> to Kenya for us. We had an <span className="font-bold text-gray-900 dark:text-white border-b-2 border-yellow-400">incredible time</span> and were able to capture so many awesome pictures.
+             </p>
+             <div className="flex items-center text-[#D97736] mb-4 gap-1">
+               <Star size={16} className="fill-current" /><Star size={16} className="fill-current" /><Star size={16} className="fill-current" /><Star size={16} className="fill-current" /><Star size={16} className="fill-current" />
+             </div>
+          </div>
+
         </div>
       </div>
 
       {/* Travel Blogs */}
-      <div className="bg-white/50 dark:bg-zinc-900/20 py-24 border-t border-white/20 dark:border-white/10">
+      <div className="bg-[#f9f8f4] dark:bg-zinc-950 py-24 border-t border-gray-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h4 className="text-[#D97736] font-bold tracking-widest uppercase mb-4">Our Journal</h4>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Travel Blogs</h2>
+          <div className="text-center mb-16 flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Travel blogs</h2>
+            <div className="w-12 h-1 bg-[#D97736] mb-8"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {blogs.map((blog) => (
-              <div key={blog.id} className="group cursor-pointer">
-                <div className="overflow-hidden rounded-[2rem] mb-6 aspect-[4/3] relative">
-                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold text-gray-900 dark:text-white shadow-md">
-                    {blog.date}
-                  </div>
+              <Link to={`/blog/${blog.slug}`} key={blog.id} className="group cursor-pointer flex flex-col no-underline">
+                <div className="relative h-64 overflow-hidden shadow-md">
+                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#D97736] transition-colors">{blog.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400">By {blog.author}</p>
-              </div>
+                <div className="bg-white dark:bg-zinc-900 mx-4 -mt-12 relative z-10 p-6 shadow-xl flex flex-col items-center text-center">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#D97736] transition-colors line-clamp-2">{blog.title}</h3>
+                  <p className="text-xs text-gray-400 font-medium uppercase tracking-widest">
+                    By {blog.author} &nbsp;-&nbsp; {blog.date}
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </div>
 
       {/* Footer & Newsletter */}
-      <footer className="bg-white dark:bg-[#050B14] pt-24 border-t border-gray-200 dark:border-white/10">
-        <div className="max-w-4xl mx-auto px-6 text-center mb-24">
-          <Plane size={48} className="text-[#D97736] mx-auto mb-6" />
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Join the Journey</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-10">Get the amazing travel offers into your inbox!</p>
+      <footer className="bg-[#f9f8f4] dark:bg-zinc-950 pt-24">
+        <div className="max-w-4xl mx-auto px-6 text-center mb-24 relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-20 opacity-20 pointer-events-none">
+             <span className="text-8xl text-[#D97736] tracking-tighter" style={{ fontFamily: 'var(--font-cursive)' }}>great</span>
+             <br/><span className="text-2xl font-black tracking-[0.3em] uppercase -mt-4 block">Journeys</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 relative z-10">
+            Get the amazing travel<br/>offers into your inbox!
+          </h2>
           
-          <div className="relative max-w-lg mx-auto">
+          <div className="relative max-w-lg mx-auto bg-white dark:bg-zinc-900 rounded-full shadow-xl flex items-center p-2 mt-12 border border-gray-100 dark:border-zinc-800 z-10">
             <input 
               type="email" 
               placeholder="Enter your email address"
-              className="w-full bg-gray-100 dark:bg-white/5 border border-transparent dark:border-white/10 rounded-full pl-8 pr-40 py-5 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/50 focus:outline-none focus:border-[#D97736] transition-all shadow-inner" 
+              className="flex-1 bg-transparent border-none outline-none pl-6 text-gray-900 dark:text-white placeholder-gray-400 text-sm" 
             />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#D97736] hover:bg-[#E88A4A] text-white px-8 py-3.5 rounded-full font-bold tracking-widest transition-all duration-300 shadow-md hover:shadow-lg">
+            <button className="bg-transparent text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest px-6 py-3 hover:text-[#D97736] transition-colors flex items-center gap-2">
+              <span className="w-4 h-4 rounded-full border border-current flex items-center justify-center shrink-0"><ArrowRight size={10} /></span>
               SUBSCRIBE
             </button>
           </div>
+          <p className="text-xs text-gray-400 mt-6 z-10 relative">We are committed to protecting your <Link to="#" className="underline hover:text-[#D97736]">privacy policy</Link>.</p>
         </div>
 
         {/* Instagram / Gallery Strip */}
@@ -373,22 +436,29 @@ export const Home: React.FC = () => {
             <div key={i} className="aspect-square relative group overflow-hidden">
               <img src={src} alt="Gallery" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-[#D97736]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
+                 <Camera size={32} className="text-white" />
               </div>
             </div>
           ))}
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
-          <div>© {new Date().getFullYear()} Monks & Monkeys Travels Pvt. Ltd. All rights reserved.</div>
-          <div className="flex gap-6">
-            <Link to="#" className="hover:text-[#D97736] transition-colors">Privacy Policy</Link>
-            <Link to="#" className="hover:text-[#D97736] transition-colors">Terms of Service</Link>
-            <Link to="#" className="hover:text-[#D97736] transition-colors">Sitemap</Link>
+        <div className="bg-[#1a1a1a] dark:bg-black">
+          <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400">
+            <div>© Copyright {new Date().getFullYear()} <span className="font-bold text-white">Monks & Monkey Travels</span></div>
+            <div className="flex gap-6 font-bold uppercase tracking-widest text-white">
+              <Link to="/about" className="hover:text-[#D97736] transition-colors">About</Link>
+              <Link to="/packages" className="hover:text-[#D97736] transition-colors">Destinations</Link>
+              <Link to="/packages" className="hover:text-[#D97736] transition-colors">Tours</Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors">Reviews</Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors">Blog</Link>
+              <Link to="/contact" className="hover:text-[#D97736] transition-colors">Contact</Link>
+            </div>
+            <div className="flex gap-4">
+              <Link to="#" className="hover:text-[#D97736] transition-colors">f</Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors">t</Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors">y</Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors">i</Link>
+            </div>
           </div>
         </div>
       </footer>
@@ -396,11 +466,3 @@ export const Home: React.FC = () => {
     </div>
   );
 };
-
-function QuoteIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-    </svg>
-  );
-}
