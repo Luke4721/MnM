@@ -48,7 +48,7 @@ export const About: React.FC = () => {
             style={{ position: 'relative', height: '600px', overflow: 'hidden' }}
           >
             <img
-              src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&q=80&w=800"
+              src="/images/0b9903d33f4b2867c46621f3eb86c7cd.jpg"
               alt="About Us"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />

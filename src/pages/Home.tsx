@@ -13,7 +13,72 @@ export const Home: React.FC = () => {
   const navigate = useNavigate();
 
   // Phase 2: Hero Slideshow Logic
-  const heroPackages = db.packages.slice(0, 3);
+  const heroPackages = [
+    {
+      id: 1,
+      category: "Temple of India",
+      name: "Bhubaneswar Pilgrimage",
+      location: "Bhubaneswar, Odisha",
+      duration: "04 Nights / 05 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Lingaraj_Temple_%2C_Bhubaneswar.jpg"
+    },
+    {
+      id: 2,
+      category: "Forts & Palaces",
+      name: "Rajasthan Heritage Tour",
+      location: "Jodhpur, Rajasthan",
+      duration: "06 Nights / 07 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Mehrangarh_Fort_sanhita.jpg"
+    },
+    {
+      id: 5,
+      category: "The Himalayas",
+      name: "Everest Base Camp",
+      location: "Himalayas, Nepal",
+      duration: "10 Nights / 11 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg"
+    },
+    {
+      id: 10,
+      category: "Udaipur",
+      name: "City of Lakes Tour",
+      location: "Udaipur, Rajasthan",
+      duration: "03 Nights / 04 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/3/32/Udaipur_Lake_Palace.jpg"
+    },
+    {
+      id: 11,
+      category: "Agra",
+      name: "Taj Mahal Experience",
+      location: "Agra, Uttar Pradesh",
+      duration: "02 Nights / 03 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+    },
+    {
+      id: 12,
+      category: "Milan",
+      name: "Milan City Break",
+      location: "Milan, Italy",
+      duration: "04 Nights / 05 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/3840px-Milan_Cathedral_from_Piazza_del_Duomo.jpg"
+    },
+    {
+      id: 13,
+      category: "Mount Titlis",
+      name: "Swiss Alps Adventure",
+      location: "Mount Titlis, Switzerland",
+      duration: "05 Nights / 06 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Titlis_W.jpg"
+    },
+    {
+      id: 14,
+      category: "Kodaikanal",
+      name: "Princess of Hill Stations",
+      location: "Kodaikanal, Tamil Nadu",
+      duration: "04 Nights / 05 Days",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Boating_in_Kodaikanal_Lake_with_Mist.jpg/3840px-Boating_in_Kodaikanal_Lake_with_Mist.jpg"
+    }
+  ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -46,7 +111,7 @@ export const Home: React.FC = () => {
           >
             <div className="absolute inset-0 overflow-hidden">
               <img 
-                src={pkg.img || pkg.image_url || pkg.image} 
+                src={pkg.image} 
                 alt={pkg.name} 
                 className="w-full h-full object-cover animate-kenburns transition-all duration-1000 scale-105" 
                 style={{ imageRendering: 'crisp-edges' }}
@@ -141,7 +206,7 @@ export const Home: React.FC = () => {
 
           <div className="flex-1 relative">
             <div className="relative rounded-t-[10rem] overflow-hidden aspect-[4/5] shadow-2xl max-w-md ml-auto mr-12">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Travel Agency" className="w-full h-full object-cover" />
+              <img src="/images/2667045e2fd96444a1e5a7796a6ab43b.jpg" alt="Travel Agency" className="w-full h-full object-cover" />
             </div>
             <div className="absolute top-1/4 -left-8 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900">
                <span className="text-[#D97736] font-bold text-xs">SINCE</span>
@@ -278,7 +343,7 @@ export const Home: React.FC = () => {
       
       {/* Parallax CTA */}
       <div className="relative py-40 mt-10">
-        <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2000&auto=format&fit=crop)' }}>
+        <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url(/images/30ca80d455a76609dc911a25a68d87e2.jpg)' }}>
           <div className="absolute inset-0 bg-black/40 z-0"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col items-center">
@@ -350,7 +415,7 @@ export const Home: React.FC = () => {
 
           <div className="flex-1 relative flex justify-center">
              <div className="relative w-64 h-64 rounded-full border-[12px] border-white dark:border-zinc-900 shadow-2xl overflow-hidden z-10">
-               <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=600&auto=format&fit=crop" alt="Happy traveller" className="w-full h-full object-cover" />
+               <img src="/images/3ac9bf62d5bb14289acd33e9f5a63ee3.jpg" alt="Happy traveller" className="w-full h-full object-cover" />
              </div>
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-32 z-20">
                 <span className="text-6xl text-[#D97736] drop-shadow-md" style={{ fontFamily: 'var(--font-cursive)' }}>Amazing</span>
@@ -426,12 +491,12 @@ export const Home: React.FC = () => {
         {/* Instagram / Gallery Strip */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-0">
           {[
-            "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1548624317-a006db23a1d9?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=800&q=80"
+            "/images/6b2bb97f0c1b6d7f2e78e37589eae965.jpg",
+            "/images/6f3ad43a139e289fdcc2ccc6d497923b.jpg",
+            "/images/7c677b5e8b51587496b66ed9709845df.jpg",
+            "/images/8b2e185fc79ab5f9983920bbc1f8f6b5.jpg",
+            "/images/8c22906dc1ab06a9031e5f0fde298c5b.jpg",
+            "/images/9c904a1b42b78bb14a34bb65cc768a40.jpg"
           ].map((src, i) => (
             <div key={i} className="aspect-square relative group overflow-hidden">
               <img src={src} alt="Gallery" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />

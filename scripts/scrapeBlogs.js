@@ -85,10 +85,19 @@ async function scrapeBlogs() {
     
     const blogs = [];
     
+    const elements = $('article, .post, .blog-item');
+    let totalFound = elements.length;
+    let successfullyImported = 0;
+    let failedCount = 0;
+    let fallbackImageCount = 0;
+    
     // Attempt to scrape based on common blog structures
-    $('article, .post, .blog-item').each((i, el) => {
+    elements.each((i, el) => {
       const title = $(el).find('h1, h2, h3, .post-title, .title').text().trim();
-      if (!title) return; // Skip if no title
+      if (!title) {
+        failedCount++;
+        return; // Skip if no title
+      }
       
       const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
       let image = $(el).find('img').attr('src');
@@ -98,7 +107,8 @@ async function scrapeBlogs() {
       
       // Fallback image if relative or missing
       if (!image || image.startsWith('/')) {
-         image = fallbacks[i % fallbacks.length].image;
+         image = 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80';
+         fallbackImageCount++;
       }
       
       blogs.push({
@@ -112,6 +122,7 @@ async function scrapeBlogs() {
         image,
         readTime: "5 min read"
       });
+      successfullyImported++;
     });
 
     if (blogs.length === 0) {
@@ -121,6 +132,17 @@ async function scrapeBlogs() {
     console.log(`Successfully scraped ${blogs.length} articles.`);
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(blogs, null, 2));
     console.log(`Saved to ${OUTPUT_FILE}`);
+    
+    console.log("\n========================================");
+    console.log("📊 RAW IMPORT REPORT");
+    console.log("========================================");
+    console.table({
+      "Total Items Found": totalFound,
+      "Successfully Imported": successfullyImported,
+      "Failed / Skipped": failedCount,
+      "Items using Fallback Images": fallbackImageCount
+    });
+    console.log("========================================\n");
     
   } catch (error) {
     console.warn(`Scraping failed: ${error.message}`);

@@ -1,0 +1,74 @@
+{
+  "id": "2",
+  "slug": "golden-triangle-india",
+  "title": "Golden Triangle India",
+  "destination": "Delhi, Agra, Jaipur",
+  "category": "Forts & Palaces",
+  "durationNights": 6,
+  "durationDays": 7,
+  "startingPrice": 35000,
+  "rating": 4.8,
+  "reviewsCount": 312,
+  "heroImage": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=2400&q=85",
+  "gallery": [
+    "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+  ],
+  "overview": "Embark on a mesmerizing journey through India's Golden Triangle. Explore the bustling streets of Delhi, marvel at the timeless beauty of the Taj Mahal in Agra, and experience the royal heritage of Jaipur. This tour offers a perfect blend of history, culture, and architecture.",
+  "highlights": [
+    "Guided tour of Old and New Delhi",
+    "Sunrise visit to the iconic Taj Mahal",
+    "Elephant/Jeep ride at Amber Fort, Jaipur",
+    "Shopping at vibrant local bazaars"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival in Delhi",
+      "description": "Welcome to India! Upon arrival in Delhi, transfer to your hotel. Rest and relax after your journey."
+    },
+    {
+      "day": 2,
+      "title": "Delhi Sightseeing",
+      "description": "Explore the historical wonders of Delhi, including Jama Masjid, Red Fort (outside), Raj Ghat, Qutub Minar, and India Gate."
+    },
+    {
+      "day": 3,
+      "title": "Delhi to Agra & Taj Mahal",
+      "description": "Drive to Agra. In the afternoon, visit the magnificent Agra Fort and enjoy a sunset view of the Taj Mahal from Mehtab Bagh."
+    },
+    {
+      "day": 4,
+      "title": "Sunrise at Taj Mahal & Drive to Jaipur",
+      "description": "Witness the Taj Mahal at sunrise. Later, drive to Jaipur, en route visiting the abandoned city of Fatehpur Sikri."
+    },
+    {
+      "day": 5,
+      "title": "Jaipur City Tour",
+      "description": "Visit the majestic Amber Fort, City Palace, Jantar Mantar, and take a photo stop at Hawa Mahal (Palace of Winds)."
+    },
+    {
+      "day": 6,
+      "title": "Jaipur to Delhi",
+      "description": "Drive back to Delhi. Spend the evening at leisure or do some last-minute shopping in Connaught Place."
+    },
+    {
+      "day": 7,
+      "title": "Departure",
+      "description": "Transfer to Delhi airport for your onward journey with beautiful memories."
+    }
+  ],
+  "inclusions": [
+    "6 Nights accommodation in premium hotels",
+    "Daily buffet breakfast",
+    "Private AC vehicle for all transfers and sightseeing",
+    "Local English-speaking guides in each city"
+  ],
+  "exclusions": [
+    "International/Domestic flights",
+    "Monument entrance fees",
+    "Meals other than breakfast",
+    "Gratuities"
+  ]
+}

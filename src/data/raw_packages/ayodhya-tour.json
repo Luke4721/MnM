@@ -1,0 +1,52 @@
+{
+  "id": "1",
+  "slug": "ayodhya-tour",
+  "title": "Ayodhya Tour",
+  "destination": "Ayodhya",
+  "category": "Temple of India",
+  "durationNights": 2,
+  "durationDays": 3,
+  "startingPrice": 15000,
+  "rating": 4.9,
+  "reviewsCount": 124,
+  "heroImage": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=2400&q=85",
+  "gallery": [
+    "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1621528657685-6bb04b6b15ec?auto=format&fit=crop&w=800&q=80"
+  ],
+  "overview": "Experience the divine aura of Ayodhya, the birthplace of Lord Rama. This thoughtfully curated tour takes you through the most sacred temples, ancient ghats, and spiritual landmarks that define the spiritual heart of India.",
+  "highlights": [
+    "Darshan at the grand Ram Mandir",
+    "Evening Aarti at Saryu River Ghat",
+    "Visit to Hanuman Garhi and Kanak Bhawan",
+    "Guided spiritual walk through ancient Ayodhya"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival in Ayodhya & Evening Aarti",
+      "description": "Upon arrival, transfer to your premium hotel. In the evening, witness the mesmerizing Saryu River Aarti, a deeply spiritual experience with hundreds of floating diyas."
+    },
+    {
+      "day": 2,
+      "title": "Temple Trail & Ram Mandir Darshan",
+      "description": "Early morning visit to the magnificent Ram Janmabhoomi Temple. Later, explore Hanuman Garhi, Kanak Bhawan, and other significant sites associated with the Ramayana."
+    },
+    {
+      "day": 3,
+      "title": "Departure",
+      "description": "After a wholesome breakfast, spend some free time for local shopping before departing with divine blessings."
+    }
+  ],
+  "inclusions": [
+    "2 Nights accommodation in a 4-star property",
+    "Daily buffet breakfast",
+    "AC transportation for all transfers and sightseeing",
+    "VIP Darshan assistance where applicable"
+  ],
+  "exclusions": [
+    "Airfare/Train tickets",
+    "Personal expenses",
+    "Guide fees (available on request)"
+  ]
+}

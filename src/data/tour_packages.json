@@ -11,8 +11,8 @@
     "priceINR": 15000,
     "category": "Temple of India",
     "type": "Domestic",
-    "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=2400&q=85",
-    "img": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=2400&q=85"
+    "image": "/images/d0d74fa518ccf2c3f270d33d480a52ec.jpg",
+    "img": "/images/d0d74fa518ccf2c3f270d33d480a52ec.jpg"
   },
   {
     "id": 2,
@@ -101,8 +101,8 @@
     "priceINR": 35000,
     "category": "Buddhist Circuit",
     "type": "International",
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop",
-    "img": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/6f3ad43a139e289fdcc2ccc6d497923b.jpg",
+    "img": "/images/6f3ad43a139e289fdcc2ccc6d497923b.jpg"
   },
   {
     "id": 8,
@@ -116,8 +116,8 @@
     "priceINR": 60000,
     "category": "Buddhist Circuit",
     "type": "International",
-    "image": "https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=800&auto=format&fit=crop",
-    "img": "https://images.unsplash.com/photo-1578637387939-43c525550085?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/9c904a1b42b78bb14a34bb65cc768a40.jpg",
+    "img": "/images/9c904a1b42b78bb14a34bb65cc768a40.jpg"
   },
   {
     "id": 9,
@@ -131,7 +131,7 @@
     "priceINR": 25000,
     "category": "Beaches",
     "type": "Domestic",
-    "image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop",
-    "img": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/bc26215b8a86f23ba325cec734f67987.jpg",
+    "img": "/images/bc26215b8a86f23ba325cec734f67987.jpg"
   }
 ]

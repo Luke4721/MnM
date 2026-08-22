@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowRight } from 'lucide-react';
@@ -32,43 +32,76 @@ export const Packages: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [filters, setFilters] = useState({ destination: initialSearch, month: searchParams.get('month') || '', duration: searchParams.get('duration') || '', budget: searchParams.get('budget') || '' });
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [displayLimit, _setDisplayLimit] = useState(6);
+
+  const setDisplayLimit = (action: number | ((prev: number) => number)) => {
+     _setDisplayLimit((prev: number) => {
+        const nextVal = typeof action === 'function' ? action(prev) : action;
+        
+        // FIREWALL: If the app tries to randomly reset to 6 after you clicked load more
+        if (nextVal === 6 && prev >= 12) {
+           console.error("🚨 FIREWALL ACTIVE: Blocked a phantom reset to 6!");
+           console.trace("Culprit traced to:");
+           return prev; // 🛑 BLOCKS THE RESET. Forces the UI to stay at 12/18/24
+        }
+        return nextVal;
+     });
+  };
 
   const categories = db.categories;
 
   const handleSearchChange = (newFilters: any) => {
     setFilters(newFilters);
     setSearchQuery(newFilters.destination);
-    setVisibleCount(12); // reset pagination on search
+    setDisplayLimit(6); // reset pagination on search
   };
 
   const handleDestinationChange = (val: string) => {
     setSearchQuery(val);
     setFilters(prev => ({ ...prev, destination: val }));
-    setVisibleCount(12);
+    setDisplayLimit(6);
   };
 
-  const filteredPackages = db.packages.filter((pkg) => {
-    const matchesCategory = activeCategory === 'All' || pkg.category === activeCategory;
-    const matchesSearch =
-      (pkg.title || pkg.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (pkg.location || pkg.locations || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (pkg.category || '').toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredPackages = useMemo(() => {
+    return db.packages.filter((pkg) => {
+      const matchesCategory = activeCategory === 'All' || pkg.category === activeCategory;
+      const matchesSearch =
+        (pkg.title || pkg.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (pkg.location || pkg.locations || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (pkg.category || '').toLowerCase().includes(searchQuery.toLowerCase());
+        
+      let matchesDuration = true;
+      if (filters.duration) {
+         matchesDuration = (pkg.duration || pkg.nights || '').includes(filters.duration.split('-')[0].replace('0',''));
+      }
+
+      const budgetTier = filters.budget?.toLowerCase() || '';
+      const price = pkg.startingPrice || pkg.priceINR || 0;
+      const numericPrice = parseInt(String(price).replace(/[^0-9]/g, ''), 10) || 0;
       
-    let matchesDuration = true;
-    if (filters.duration) {
-       matchesDuration = (pkg.duration || pkg.nights || '').includes(filters.duration.split('-')[0].replace('0',''));
-    }
+      let matchesBudget = true;
+      if (budgetTier === 'standard') {
+         matchesBudget = numericPrice >= 15000 && numericPrice <= 30000;
+      } else if (budgetTier === 'executive') {
+         matchesBudget = numericPrice > 30000 && numericPrice <= 50000;
+      } else if (budgetTier === 'premium') {
+         matchesBudget = numericPrice > 50000;
+      } else if (budgetTier === 'unique') {
+         matchesBudget = true; // Returns all packages as requested
+      }
 
-    return matchesCategory && matchesSearch && matchesDuration;
-  });
+      return matchesCategory && matchesSearch && matchesDuration && matchesBudget;
+    });
+  }, [activeCategory, searchQuery, filters.duration, filters.budget]);
 
-  const displayedPackages = filteredPackages.slice(0, visibleCount);
+  const displayedPackages = filteredPackages.slice(0, displayLimit);
+  console.log("Total Filtered:", filteredPackages.length, " | Currently Displaying:", displayedPackages.length, " | displayLimit State:", displayLimit);
 
   return (
     <PageTransition>
-      <div className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto min-h-screen relative z-10">
-        <div className="w-full">
+      <div className="w-full bg-gradient-to-b from-gray-50 to-white dark:from-black dark:to-zinc-950 min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 relative z-10">
+          <div className="w-full">
           {/* Header */}
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h1 style={{ fontSize: '3.5rem', fontWeight: 800, color: 'var(--text-color)', letterSpacing: '-0.03em' }}>
@@ -93,7 +126,7 @@ export const Packages: React.FC = () => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => { setActiveCategory(cat); setDisplayLimit(6); }}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-[#D97736] border-[#D97736] text-white shadow-[0_4px_14px_rgba(217,119,54,0.4)]'
@@ -105,10 +138,11 @@ export const Packages: React.FC = () => {
             ))}
           </div>
 
-          {/* Grid Layout (grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8) */}
-          {displayedPackages.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {displayedPackages.map((pkg, index) => (
+          {/* GRID WRAPPER - Ensure h-auto and no overflow hiding */}
+          <div className="w-full h-auto min-h-screen pb-24">
+            {displayedPackages.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {displayedPackages.map((pkg, index) => (
                 <motion.div
                   key={pkg.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -116,7 +150,7 @@ export const Packages: React.FC = () => {
                   viewport={{ once: true, margin: '-50px' }}
                   transition={{ delay: (index % 6) * 0.05 }}
                 >
-                  <Link to={`/package/${pkg.id}`} style={{ textDecoration: 'none' }}>
+                  <Link to={`/packages/${pkg.slug}`} style={{ textDecoration: 'none' }}>
                     <TiltCard>
                       <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                         <div style={{ height: '240px', position: 'relative' }}>
@@ -173,7 +207,7 @@ export const Packages: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
-                  onClick={() => { setSearchQuery(''); setFilters({ destination: '', month: '', duration: '', budget: '' }); setActiveCategory('All'); }}
+                  onClick={() => { setSearchQuery(''); setFilters({ destination: '', month: '', duration: '', budget: '' }); setActiveCategory('All'); setDisplayLimit(6); }}
                   className="px-8 py-3 rounded-full bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white font-bold tracking-widest text-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all shadow-sm"
                 >
                   VIEW ALL PACKAGES
@@ -187,17 +221,24 @@ export const Packages: React.FC = () => {
             </div>
           )}
 
-          {/* Pagination */}
-          {visibleCount < filteredPackages.length && (
-            <div className="mt-16 flex justify-center">
+          {/* BUTTON WRAPPER - Extreme Z-Index to prevent click blocking */}
+          {displayLimit < filteredPackages.length && (
+            <div className="relative z-[9999] flex justify-center mt-16 pb-20 w-full pointer-events-auto">
               <button 
-                onClick={() => setVisibleCount(prev => prev + 12)}
-                className="bg-transparent border-2 border-[#D97736] text-[#D97736] hover:bg-[#D97736] hover:text-white px-8 py-3 rounded-full font-bold tracking-widest transition-all duration-300 shadow-sm hover:shadow-md"
+                 type="button"
+                 onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log("Load More clicked! Old count:", displayLimit);
+                    setDisplayLimit((prev: number) => prev + 6);
+                 }} 
+                 className="relative z-[10000] px-8 py-3 rounded-full border-2 border-[#D97736] text-[#D97736] font-bold tracking-wide hover:bg-[#D97736] hover:text-white transition-all duration-300 cursor-pointer shadow-xl"
               >
-                LOAD MORE PACKAGES
+                 LOAD MORE PACKAGES
               </button>
             </div>
           )}
+          </div>
 
           {/* Custom Trip Button - Permanent */}
           <div className="mt-20 mb-10 flex flex-col items-center justify-center pt-10 border-t border-gray-200 dark:border-white/10">
@@ -208,6 +249,7 @@ export const Packages: React.FC = () => {
               </button>
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </PageTransition>
