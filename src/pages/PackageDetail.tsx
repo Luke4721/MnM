@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Star, Calendar, ChevronDown, Check, ArrowRight, Shield, CreditCard, ChevronLeft } from 'lucide-react';
+import { MapPin, Star, ChevronDown, Check, ArrowRight, Shield, CreditCard, ChevronLeft } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import db from '../data/mnm_database.json';
 import { PageTransition } from '../components/PageTransition';
@@ -12,7 +12,6 @@ export const PackageDetail: React.FC = () => {
   const navigate = useNavigate();
   const { currency, convertPrice } = useCurrency();
   const [activeDay, setActiveDay] = useState<number | null>(1);
-  const [selectedDate, setSelectedDate] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
 
@@ -270,24 +269,6 @@ export const PackageDetail: React.FC = () => {
                   </div>
 
                   <div className="space-y-4 mb-8">
-                    <div className="w-full relative flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors">
-                      <div className="flex items-center gap-3 w-full">
-                        <Calendar className="text-[#D97736] shrink-0" />
-                        <select
-                          value={selectedDate}
-                          onChange={(e) => setSelectedDate(e.target.value)}
-                          className="font-medium text-gray-700 dark:text-gray-200 bg-transparent outline-none w-full appearance-none cursor-pointer"
-                        >
-                          <option value="" disabled className="text-gray-500">Select Date</option>
-                          <option value="2026-09-15" className="text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800">Sep 15, 2026</option>
-                          <option value="2026-10-01" className="text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800">Oct 01, 2026</option>
-                          <option value="2026-10-20" className="text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800">Oct 20, 2026</option>
-                          <option value="2026-11-05" className="text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800">Nov 05, 2026</option>
-                        </select>
-                      </div>
-                      <ChevronDown size={18} className="text-gray-400 absolute right-4 pointer-events-none" />
-                    </div>
-                    
                     <button className="w-full flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors">
                       <div className="flex items-center gap-3">
                         <Star className="text-[#D97736]" />

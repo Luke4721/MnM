@@ -108,19 +108,18 @@
       ],
       "category": "Forts & Palaces",
       "type": "Domestic",
-      "image_url": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
-      "img": "/images/8b2e185fc79ab5f9983920bbc1f8f6b5.jpg",
-      "image": "/images/8c22906dc1ab06a9031e5f0fde298c5b.jpg",
+      "image_url": "/images/hires/2_f3.jpg",
+      "img": "/images/hires/2_f3.jpg",
+      "image": "/images/hires/2_f3.jpg",
       "slug": "golden-triangle-india",
       "highlights_old": "Locations: Delhi, Agra, Jaipur",
       "startingPrice": 35000,
       "rating": 4.8,
       "reviewsCount": 312,
-      "heroImage": "/images/9c904a1b42b78bb14a34bb65cc768a40.jpg",
+      "heroImage": "/images/hires/2_f3.jpg",
       "gallery": [
-        "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
-        "/images/addd9c793a887b86533272b59634079b.jpg",
-        "/images/bc26215b8a86f23ba325cec734f67987.jpg"
+        "/images/hires/2_f3.jpg",
+        "/images/hires/2_f3.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Embark on a mesmerizing journey through India's Golden Triangle. Explore the bustling streets of Delhi, marvel at the timeless beauty of the Taj Mahal in Agra, and experience the royal heritage of Jaipur. This tour offers a perfect blend of history, culture, and architecture.",
       "itinerary": [
@@ -191,12 +190,17 @@
       "highlights": "Locations: Delhi - Agra - Jaipur - Varanasi - Delhi",
       "category": "Temple of India",
       "type": "Domestic",
-      "image_url": "/images/d0d74fa518ccf2c3f270d33d480a52ec.jpg",
-      "img": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
-      "image": "/images/f426fde8514dd68edc767474c1fa719a.jpg",
+      "image_url": "/images/hires/3_f3.jpg",
+      "img": "/images/hires/3_f3.jpg",
+      "image": "/images/hires/3_f3.jpg",
       "slug": "classic-india",
       "overview": "Experience the wonder of Classic India. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Discover India's timeless heritage. A classic cultural tour through ancient cities, majestic palaces, and vibrant traditions. Book your Indian journey today."
+      "metaDescription": "Discover India's timeless heritage. A classic cultural tour through ancient cities, majestic palaces, and vibrant traditions. Book your Indian journey today.",
+      "heroImage": "/images/hires/3_f3.jpg",
+      "gallery": [
+        "/images/hires/3_f3.jpg",
+        "/images/hires/3_f3.jpg"
+      ]
     },
     {
       "id": "4",
@@ -212,12 +216,17 @@
       "highlights": "Locations: Delhi - Mandawa - Bikaner - Jaisalmer - Jodhpur - Udaipur - Pushkar - Jaipur - Agra - Delhi",
       "category": "Forts & Palaces",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/jaisalmer.jpg",
-      "img": "https://mnmtravels.com/img/jaisalmer.jpg",
-      "image": "https://mnmtravels.com/img/jaisalmer.jpg",
+      "image_url": "/images/hires/4_f3.jpg",
+      "img": "/images/hires/4_f3.jpg",
+      "image": "/images/hires/4_f3.jpg",
       "slug": "rajasthan-heritage-tour",
       "overview": "Experience the wonder of Rajasthan Heritage Tour. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Experience the grandeur of Royal Rajasthan. Visit magnificent forts in Jaipur, Jodhpur, Udaipur, and enjoy a desert safari in Jaisalmer. Book now!"
+      "metaDescription": "Experience the grandeur of Royal Rajasthan. Visit magnificent forts in Jaipur, Jodhpur, Udaipur, and enjoy a desert safari in Jaisalmer. Book now!",
+      "heroImage": "/images/hires/4_f3.jpg",
+      "gallery": [
+        "/images/hires/4_f3.jpg",
+        "/images/hires/4_f3.jpg"
+      ]
     },
     {
       "id": "5",
@@ -259,12 +268,17 @@
       "highlights": "Locations: Cochin – Munnar – Thekkady – Alleppey – Kovalam – Trivandrum",
       "category": "Backwaters",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/kerala.webp",
-      "img": "https://mnmtravels.com/img/kerala.webp",
-      "image": "https://mnmtravels.com/img/kerala.webp",
+      "image_url": "/images/hires/6_f3.jpg",
+      "img": "/images/hires/6_f3.jpg",
+      "image": "/images/hires/6_f3.jpg",
       "slug": "magic-kerala-backwaters",
       "overview": "Experience the wonder of Magic Kerala & Backwaters. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Magic Kerala & Backwaters tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your ..."
+      "metaDescription": "Book your unforgettable Magic Kerala & Backwaters tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your ...",
+      "heroImage": "/images/hires/6_f3.jpg",
+      "gallery": [
+        "/images/hires/6_f3.jpg",
+        "/images/hires/6_f3.jpg"
+      ]
     },
     {
       "id": "7",
@@ -280,12 +294,17 @@
       "highlights": "Locations: Srinagar - Pahalgam - Gulmarg - Sonmarg - Srinagar",
       "category": "The Himalayas",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/kashmir.webp",
-      "img": "https://mnmtravels.com/img/kashmir.webp",
-      "image": "https://mnmtravels.com/img/kashmir.webp",
+      "image_url": "/images/hires/7_f3.jpg",
+      "img": "/images/hires/7_f3.jpg",
+      "image": "/images/hires/7_f3.jpg",
       "slug": "kashmir-paradise",
       "overview": "Discover the surreal beauty of Kashmir with our premium tour package. From gliding on Dal Lake in a Shikara to marveling at the snow-capped peaks of Gulmarg and Pahalgam, experience a slice of paradise that will leave you spellbound.",
-      "metaDescription": "Experience the best of Kashmir. Visit Srinagar, Gulmarg, and Pahalgam. Book your dream Kashmir holiday package today for an unforgettable mountain escape."
+      "metaDescription": "Experience the best of Kashmir. Visit Srinagar, Gulmarg, and Pahalgam. Book your dream Kashmir holiday package today for an unforgettable mountain escape.",
+      "heroImage": "/images/hires/7_f3.jpg",
+      "gallery": [
+        "/images/hires/7_f3.jpg",
+        "/images/hires/7_f3.jpg"
+      ]
     },
     {
       "id": "8",
@@ -301,12 +320,17 @@
       "highlights": "Locations: Leh - Sham - Nubra - Pangong - Leh",
       "category": "The Himalayas",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/ladakh.jpg",
-      "img": "https://mnmtravels.com/img/ladakh.jpg",
-      "image": "https://mnmtravels.com/img/ladakh.jpg",
+      "image_url": "/images/hires/8_f3.jpg",
+      "img": "/images/hires/8_f3.jpg",
+      "image": "/images/hires/8_f3.jpg",
       "slug": "leh-ladakh",
       "overview": "Experience the wonder of Leh & Ladakh. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Embark on an epic Leh Ladakh adventure. Visit Pangong Lake, Nubra Valley, and ancient monasteries. Book your ultimate Himalayan road trip today."
+      "metaDescription": "Embark on an epic Leh Ladakh adventure. Visit Pangong Lake, Nubra Valley, and ancient monasteries. Book your ultimate Himalayan road trip today.",
+      "heroImage": "/images/hires/8_f3.jpg",
+      "gallery": [
+        "/images/hires/8_f3.jpg",
+        "/images/hires/8_f3.jpg"
+      ]
     },
     {
       "id": "9",
@@ -322,12 +346,17 @@
       "highlights": "Locations: Port Blair - Havelock - Radha Nagar Beach - Neil Island - Port Blair",
       "category": "Beaches",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/andaman.jpg",
-      "img": "https://mnmtravels.com/img/andaman.jpg",
-      "image": "https://mnmtravels.com/img/andaman.jpg",
+      "image_url": "/images/hires/9_f3.jpg",
+      "img": "/images/hires/9_f3.jpg",
+      "image": "/images/hires/9_f3.jpg",
       "slug": "andaman-nicobar",
       "overview": "Dive into the crystal-clear waters of the Andaman Islands. Explore historic Port Blair, relax on the world-renowned Radhanagar Beach in Havelock, and witness breathtaking underwater life. The perfect tropical paradise awaits.",
-      "metaDescription": "Discover the Andaman Islands! pristine beaches, scuba diving, and historic Port Blair. Book your tropical Andaman holiday package for a perfect vacation."
+      "metaDescription": "Discover the Andaman Islands! pristine beaches, scuba diving, and historic Port Blair. Book your tropical Andaman holiday package for a perfect vacation.",
+      "heroImage": "/images/hires/9_f3.jpg",
+      "gallery": [
+        "/images/hires/9_f3.jpg",
+        "/images/hires/9_f3.jpg"
+      ]
     },
     {
       "id": "10",
@@ -343,12 +372,17 @@
       "highlights": "Locations: Bagdogra - Gangtok - Darjeeling - Kalimpong - Bagdogra",
       "category": "The Himalayas",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/darjeeling.jpg",
-      "img": "https://mnmtravels.com/img/darjeeling.jpg",
-      "image": "https://mnmtravels.com/img/darjeeling.jpg",
+      "image_url": "/images/hires/10_f3.jpg",
+      "img": "/images/hires/10_f3.jpg",
+      "image": "/images/hires/10_f3.jpg",
       "slug": "sikkim-darjeeling",
       "overview": "Embark on a majestic Himalayan adventure in Sikkim. Experience the vibrant culture of Gangtok, witness the stunning beauty of Tsomgo Lake, and enjoy the breathtaking views of the Kanchenjunga range.",
-      "metaDescription": "Explore the majestic Himalayas with our Sikkim holiday packages. Visit Gangtok, Darjeeling, and experience breathtaking mountain views and local culture."
+      "metaDescription": "Explore the majestic Himalayas with our Sikkim holiday packages. Visit Gangtok, Darjeeling, and experience breathtaking mountain views and local culture.",
+      "heroImage": "/images/hires/10_f3.jpg",
+      "gallery": [
+        "/images/hires/10_f3.jpg",
+        "/images/hires/10_f3.jpg"
+      ]
     },
     {
       "id": "11",
@@ -364,12 +398,17 @@
       "highlights": "Locations: Ahmedabad - Dasda - Bhuj - Rajkot - Sasangir - Somnath - Diu - Bhavnagar - Palitana - Vadodara",
       "category": "Adventure & Wildlife",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/gujarat.webp",
-      "img": "https://mnmtravels.com/img/gujarat.webp",
-      "image": "https://mnmtravels.com/img/gujarat.webp",
+      "image_url": "/images/hires/11_f3.jpg",
+      "img": "/images/hires/11_f3.jpg",
+      "image": "/images/hires/11_f3.jpg",
       "slug": "classical-gujarat-tour",
       "overview": "Experience the wonder of Classical Gujarat Tour. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Classical Gujarat Tour tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your nex..."
+      "metaDescription": "Book your unforgettable Classical Gujarat Tour tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your nex...",
+      "heroImage": "/images/hires/11_f3.jpg",
+      "gallery": [
+        "/images/hires/11_f3.jpg",
+        "/images/hires/11_f3.jpg"
+      ]
     },
     {
       "id": "12",
@@ -385,12 +424,17 @@
       "highlights": "Locations: Delhi - Haridwar - Rishikesh - Delhi",
       "category": "Ayurveda & Yoga",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/rishikesh.jpg",
-      "img": "https://mnmtravels.com/img/rishikesh.jpg",
-      "image": "https://mnmtravels.com/img/rishikesh.jpg",
+      "image_url": "/images/hires/12_f3.jpg",
+      "img": "/images/hires/12_f3.jpg",
+      "image": "/images/hires/12_f3.jpg",
       "slug": "haridwar-rishikesh",
       "overview": "Experience the wonder of Haridwar & Rishikesh. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Haridwar & Rishikesh tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next ..."
+      "metaDescription": "Book your unforgettable Haridwar & Rishikesh tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next ...",
+      "heroImage": "/images/hires/12_f3.jpg",
+      "gallery": [
+        "/images/hires/12_f3.jpg",
+        "/images/hires/12_f3.jpg"
+      ]
     },
     {
       "id": "13",
@@ -406,12 +450,17 @@
       "highlights": "Locations: Mumbai - Goa - Kovalam - Trivandrum",
       "category": "Beaches",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/goa.jpg",
-      "img": "https://mnmtravels.com/img/goa.jpg",
-      "image": "https://mnmtravels.com/img/goa.jpg",
+      "image_url": "/images/hires/13_f3.jpg",
+      "img": "/images/hires/13_f3.jpg",
+      "image": "/images/hires/13_f3.jpg",
       "slug": "tropical-goa",
       "overview": "Experience the wonder of Tropical Goa. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Tropical Goa tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next getaway!"
+      "metaDescription": "Book your unforgettable Tropical Goa tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next getaway!",
+      "heroImage": "/images/hires/13_f3.jpg",
+      "gallery": [
+        "/images/hires/13_f3.jpg",
+        "/images/hires/13_f3.jpg"
+      ]
     },
     {
       "id": "14",
@@ -427,12 +476,17 @@
       "highlights": "Locations: Trivandrum – Kovalam - Trivandrum",
       "category": "Ayurveda & Yoga",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/ayurveda.jpg",
-      "img": "https://mnmtravels.com/img/ayurveda.jpg",
-      "image": "https://mnmtravels.com/img/ayurveda.jpg",
+      "image_url": "/images/hires/14_f3.jpg",
+      "img": "/images/hires/14_f3.jpg",
+      "image": "/images/hires/14_f3.jpg",
       "slug": "kerala-ayurveda-wellness",
       "overview": "Experience the wonder of Kerala Ayurveda Wellness. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Kerala Ayurveda Wellness tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your n..."
+      "metaDescription": "Book your unforgettable Kerala Ayurveda Wellness tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your n...",
+      "heroImage": "/images/hires/14_f3.jpg",
+      "gallery": [
+        "/images/hires/14_f3.jpg",
+        "/images/hires/14_f3.jpg"
+      ]
     },
     {
       "id": "15",
@@ -448,12 +502,17 @@
       "highlights": "Locations: Delhi - Lucknow - Shravasti - Lumbini - Kushinagar - Patna - Bodhgaya - Varanasi - Delhi",
       "category": "Buddhist Circuit",
       "type": "International",
-      "image_url": "https://mnmtravels.com/img/buddhist.jpg",
-      "img": "https://mnmtravels.com/img/buddhist.jpg",
-      "image": "https://mnmtravels.com/img/buddhist.jpg",
+      "image_url": "/images/hires/15_f3.jpg",
+      "img": "/images/hires/15_f3.jpg",
+      "image": "/images/hires/15_f3.jpg",
       "slug": "sacred-buddhist-circuit",
       "overview": "Experience the wonder of Sacred Buddhist Circuit. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Sacred Buddhist Circuit tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your ne..."
+      "metaDescription": "Book your unforgettable Sacred Buddhist Circuit tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your ne...",
+      "heroImage": "/images/hires/15_f3.jpg",
+      "gallery": [
+        "/images/hires/15_f3.jpg",
+        "/images/hires/15_f3.jpg"
+      ]
     },
     {
       "id": "16",
@@ -469,12 +528,17 @@
       "highlights": "Locations: Kathmandu - Chitwan - Pokhara - Kathmandu",
       "category": "Buddhist Circuit",
       "type": "International",
-      "image_url": "https://mnmtravels.com/img/nepal.jpg",
-      "img": "https://mnmtravels.com/img/nepal.jpg",
-      "image": "https://mnmtravels.com/img/nepal.jpg",
+      "image_url": "/images/hires/16_f3.jpg",
+      "img": "/images/hires/16_f3.jpg",
+      "image": "/images/hires/16_f3.jpg",
       "slug": "mystic-nepal",
       "overview": "Experience the wonder of Mystic Nepal. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Mystic Nepal tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next getaway!"
+      "metaDescription": "Book your unforgettable Mystic Nepal tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next getaway!",
+      "heroImage": "/images/hires/16_f3.jpg",
+      "gallery": [
+        "/images/hires/16_f3.jpg",
+        "/images/hires/16_f3.jpg"
+      ]
     },
     {
       "id": "17",
@@ -490,12 +554,17 @@
       "highlights": "Locations: Delhi - Rishikesh - Joshimath - Govindghat - Ghangaria - Rudraprayag - Haridwar - Delhi",
       "category": "The Himalayas",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/valley.jpg",
-      "img": "https://mnmtravels.com/img/valley.jpg",
-      "image": "https://mnmtravels.com/img/valley.jpg",
+      "image_url": "/images/hires/17_f3.jpg",
+      "img": "/images/hires/17_f3.jpg",
+      "image": "/images/hires/17_f3.jpg",
       "slug": "valley-of-flowers-trek",
       "overview": "Experience the wonder of Valley of Flowers Trek. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Valley of Flowers Trek tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your nex..."
+      "metaDescription": "Book your unforgettable Valley of Flowers Trek tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your nex...",
+      "heroImage": "/images/hires/17_f3.jpg",
+      "gallery": [
+        "/images/hires/17_f3.jpg",
+        "/images/hires/17_f3.jpg"
+      ]
     },
     {
       "id": "18",
@@ -511,12 +580,17 @@
       "highlights": "Locations: Thimphu - Punakha - Paro",
       "category": "Buddhist Circuit",
       "type": "International",
-      "image_url": "https://mnmtravels.com/img/bhutan1.jpg",
-      "img": "https://mnmtravels.com/img/bhutan1.jpg",
-      "image": "https://mnmtravels.com/img/bhutan1.jpg",
+      "image_url": "/images/hires/18_f3.jpg",
+      "img": "/images/hires/18_f3.jpg",
+      "image": "/images/hires/18_f3.jpg",
       "slug": "bhutan-kingdom-retreat",
       "overview": "Experience the wonder of Bhutan Kingdom Retreat. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Bhutan Kingdom Retreat tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your nex..."
+      "metaDescription": "Book your unforgettable Bhutan Kingdom Retreat tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your nex...",
+      "heroImage": "/images/hires/18_f3.jpg",
+      "gallery": [
+        "/images/hires/18_f3.jpg",
+        "/images/hires/18_f3.jpg"
+      ]
     },
     {
       "id": "19",
@@ -532,12 +606,17 @@
       "highlights": "Locations: Bhubaneshwar - Puri - Konarak - Bhubaneshwar",
       "category": "Temple of India",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/orissa.jpg",
-      "img": "https://mnmtravels.com/img/orissa.jpg",
-      "image": "https://mnmtravels.com/img/orissa.jpg",
+      "image_url": "/images/hires/19_f3.jpg",
+      "img": "/images/hires/19_f3.jpg",
+      "image": "/images/hires/19_f3.jpg",
       "slug": "orissa-temple-tour",
       "overview": "Experience the wonder of Orissa Temple Tour. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Orissa Temple Tour tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next ge..."
+      "metaDescription": "Book your unforgettable Orissa Temple Tour tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next ge...",
+      "heroImage": "/images/hires/19_f3.jpg",
+      "gallery": [
+        "/images/hires/19_f3.jpg",
+        "/images/hires/19_f3.jpg"
+      ]
     },
     {
       "id": "20",
@@ -553,12 +632,17 @@
       "highlights": "Locations: Mumbai - Nagpur - Kanha - Bandhavgarh - Khajuraho - Delhi",
       "category": "Adventure & Wildlife",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/tiger.jpg",
-      "img": "https://mnmtravels.com/img/tiger.jpg",
-      "image": "https://mnmtravels.com/img/tiger.jpg",
+      "image_url": "/images/hires/20_f3.jpg",
+      "img": "/images/hires/20_f3.jpg",
+      "image": "/images/hires/20_f3.jpg",
       "slug": "tiger-wildlife-khajuraho",
       "overview": "Experience the wonder of Tiger Wildlife & Khajuraho. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Tiger Wildlife & Khajuraho tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your..."
+      "metaDescription": "Book your unforgettable Tiger Wildlife & Khajuraho tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your...",
+      "heroImage": "/images/hires/20_f3.jpg",
+      "gallery": [
+        "/images/hires/20_f3.jpg",
+        "/images/hires/20_f3.jpg"
+      ]
     },
     {
       "id": "21",
@@ -574,12 +658,17 @@
       "highlights": "Locations: Mumbai - Nasik - Shirdi - Aurangabad - Ajanta - Elora - Mumbai",
       "category": "Forts & Palaces",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/mumbai.jpg",
-      "img": "https://mnmtravels.com/img/mumbai.jpg",
-      "image": "https://mnmtravels.com/img/mumbai.jpg",
+      "image_url": "/images/hires/21_f3.jpg",
+      "img": "/images/hires/21_f3.jpg",
+      "image": "/images/hires/21_f3.jpg",
       "slug": "mumbai-aurangabad-caves",
       "overview": "Experience the wonder of Mumbai & Aurangabad Caves. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Mumbai & Aurangabad Caves tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your ..."
+      "metaDescription": "Book your unforgettable Mumbai & Aurangabad Caves tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your ...",
+      "heroImage": "/images/hires/21_f3.jpg",
+      "gallery": [
+        "/images/hires/21_f3.jpg",
+        "/images/hires/21_f3.jpg"
+      ]
     },
     {
       "id": "22",
@@ -595,12 +684,17 @@
       "highlights": "Locations: Chennai - Mahabalipuram - Pondicherry - Tanjore - Trichy - Madurai - Rameshwaram - Chennai",
       "category": "Temple of India",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/tamilnadu.jpg",
-      "img": "https://mnmtravels.com/img/tamilnadu.jpg",
-      "image": "https://mnmtravels.com/img/tamilnadu.jpg",
+      "image_url": "/images/hires/22_f3.jpg",
+      "img": "/images/hires/22_f3.jpg",
+      "image": "/images/hires/22_f3.jpg",
       "slug": "tamil-nadu-temples",
       "overview": "Experience the wonder of Tamil Nadu Temples. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Tamil Nadu Temples tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next ge..."
+      "metaDescription": "Book your unforgettable Tamil Nadu Temples tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for your next ge...",
+      "heroImage": "/images/hires/22_f3.jpg",
+      "gallery": [
+        "/images/hires/22_f3.jpg",
+        "/images/hires/22_f3.jpg"
+      ]
     },
     {
       "id": "23",
@@ -668,12 +762,17 @@
       "highlights": "Locations: Delhi – Jaipur – Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
       "category": "Forts & Palaces",
       "type": "Domestic",
-      "image_url": "https://mnmtravels.com/img/train3.jpg",
-      "img": "https://mnmtravels.com/img/train3.jpg",
-      "image": "https://mnmtravels.com/img/train3.jpg",
+      "image_url": "/images/hires/25_f3.jpg",
+      "img": "/images/hires/25_f3.jpg",
+      "image": "/images/hires/25_f3.jpg",
       "slug": "palace-on-wheels-luxury-train",
       "overview": "Experience the wonder of Palace On Wheels Luxury Train. This exclusive tour package offers breathtaking sights, comfortable accommodations, and memories that will last a lifetime. Book now and start your adventure.",
-      "metaDescription": "Book your unforgettable Palace On Wheels Luxury Train tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for y..."
+      "metaDescription": "Book your unforgettable Palace On Wheels Luxury Train tour package today. Discover amazing attractions, rich culture, and beautiful landscapes. Perfect for y...",
+      "heroImage": "/images/hires/25_f3.jpg",
+      "gallery": [
+        "/images/hires/25_f3.jpg",
+        "/images/hires/25_f3.jpg"
+      ]
     },
     {
       "id": "andaman-package",
@@ -746,16 +845,16 @@
       "location": "Assam, Meghalaya & Arunachal Pradesh",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/arunachal-meghalaya_f2.jpg",
-      "img": "/images/hires/arunachal-meghalaya_f2.jpg",
-      "image": "/images/hires/arunachal-meghalaya_f2.jpg",
+      "image_url": "/images/hires/arunachal-meghalaya_fixed.jpg",
+      "img": "/images/hires/arunachal-meghalaya_fixed.jpg",
+      "image": "/images/hires/arunachal-meghalaya_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/arunachal-meghalaya_f2.jpg",
+      "heroImage": "/images/hires/arunachal-meghalaya_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/arunachal-meghalaya_fixed.jpg",
+        "/images/hires/arunachal-meghalaya_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \"Arunachal & Meghalaya – Peaks, Monasteries & Waterfalls”\n\n(6N/7D)\n\n\n\nDiscover the breathtaking beauty of Arunachal Pradesh and Meghalaya on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Travel through the scenic hill towns of Dirang, Tawang, Bomdila, Shillong, and Cherrapunji, each offering spectacular landscapes and unique cultural experiences. \n\n\n\nWitness the majestic Sela Pass, explore the iconic Tawang Monastery, and pay tribute to the historic Jaswant Garh War...",
       "highlights": [],
@@ -787,16 +886,16 @@
       "location": "Assam, Meghalaya & Arunachal Pradesh",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/assam-meghalaya-package_f2.jpg",
-      "img": "/images/hires/assam-meghalaya-package_f2.jpg",
-      "image": "/images/hires/assam-meghalaya-package_f2.jpg",
+      "image_url": "/images/hires/assam-meghalaya-package_fixed.jpg",
+      "img": "/images/hires/assam-meghalaya-package_fixed.jpg",
+      "image": "/images/hires/assam-meghalaya-package_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/assam-meghalaya-package_f2.jpg",
+      "heroImage": "/images/hires/assam-meghalaya-package_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/assam-meghalaya-package_fixed.jpg",
+        "/images/hires/assam-meghalaya-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \"Assam & Meghalaya – Wildlife, Waterfalls & Scenic Highlands”\n\n(5N/6D)\n\n\n\nDiscover the beauty of Assam and Meghalaya on this unforgettable 6 Days / 5 Nights journey through Northeast India. Begin your adventure in Guwahati, home to the sacred Kamakhya Temple, before exploring the wildlife-rich Kaziranga National Park, famous for the endangered One-Horned Rhinoceros. Continue to the charming hill station of Shillong, known as the \"Scotland of the East,\" and admire its serene lakes, waterfalls, an...",
       "highlights": [],
@@ -828,16 +927,16 @@
       "location": "Assam, Meghalaya & Arunachal Pradesh",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/assam-meghalaya-arunachal-pradesh-package_f2.jpg",
-      "img": "/images/hires/assam-meghalaya-arunachal-pradesh-package_f2.jpg",
-      "image": "/images/hires/assam-meghalaya-arunachal-pradesh-package_f2.jpg",
+      "image_url": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
+      "img": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
+      "image": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/assam-meghalaya-arunachal-pradesh-package_f2.jpg",
+      "heroImage": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
+        "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. ARUNACHAL, MEGHALAYA & ASSAM FAQ\n\nWhat is the best time to visit Arunachal Pradesh, Meghalaya and Assam?\n\nOctober to April is generally a good period for comfortable sightseeing and road travel. For snowfall experiences in Arunachal Pradesh, winter months are preferred, subject to weather and road conditions.\n\nHow many days are enough for this trip?\n\nFor a comfortable combination of all three destinations, 9–12 days is recommended. A shorter itinerary can be designed by covering fewer places.\n\nI...",
       "highlights": [],
@@ -1074,16 +1173,16 @@
       "location": "Mansarovar Package (2026)",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/kaiilash-mansarova-yatra-fixed-departure-2026-overland-ex-kathmandu-p-2_f2.jpg",
-      "img": "/images/hires/kaiilash-mansarova-yatra-fixed-departure-2026-overland-ex-kathmandu-p-2_f2.jpg",
-      "image": "/images/hires/kaiilash-mansarova-yatra-fixed-departure-2026-overland-ex-kathmandu-p-2_f2.jpg",
+      "image_url": "/images/hires/5.jpg",
+      "img": "/images/hires/5.jpg",
+      "image": "/images/hires/5.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/kaiilash-mansarova-yatra-fixed-departure-2026-overland-ex-kathmandu-p-2_f2.jpg",
+      "heroImage": "/images/hires/5.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/5.jpg",
+        "/images/hires/5.jpg"
       ],
       "overview": "Embark on an extraordinary journey. KAILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Overland Trip) Ex Kathmandu – 14 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lak...",
       "highlights": [],
@@ -1131,16 +1230,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/7-nights-bhutan_f2.jpg",
-      "img": "/images/hires/7-nights-bhutan_f2.jpg",
-      "image": "/images/hires/7-nights-bhutan_f2.jpg",
+      "image_url": "/images/hires/7-nights-bhutan_fixed.jpg",
+      "img": "/images/hires/7-nights-bhutan_fixed.jpg",
+      "image": "/images/hires/7-nights-bhutan_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/7-nights-bhutan_f2.jpg",
+      "heroImage": "/images/hires/7-nights-bhutan_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/7-nights-bhutan_fixed.jpg",
+        "/images/hires/7-nights-bhutan_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Bhutan – Happiness is a Place!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the heart of the Himalayas lies Bhutan, a mystical land known as the \"Land of the Thunder Dragon\" or 'Druk Yul'. Secluded and revered as one of the last \"Shangri-La's,\" it captivates with its remoteness, awe-inspiring mountain landscapes, diverse flora and fauna, and ancient Buddhist monasteries.\n\nPicture a realm of rolling hills and towering crags, where charm is woven into every nuance. Magnificent mountains stand proud, dense forest...",
       "highlights": [],
@@ -1181,16 +1280,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/azerbaijian_f2.jpg",
-      "img": "/images/hires/azerbaijian_f2.jpg",
-      "image": "/images/hires/azerbaijian_f2.jpg",
+      "image_url": "/images/hires/azerbaijian_fixed.jpg",
+      "img": "/images/hires/azerbaijian_fixed.jpg",
+      "image": "/images/hires/azerbaijian_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/azerbaijian_f2.jpg",
+      "heroImage": "/images/hires/azerbaijian_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/azerbaijian_fixed.jpg",
+        "/images/hires/azerbaijian_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\nSimply Azerbaijan \n\n4 Nights 5 Days\n\n\n\nItinerary\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\nHotel:\n\nBaku\n\nMeals:\n\nHotel Port Rivoli (Standard) / Hilton Garden Inn (Value) / Baku Marriott Boulevard (Premium) or Similar in N/A\n\n\n\nArrive at Baku\n\n\n\nWelcome to Azerbaijan - \"The Land of Fire\"!\n\n\n\nA fascinating country where East meets West, blending rich history, vibrant culture, and stunning landscapes. Known for its eternal flames, ancient traditions, and modern arc...",
       "highlights": [],
@@ -1222,16 +1321,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/bali-package-october-month_f2.jpg",
-      "img": "/images/hires/bali-package-october-month_f2.jpg",
-      "image": "/images/hires/bali-package-october-month_f2.jpg",
+      "image_url": "/images/hires/bali-package-october-month_fixed.jpg",
+      "img": "/images/hires/bali-package-october-month_fixed.jpg",
+      "image": "/images/hires/bali-package-october-month_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/bali-package-october-month_f2.jpg",
+      "heroImage": "/images/hires/bali-package-october-month_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/bali-package-october-month_fixed.jpg",
+        "/images/hires/bali-package-october-month_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. “BALI, INDONESIA TOUR” (5Night / 6Days)\n\n\n\nExperience the perfect blend of adventure, culture, and breathtaking natural beauty with this 6 Days / 5 Nights Bali Tour Package. Begin your journey by relaxing on Bali's stunning beaches and enjoy an exciting Banana Boat ride at Tanjung Benoa. Witness the spectacular Kecak Dance Performance against the backdrop of the majestic Uluwatu Temple at sunset. Explore the picturesque island of Nusa Penida, famous for its dramatic cliffs, crystal-clear waters,...",
       "highlights": [],
@@ -1263,16 +1362,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/cambodia-vietnam-new_f2.jpg",
-      "img": "/images/hires/cambodia-vietnam-new_f2.jpg",
-      "image": "/images/hires/cambodia-vietnam-new_f2.jpg",
+      "image_url": "/images/hires/cambodia-vietnam-new_fixed.jpg",
+      "img": "/images/hires/cambodia-vietnam-new_fixed.jpg",
+      "image": "/images/hires/cambodia-vietnam-new_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/cambodia-vietnam-new_f2.jpg",
+      "heroImage": "/images/hires/cambodia-vietnam-new_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/cambodia-vietnam-new_fixed.jpg",
+        "/images/hires/cambodia-vietnam-new_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\n\tOVERVIEW\t\n\nWe offer an all-inclusive tour package to Vietnam & Cambodia. Tourist from all over the world flocks to these countries for its ancient Hindu Temples, amazing river deltas, historical monuments, Buddhist monasteries and unique traditional shows. The South East Asian gem is surrounded by China.\n\nPackage Details\n\n\n\nPackage Name\n\n\n\nDestination Covered Travelling Mode Duration\n\nTour Date Meal Plan Total Seats\n\nIRCTC TOUR MANAGER\n\nAYODHYA TO ANGKOR WAT MANDIR. (CAMBODIA)- VIETNAM WITH...",
       "highlights": [],
@@ -1304,16 +1403,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/dubai-package_f2.jpg",
-      "img": "/images/hires/dubai-package_f2.jpg",
-      "image": "/images/hires/dubai-package_f2.jpg",
+      "image_url": "/images/hires/dubai-package_fixed.jpg",
+      "img": "/images/hires/dubai-package_fixed.jpg",
+      "image": "/images/hires/dubai-package_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/dubai-package_f2.jpg",
+      "heroImage": "/images/hires/dubai-package_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/dubai-package_fixed.jpg",
+        "/images/hires/dubai-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Package Details:\n\nPackage Name\n\nWonders Of Dubai Ex Chandigarh\n\nDestination Covered\n\nChandigarh - Delhi – Dubai – Abu Dhabi – Delhi - Chandigarh\n\nTraveling Mode\n\nFlight + Bus\n\nClass\n\nDeluxe\n\nPackage Date\n\n26.10.2026\n\nDuration\n\n06 Nights / 07 Days\n\nSeats\n\n30\n\nFlight Details:\n\nAirlines\n\nTo - From\n\nFlight Timings\n\nAir Arabia - G9464\n\n26.10.2026\n\nDelhi (0315 hrs) to Sharjah (0545 hrs) - Direct Flight\n\nAir Arabia - G9463\n\n30.10.2026\n\nSharjah (2155 hrs) to Delhi (0235 hrs) - Direct Flight\n\n \n\nNote: Fl...",
       "highlights": [],
@@ -1345,16 +1444,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/kazakhstan-package_f2.jpg",
-      "img": "/images/hires/kazakhstan-package_f2.jpg",
-      "image": "/images/hires/kazakhstan-package_f2.jpg",
+      "image_url": "/images/hires/kazakhstan-package_fixed.jpg",
+      "img": "/images/hires/kazakhstan-package_fixed.jpg",
+      "image": "/images/hires/kazakhstan-package_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/kazakhstan-package_f2.jpg",
+      "heroImage": "/images/hires/kazakhstan-package_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/kazakhstan-package_fixed.jpg",
+        "/images/hires/kazakhstan-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Details\n\nPackage Summary\n\n\n\n\n\nPackage:\tWonders of Almaty\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo of Nights:\t4 Nights or 5 Days\n\n\n\nTimeline:\tAlmaty (4N )\n\n\n\nInclusions:\n\n\n\n\n\nFlights\tHotel\tMeals\tTransfer\tSightseeing\n\n\n\n\n\n\n\n\n\nVisa\tTour Manager\tGroup Tour\n\n\n\n\n\n\n\nDaywise Itinerary\n\n\n\n\n\n\n\nDay 1\n\n\n\nWelcome to Almaty, Kazakhstan - Arrival - Check in - Almarasan\n\nWelcome to Kazakhstan. On arrival in Almaty our local representative outside the baggage hall area at the airport. Proceed to the hot...",
       "highlights": [],
@@ -1386,16 +1485,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/maldives-2_f2.jpg",
-      "img": "/images/hires/maldives-2_f2.jpg",
-      "image": "/images/hires/maldives-2_f2.jpg",
+      "image_url": "/images/hires/maldives-2_fixed.jpg",
+      "img": "/images/hires/maldives-2_fixed.jpg",
+      "image": "/images/hires/maldives-2_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/maldives-2_f2.jpg",
+      "heroImage": "/images/hires/maldives-2_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/maldives-2_fixed.jpg",
+        "/images/hires/maldives-2_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\t\n\n\n\nMaldives - Sheraton Full Moon Resort and Spa\n\n\n\n4 Nights 5 Days\tPremium\n\n\n\n4N Male\n\n\n\nPackage Inclusions\n\n\n\n\n\nHighlights\tHotels\tMeal\tFlights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBook Now\n\n\n\n\n\nPackage price, payment schedule and cancellation policy are tentative and subject to change\n\n\n\nPackage Summary\n\n\n\n\n\nDay wise summary\n\n\n\nDay 1\tArrive Male\n\n\n\n\tSheraton Full Moon Resort and Spa \tDinner\n\nMale Airport to Resort transfers by Speedboat\n\nDay 2\tMale - Day at Leisure\n\n\n\n\tSheraton Full Moon Resort and Spa \t...",
       "highlights": [],
@@ -1427,16 +1526,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/mauritius_f2.jpg",
-      "img": "/images/hires/mauritius_f2.jpg",
-      "image": "/images/hires/mauritius_f2.jpg",
+      "image_url": "/images/hires/mauritius_fixed.jpg",
+      "img": "/images/hires/mauritius_fixed.jpg",
+      "image": "/images/hires/mauritius_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/mauritius_f2.jpg",
+      "heroImage": "/images/hires/mauritius_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/mauritius_fixed.jpg",
+        "/images/hires/mauritius_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\t\t\n\n\n\nCrazy Deal Mauritius - Hotel Le Grand Bleu\n\n\n\n5 Nights 6 Days\tStandard\n\n\n\n5N Mauritius\n\n\n\nPackage Inclusions\n\n\n\n\n\nHighlights\tHotels\tSightseeing\tMeal\tFlights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage price, payment schedule and cancellation policy are tentative and subject to change\n\n\n\nPackage Summary\n\n\n\n\n\nDay wise summary\n\n\n\nDay 1\tArrive Mauritius\n\n\n\n\tHotel Le Grand Bleu \tDinner\n\nTransfer by seat in coach.\n\nDay 2\tFull Day North Island Tour\n\n\n\n\tHotel Le Grand Bleu\n\nFull Day North Island tour (...",
       "highlights": [],
@@ -1468,16 +1567,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/nepal_f2.jpg",
-      "img": "/images/hires/nepal_f2.jpg",
-      "image": "/images/hires/nepal_f2.jpg",
+      "image_url": "/images/hires/nepal_fixed.jpg",
+      "img": "/images/hires/nepal_fixed.jpg",
+      "image": "/images/hires/nepal_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/nepal_f2.jpg",
+      "heroImage": "/images/hires/nepal_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/nepal_fixed.jpg",
+        "/images/hires/nepal_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\nPackage  valid  Till 30 December 2025\n\n\n\nHeritage Kathmandu Tours: 3 Night 4 Days \n\nHighlight: Word Heritage site \n\nDay  \n\n Itinerary \n\n01\n\nKathmandu Arrival \n\nPick-up from international airport by scenic Mountain Travel representativethen Transfer to Nagarkot at Hotel After check-in at Hotel we will give you short briefing about your Tours. Kathmandu is Largest city and Capital City of Nepal. Kathmandu valley consists of three main cities of great historic and cultural interest Kathmandu, Lal...",
       "highlights": [],
@@ -1509,16 +1608,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/russia-mou-peter_f2.jpg",
-      "img": "/images/hires/russia-mou-peter_f2.jpg",
-      "image": "/images/hires/russia-mou-peter_f2.jpg",
+      "image_url": "/images/hires/russia-mou-peter_fixed.jpg",
+      "img": "/images/hires/russia-mou-peter_fixed.jpg",
+      "image": "/images/hires/russia-mou-peter_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/russia-mou-peter_f2.jpg",
+      "heroImage": "/images/hires/russia-mou-peter_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/russia-mou-peter_fixed.jpg",
+        "/images/hires/russia-mou-peter_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\nDay 1: Arrival in Moscow\n\nAfternoon: Arrive in Moscow. After clearing customs, transfer to your hotel for check-in.\n\nPrivate airport pickup by our chauffeur and guide.\n\nEvening: Take a leisurely stroll along Arbat Street, one of Moscow's oldest streets, known for its artistic heritage, souvenir shops, and street performances.\n\n\n\nDay 2: Exploring Central Moscow - private guided tour\n\nMorning: Visit the Kremlin, the historic fortified complex that serves as the official residence of the Presiden...",
       "highlights": [],
@@ -1550,16 +1649,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/seychelles_f2.jpg",
-      "img": "/images/hires/seychelles_f2.jpg",
-      "image": "/images/hires/seychelles_f2.jpg",
+      "image_url": "/images/hires/seychelles_fixed.jpg",
+      "img": "/images/hires/seychelles_fixed.jpg",
+      "image": "/images/hires/seychelles_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/seychelles_f2.jpg",
+      "heroImage": "/images/hires/seychelles_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/seychelles_fixed.jpg",
+        "/images/hires/seychelles_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\n\n\nExotic Seychelles\n\n\n\n5 Nights 6 Days\tStandard\n\n\n\n2N Praslin Island\t3N Mahe Island\n\n\n\nPackage Inclusions\n\n\n\n\n\nHighlights\tHotels\tSightseeing\tMeal\tFlights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBook Now\n\n\n\n\n\nPackage price, payment schedule and cancellation policy are tentative and subject to change\n\n\n\nPackage Summary\n\n\n\n\n\nDay wise summary\n\n\n\nDay 1\tArrive at Mahe - Ferry ride to Praslin\n\n\n\n\tHotel Berjaya Praslin Resort\n\nAirport transfer from Mahe Ferry ride to Praslin\n\nDay 2\tDay trip to La Digue Island\n\n\n\n\tHo...",
       "highlights": [],
@@ -1591,16 +1690,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/singapore-malayasia_f2.jpg",
-      "img": "/images/hires/singapore-malayasia_f2.jpg",
-      "image": "/images/hires/singapore-malayasia_f2.jpg",
+      "image_url": "/images/hires/singapore-malayasia_fixed.jpg",
+      "img": "/images/hires/singapore-malayasia_fixed.jpg",
+      "image": "/images/hires/singapore-malayasia_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/singapore-malayasia_f2.jpg",
+      "heroImage": "/images/hires/singapore-malayasia_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/singapore-malayasia_fixed.jpg",
+        "/images/hires/singapore-malayasia_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Package Details:\n\nPackage Name\n\nChandigarh To Singapore Malaysia Package\n\nDestination Covered\n\nChandigarh - Delhi - Singapore - Malaysia - Delhi - Chandigarh\n\nTraveling Mode\n\nRoad + Flight + Road\n\nClass\n\nDeluxe\n\nPackage Date\n\n14.02.2026 to 21.02.2026\n\nDuration\n\n7 Nights / 8 Days\n\nSeats\n\n25\n\n \n\nFlight Details:\n\nNote: Airlines are not confirmed yet, Schedule and Airlines may change on finalization. Flight timings are subject to change. IRCTC will try to complete the itinerary and mentioned sightse...",
       "highlights": [],
@@ -1632,16 +1731,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/singapore_f2.jpg",
-      "img": "/images/hires/singapore_f2.jpg",
-      "image": "/images/hires/singapore_f2.jpg",
+      "image_url": "/images/hires/singapore_fixed.jpg",
+      "img": "/images/hires/singapore_fixed.jpg",
+      "image": "/images/hires/singapore_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/singapore_f2.jpg",
+      "heroImage": "/images/hires/singapore_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/singapore_fixed.jpg",
+        "/images/hires/singapore_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. SIZZLING SINGAPORE & MALAYSIA (Festive Spl.) 05 NIGHTS/06 DAYS\n\n\n\nOVERVIEW: Experience the Ultimate Singapore and Malaysia Getaway with IRCTC's exclusive 'Singapore & Malaysia' tour package! Embark on a luxurious journey showcasing iconic Gardens by the Bay, thrilling Night Safari, and Sentosa Island in Singapore, and vibrant Kuala Lumpur, spiritual Batu Caves, and scenic Genting Highlands in Malaysia. Our thoughtfully crafted itinerary ensures a smooth and memorable experience, with premium acc...",
       "highlights": [],
@@ -1673,16 +1772,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/sri-lanka-6-nights-7-days_f2.jpg",
-      "img": "/images/hires/sri-lanka-6-nights-7-days_f2.jpg",
-      "image": "/images/hires/sri-lanka-6-nights-7-days_f2.jpg",
+      "image_url": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
+      "img": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
+      "image": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/sri-lanka-6-nights-7-days_f2.jpg",
+      "heroImage": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
+        "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Sri Lanka\t\t\n\n06 Nights & 07 Days\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you’re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you’re more of an explorer who wants to know more about the beautiful aqua-marine creatures and plant life that inhabit the waters of the island. Whatever your preference maybe, we can find something that’s perfect for you. You can now choose from three breathtakin...",
       "highlights": [],
@@ -1723,16 +1822,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/thailand_f2.jpg",
-      "img": "/images/hires/thailand_f2.jpg",
-      "image": "/images/hires/thailand_f2.jpg",
+      "image_url": "/images/hires/thailand_fixed.jpg",
+      "img": "/images/hires/thailand_fixed.jpg",
+      "image": "/images/hires/thailand_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/thailand_f2.jpg",
+      "heroImage": "/images/hires/thailand_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/thailand_fixed.jpg",
+        "/images/hires/thailand_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Package Details\n\nPackage Name\n\nTREASURES OF THAILAND EX MUMBAI\n\nTour Itinerary\n\nBangkok - Pattaya - Bangkok\n\nTravelling Mode\n\nFlight Ex Mumbai\n\nTour Date\n\nComing Soon\n\nDuration\n\n4 Nights/5 Days\n\nMeal Plan\n\nAP (Breakfast, Lunch & Dinner)\n\n\n\nTour Itinerary: - Mumbai - Bangkok - Pattaya - Bangkok – Mumbai\n\nDuration: - 04 Nights/05 Days\n\nDate\n\nDestination\n\nItinerary\n\nDay 01\n\nMumbai- Pattaya\n\nDeparture form Mumbai at 00:40 hrs & Arrival at Bangkok International Airport (Don Mueang) 06:30 hrs. Meet lo...",
       "highlights": [],
@@ -1764,16 +1863,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/turkey_f2.jpg",
-      "img": "/images/hires/turkey_f2.jpg",
-      "image": "/images/hires/turkey_f2.jpg",
+      "image_url": "/images/hires/turkey_fixed.jpg",
+      "img": "/images/hires/turkey_fixed.jpg",
+      "image": "/images/hires/turkey_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/turkey_f2.jpg",
+      "heroImage": "/images/hires/turkey_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/turkey_fixed.jpg",
+        "/images/hires/turkey_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Wonderful Turkey On SIC Basis\n\n(8N-9D)\n\n\n\nDay 1: Istanbul\n\nArrival to Istanbul Airport (IST) or SabihaGokcen Airport (SAW). Transfer to your hotel & Rest of the day will be free at leisure for relax and freshen up. (Standard check in time is 14:00 pm)\n\nOvernight in Istanbul.\n\n Day 2: Istanbul\n\nBreakfast at hotel. Tour of \"Sultan Ahmet Center\", the heart of the \"Old City\" from where the Byzantine and Ottoman Empires were ruled. Hagia Sophia, the Church of Divine Wisdom, one of the greatest marvel...",
       "highlights": [],
@@ -1805,16 +1904,16 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/vietnam_f2.jpg",
-      "img": "/images/hires/vietnam_f2.jpg",
-      "image": "/images/hires/vietnam_f2.jpg",
+      "image_url": "/images/hires/vietnam_fixed.jpg",
+      "img": "/images/hires/vietnam_fixed.jpg",
+      "image": "/images/hires/vietnam_fixed.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/vietnam_f2.jpg",
+      "heroImage": "/images/hires/vietnam_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/vietnam_fixed.jpg",
+        "/images/hires/vietnam_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. VIETNAM\n\nSAIGON\n\n04.10.2026\n\nLAND OF THE ASCENDING DRAGON\n\n\n\n\n\nEmerald Bays. Timeless Charm. Endless Memories.\n\n\n\n\n\n\n\n\n\nMEET THE MAGIC OF VIETNAM\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n04.10.2026\n\nN\n\nA\n\nM\n\nV\n\nI\n\nE\n\nT\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Details\n\n\n\nPackage Name\n\nCLASSICAL VIETNAM\n\nEx-Mumbai With Ho Chi Minh City, Da nang & Hanoi, Halong Bay Cruise\n\n\n\nTour Itinerary\n\nMumbai - Ho Chi Minh City – Da Nang - Hanoi & Halong Bay Cruise – Mumbai.\n\nTraveling Mode\n\nBy Flight\n\nDuration\n\n08N...",
       "highlights": [],
@@ -2052,17 +2151,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/south-india_f2.jpg",
-      "img": "/images/hires/south-india_f2.jpg",
-      "image": "/images/hires/south-india_f2.jpg",
+      "image_url": "/images/hires/south-india_fixed.jpg",
+      "img": "/images/hires/south-india_fixed.jpg",
+      "image": "/images/hires/south-india_fixed.jpg",
       "slug": "south-india",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/south-india_f2.jpg",
+      "heroImage": "/images/hires/south-india_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/south-india_fixed.jpg",
+        "/images/hires/south-india_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. South India is the area including the five Indian states of Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana, as well as the three union territories of Lakshadweep, Andaman and Nicobar Islands and Puducherry, occupying 19% of India's area (635,780 km2 or 245,480 sq mi). Covering the southern part of the peninsular Deccan Plateau, South India is bounded by the Bay of Bengal in the east, the Arabian Sea in the west and the Indian Ocean in the south. The geography of the region is diverse with two mountain ranges–the Western and Eastern Ghats, bordering the plateau heartland. Godavari, Krishna, Kaveri, Tungabhadra and Vaigai rivers are important non-perennial sources of water. Chennai, Bangalore, Hyderabad, Trivandrum, Coimbatore, Visakhapatnam, Madurai and Kochi are the largest urban areas.",
       "itinerary": [
@@ -2163,17 +2262,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/discovering-silk-route_f2.jpg",
-      "img": "/images/hires/discovering-silk-route_f2.jpg",
-      "image": "/images/hires/discovering-silk-route_f2.jpg",
+      "image_url": "/images/hires/discovering-silk-route_fixed.jpg",
+      "img": "/images/hires/discovering-silk-route_fixed.jpg",
+      "image": "/images/hires/discovering-silk-route_fixed.jpg",
       "slug": "discovering-silk-route",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/discovering-silk-route_f2.jpg",
+      "heroImage": "/images/hires/discovering-silk-route_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/discovering-silk-route_fixed.jpg",
+        "/images/hires/discovering-silk-route_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Ladakh is a region in the Indian state of Jammu and Kashmir that currently extends from the Siachen Glacier in the Karakoram Range to the main Great Himalayas to the south, inhabited by people of Indo-Aryan and Tibetan descent. Leh, a high-desert city in the Himalayas, is the capital of the Leh region in northern India’s Jammu and Kashmir state. Originally a stop for trading caravans, Leh is now known for its Buddhist sites and nearby trekking areas. Massive 17th-century Leh Palace, modeled on the Dalai Lama’s former home (Tibet’s Potala Palace), overlooks the old town’s bazaar and mazelike lanes. Khardung La is a mountain pass in the Ladakh region of the Indian state of Jammu and Kashmir. The local pronunciation is Khardong La or Khardzong La but, as with most names in Ladakh, the romanised spelling varies. The pass on the Ladakh Range is north of Leh and is the gateway to the Shyok and Nubra valleys.",
       "itinerary": [
@@ -2340,17 +2439,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/short-tour-of-hyderabad_f2.jpg",
-      "img": "/images/hires/short-tour-of-hyderabad_f2.jpg",
-      "image": "/images/hires/short-tour-of-hyderabad_f2.jpg",
+      "image_url": "/images/hires/short-tour-of-hyderabad_fixed.jpg",
+      "img": "/images/hires/short-tour-of-hyderabad_fixed.jpg",
+      "image": "/images/hires/short-tour-of-hyderabad_fixed.jpg",
       "slug": "short-tour-of-hyderabad",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/short-tour-of-hyderabad_f2.jpg",
+      "heroImage": "/images/hires/short-tour-of-hyderabad_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/short-tour-of-hyderabad_fixed.jpg",
+        "/images/hires/short-tour-of-hyderabad_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. This tour offers you a chance to visit some of the historical monuments, amusement parks, holy places and museums in Hyderabad. Apart from sightseeing, you can also go for boating, joy rides and much more. Read the itinerary for further details.",
       "itinerary": [
@@ -2406,17 +2505,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/dharamshala-dalhousie-_f2.jpg",
-      "img": "/images/hires/dharamshala-dalhousie-_f2.jpg",
-      "image": "/images/hires/dharamshala-dalhousie-_f2.jpg",
+      "image_url": "/images/hires/dharamshala-dalhousie-_fixed.jpg",
+      "img": "/images/hires/dharamshala-dalhousie-_fixed.jpg",
+      "image": "/images/hires/dharamshala-dalhousie-_fixed.jpg",
       "slug": "dharamshala-dalhousie-",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/dharamshala-dalhousie-_f2.jpg",
+      "heroImage": "/images/hires/dharamshala-dalhousie-_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/dharamshala-dalhousie-_fixed.jpg",
+        "/images/hires/dharamshala-dalhousie-_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Dharamshala is a city in the Indian state of Himachal Pradesh. Surrounded by cedar forests on the edge of the Himalayas, this hillside city is home to the Dalai Lama and the Tibetan government-in-exile. The Thekchen Chöling Temple Complex is a spiritual center for Tibetan Buddhism, while the Library of Tibetan Works and Archives houses thousands of precious manuscripts.",
       "itinerary": [
@@ -2477,17 +2576,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/classical-inida-nepal_f2.jpg",
-      "img": "/images/hires/classical-inida-nepal_f2.jpg",
-      "image": "/images/hires/classical-inida-nepal_f2.jpg",
+      "image_url": "/images/hires/classical-inida-nepal_fixed.jpg",
+      "img": "/images/hires/classical-inida-nepal_fixed.jpg",
+      "image": "/images/hires/classical-inida-nepal_fixed.jpg",
       "slug": "classical-inida-nepal",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/classical-inida-nepal_f2.jpg",
+      "heroImage": "/images/hires/classical-inida-nepal_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/classical-inida-nepal_fixed.jpg",
+        "/images/hires/classical-inida-nepal_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Besides soaking in the grandeur of historical cities like Delhi, Agra (which has one of the seven wonders of the world- Taj Mahal), the pink city of Jaipur, this tour also takes you to Orchha which just appears out of a fairytale, and Khajuraho which is a masterpiece of architectural brilliance for its temples of medieval age with their intricate carvings and erotic sculptures. The last but by no means least important, visit Varanasi, the oldest living city in the world. It is both an illustrious place of pilgrimage and a centre of faith. Considered to be the holiest place for all Hindus, it is a must visit to get a glimpse of the Indian culture.",
       "itinerary": [
@@ -2593,17 +2692,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/dharamshala-122_f2.jpg",
-      "img": "/images/hires/dharamshala-122_f2.jpg",
-      "image": "/images/hires/dharamshala-122_f2.jpg",
+      "image_url": "/images/hires/dharamshala-122_fixed.jpg",
+      "img": "/images/hires/dharamshala-122_fixed.jpg",
+      "image": "/images/hires/dharamshala-122_fixed.jpg",
       "slug": "dharamshala-122",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/dharamshala-122_f2.jpg",
+      "heroImage": "/images/hires/dharamshala-122_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/dharamshala-122_fixed.jpg",
+        "/images/hires/dharamshala-122_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Amritsar is a city in the northwestern Indian state of Punjab, 28 kilometers from the border with Pakistan. At the center of its walled old town, the gilded Golden Temple (Harmandir Sahib) is the holiest gurdwara (religious complex) of the Sikh religion. It’s at the end of a causeway, surrounded by the sacred Amrit Sarovar tank (lake), where pilgrims bathe.",
       "itinerary": [
@@ -2659,17 +2758,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/india-232_f2.jpg",
-      "img": "/images/hires/india-232_f2.jpg",
-      "image": "/images/hires/india-232_f2.jpg",
+      "image_url": "/images/hires/india-232_fixed.jpg",
+      "img": "/images/hires/india-232_fixed.jpg",
+      "image": "/images/hires/india-232_fixed.jpg",
       "slug": "india-232",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/india-232_f2.jpg",
+      "heroImage": "/images/hires/india-232_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/M%C3%BCnster%2C_St.-Paulus-Dom%2C_Altarinsel_--_2019_--_3815-9.jpg/1280px-M%C3%BCnster%2C_St.-Paulus-Dom%2C_Altarinsel_--_2019_--_3815-9.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Maria_Saal_Kapuzinerstoeckl_Dom_und_Dechantei_W-Ansicht_03072017_0083.jpg/1280px-Maria_Saal_Kapuzinerstoeckl_Dom_und_Dechantei_W-Ansicht_03072017_0083.jpg"
+        "/images/hires/india-232_fixed.jpg",
+        "/images/hires/india-232_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. North East India Tour Packages - Ghoomloduniya.com",
       "itinerary": [
@@ -2790,17 +2889,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/classical-tour21_f2.jpg",
-      "img": "/images/hires/classical-tour21_f2.jpg",
-      "image": "/images/hires/classical-tour21_f2.jpg",
+      "image_url": "/images/hires/classical-tour21_fixed.jpg",
+      "img": "/images/hires/classical-tour21_fixed.jpg",
+      "image": "/images/hires/classical-tour21_fixed.jpg",
       "slug": "classical-tour21",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/classical-tour21_f2.jpg",
+      "heroImage": "/images/hires/classical-tour21_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/M%C3%BCnster%2C_St.-Paulus-Dom%2C_Alter_Chor_--_2019_--_3789-93.jpg/1280px-M%C3%BCnster%2C_St.-Paulus-Dom%2C_Alter_Chor_--_2019_--_3789-93.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/2014_Nysa%2C_Dom_Wagi_Miejskiej_13.JPG/1280px-2014_Nysa%2C_Dom_Wagi_Miejskiej_13.JPG"
+        "/images/hires/classical-tour21_fixed.jpg",
+        "/images/hires/classical-tour21_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Discover classical India like never before with our 11 days and 10 nights package. The package will give you a wonderful insight into the religious and cultural heritage of incredible India that cannot be seen elsewhere. During your tour, you will experience something different and unforgettable in each city. Delhi will offer a combination of everything like magnificent forts, mosques, food and shopping. Agra will take you back to the golden period of the Mughals. Jaipur will offer you a glimpse into the grandeur of Rajputana’s and Varanasi will lift up your religious spirits.",
       "itinerary": [
@@ -2952,17 +3051,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/ladakh-top-of-the-world_f2.jpg",
-      "img": "/images/hires/ladakh-top-of-the-world_f2.jpg",
-      "image": "/images/hires/ladakh-top-of-the-world_f2.jpg",
+      "image_url": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
+      "img": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
+      "image": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
       "slug": "ladakh-top-of-the-world",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/ladakh-top-of-the-world_f2.jpg",
+      "heroImage": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Indus_Valley_near_Leh.jpg/1280px-Indus_Valley_near_Leh.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Tsarap_%E2%80%93_Char_%E2%80%93_2.jpg/1280px-Tsarap_%E2%80%93_Char_%E2%80%93_2.jpg"
+        "/images/hires/ladakh-top-of-the-world_fixed.jpg",
+        "/images/hires/ladakh-top-of-the-world_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Ladakh is a region in the Indian state of Jammu and Kashmir that currently extends from the Siachen Glacier in the Karakoram range to the main Great Himalayas to the south, inhabited by people of Indo-Aryan and Tibetan descent. Leh, a high-desert city in the Himalayas, is the capital of the Leh region in northern India’s Jammu and Kashmir state. Originally a stop for trading caravans, Leh is now known for its Buddhist sites and nearby trekking areas. Massive 17th-century Leh Palace, modeled on the Dalai Lama’s former home (Tibet’s Potala Palace), overlooks the old town’s bazaar and mazelike lanes.",
       "itinerary": [
@@ -3099,17 +3198,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/chandigarh-dharamshala-221_f2.jpg",
-      "img": "/images/hires/chandigarh-dharamshala-221_f2.jpg",
-      "image": "/images/hires/chandigarh-dharamshala-221_f2.jpg",
+      "image_url": "/images/hires/chandigarh-dharamshala-221_fixed.jpg",
+      "img": "/images/hires/chandigarh-dharamshala-221_fixed.jpg",
+      "image": "/images/hires/chandigarh-dharamshala-221_fixed.jpg",
       "slug": "chandigarh-dharamshala-221",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/chandigarh-dharamshala-221_f2.jpg",
+      "heroImage": "/images/hires/chandigarh-dharamshala-221_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/a/a0/Open_Hand_Monument_in_Chandigarh.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Gandhi_Bhawan%2C_Chandigarh.jpg/1280px-Gandhi_Bhawan%2C_Chandigarh.jpg"
+        "/images/hires/chandigarh-dharamshala-221_fixed.jpg",
+        "/images/hires/chandigarh-dharamshala-221_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Dharamshala is a city in the Indian state of Himachal Pradesh. Surrounded by cedar forests on the edge of the Himalayas, this hillside city is home to the Dalai Lama and the Tibetan government-in-exile. The Thekchen Chöling Temple Complex is a spiritual center for Tibetan Buddhism, while the Library of Tibetan Works and Archives houses thousands of precious manuscripts.",
       "itinerary": [
@@ -3170,17 +3269,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/south-indiatour_f2.jpg",
-      "img": "/images/hires/south-indiatour_f2.jpg",
-      "image": "/images/hires/south-indiatour_f2.jpg",
+      "image_url": "/images/hires/south-indiatour_fixed.jpg",
+      "img": "/images/hires/south-indiatour_fixed.jpg",
+      "image": "/images/hires/south-indiatour_fixed.jpg",
       "slug": "south-indiatour",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/south-indiatour_f2.jpg",
+      "heroImage": "/images/hires/south-indiatour_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/M%C3%BCnster%2C_St.-Paulus-Dom%2C_n%C3%B6rdliches_Seitenschiff_--_2019_--_3934-8.jpg/1280px-M%C3%BCnster%2C_St.-Paulus-Dom%2C_n%C3%B6rdliches_Seitenschiff_--_2019_--_3934-8.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/M%C3%BCnster%2C_St.-Paulus-Dom%2C_Chorumgang_--_2019_--_3920.jpg/1280px-M%C3%BCnster%2C_St.-Paulus-Dom%2C_Chorumgang_--_2019_--_3920.jpg"
+        "/images/hires/south-indiatour_fixed.jpg",
+        "/images/hires/south-indiatour_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. South India is the area including the five Indian states of Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana, as well as the three union territories of Lakshadweep, Andaman and Nicobar Islands and Puducherry, occupying 19% of India's area.",
       "itinerary": [
@@ -3276,17 +3375,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_f2.jpg",
-      "img": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_f2.jpg",
-      "image": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_f2.jpg",
+      "image_url": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_fixed.jpg",
+      "img": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_fixed.jpg",
+      "image": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_fixed.jpg",
       "slug": "enchanting-golden-triangle-tour-with-amritsar",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_f2.jpg",
+      "heroImage": "/images/hires/enchanting-golden-triangle-tour-with-amritsar_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Descriptive_guide_to_Philip_Phillips%27_illuminated_tours_and_illustrated_songs_%28IA_descriptiveguide00phil%29.pdf/page1-500px-Descriptive_guide_to_Philip_Phillips%27_illuminated_tours_and_illustrated_songs_%28IA_descriptiveguide00phil%29.pdf.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/The_Enchanting_Muleta_Falls.jpg/1280px-The_Enchanting_Muleta_Falls.jpg"
+        "/images/hires/enchanting-golden-triangle-tour-with-amritsar_fixed.jpg",
+        "/images/hires/enchanting-golden-triangle-tour-with-amritsar_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Fantastic Golden Triangle Tour with Golden Temple in Amritsar. The most amazing trip releasing the flavoursome dishes, vibrant cultures, ancient past of amazing India. This golden trip package takes the tourists on a journey of three fantastic places of north India namely Delhi, Agra and Jaipur. This travelling routine features brave fortresses, magnificence castles and wonderful historical monuments. Covering the three golden places is a visible gateway to the eyes of several art, structure and history. It truly offers a real flavour of India. Golden Triangle Tour of India is one chance to glance the different aspects of India. Monks and Monkeys Travels presenting Golden Triangle Tour with Amritsar. Amritsar is the sacred city of Sikh religion of India. This tour covers Amritsar with the amazing view of divine home of “Harmandir Sahib - Golden Temple”, it is cultural and spiritual centre of Sikhs. A large number of traveller and pilgrims come to visit this holy place.",
       "itinerary": [
@@ -3352,17 +3451,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/beauty-of-kashmir_f2.jpg",
-      "img": "/images/hires/beauty-of-kashmir_f2.jpg",
-      "image": "/images/hires/beauty-of-kashmir_f2.jpg",
+      "image_url": "/images/hires/beauty-of-kashmir_fixed.jpg",
+      "img": "/images/hires/beauty-of-kashmir_fixed.jpg",
+      "image": "/images/hires/beauty-of-kashmir_fixed.jpg",
       "slug": "beauty-of-kashmir",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/beauty-of-kashmir_f2.jpg",
+      "heroImage": "/images/hires/beauty-of-kashmir_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Eik_met_uitgebroken_kroon._Locatie%2C_Kroondomein_Het_Loo._25-12-2020_%28d.j.b.%29_02.jpg/1280px-Eik_met_uitgebroken_kroon._Locatie%2C_Kroondomein_Het_Loo._25-12-2020_%28d.j.b.%29_02.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Anfiteatro%2C_Valle_de_la_Luna%2C_San_Pedro_de_Atacama%2C_Chile%2C_2016-02-01%2C_DD_149.JPG/1280px-Anfiteatro%2C_Valle_de_la_Luna%2C_San_Pedro_de_Atacama%2C_Chile%2C_2016-02-01%2C_DD_149.JPG"
+        "/images/hires/beauty-of-kashmir_fixed.jpg",
+        "/images/hires/beauty-of-kashmir_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Soak your memories in a warm cup of Kahwah Tea, while indulging in the varied landscapes of Kashmir. Take in the crisp misty air, while gorging on warm Kashmiri pulao and home-made Rista. Feel your heart synchronize with the gushing waters that travel from the glaciers above. Dust the snow off your shoulders after a long trek up a hill and watch the sun-kissed, snow-capped mountains.\nA valley between the Great Himalayan range and the Pir Panjal mountain range, Kashmir is a place of beautiful simplicity and pristine natural beauty. Kashmir is painted with a unique culture that keeps you intrigued throughout your journey, from Srinagar to Sonamarg and Gulmarg till Pahalgam.",
       "itinerary": [
@@ -3418,17 +3517,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/ladakh-delight_f2.jpg",
-      "img": "/images/hires/ladakh-delight_f2.jpg",
-      "image": "/images/hires/ladakh-delight_f2.jpg",
+      "image_url": "/images/hires/ladakh-delight_fixed.jpg",
+      "img": "/images/hires/ladakh-delight_fixed.jpg",
+      "image": "/images/hires/ladakh-delight_fixed.jpg",
       "slug": "ladakh-delight",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/ladakh-delight_f2.jpg",
+      "heroImage": "/images/hires/ladakh-delight_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Padum_Zanskar_View_From_Karsha_Oct22_A7C_03984.jpg/1280px-Padum_Zanskar_View_From_Karsha_Oct22_A7C_03984.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Padum_Road_Shingo_La_Zanskar_Oct22_A7C_03574.jpg/1280px-Padum_Road_Shingo_La_Zanskar_Oct22_A7C_03574.jpg"
+        "/images/hires/ladakh-delight_fixed.jpg",
+        "/images/hires/ladakh-delight_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Ladakh is a region in the Indian state of Jammu and Kashmir that currently extends from the Siachen Glacier in the Karakoram range to the main Great Himalayas to the south, inhabited by people of Indo-Aryan and Tibetan descent. Leh, a high-desert city in the Himalayas, is the capital of the Leh region in northern India’s Jammu and Kashmir state. Originally a stop for trading caravans, Leh is now known for its Buddhist sites and nearby trekking areas. Massive 17th-century Leh Palace, modeled on the Dalai Lama’s former home (Tibet’s Potala Palace), overlooks the old town’s bazaar and mazelike lanes. Khardung La is a mountain pass in the Ladakh region of the Indian state of Jammu and Kashmir. The local pronunciation is Khardong La or Khardzong La but, as with most names in Ladakh, the romanised spelling varies. The pass on the Ladakh Range is north of Leh and is the gateway to the Shyok and Nubra valleys.",
       "itinerary": [
@@ -3494,17 +3593,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/shimla-232_f2.jpg",
-      "img": "/images/hires/shimla-232_f2.jpg",
-      "image": "/images/hires/shimla-232_f2.jpg",
+      "image_url": "/images/hires/shimla-232_fixed.jpg",
+      "img": "/images/hires/shimla-232_fixed.jpg",
+      "image": "/images/hires/shimla-232_fixed.jpg",
       "slug": "shimla-232",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/shimla-232_f2.jpg",
+      "heroImage": "/images/hires/shimla-232_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Landscape_of_Shimla_%2C_Himachal_Pradesh.jpg/1280px-Landscape_of_Shimla_%2C_Himachal_Pradesh.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Golf_Course_at_Naldehra_-_Near_Shimla_-_Himachal_Pradesh_-_India_%2826551109206%29.jpg/1280px-Golf_Course_at_Naldehra_-_Near_Shimla_-_Himachal_Pradesh_-_India_%2826551109206%29.jpg"
+        "/images/hires/shimla-232_fixed.jpg",
+        "/images/hires/shimla-232_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Shimla is the capital of the northern Indian state of Himachal Pradesh, in the Himalayan foothills. Once the summer capital of British India, it remains the terminus of the narrow-gauge Kalka-Shimla Railway, completed in 1903. It’s also known for the handicraft shops that line The Mall, a pedestrian avenue, as well as the Lakkar Bazaar, a market specializing in wooden toys and crafts.",
       "itinerary": [
@@ -3564,17 +3663,17 @@
       ],
       "category": "Adventure & Wildlife",
       "type": "Domestic",
-      "image_url": "/images/hires/golden-widlife_f2.jpg",
-      "img": "/images/hires/golden-widlife_f2.jpg",
-      "image": "/images/hires/golden-widlife_f2.jpg",
+      "image_url": "/images/hires/golden-widlife_fixed.jpg",
+      "img": "/images/hires/golden-widlife_fixed.jpg",
+      "image": "/images/hires/golden-widlife_fixed.jpg",
       "slug": "golden-widlife",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/golden-widlife_f2.jpg",
+      "heroImage": "/images/hires/golden-widlife_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Puente_de_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2019-06-02%2C_DD_29-31_HDR.jpg/1280px-Puente_de_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2019-06-02%2C_DD_29-31_HDR.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/M%C3%BCnster%2C_St.-Paulus-Dom%2C_Chorumgang_--_2019_--_3920.jpg/1280px-M%C3%BCnster%2C_St.-Paulus-Dom%2C_Chorumgang_--_2019_--_3920.jpg"
+        "/images/hires/golden-widlife_fixed.jpg",
+        "/images/hires/golden-widlife_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. A classic 9 day itinerary combining the Golden Triangle and a Tiger safari in Ranthambore. The tour begins in the capital city, Delhi, and then goes to Agra, the city of the Taj Mahal, before continuing to Ranthambore, one of the best known Tiger Reserves in India. The tour finally ends in Jaipur, the city that arrays a pink carpet to all its visitors. This classic itinerary, combines India’s famous Golden Triangle with a wildlife safari.",
       "itinerary": [
@@ -3655,17 +3754,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/shimla-manali-_f2.jpg",
-      "img": "/images/hires/shimla-manali-_f2.jpg",
-      "image": "/images/hires/shimla-manali-_f2.jpg",
+      "image_url": "/images/hires/shimla-manali-_fixed.jpg",
+      "img": "/images/hires/shimla-manali-_fixed.jpg",
+      "image": "/images/hires/shimla-manali-_fixed.jpg",
       "slug": "shimla-manali-",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/shimla-manali-_f2.jpg",
+      "heroImage": "/images/hires/shimla-manali-_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/shimla-manali-_fixed.jpg",
+        "/images/hires/shimla-manali-_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Shimla is the capital of the northern Indian state of Himachal Pradesh, in the Himalayan foothills. Once the summer capital of British India, it remains the terminus of the narrow-gauge Kalka-Shimla Railway, completed in 1903. It’s also known for the handicraft shops that line The Mall, a pedestrian avenue, as well as the Lakkar Bazaar, a market specializing in wooden toys and crafts. Manali is a high-altitude Himalayan resort town in India’s northern Himachal Pradesh state. It has a reputation as a backpacking center and honeymoon destination. Set on the Beas River, it’s a gateway for skiing in the Solang Valley and trekking in Parvati Valley. It's also a jumping-off point for paragliding, rafting and mountaineering in the Pir Panjal mountains, home to 4,000m-high Rohtang Pass.",
       "itinerary": [
@@ -3747,17 +3846,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/himachal-12_f2.jpg",
-      "img": "/images/hires/himachal-12_f2.jpg",
-      "image": "/images/hires/himachal-12_f2.jpg",
+      "image_url": "/images/hires/himachal-12_fixed.jpg",
+      "img": "/images/hires/himachal-12_fixed.jpg",
+      "image": "/images/hires/himachal-12_fixed.jpg",
       "slug": "himachal-12",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/himachal-12_f2.jpg",
+      "heroImage": "/images/hires/himachal-12_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/himachal-12_fixed.jpg",
+        "/images/hires/himachal-12_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Shimla is the capital of the northern Indian state of Himachal Pradesh, in the Himalayan foothills. Once the summer capital of British India, it remains the terminus of the narrow-gauge Kalka-Shimla Railway, completed in 1903. It’s also known for the handicraft shops that line The Mall, a pedestrian avenue, as well as the Lakkar Bazaar, a market specializing in wooden toys and crafts. Manali is a high-altitude Himalayan resort town in India’s northern Himachal Pradesh state. It has a reputation as a backpacking center and honeymoon destination. Set on the Beas River, it’s a gateway for skiing in the Solang Valley and trekking in Parvati Valley. It's also a jumping-off point for paragliding, rafting and mountaineering in the Pir Panjal mountains, home to 4,000m-high Rohtang Pass.\nAgra is a city in northern India’s Uttar Pradesh state. It's home to the iconic Taj Mahal, a mausoleum built for the Mughal ruler Shah Jahan’s wife, Mumtaz Mahal (who died in childbirth in 1631). The imposing main building features a massive dome and intricately carved white marble inlaid with precious stones. This is set behind a reflecting pool inside a courtyard defined by 4 minarets",
       "itinerary": [
@@ -3909,17 +4008,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/shimla-manali-agra_f2.jpg",
-      "img": "/images/hires/shimla-manali-agra_f2.jpg",
-      "image": "/images/hires/shimla-manali-agra_f2.jpg",
+      "image_url": "/images/hires/shimla-manali-agra_fixed.jpg",
+      "img": "/images/hires/shimla-manali-agra_fixed.jpg",
+      "image": "/images/hires/shimla-manali-agra_fixed.jpg",
       "slug": "shimla-manali-agra",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/shimla-manali-agra_f2.jpg",
+      "heroImage": "/images/hires/shimla-manali-agra_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg"
+        "/images/hires/shimla-manali-agra_fixed.jpg",
+        "/images/hires/shimla-manali-agra_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Shimla is the capital of the northern Indian state of Himachal Pradesh, in the Himalayan foothills. Once the summer capital of British India, it remains the terminus of the narrow-gauge Kalka-Shimla Railway, completed in 1903. It’s also known for the handicraft shops that line The Mall, a pedestrian avenue, as well as the Lakkar Bazaar, a market specializing in wooden toys and crafts. Manali is a high-altitude Himalayan resort town in India’s northern Himachal Pradesh state. It has a reputation as a backpacking center and honeymoon destination. Set on the Beas River, it’s a gateway for skiing in the Solang Valley and trekking in Parvati Valley. It's also a jumping-off point for paragliding, rafting and mountaineering in the Pir Panjal mountains, home to 4,000m-high Rohtang Pass.\nAgra is a city in northern India’s Uttar Pradesh state. It's home to the iconic Taj Mahal, a mausoleum built for the Mughal ruler Shah Jahan’s wife, Mumtaz Mahal (who died in childbirth in 1631). The imposing main building features a massive dome and intricately carved white marble inlaid with precious stones. This is set behind a reflecting pool inside a courtyard defined by 4 minarets",
       "itinerary": [
@@ -4177,17 +4276,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Manali_Town.jpg",
-      "img": "https://upload.wikimedia.org/wikipedia/commons/4/41/Manali_Town.jpg",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/4/41/Manali_Town.jpg",
+      "image_url": "/images/hires/manali-231_fixed.jpg",
+      "img": "/images/hires/manali-231_fixed.jpg",
+      "image": "/images/hires/manali-231_fixed.jpg",
       "slug": "manali-231",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/4/41/Manali_Town.jpg",
+      "heroImage": "/images/hires/manali-231_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/4/41/Manali_Town.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/4/41/Manali_Town.jpg"
+        "/images/hires/manali-231_fixed.jpg",
+        "/images/hires/manali-231_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Manali is a high-altitude Himalayan resort town in India’s northern Himachal Pradesh state. It has a reputation as a backpacking center and honeymoon destination. Set on the Beas River, it’s a gateway for skiing in the Solang Valley and trekking in Parvati Valley. It's also a jumping-off point for paragliding, rafting and mountaineering in the Pir Panjal mountains, home to 4,000m-high Rohtang Pass.",
       "itinerary": [
@@ -4475,17 +4574,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Charminar_Summer.jpg",
-      "img": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Charminar_Summer.jpg",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Charminar_Summer.jpg",
+      "image_url": "/images/hires/hyderabad-tour_fixed.jpg",
+      "img": "/images/hires/hyderabad-tour_fixed.jpg",
+      "image": "/images/hires/hyderabad-tour_fixed.jpg",
       "slug": "hyderabad-tour",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Charminar_Summer.jpg",
+      "heroImage": "/images/hires/hyderabad-tour_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/1/1b/Charminar_Summer.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/1/1b/Charminar_Summer.jpg"
+        "/images/hires/hyderabad-tour_fixed.jpg",
+        "/images/hires/hyderabad-tour_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Hyderabad is culturally rich city of India. Renowned as the City of Nawabs, it specializes in aromatic biryani made from lamb and chicken. The traditions of the city have been passed down from Nizam monarchy.\nThis tour offers you a chance to visit some of the historical monuments, amusement parks, holy places and museums in Hyderabad.\nApart from sightseeing, you can also go for boating, joy rides and much more. Read the itinerary for further details.",
       "itinerary": [
@@ -4830,17 +4929,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Ladakh_Landscape.jpg",
-      "img": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Ladakh_Landscape.jpg",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Ladakh_Landscape.jpg",
+      "image_url": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
+      "img": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
+      "image": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
       "slug": "ladakh-top-of-the-world",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Ladakh_Landscape.jpg",
+      "heroImage": "/images/hires/ladakh-top-of-the-world_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/4/4b/Ladakh_Landscape.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/4/4b/Ladakh_Landscape.jpg"
+        "/images/hires/ladakh-top-of-the-world_fixed.jpg",
+        "/images/hires/ladakh-top-of-the-world_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Ladakh is a region in the Indian state of Jammu and Kashmir that currently extends from the Siachen Glacier in the Karakoram range to the main Great Himalayas to the south, inhabited by people of Indo-Aryan and Tibetan descent. Leh, a high-desert city in the Himalayas, is the capital of the Leh region in northern India’s Jammu and Kashmir state. Originally a stop for trading caravans, Leh is now known for its Buddhist sites and nearby trekking areas. Massive 17th-century Leh Palace, modeled on the Dalai Lama’s former home (Tibet’s Potala Palace), overlooks the old town’s bazaar and mazelike lanes.",
       "itinerary": [
@@ -5144,17 +5243,17 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar_India.jpg",
-      "img": "https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar_India.jpg",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar_India.jpg",
+      "image_url": "/images/hires/amritsar-tour_fixed.jpg",
+      "img": "/images/hires/amritsar-tour_fixed.jpg",
+      "image": "/images/hires/amritsar-tour_fixed.jpg",
       "slug": "amritsar-tour",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar_India.jpg",
+      "heroImage": "/images/hires/amritsar-tour_fixed.jpg",
       "gallery": [
-        "https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar_India.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar_India.jpg"
+        "/images/hires/amritsar-tour_fixed.jpg",
+        "/images/hires/amritsar-tour_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Amritsar was founded in 1577 by Ram Das, fourth Guru of the Sikhs, on a site granted by the Mughal emperor Akbar. Ram Das ordered the excavation of the sacred tank, or pool, called the Amrita Saras (“Pool of Nectar”), from which the city’s name is derived. A temple was erected on an island in the tank’s centre by Arjan, the fifth Guru of the Sikhs, which was then reached by a marble causeway. During the reign of Maharaja Ranjit Singh (1801–39), the upper part of the temple was decorated with a gold-foil-covered copper dome, and since then the building has been popularly known as the Golden Temple. Amritsar became the centre of the Sikh faith, and, as the focus of growing Sikh power, the city experienced a corresponding increase in trade. It was annexed to British India in 1849.",
       "itinerary": [

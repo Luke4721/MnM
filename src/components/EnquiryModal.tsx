@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, User, Mail, Phone } from 'lucide-react';
+import { X, Send, User, Mail, Phone, CheckCircle } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const travelTypes = ['Leisure', 'Adventure', 'Honeymoon', 'Family'];
   const budgets = ['Budget', 'Standard', 'Premium', 'Luxury'];
@@ -25,36 +27,40 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = encodeURIComponent(`Enquiry for ${packageName}${variantName ? ` - ${variantName}` : ''}`);
-    const body = encodeURIComponent(
-      `Hi MNM Travels,\n\n` +
-      `I would like to enquire about the "${packageName}" package${variantName ? ` (${variantName} option)` : ''}.\n\n` +
-      `Here are my preferences:\n` +
-      `- Travel Type: ${travelType}\n` +
-      `- Budget Range: ${budget}\n` +
-      `- Number of Travelers: ${travelers}\n\n` +
-      `My Details:\n` +
-      `- Name: ${name}\n` +
-      `- Email: ${email}\n` +
-      `- Phone: ${phone}\n\n` +
-      `Additional Message:\n${message}\n\n` +
-      `Thank you!`
-    );
+    const subject = `Enquiry for ${packageName}${variantName ? ' - ' + variantName : ''}`;
+    const body = `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
 
-    window.location.href = `mailto:info@mnmtravels.com?subject=${subject}&body=${body}`;
+Package: ${packageName} ${variantName ? '(' + variantName + ')' : ''}
+Travel Type: ${travelType}
+Budget: ${budget}
+Travelers: ${travelers}
+
+Special Requests:
+${message}
+    `.trim();
+
+    window.location.href = `mailto:info@mnmtravels.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setIsSuccess(true);
+  };
+
+  const handleClose = () => {
     onClose();
+    setTimeout(() => setIsSuccess(false), 300);
   };
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         />
         
@@ -65,19 +71,37 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
           className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 md:p-8"
         >
           <button 
-            onClick={onClose}
+            onClick={handleClose}
             className="absolute top-6 right-6 p-2 rounded-full bg-gray-100 dark:bg-white/10 text-gray-500 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
           >
             <X size={20} />
           </button>
 
-          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Plan Your Trip</h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8">
-            Enquiring about <span className="font-semibold text-[#D97736]">{packageName}</span>
-            {variantName && <span className="text-gray-400"> ({variantName})</span>}
-          </p>
+          {isSuccess ? (
+            <div className="py-12 flex flex-col items-center justify-center text-center space-y-6">
+              <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-2">
+                <CheckCircle className="w-10 h-10 text-green-600 dark:text-green-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Thank You!</h3>
+              <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
+                Your email client has been opened. We look forward to helping you plan your perfect trip!
+              </p>
+              <button 
+                onClick={handleClose}
+                className="mt-8 px-8 py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold hover:-translate-y-0.5 transition-transform"
+              >
+                Close Window
+              </button>
+            </div>
+          ) : (
+            <>
+              <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Plan Your Trip</h2>
+              <p className="text-gray-500 dark:text-gray-400 mb-8">
+                Enquiring about <span className="font-semibold text-[#D97736]">{packageName}</span>
+                {variantName && <span className="text-gray-400"> ({variantName})</span>}
+              </p>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
             
             {/* Visual Selectors */}
             <div className="space-y-6">
@@ -202,8 +226,11 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
               Send Enquiry <Send size={20} />
             </button>
           </form>
+            </>
+          )}
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };

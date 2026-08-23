@@ -142,6 +142,13 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                  value={checkIn}
                  min={today}
                  onChange={handleCheckInChange}
+                 onClick={(e) => {
+                   try {
+                     if ('showPicker' in HTMLInputElement.prototype) {
+                       e.currentTarget.showPicker();
+                     }
+                   } catch (err) {}
+                 }}
                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                />
             </div>
@@ -163,6 +170,13 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                  value={checkOut}
                  min={checkIn || today}
                  onChange={(e) => setCheckOut(e.target.value)}
+                 onClick={(e) => {
+                   try {
+                     if ('showPicker' in HTMLInputElement.prototype) {
+                       e.currentTarget.showPicker();
+                     }
+                   } catch (err) {}
+                 }}
                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                />
             </div>
