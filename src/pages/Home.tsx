@@ -90,9 +90,6 @@ export const Home: React.FC = () => {
 
   const activePackage = heroPackages[currentSlide];
 
-  // Prime Destinations Logic (8 items)
-  const primeDestinations = db.packages.slice(0, 8); // Pick 8
-
   // Popular Packages Logic
   const popularPackages = db.packages.slice(7, 10); // Pick 3
 
@@ -182,39 +179,50 @@ export const Home: React.FC = () => {
                </div>
             </div>
             
-            <div className="pl-0 lg:pl-16">
-              <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-6 font-serif">
-                Discover the <br/>world's leading <br/>travel agency.
-              </h2>
-              <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-md">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link to="/about">
-                  <button className="bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-3.5 rounded-full font-bold tracking-wider text-xs transition-transform hover:scale-105">
-                    ABOUT COMPANY
-                  </button>
-                </Link>
-                <Link to="/packages">
-                  <button className="bg-transparent border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white px-8 py-3.5 rounded-full font-bold tracking-wider text-xs hover:border-gray-900 dark:hover:border-white transition-all hover:scale-105">
-                    DISCOVER TOUR
-                  </button>
-                </Link>
+              <div className="pl-0 lg:pl-16">
+                <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-6 font-serif">
+                  Discover the <br/>world's leading <br/>travel agency.
+                </h2>
+                <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-md">
+                  For over 15 years, Monks & Monkeys Travels has curated extraordinary journeys across the globe. Our seasoned team of experts crafts meticulously tailored experiences—from the tranquil backwaters of Kerala to the majestic peaks of the Swiss Alps. Join thousands of happy travelers and discover your next great adventure.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link to="/about">
+                    <button className="bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-3.5 rounded-full font-bold tracking-wider text-xs transition-transform hover:scale-105">
+                      ABOUT COMPANY
+                    </button>
+                  </Link>
+                  <Link to="/packages">
+                    <button className="bg-transparent border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white px-8 py-3.5 rounded-full font-bold tracking-wider text-xs hover:border-gray-900 dark:hover:border-white transition-all hover:scale-105">
+                      DISCOVER TOUR
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+  
+            <div className="flex-1 relative">
+              <div className="relative rounded-t-[10rem] overflow-hidden aspect-[4/5] shadow-2xl max-w-md ml-auto mr-12">
+               {[
+                 "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1280px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
+                 "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
+                 "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Oia_sunset_-_panoramio_%282%29.jpg/1280px-Oia_sunset_-_panoramio_%282%29.jpg",
+                 "https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg"
+               ].map((imgUrl, i) => (
+                 <img 
+                   key={i} 
+                   src={imgUrl} 
+                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${currentSlide % 4 === i ? 'opacity-100' : 'opacity-0'}`} 
+                   alt="Travel Destination" 
+                 />
+               ))}
+              </div>
+              <div className="absolute top-1/4 -left-8 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900">
+                 <span className="text-[#D97736] font-bold text-xs">SINCE</span>
+                 <span className="text-3xl font-extrabold text-gray-900 dark:text-white">1990</span>
               </div>
             </div>
           </div>
-
-          <div className="flex-1 relative">
-            <div className="relative rounded-t-[10rem] overflow-hidden aspect-[4/5] shadow-2xl max-w-md ml-auto mr-12">
-              <img src="/images/2667045e2fd96444a1e5a7796a6ab43b.jpg" alt="Travel Agency" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute top-1/4 -left-8 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900">
-               <span className="text-[#D97736] font-bold text-xs">SINCE</span>
-               <span className="text-3xl font-extrabold text-gray-900 dark:text-white">1990</span>
-            </div>
-          </div>
-        </div>
-
         {/* 4-icon grid features */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-200 dark:border-gray-800 pb-20">
           <div className="flex items-start gap-4">
@@ -308,33 +316,65 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Phase 4: Prime Destinations Grid */}
-      <div className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Prime destination</h2>
-          </div>
+      
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {primeDestinations.map((dest, i) => (
-              <motion.div 
-                key={dest.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="aspect-square relative overflow-hidden group cursor-pointer"
-              >
-                <img src={dest.img || dest.image_url || dest.image} alt={dest.location} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm px-6 py-2 border border-white/20 uppercase tracking-widest text-white text-xs font-bold">
-                  {dest.location}
+      
+      {/* Top Trending INDIA Destinations */}
+      <div className="py-16 bg-white dark:bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#2c3e50] dark:text-gray-200 mb-2" style={{ fontFamily: 'var(--font-sans)' }}>Top Trending INDIA Destinations</h2>
+            <p className="text-gray-500 text-sm">Find the exclusive tour options for India's Top Trending Destinations.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { src: "https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg", name: "Himalayas" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg", name: "Agra" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/9/99/Mehrangarh_Fort_sanhita.jpg", name: "Jodhpur" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Lingaraj_Temple_%2C_Bhubaneswar.jpg", name: "Bhubaneswar" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/3/32/Udaipur_Lake_Palace.jpg", name: "Udaipur" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Boating_in_Kodaikanal_Lake_with_Mist.jpg/3840px-Boating_in_Kodaikanal_Lake_with_Mist.jpg", name: "Kodaikanal" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/House_Boat_DSW.jpg/1280px-House_Boat_DSW.jpg", name: "Kerala" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/1280px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg", name: "Jaipur" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/The_Golden_Temple_of_Amrithsar_7.jpg/1280px-The_Golden_Temple_of_Amrithsar_7.jpg", name: "Amritsar" }
+            ].map((item, i) => (
+              <div key={i} className="aspect-[16/9] overflow-hidden group cursor-pointer relative">
+                <img src={item.src} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white font-bold text-xl uppercase tracking-widest">{item.name}</span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-          
-          <div className="text-center mt-12">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">World's hottest destinations for <span className="font-bold text-gray-900 dark:text-white">independent tours.</span></p>
+        </div>
+      </div>
+
+      {/* Top Trending INTERNATIONAL Destinations */}
+      <div className="py-16 bg-white dark:bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#2c3e50] dark:text-gray-200 mb-2" style={{ fontFamily: 'var(--font-sans)' }}>Top Trending INTERNATIONAL Destinations</h2>
+            <p className="text-gray-500 text-sm">Find the exclusive tour options for Top Trending International Destinations.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/3840px-Milan_Cathedral_from_Piazza_del_Duomo.jpg", name: "Milan" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Titlis_W.jpg/1280px-Titlis_W.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", name: "Mount Titlis" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1280px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg", name: "Paris" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1280px-Colosseo_2020.jpg", name: "Rome" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Tower_Bridge_at_Dawn.jpg/1280px-Tower_Bridge_at_Dawn.jpg", name: "London" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg/1280px-View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg", name: "Japan" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg/1280px-Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", name: "Grand Canyon" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Oia_sunset_-_panoramio_%282%29.jpg/1280px-Oia_sunset_-_panoramio_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", name: "Santorini" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%A3%E0%B8%B8%E0%B8%932.jpg/1280px-%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%A3%E0%B8%B8%E0%B8%932.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", name: "Thailand" }
+            ].map((item, i) => (
+              <div key={i} className="aspect-[16/9] overflow-hidden group cursor-pointer relative bg-gray-100 dark:bg-zinc-900">
+                <img src={item.src} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white font-bold text-xl uppercase tracking-widest">{item.name}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -343,17 +383,12 @@ export const Home: React.FC = () => {
       
       {/* Parallax CTA */}
       <div className="relative py-40 mt-10">
-        <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url(/images/30ca80d455a76609dc911a25a68d87e2.jpg)' }}>
-          <div className="absolute inset-0 bg-black/40 z-0"></div>
+        <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/8/82/Clouds_disappearing_into_a_darkening_blue_sky_over_an_airplane_wing.jpg)' }}>
+          <div className="absolute inset-0 bg-black/50 z-0"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col items-center">
           <h4 className="text-white text-xs font-bold tracking-[0.2em] mb-4 uppercase">Finding the perfect trails</h4>
           <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-12">Get ready to explore and <br/>discover your world.</h2>
-          <button className="w-20 h-20 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 ml-1">
-               <path d="M8 5v14l11-7z" />
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -398,32 +433,32 @@ export const Home: React.FC = () => {
       {/* Happy Traveller Split Section */}
       <div className="max-w-7xl mx-auto px-6 py-24">
         <div className="flex flex-col md:flex-row gap-12 items-center">
-          
-          <div className="flex-1 flex flex-col justify-center items-start">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-[1.2] mb-8">
-              Our happy <br/>traveller.
-            </h2>
-            <div className="flex gap-4">
-              <button className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-[#D97736] hover:text-white hover:border-[#D97736] transition-colors">
-                <ArrowRight size={20} className="transform rotate-180" />
-              </button>
-              <button className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-[#D97736] hover:text-white hover:border-[#D97736] transition-colors">
-                <ArrowRight size={20} />
-              </button>
+            
+            <div className="flex-1 flex flex-col justify-center items-start">
+              <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-8 font-serif">
+                Our happy <br/>traveller.
+              </h2>
+              <div className="flex gap-4">
+                <button className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-[#D97736] hover:text-white hover:border-[#D97736] transition-all hover:scale-110">
+                  <ArrowRight size={20} className="transform rotate-180" />
+                </button>
+                <button className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-[#D97736] hover:text-white hover:border-[#D97736] transition-all hover:scale-110">
+                  <ArrowRight size={20} />
+                </button>
+              </div>
             </div>
-          </div>
-
-          <div className="flex-1 relative flex justify-center">
-             <div className="relative w-64 h-64 rounded-full border-[12px] border-white dark:border-zinc-900 shadow-2xl overflow-hidden z-10">
-               <img src="/images/3ac9bf62d5bb14289acd33e9f5a63ee3.jpg" alt="Happy traveller" className="w-full h-full object-cover" />
-             </div>
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-32 z-20">
-                <span className="text-6xl text-[#D97736] drop-shadow-md" style={{ fontFamily: 'var(--font-cursive)' }}>Amazing</span>
-             </div>
-             <div className="absolute top-1/2 -translate-y-1/2 -left-12 -z-0 text-gray-100 dark:text-zinc-800 font-serif text-9xl tracking-tighter select-none rotate-90 opacity-50">
-               ALEXANDER
-             </div>
-          </div>
+  
+            <div className="flex-1 relative flex justify-center">
+               <div className="relative w-72 h-72 rounded-full border-[8px] border-white dark:border-zinc-900 shadow-2xl overflow-hidden z-10 transition-transform duration-700 hover:scale-105">
+                 <img src="/images/3ac9bf62d5bb14289acd33e9f5a63ee3.jpg" alt="Happy traveller" className="w-full h-full object-cover" />
+               </div>
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-36 z-20 pointer-events-none">
+                  <span className="text-7xl text-[#D97736] drop-shadow-lg -rotate-6 inline-block" style={{ fontFamily: 'var(--font-cursive)' }}>Amazing</span>
+               </div>
+               <div className="absolute top-1/2 -translate-y-1/2 -left-12 -z-0 text-gray-100 dark:text-[#D97736] font-serif text-7xl font-black tracking-widest select-none rotate-90 opacity-40 dark:opacity-20 whitespace-nowrap">
+                 MONKS & MONKEYS
+               </div>
+            </div>
 
           <div className="flex-1 pt-12 md:pt-0">
              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 font-medium leading-relaxed">

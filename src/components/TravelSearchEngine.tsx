@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import db from '../data/mnm_database.json';
 import { Search, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,8 +29,16 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
   const [searchFor, setSearchFor] = useState('Families');
   const [isGuestsOpen, setIsGuestsOpen] = useState(false);
   const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+  const [isDestOpen, setIsDestOpen] = useState(false);
 
   const today = new Date().toISOString().split('T')[0];
+
+  const allDestinations = Array.from(new Set([
+    ...db.packages.flatMap(p => p.location.split(', ')),
+    ...db.packages.map(p => p.title || p.name)
+  ])).filter(Boolean).filter(d => d !== 'Outbound Itineraries').sort();
+  const matchedDestinations = destination ? allDestinations.filter(d => d.toLowerCase().includes(destination.toLowerCase())) : allDestinations.slice(0, 10);
+
 
   const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCheckIn = e.target.value;
@@ -67,8 +76,8 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
 
   return (
     <div className="w-full max-w-[1200px] mx-auto relative z-50 mb-10 mt-2 font-sans">
-      {(isGuestsOpen || isBudgetOpen) && (
-         <div className="fixed inset-0 z-[90]" onClick={() => { setIsGuestsOpen(false); setIsBudgetOpen(false); }} />
+      {(isGuestsOpen || isBudgetOpen || isDestOpen) && (
+         <div className="fixed inset-0 z-[90]" onClick={() => { setIsGuestsOpen(false); setIsBudgetOpen(false); setIsDestOpen(false); }} />
       )}
 
 
@@ -84,80 +93,94 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
             <div className="text-gray-400 dark:text-white/80 shrink-0 pointer-events-none">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
-            <div className="flex flex-col w-full">
-              <span className="text-sm font-extrabold text-gray-900 dark:text-white">Destinations</span>
-              <input 
-                type="text" 
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-                placeholder="Search destinations"
-                className="bg-transparent border-none p-0 text-sm font-medium text-gray-600 dark:text-white/90 dark:placeholder-white/60 placeholder-gray-400 focus:ring-0 outline-none w-full truncate"
-              />
-            </div>
+              <div className="relative flex flex-col w-full">
+                <span className="text-sm font-extrabold text-gray-900 dark:text-white">Destinations</span>
+                <input 
+                  type="text" 
+                  value={destination}
+                  onChange={(e) => {
+                    setDestination(e.target.value);
+                    setIsDestOpen(true);
+                  }}
+                  onFocus={() => setIsDestOpen(true)}
+                  placeholder="Search destinations"
+                  className="bg-transparent border-none p-0 text-sm font-medium text-gray-600 dark:text-white/90 dark:placeholder-white/60 placeholder-gray-400 focus:ring-0 outline-none w-full truncate"
+                />
+                <ul className={`absolute top-full mt-4 left-0 w-64 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-gray-100 dark:border-zinc-800 rounded-2xl shadow-2xl py-2 z-[9999] overflow-hidden transition-all duration-300 ease-in-out origin-top ${
+                   isDestOpen && matchedDestinations.length > 0 ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                }`}>
+                   {matchedDestinations.slice(0, 8).map((option, idx) => (
+                      <li 
+                         key={idx}
+                         onClick={() => {
+                           setDestination(option);
+                           setIsDestOpen(false);
+                         }}
+                         className="px-5 py-3 hover:bg-[#D97736]/10 hover:text-[#D97736] text-gray-700 dark:text-gray-300 transition-colors duration-200 cursor-pointer text-sm"
+                      >
+                         {option}
+                      </li>
+                   ))}
+                </ul>
+              </div>
           </div>
 
           <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
 
           {/* Check-in */}
-          <div className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2">
-             <div className="flex items-center gap-3">
-               <div className="text-gray-400 dark:text-white/80 shrink-0 pointer-events-none">
-                 <Calendar size={20} strokeWidth={2.5} />
+            <div 
+              onClick={() => checkInRef.current?.showPicker()}
+              className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent"
+            >
+               <div className="flex items-center gap-3 w-full">
+                 <div className="text-gray-400 dark:text-white/80 shrink-0 pointer-events-none">
+                   <Calendar size={20} strokeWidth={2.5} />
+                 </div>
+                 <div className="flex flex-col justify-center flex-1">
+                    <span className="text-sm font-extrabold text-gray-900 dark:text-white">Check-in</span>
+                    <span className="text-gray-500 text-sm mt-0.5 font-medium">
+                       {checkIn ? new Date(checkIn).toLocaleDateString() : 'Add dates'}
+                    </span>
+                 </div>
                </div>
-               <div className="flex flex-col justify-center">
-                  <span className="text-sm font-extrabold text-gray-900 dark:text-white">Check-in</span>
-                  <span className="text-gray-500 text-sm mt-0.5 font-medium">
-                     {checkIn ? new Date(checkIn).toLocaleDateString() : 'Add dates'}
-                  </span>
+               <input 
+                 type="date"
+                 ref={checkInRef}
+                 value={checkIn}
+                 min={today}
+                 onChange={handleCheckInChange}
+                 className="sr-only"
+               />
+            </div>
+  
+            <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
+  
+            {/* Check-out */}
+            <div 
+              onClick={() => checkOutRef.current?.showPicker()}
+              className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent"
+            >
+               <div className="flex items-center gap-3 w-full">
+                 <div className="flex flex-col justify-center flex-1">
+                    <span className="text-sm font-extrabold text-gray-900 dark:text-white">Check-out</span>
+                    <span className="text-gray-500 text-sm mt-0.5 font-medium">
+                       {checkOut ? new Date(checkOut).toLocaleDateString() : 'Add dates'}
+                    </span>
+                 </div>
                </div>
-             </div>
-             <button 
-                type="button"
-                onClick={() => checkInRef.current?.showPicker()}
-                className="p-2 shrink-0 rounded-full bg-gray-200/50 hover:bg-[#D97736]/10 text-gray-600 hover:text-[#D97736] dark:bg-white/10 dark:text-gray-300 transition-colors"
-             >
-                <Calendar className="w-4 h-4" />
-             </button>
-             <input 
-               type="date"
-               ref={checkInRef}
-               value={checkIn}
-               min={today}
-               onChange={handleCheckInChange}
-               className="sr-only"
-             />
-          </div>
-
-          <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
-
-          {/* Check-out */}
-          <div className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2">
-             <div className="flex flex-col justify-center">
-                <span className="text-sm font-extrabold text-gray-900 dark:text-white">Check-out</span>
-                <span className="text-gray-500 text-sm mt-0.5 font-medium">
-                   {checkOut ? new Date(checkOut).toLocaleDateString() : 'Add dates'}
-                </span>
-             </div>
-             <button 
-                type="button"
-                onClick={() => checkOutRef.current?.showPicker()}
-                className="p-2 shrink-0 rounded-full bg-gray-200/50 hover:bg-[#D97736]/10 text-gray-600 hover:text-[#D97736] dark:bg-white/10 dark:text-gray-300 transition-colors"
-             >
-                <Calendar className="w-4 h-4" />
-             </button>
-             <input 
-               type="date"
-               ref={checkOutRef}
-               value={checkOut}
-               min={checkIn || today}
-               onChange={(e) => setCheckOut(e.target.value)}
-               className="sr-only"
-             />
-          </div>
-
-          <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
-
-          {/* Guests */}
+               <input 
+                 type="date"
+                 ref={checkOutRef}
+                 value={checkOut}
+                 min={checkIn || today}
+                 onChange={(e) => setCheckOut(e.target.value)}
+                 className="sr-only"
+               />
+            </div>
+  
+            <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
+  
+            {/* Guests */}
           <div className="flex-[0.8] w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex flex-col justify-center">
              <div className="relative flex-1 cursor-pointer" onClick={() => setIsGuestsOpen(!isGuestsOpen)}>
                 <div className="flex flex-col">

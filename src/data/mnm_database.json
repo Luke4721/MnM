@@ -27,7 +27,7 @@
       "id": "1",
       "title": "Ayodhya Tour",
       "name": "Ayodhya Tour",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "02 Nights / 03 Days",
       "nights": "02 Nights / 03 Days",
@@ -92,7 +92,7 @@
       "id": "2",
       "title": "Golden Triangle India",
       "name": "Golden Triangle India",
-      "price": "₹35,000",
+      "price": "\u20b935,000",
       "priceINR": 35000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -179,7 +179,7 @@
       "id": "3",
       "title": "Classic India",
       "name": "Classic India",
-      "price": "₹50,000",
+      "price": "\u20b950,000",
       "priceINR": 50000,
       "duration": "10 Nights / 11 Days",
       "nights": "10 Nights / 11 Days",
@@ -198,7 +198,7 @@
       "id": "4",
       "title": "Rajasthan Heritage Tour",
       "name": "Rajasthan Heritage Tour",
-      "price": "₹85,000",
+      "price": "\u20b985,000",
       "priceINR": 85000,
       "duration": "13 Nights / 14 Days",
       "nights": "13 Nights / 14 Days",
@@ -217,7 +217,7 @@
       "id": "5",
       "title": "Scenic Himachal",
       "name": "Scenic Himachal",
-      "price": "₹45,000",
+      "price": "\u20b945,000",
       "priceINR": 45000,
       "duration": "10 Nights / 11 Days",
       "nights": "10 Nights / 11 Days",
@@ -236,14 +236,14 @@
       "id": "6",
       "title": "Magic Kerala & Backwaters",
       "name": "Magic Kerala & Backwaters",
-      "price": "₹40,000",
+      "price": "\u20b940,000",
       "priceINR": 40000,
       "duration": "08 Nights / 09 Days",
       "nights": "08 Nights / 09 Days",
       "days": "08 Nights / 09 Days",
-      "locations": "Cochin – Munnar – Thekkady (Periyar) – Alleppey – Kovalam – Kanyakumari - Trivandrum",
-      "location": "Cochin – Munnar – Thekkady (Periyar) – Alleppey – Kovalam – Kanyakumari - Trivandrum",
-      "highlights": "Locations: Cochin – Munnar – Thekkady – Alleppey – Kovalam – Trivandrum",
+      "locations": "Cochin \u2013 Munnar \u2013 Thekkady (Periyar) \u2013 Alleppey \u2013 Kovalam \u2013 Kanyakumari - Trivandrum",
+      "location": "Cochin \u2013 Munnar \u2013 Thekkady (Periyar) \u2013 Alleppey \u2013 Kovalam \u2013 Kanyakumari - Trivandrum",
+      "highlights": "Locations: Cochin \u2013 Munnar \u2013 Thekkady \u2013 Alleppey \u2013 Kovalam \u2013 Trivandrum",
       "category": "Backwaters",
       "type": "Domestic",
       "image_url": "https://mnmtravels.com/img/kerala.webp",
@@ -255,7 +255,7 @@
       "id": "7",
       "title": "Kashmir Paradise",
       "name": "Kashmir Paradise",
-      "price": "₹30,000",
+      "price": "\u20b930,000",
       "priceINR": 30000,
       "duration": "05 Nights / 06 Days",
       "nights": "05 Nights / 06 Days",
@@ -274,7 +274,7 @@
       "id": "8",
       "title": "Leh & Ladakh",
       "name": "Leh & Ladakh",
-      "price": "₹65,000",
+      "price": "\u20b965,000",
       "priceINR": 65000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -293,7 +293,7 @@
       "id": "9",
       "title": "Andaman & Nicobar",
       "name": "Andaman & Nicobar",
-      "price": "₹55,000",
+      "price": "\u20b955,000",
       "priceINR": 55000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -312,7 +312,7 @@
       "id": "10",
       "title": "Sikkim & Darjeeling",
       "name": "Sikkim & Darjeeling",
-      "price": "₹40,000",
+      "price": "\u20b940,000",
       "priceINR": 40000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -331,7 +331,7 @@
       "id": "11",
       "title": "Classical Gujarat Tour",
       "name": "Classical Gujarat Tour",
-      "price": "₹75,000",
+      "price": "\u20b975,000",
       "priceINR": 75000,
       "duration": "11 Nights / 12 Days",
       "nights": "11 Nights / 12 Days",
@@ -350,7 +350,7 @@
       "id": "12",
       "title": "Haridwar & Rishikesh",
       "name": "Haridwar & Rishikesh",
-      "price": "₹32,000",
+      "price": "\u20b932,000",
       "priceINR": 32000,
       "duration": "09 Nights / 10 Days",
       "nights": "09 Nights / 10 Days",
@@ -369,7 +369,7 @@
       "id": "13",
       "title": "Tropical Goa",
       "name": "Tropical Goa",
-      "price": "₹25,000",
+      "price": "\u20b925,000",
       "priceINR": 25000,
       "duration": "08 Nights / 09 Days",
       "nights": "08 Nights / 09 Days",
@@ -388,14 +388,14 @@
       "id": "14",
       "title": "Kerala Ayurveda Wellness",
       "name": "Kerala Ayurveda Wellness",
-      "price": "₹38,000",
+      "price": "\u20b938,000",
       "priceINR": 38000,
       "duration": "07 Nights / 08 Days",
       "nights": "07 Nights / 08 Days",
       "days": "07 Nights / 08 Days",
-      "locations": "Trivandrum – Kovalam - Trivandrum",
-      "location": "Trivandrum – Kovalam - Trivandrum",
-      "highlights": "Locations: Trivandrum – Kovalam - Trivandrum",
+      "locations": "Trivandrum \u2013 Kovalam - Trivandrum",
+      "location": "Trivandrum \u2013 Kovalam - Trivandrum",
+      "highlights": "Locations: Trivandrum \u2013 Kovalam - Trivandrum",
       "category": "Ayurveda & Yoga",
       "type": "Domestic",
       "image_url": "https://mnmtravels.com/img/ayurveda.jpg",
@@ -407,7 +407,7 @@
       "id": "15",
       "title": "Sacred Buddhist Circuit",
       "name": "Sacred Buddhist Circuit",
-      "price": "₹48,000",
+      "price": "\u20b948,000",
       "priceINR": 48000,
       "duration": "09 Nights / 10 Days",
       "nights": "09 Nights / 10 Days",
@@ -426,7 +426,7 @@
       "id": "16",
       "title": "Mystic Nepal",
       "name": "Mystic Nepal",
-      "price": "₹35,000",
+      "price": "\u20b935,000",
       "priceINR": 35000,
       "duration": "07 Nights / 08 Days",
       "nights": "07 Nights / 08 Days",
@@ -445,7 +445,7 @@
       "id": "17",
       "title": "Valley of Flowers Trek",
       "name": "Valley of Flowers Trek",
-      "price": "₹36,000",
+      "price": "\u20b936,000",
       "priceINR": 36000,
       "duration": "07 Nights / 08 Days",
       "nights": "07 Nights / 08 Days",
@@ -464,7 +464,7 @@
       "id": "18",
       "title": "Bhutan Kingdom Retreat",
       "name": "Bhutan Kingdom Retreat",
-      "price": "₹60,000",
+      "price": "\u20b960,000",
       "priceINR": 60000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -483,7 +483,7 @@
       "id": "19",
       "title": "Orissa Temple Tour",
       "name": "Orissa Temple Tour",
-      "price": "₹28,000",
+      "price": "\u20b928,000",
       "priceINR": 28000,
       "duration": "05 Nights / 06 Days",
       "nights": "05 Nights / 06 Days",
@@ -502,7 +502,7 @@
       "id": "20",
       "title": "Tiger Wildlife & Khajuraho",
       "name": "Tiger Wildlife & Khajuraho",
-      "price": "₹52,000",
+      "price": "\u20b952,000",
       "priceINR": 52000,
       "duration": "07 Nights / 08 Days",
       "nights": "07 Nights / 08 Days",
@@ -521,7 +521,7 @@
       "id": "21",
       "title": "Mumbai & Aurangabad Caves",
       "name": "Mumbai & Aurangabad Caves",
-      "price": "₹45,000",
+      "price": "\u20b945,000",
       "priceINR": 45000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -540,7 +540,7 @@
       "id": "22",
       "title": "Tamil Nadu Temples",
       "name": "Tamil Nadu Temples",
-      "price": "₹42,000",
+      "price": "\u20b942,000",
       "priceINR": 42000,
       "duration": "10 Nights / 11 Days",
       "nights": "10 Nights / 11 Days",
@@ -559,14 +559,14 @@
       "id": "23",
       "title": "Jewels of North East",
       "name": "Jewels of North East",
-      "price": "₹34,000",
+      "price": "\u20b934,000",
       "priceINR": 34000,
       "duration": "05 Nights / 06 Days",
       "nights": "05 Nights / 06 Days",
       "days": "05 Nights / 06 Days",
-      "locations": "Delhi - Bagdogra – Darjeeling - Gangtok - Bagdogra - Delhi",
-      "location": "Delhi - Bagdogra – Darjeeling - Gangtok - Bagdogra - Delhi",
-      "highlights": "Locations: Delhi - Bagdogra – Darjeeling - Gangtok - Bagdogra - Delhi",
+      "locations": "Delhi - Bagdogra \u2013 Darjeeling - Gangtok - Bagdogra - Delhi",
+      "location": "Delhi - Bagdogra \u2013 Darjeeling - Gangtok - Bagdogra - Delhi",
+      "highlights": "Locations: Delhi - Bagdogra \u2013 Darjeeling - Gangtok - Bagdogra - Delhi",
       "category": "The Himalayas",
       "type": "Domestic",
       "image_url": "https://mnmtravels.com/img/gangtok.jpg",
@@ -578,7 +578,7 @@
       "id": "24",
       "title": "Treasures of Kolkata & Orissa",
       "name": "Treasures of Kolkata & Orissa",
-      "price": "₹39,000",
+      "price": "\u20b939,000",
       "priceINR": 39000,
       "duration": "07 Nights / 08 Days",
       "nights": "07 Nights / 08 Days",
@@ -597,14 +597,14 @@
       "id": "25",
       "title": "Palace On Wheels Luxury Train",
       "name": "Palace On Wheels Luxury Train",
-      "price": "₹1,20,000",
+      "price": "\u20b91,20,000",
       "priceINR": 120000,
       "duration": "07 Nights / 08 Days",
       "nights": "07 Nights / 08 Days",
       "days": "07 Nights / 08 Days",
-      "locations": "Delhi – Jaipur – Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
-      "location": "Delhi – Jaipur – Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
-      "highlights": "Locations: Delhi – Jaipur – Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
+      "locations": "Delhi \u2013 Jaipur \u2013 Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
+      "location": "Delhi \u2013 Jaipur \u2013 Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
+      "highlights": "Locations: Delhi \u2013 Jaipur \u2013 Ranthambore - Chittorgarh - Udaipur - Jaisalmer - Jodhpur - Agra - Delhi",
       "category": "Forts & Palaces",
       "type": "Domestic",
       "image_url": "https://mnmtravels.com/img/train3.jpg",
@@ -615,9 +615,9 @@
     {
       "id": "andaman-package-p-2",
       "slug": "andaman-package-p-2",
-      "title": "Andaman Package  (P 2)",
+      "title": "Andaman Package",
       "name": "Andaman Package  (P 2)",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "04 Nights / 05 Days",
       "nights": "04 Nights / 05 Days",
@@ -634,13 +634,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "\"The Ultimate Andaman Island Experience”\n\n(4N/5D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 5 Days / 4 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock Island (Swaraj Dweep), home to the world-famous Radhanagar Beach. Experience the vibrant underwater world with a complimentary snorkelling session at Elephant Beach. Relax on the serene shores of Kala...",
+      "overview": "\"The Ultimate Andaman Island Experience\u201d\n\n(4N/5D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 5 Days / 4 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock Island (Swaraj Dweep), home to the world-famous Radhanagar Beach. Experience the vibrant underwater world with a complimentary snorkelling session at Elephant Beach. Relax on the serene shores of Kala...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"The Ultimate Andaman Island Experience”\n\n(4N/5D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 5 Days / 4 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock "
+          "description": "\"The Ultimate Andaman Island Experience\u201d\n\n(4N/5D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 5 Days / 4 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock "
         }
       ],
       "inclusions": [],
@@ -654,7 +654,7 @@
       "slug": "andaman-package",
       "title": "Andaman Package",
       "name": "Andaman Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -671,13 +671,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "\"The Ultimate Andaman Island Experience”\n\n(6N/7D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 7 Days / 6 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock Island (Swaraj Dweep), home to the world-famous Radhanagar Beach. Experience the vibrant underwater world with a complimentary snorkelling session at Elephant Beach. Relax on the serene shores of Kala...",
+      "overview": "\"The Ultimate Andaman Island Experience\u201d\n\n(6N/7D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 7 Days / 6 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock Island (Swaraj Dweep), home to the world-famous Radhanagar Beach. Experience the vibrant underwater world with a complimentary snorkelling session at Elephant Beach. Relax on the serene shores of Kala...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"The Ultimate Andaman Island Experience”\n\n(6N/7D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 7 Days / 6 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock "
+          "description": "\"The Ultimate Andaman Island Experience\u201d\n\n(6N/7D)\n\n\n\nDiscover the tropical paradise of the Andaman Islands on this unforgettable 7 Days / 6 Nights holiday. Explore the historic Cellular Jail and witness its captivating Light & Sound Show in Port Blair. Cruise across the turquoise waters to Havelock "
         }
       ],
       "inclusions": [],
@@ -691,7 +691,7 @@
       "slug": "andaman-and-nicobar-islands-package",
       "title": "Andaman and Nicobar Islands Package",
       "name": "Andaman and Nicobar Islands Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -728,7 +728,7 @@
       "slug": "arunachal-meghalaya",
       "title": "Arunachal & Meghalaya",
       "name": "Arunachal & Meghalaya",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -745,13 +745,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "\"Arunachal & Meghalaya – Peaks, Monasteries & Waterfalls”\n\n(6N/7D)\n\n\n\nDiscover the breathtaking beauty of Arunachal Pradesh and Meghalaya on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Travel through the scenic hill towns of Dirang, Tawang, Bomdila, Shillong, and Cherrapunji, each offering spectacular landscapes and unique cultural experiences. \n\n\n\nWitness the majestic Sela Pass, explore the iconic Tawang Monastery, and pay tribute to the historic Jaswant Garh War...",
+      "overview": "\"Arunachal & Meghalaya \u2013 Peaks, Monasteries & Waterfalls\u201d\n\n(6N/7D)\n\n\n\nDiscover the breathtaking beauty of Arunachal Pradesh and Meghalaya on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Travel through the scenic hill towns of Dirang, Tawang, Bomdila, Shillong, and Cherrapunji, each offering spectacular landscapes and unique cultural experiences. \n\n\n\nWitness the majestic Sela Pass, explore the iconic Tawang Monastery, and pay tribute to the historic Jaswant Garh War...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Arunachal & Meghalaya – Peaks, Monasteries & Waterfalls”\n\n(6N/7D)\n\n\n\nDiscover the breathtaking beauty of Arunachal Pradesh and Meghalaya on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Travel through the scenic hill towns of Dirang, Tawang, Bomdila, Shillong, and Cher"
+          "description": "\"Arunachal & Meghalaya \u2013 Peaks, Monasteries & Waterfalls\u201d\n\n(6N/7D)\n\n\n\nDiscover the breathtaking beauty of Arunachal Pradesh and Meghalaya on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Travel through the scenic hill towns of Dirang, Tawang, Bomdila, Shillong, and Cher"
         }
       ],
       "inclusions": [],
@@ -765,7 +765,7 @@
       "slug": "assam-meghalaya-package",
       "title": "Assam & Meghalaya Package",
       "name": "Assam & Meghalaya Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "05 Nights / 06 Days",
       "nights": "05 Nights / 06 Days",
@@ -782,13 +782,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "\"Assam & Meghalaya – Wildlife, Waterfalls & Scenic Highlands”\n\n(5N/6D)\n\n\n\nDiscover the beauty of Assam and Meghalaya on this unforgettable 6 Days / 5 Nights journey through Northeast India. Begin your adventure in Guwahati, home to the sacred Kamakhya Temple, before exploring the wildlife-rich Kaziranga National Park, famous for the endangered One-Horned Rhinoceros. Continue to the charming hill station of Shillong, known as the \"Scotland of the East,\" and admire its serene lakes, waterfalls, an...",
+      "overview": "\"Assam & Meghalaya \u2013 Wildlife, Waterfalls & Scenic Highlands\u201d\n\n(5N/6D)\n\n\n\nDiscover the beauty of Assam and Meghalaya on this unforgettable 6 Days / 5 Nights journey through Northeast India. Begin your adventure in Guwahati, home to the sacred Kamakhya Temple, before exploring the wildlife-rich Kaziranga National Park, famous for the endangered One-Horned Rhinoceros. Continue to the charming hill station of Shillong, known as the \"Scotland of the East,\" and admire its serene lakes, waterfalls, an...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Assam & Meghalaya – Wildlife, Waterfalls & Scenic Highlands”\n\n(5N/6D)\n\n\n\nDiscover the beauty of Assam and Meghalaya on this unforgettable 6 Days / 5 Nights journey through Northeast India. Begin your adventure in Guwahati, home to the sacred Kamakhya Temple, before exploring the wildlife-rich Kazir"
+          "description": "\"Assam & Meghalaya \u2013 Wildlife, Waterfalls & Scenic Highlands\u201d\n\n(5N/6D)\n\n\n\nDiscover the beauty of Assam and Meghalaya on this unforgettable 6 Days / 5 Nights journey through Northeast India. Begin your adventure in Guwahati, home to the sacred Kamakhya Temple, before exploring the wildlife-rich Kazir"
         }
       ],
       "inclusions": [],
@@ -802,7 +802,7 @@
       "slug": "assam-meghalaya-arunachal-pradesh-package",
       "title": "Assam, Meghalaya & Arunachal Pradesh Package",
       "name": "Assam, Meghalaya & Arunachal Pradesh Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -819,7 +819,7 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "ARUNACHAL, MEGHALAYA & ASSAM FAQ\n\nWhat is the best time to visit Arunachal Pradesh, Meghalaya and Assam?\n\nOctober to April is generally a good period for comfortable sightseeing and road travel. For snowfall experiences in Arunachal Pradesh, winter months are preferred, subject to weather and road conditions.\n\nHow many days are enough for this trip?\n\nFor a comfortable combination of all three destinations, 9–12 days is recommended. A shorter itinerary can be designed by covering fewer places.\n\nI...",
+      "overview": "ARUNACHAL, MEGHALAYA & ASSAM FAQ\n\nWhat is the best time to visit Arunachal Pradesh, Meghalaya and Assam?\n\nOctober to April is generally a good period for comfortable sightseeing and road travel. For snowfall experiences in Arunachal Pradesh, winter months are preferred, subject to weather and road conditions.\n\nHow many days are enough for this trip?\n\nFor a comfortable combination of all three destinations, 9\u201312 days is recommended. A shorter itinerary can be designed by covering fewer places.\n\nI...",
       "highlights": [],
       "itinerary": [
         {
@@ -835,48 +835,11 @@
       "destination": "Assam, Meghalaya & Arunachal Pradesh"
     },
     {
-      "id": "kashmir-common-faq",
-      "slug": "kashmir-common-faq",
-      "title": "Kashmir Common FAQ",
-      "name": "Kashmir Common FAQ",
-      "price": "₹15,000",
-      "priceINR": 15000,
-      "duration": "03 Nights / 04 Days",
-      "nights": "03 Nights / 04 Days",
-      "days": "03 Nights / 04 Days",
-      "locations": "Kashmir",
-      "location": "Kashmir",
-      "category": "Popular",
-      "type": "Domestic",
-      "image_url": "/images/addd9c793a887b86533272b59634079b.jpg",
-      "img": "/images/bc26215b8a86f23ba325cec734f67987.jpg",
-      "image": "/images/d0d74fa518ccf2c3f270d33d480a52ec.jpg",
-      "startingPrice": 15000,
-      "rating": 4.8,
-      "reviewsCount": 15,
-      "heroImage": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
-      "gallery": [],
-      "overview": "KASHMIR FAQ\n\nWhat is the best time to visit Kashmir?\n\nKashmir can be visited throughout the year. March-June is ideal for pleasant weather and sightseeing, July-September for greenery, and December–February for snow experiences.\n\nHow many days are enough for a Kashmir trip?\n\nFor a first-time visit, 5–7 days is ideal to cover Srinagar, Gulmarg, Pahalgam and Sonamarg comfortably.\n\nWhich places are must-visited in Kashmir?\n\nThe most popular destinations are Srinagar, Gulmarg, Pahalgam and Sonamarg....",
-      "highlights": [],
-      "itinerary": [
-        {
-          "day": 1,
-          "title": "Arrival",
-          "description": "KASHMIR FAQ\n\nWhat is the best time to visit Kashmir?\n\nKashmir can be visited throughout the year. March-June is ideal for pleasant weather and sightseeing, July-September for greenery, and December–February for snow experiences.\n\nHow many days are enough for a Kashmir trip?\n\nFor a first-time visit, "
-        }
-      ],
-      "inclusions": [],
-      "exclusions": [],
-      "durationNights": 3,
-      "durationDays": 4,
-      "destination": "Kashmir"
-    },
-    {
       "id": "kashmir-package",
       "slug": "kashmir-package",
       "title": "Kashmir Package",
       "name": "Kashmir Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -893,13 +856,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "\"Discover the Magic of Kashmir” \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the scenic valley of Pahalgam, known for its forests, rivers, and snow-capped mountains. \n\n\n\nContinue to Gulmarg, the “Meadow of Flowers,” famous for its ski slopes and optional Gondola ride with breathtakin...",
+      "overview": "\"Discover the Magic of Kashmir\u201d \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the scenic valley of Pahalgam, known for its forests, rivers, and snow-capped mountains. \n\n\n\nContinue to Gulmarg, the \u201cMeadow of Flowers,\u201d famous for its ski slopes and optional Gondola ride with breathtakin...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Discover the Magic of Kashmir” \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the sce"
+          "description": "\"Discover the Magic of Kashmir\u201d \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the sce"
         }
       ],
       "inclusions": [],
@@ -913,7 +876,7 @@
       "slug": "kashmir-package-with-doodhpathri",
       "title": "Kashmir Package  with Doodhpathri",
       "name": "Kashmir Package  with Doodhpathri",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -930,13 +893,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "\"Discover the Magic of Kashmir” \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the scenic valley of Pahalgam, known for its forests, rivers, and snow-capped mountains. \n\n\n\nContinue to Gulmarg, the “Meadow of Flowers,” famous for its ski slopes and optional Gondola ride with breathtakin...",
+      "overview": "\"Discover the Magic of Kashmir\u201d \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the scenic valley of Pahalgam, known for its forests, rivers, and snow-capped mountains. \n\n\n\nContinue to Gulmarg, the \u201cMeadow of Flowers,\u201d famous for its ski slopes and optional Gondola ride with breathtakin...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Discover the Magic of Kashmir” \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the sce"
+          "description": "\"Discover the Magic of Kashmir\u201d \n\n(6N/7D)\n\n\n\nThis Kashmir tour offers a perfect blend of natural beauty, culture, and relaxation. Begin in Srinagar with local sightseeing, including the famous Mughal Gardens, Shankaracharya Temple, and a glimpse of traditional Kashmiri handicrafts. Travel to the sce"
         }
       ],
       "inclusions": [],
@@ -950,7 +913,7 @@
       "slug": "keralam-package-2p",
       "title": "Keralam Package   2P",
       "name": "Keralam Package   2P",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "04 Nights / 05 Days",
       "nights": "04 Nights / 05 Days",
@@ -967,13 +930,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "\"Experience the Magic of Kerala”\n\n(4N/5D)\n\n\n\nDiscover the charm of Kerala and Kanyakumari on this delightful 5 Days / 4 Nights journey through South India's most scenic destinations. Begin in the historic city of Kochi, known for its colonial heritage and vibrant culture. Cruise through the tranquil backwaters of Alleppey, where lush landscapes and traditional houseboats create an unforgettable experience. \n\n\n\nRelax on the golden beaches and dramatic cliffs of Varkala, offering breathtaking view...",
+      "overview": "\"Experience the Magic of Kerala\u201d\n\n(4N/5D)\n\n\n\nDiscover the charm of Kerala and Kanyakumari on this delightful 5 Days / 4 Nights journey through South India's most scenic destinations. Begin in the historic city of Kochi, known for its colonial heritage and vibrant culture. Cruise through the tranquil backwaters of Alleppey, where lush landscapes and traditional houseboats create an unforgettable experience. \n\n\n\nRelax on the golden beaches and dramatic cliffs of Varkala, offering breathtaking view...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Experience the Magic of Kerala”\n\n(4N/5D)\n\n\n\nDiscover the charm of Kerala and Kanyakumari on this delightful 5 Days / 4 Nights journey through South India's most scenic destinations. Begin in the historic city of Kochi, known for its colonial heritage and vibrant culture. Cruise through the tranquil"
+          "description": "\"Experience the Magic of Kerala\u201d\n\n(4N/5D)\n\n\n\nDiscover the charm of Kerala and Kanyakumari on this delightful 5 Days / 4 Nights journey through South India's most scenic destinations. Begin in the historic city of Kochi, known for its colonial heritage and vibrant culture. Cruise through the tranquil"
         }
       ],
       "inclusions": [],
@@ -987,7 +950,7 @@
       "slug": "keralam-package",
       "title": "Keralam Package",
       "name": "Keralam Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "05 Nights / 06 Days",
       "nights": "05 Nights / 06 Days",
@@ -1004,13 +967,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
       "gallery": [],
-      "overview": "\"Experience the Magic of Kerala”\n\n(5N/6D)\n\n\n\nDiscover the breathtaking beauty of Kerala, fondly known as \"God's Own Country,\" on this unforgettable 6 Days / 5 Nights holiday. Explore the mist-covered tea plantations of Munnar, renowned for its scenic landscapes, the wildlife-rich forests of Thekkady and refreshing climate. Cruise through the tranquil backwaters of Alleppey aboard a traditional houseboat, surrounded by lush coconut groves and charming villages.\n\n\n\n Experience the rich heritage an...",
+      "overview": "\"Experience the Magic of Kerala\u201d\n\n(5N/6D)\n\n\n\nDiscover the breathtaking beauty of Kerala, fondly known as \"God's Own Country,\" on this unforgettable 6 Days / 5 Nights holiday. Explore the mist-covered tea plantations of Munnar, renowned for its scenic landscapes, the wildlife-rich forests of Thekkady and refreshing climate. Cruise through the tranquil backwaters of Alleppey aboard a traditional houseboat, surrounded by lush coconut groves and charming villages.\n\n\n\n Experience the rich heritage an...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Experience the Magic of Kerala”\n\n(5N/6D)\n\n\n\nDiscover the breathtaking beauty of Kerala, fondly known as \"God's Own Country,\" on this unforgettable 6 Days / 5 Nights holiday. Explore the mist-covered tea plantations of Munnar, renowned for its scenic landscapes, the wildlife-rich forests of Thekkady"
+          "description": "\"Experience the Magic of Kerala\u201d\n\n(5N/6D)\n\n\n\nDiscover the breathtaking beauty of Kerala, fondly known as \"God's Own Country,\" on this unforgettable 6 Days / 5 Nights holiday. Explore the mist-covered tea plantations of Munnar, renowned for its scenic landscapes, the wildlife-rich forests of Thekkady"
         }
       ],
       "inclusions": [],
@@ -1024,7 +987,7 @@
       "slug": "keralam-package-2",
       "title": "Keralam Package   2",
       "name": "Keralam Package   2",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "05 Nights / 06 Days",
       "nights": "05 Nights / 06 Days",
@@ -1041,13 +1004,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "\"Experience the Magic of Kerala”\n\n(5N/6D)\n\n\n\nExperience the best of Kerala and Kanyakumari on this memorable 6 Days / 5 Nights journey. Explore the colonial charm of Kochi, the misty tea gardens of Munnar, and the tranquil backwaters of Alleppey aboard a traditional houseboat. Relax at the scenic cliffside beaches of Varkala, renowned for their breathtaking coastal views and peaceful ambiance. \n\n\n\nConclude your tour at Kanyakumari, where the Arabian Sea, Bay of Bengal, and Indian Ocean meet in s...",
+      "overview": "\"Experience the Magic of Kerala\u201d\n\n(5N/6D)\n\n\n\nExperience the best of Kerala and Kanyakumari on this memorable 6 Days / 5 Nights journey. Explore the colonial charm of Kochi, the misty tea gardens of Munnar, and the tranquil backwaters of Alleppey aboard a traditional houseboat. Relax at the scenic cliffside beaches of Varkala, renowned for their breathtaking coastal views and peaceful ambiance. \n\n\n\nConclude your tour at Kanyakumari, where the Arabian Sea, Bay of Bengal, and Indian Ocean meet in s...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Experience the Magic of Kerala”\n\n(5N/6D)\n\n\n\nExperience the best of Kerala and Kanyakumari on this memorable 6 Days / 5 Nights journey. Explore the colonial charm of Kochi, the misty tea gardens of Munnar, and the tranquil backwaters of Alleppey aboard a traditional houseboat. Relax at the scenic cl"
+          "description": "\"Experience the Magic of Kerala\u201d\n\n(5N/6D)\n\n\n\nExperience the best of Kerala and Kanyakumari on this memorable 6 Days / 5 Nights journey. Explore the colonial charm of Kochi, the misty tea gardens of Munnar, and the tranquil backwaters of Alleppey aboard a traditional houseboat. Relax at the scenic cl"
         }
       ],
       "inclusions": [],
@@ -1061,7 +1024,7 @@
       "slug": "ladakh-package",
       "title": "Ladakh Package",
       "name": "Ladakh Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -1078,13 +1041,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "\"Ladakh – Journey Beyond the Himalayas”\n\n(6N/7D)\n\n\n\nDiscover the mesmerizing beauty of Ladakh on this unforgettable 7 Days / 6 Nights journey through the majestic Himalayas. Explore the vibrant town of Leh, the breathtaking Nubra Valley, and the world-famous Pangong Lake, surrounded by dramatic mountain landscapes. Cross the legendary Khardung La Pass and Chang La Pass, among the highest motorable roads in the world. Visit ancient monasteries, witness the spectacular confluence of the Indus and ...",
+      "overview": "\"Ladakh \u2013 Journey Beyond the Himalayas\u201d\n\n(6N/7D)\n\n\n\nDiscover the mesmerizing beauty of Ladakh on this unforgettable 7 Days / 6 Nights journey through the majestic Himalayas. Explore the vibrant town of Leh, the breathtaking Nubra Valley, and the world-famous Pangong Lake, surrounded by dramatic mountain landscapes. Cross the legendary Khardung La Pass and Chang La Pass, among the highest motorable roads in the world. Visit ancient monasteries, witness the spectacular confluence of the Indus and ...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Ladakh – Journey Beyond the Himalayas”\n\n(6N/7D)\n\n\n\nDiscover the mesmerizing beauty of Ladakh on this unforgettable 7 Days / 6 Nights journey through the majestic Himalayas. Explore the vibrant town of Leh, the breathtaking Nubra Valley, and the world-famous Pangong Lake, surrounded by dramatic moun"
+          "description": "\"Ladakh \u2013 Journey Beyond the Himalayas\u201d\n\n(6N/7D)\n\n\n\nDiscover the mesmerizing beauty of Ladakh on this unforgettable 7 Days / 6 Nights journey through the majestic Himalayas. Explore the vibrant town of Leh, the breathtaking Nubra Valley, and the world-famous Pangong Lake, surrounded by dramatic moun"
         }
       ],
       "inclusions": [],
@@ -1098,7 +1061,7 @@
       "slug": "sikkim-package-best-seller",
       "title": "Sikkim Package  Best seller",
       "name": "Sikkim Package  Best seller",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "04 Nights / 05 Days",
       "nights": "04 Nights / 05 Days",
@@ -1115,13 +1078,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "\"Explore the Best of Sikkim & Darjeeling”\n\n(4N/5D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbhajan Singh Mandir, and admire spectacular mountain landscapes. Continue to the charming hill station of Darjeeling, famous for its rolling tea estates, colonial charm, and panoramic views of Mt. Kanche...",
+      "overview": "\"Explore the Best of Sikkim & Darjeeling\u201d\n\n(4N/5D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbhajan Singh Mandir, and admire spectacular mountain landscapes. Continue to the charming hill station of Darjeeling, famous for its rolling tea estates, colonial charm, and panoramic views of Mt. Kanche...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Explore the Best of Sikkim & Darjeeling”\n\n(4N/5D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbha"
+          "description": "\"Explore the Best of Sikkim & Darjeeling\u201d\n\n(4N/5D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbha"
         }
       ],
       "inclusions": [],
@@ -1135,7 +1098,7 @@
       "slug": "sikkim-package-advanture",
       "title": "Sikkim Package  Advanture",
       "name": "Sikkim Package  Advanture",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -1152,13 +1115,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
       "gallery": [],
-      "overview": "\"The Ultimate North Sikkim Escape”\n\n(6N/7D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbhajan Singh Mandir, and admire spectacular mountain landscapes. Continue to the charming hill station of Darjeeling, famous for its rolling tea estates, colonial charm, and panoramic views of Mt. Kanchenjunga....",
+      "overview": "\"The Ultimate North Sikkim Escape\u201d\n\n(6N/7D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbhajan Singh Mandir, and admire spectacular mountain landscapes. Continue to the charming hill station of Darjeeling, famous for its rolling tea estates, colonial charm, and panoramic views of Mt. Kanchenjunga....",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"The Ultimate North Sikkim Escape”\n\n(6N/7D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbhajan Sin"
+          "description": "\"The Ultimate North Sikkim Escape\u201d\n\n(6N/7D)\n\n\n\nDiscover the beauty of Sikkim and Darjeeling, where majestic Himalayan peaks, serene monasteries, and lush tea gardens create an unforgettable holiday. Explore the vibrant city of Gangtok, visit the stunning Tsomgo Lake and the sacred Baba Harbhajan Sin"
         }
       ],
       "inclusions": [],
@@ -1172,7 +1135,7 @@
       "slug": "sikkim-package",
       "title": "Sikkim Package",
       "name": "Sikkim Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "06 Nights / 07 Days",
       "nights": "06 Nights / 07 Days",
@@ -1189,13 +1152,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "\"Explore the Best of Sikkim & Darjeeling”\n\n(6N/7D)\n\n\n\nDiscover the enchanting beauty of Sikkim and Darjeeling on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Explore the charming hill stations of Darjeeling, Pelling, Yuksom, and Gangtok, each offering breathtaking landscapes and unique cultural experiences. Witness the spectacular sunrise over Mt. Kanchenjunga from Tiger Hill, visit ancient monasteries, and admire the stunning Tsomgo Lake nestled amidst snow-capped...",
+      "overview": "\"Explore the Best of Sikkim & Darjeeling\u201d\n\n(6N/7D)\n\n\n\nDiscover the enchanting beauty of Sikkim and Darjeeling on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Explore the charming hill stations of Darjeeling, Pelling, Yuksom, and Gangtok, each offering breathtaking landscapes and unique cultural experiences. Witness the spectacular sunrise over Mt. Kanchenjunga from Tiger Hill, visit ancient monasteries, and admire the stunning Tsomgo Lake nestled amidst snow-capped...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\"Explore the Best of Sikkim & Darjeeling”\n\n(6N/7D)\n\n\n\nDiscover the enchanting beauty of Sikkim and Darjeeling on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Explore the charming hill stations of Darjeeling, Pelling, Yuksom, and Gangtok, each offering breathtaking land"
+          "description": "\"Explore the Best of Sikkim & Darjeeling\u201d\n\n(6N/7D)\n\n\n\nDiscover the enchanting beauty of Sikkim and Darjeeling on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Explore the charming hill stations of Darjeeling, Pelling, Yuksom, and Gangtok, each offering breathtaking land"
         }
       ],
       "inclusions": [],
@@ -1207,9 +1170,9 @@
     {
       "id": "kaiilash-mansarova-yatra-fixed-departure-2026-heli-trip-ex-kathmandu-p-3",
       "slug": "kaiilash-mansarova-yatra-fixed-departure-2026-heli-trip-ex-kathmandu-p-3",
-      "title": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE – 2026 (Heli Trip) Ex Kathmandu P 3",
-      "name": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE – 2026 (Heli Trip) Ex Kathmandu P 3",
-      "price": "₹15,000",
+      "title": "Kailash Mansarovar (Heli ex Kathmandu)",
+      "name": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE \u2013 2026 (Heli Trip) Ex Kathmandu P 3",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1226,13 +1189,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Heli Trip) Ex Kathmandu (11 Days) \n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lake Ma...",
+      "overview": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE \u2013 2026: (Heli Trip) Ex Kathmandu (11 Days) \n\n\n\nEmbark on one of the most sacred pilgrimages in the world \u2013 the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lake Ma...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Heli Trip) Ex Kathmandu (11 Days) \n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition "
+          "description": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE \u2013 2026: (Heli Trip) Ex Kathmandu (11 Days) \n\n\n\nEmbark on one of the most sacred pilgrimages in the world \u2013 the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition "
         }
       ],
       "inclusions": [],
@@ -1244,9 +1207,9 @@
     {
       "id": "kaiilash-mansarova-yatra-fixed-departure-2026-heli-trip-ex-lucknow-p-1",
       "slug": "kaiilash-mansarova-yatra-fixed-departure-2026-heli-trip-ex-lucknow-p-1",
-      "title": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE – 2026 (Heli Trip) Ex Lucknow P 1",
-      "name": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE – 2026 (Heli Trip) Ex Lucknow P 1",
-      "price": "₹15,000",
+      "title": "Kailash Mansarovar (Heli ex Lucknow)",
+      "name": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE \u2013 2026 (Heli Trip) Ex Lucknow P 1",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1263,13 +1226,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Heli Trip) Ex Lucknow – 09 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lake Man...",
+      "overview": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE \u2013 2026: (Heli Trip) Ex Lucknow \u2013 09 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world \u2013 the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lake Man...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Heli Trip) Ex Lucknow – 09 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition t"
+          "description": "KAIILASH MANSAROVA YATRA \n\nFIXED DEPARTURE \u2013 2026: (Heli Trip) Ex Lucknow \u2013 09 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world \u2013 the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition t"
         }
       ],
       "inclusions": [],
@@ -1281,9 +1244,9 @@
     {
       "id": "kaiilash-mansarova-yatra-fixed-departure-2026-overland-ex-kathmandu-p-2",
       "slug": "kaiilash-mansarova-yatra-fixed-departure-2026-overland-ex-kathmandu-p-2",
-      "title": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE – 2026 (Overland) Ex Kathmandu P 2",
-      "name": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE – 2026 (Overland) Ex Kathmandu P 2",
-      "price": "₹15,000",
+      "title": "Kailash Mansarovar (Overland ex Kathmandu)",
+      "name": "KAIILASH MANSAROVA YATRA FIXED DEPARTURE \u2013 2026 (Overland) Ex Kathmandu P 2",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1300,13 +1263,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
       "gallery": [],
-      "overview": "KAILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Overland Trip) Ex Kathmandu – 14 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lak...",
+      "overview": "KAILASH MANSAROVA YATRA \n\nFIXED DEPARTURE \u2013 2026: (Overland Trip) Ex Kathmandu \u2013 14 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world \u2013 the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedition takes you through the serene landscapes of Nepal and Tibet, offering a rare chance to witness the majestic Mount Kailash (6,638 m), revered as the earthly abode of Lord Shiva, and the tranquil Lak...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "KAILASH MANSAROVA YATRA \n\nFIXED DEPARTURE – 2026: (Overland Trip) Ex Kathmandu – 14 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world – the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedit"
+          "description": "KAILASH MANSAROVA YATRA \n\nFIXED DEPARTURE \u2013 2026: (Overland Trip) Ex Kathmandu \u2013 14 Days\n\n\n\n\n\nEmbark on one of the most sacred pilgrimages in the world \u2013 the Kailash Mansarovar Yatra, a spiritual journey that combines breathtaking Himalayan beauty with profound cultural heritage. This divine expedit"
         }
       ],
       "inclusions": [],
@@ -1320,7 +1283,7 @@
       "slug": "4-nights-bhutan",
       "title": "4 Nights Bhutan",
       "name": "4 Nights Bhutan",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1337,13 +1300,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "Welcome to Bhutan –Happiness is a Place!\n\n\n\nBhutan often revered as the \"Land of the Thunder Dragon\" or 'DrukYul', is still regarded as one of the last \"Shangri-La's\" in the Himalayan region because of its remoteness, its spectacular mountain terrain, varied flora and fauna and its unique ancient Buddhist monasteries.\n\n\n\nThis country of rolling hills and towering crags certainly exudes charm. The mountains are magnificent, the forest are dense, the people are delightful, the air is pure, the arc...",
+      "overview": "Welcome to Bhutan \u2013Happiness is a Place!\n\n\n\nBhutan often revered as the \"Land of the Thunder Dragon\" or 'DrukYul', is still regarded as one of the last \"Shangri-La's\" in the Himalayan region because of its remoteness, its spectacular mountain terrain, varied flora and fauna and its unique ancient Buddhist monasteries.\n\n\n\nThis country of rolling hills and towering crags certainly exudes charm. The mountains are magnificent, the forest are dense, the people are delightful, the air is pure, the arc...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Welcome to Bhutan –Happiness is a Place!\n\n\n\nBhutan often revered as the \"Land of the Thunder Dragon\" or 'DrukYul', is still regarded as one of the last \"Shangri-La's\" in the Himalayan region because of its remoteness, its spectacular mountain terrain, varied flora and fauna and its unique ancient Bu"
+          "description": "Welcome to Bhutan \u2013Happiness is a Place!\n\n\n\nBhutan often revered as the \"Land of the Thunder Dragon\" or 'DrukYul', is still regarded as one of the last \"Shangri-La's\" in the Himalayan region because of its remoteness, its spectacular mountain terrain, varied flora and fauna and its unique ancient Bu"
         }
       ],
       "inclusions": [],
@@ -1357,7 +1320,7 @@
       "slug": "7-nights-bhutan",
       "title": "7 Nights Bhutan",
       "name": "7 Nights Bhutan",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1374,13 +1337,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "Bhutan – Happiness is a Place!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the heart of the Himalayas lies Bhutan, a mystical land known as the \"Land of the Thunder Dragon\" or 'Druk Yul'. Secluded and revered as one of the last \"Shangri-La's,\" it captivates with its remoteness, awe-inspiring mountain landscapes, diverse flora and fauna, and ancient Buddhist monasteries.\n\nPicture a realm of rolling hills and towering crags, where charm is woven into every nuance. Magnificent mountains stand proud, dense forest...",
+      "overview": "Bhutan \u2013 Happiness is a Place!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the heart of the Himalayas lies Bhutan, a mystical land known as the \"Land of the Thunder Dragon\" or 'Druk Yul'. Secluded and revered as one of the last \"Shangri-La's,\" it captivates with its remoteness, awe-inspiring mountain landscapes, diverse flora and fauna, and ancient Buddhist monasteries.\n\nPicture a realm of rolling hills and towering crags, where charm is woven into every nuance. Magnificent mountains stand proud, dense forest...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Bhutan – Happiness is a Place!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the heart of the Himalayas lies Bhutan, a mystical land known as the \"Land of the Thunder Dragon\" or 'Druk Yul'. Secluded and revered as one of the last \"Shangri-La's,\" it captivates with its remoteness, awe-inspiring mountain landscapes, "
+          "description": "Bhutan \u2013 Happiness is a Place!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the heart of the Himalayas lies Bhutan, a mystical land known as the \"Land of the Thunder Dragon\" or 'Druk Yul'. Secluded and revered as one of the last \"Shangri-La's,\" it captivates with its remoteness, awe-inspiring mountain landscapes, "
         }
       ],
       "inclusions": [],
@@ -1394,7 +1357,7 @@
       "slug": "azerbaijian",
       "title": "Azerbaijian",
       "name": "Azerbaijian",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1431,7 +1394,7 @@
       "slug": "bali-package-october-month",
       "title": "Bali Package   October Month",
       "name": "Bali Package   October Month",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1448,13 +1411,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
       "gallery": [],
-      "overview": "“BALI, INDONESIA TOUR” (5Night / 6Days)\n\n\n\nExperience the perfect blend of adventure, culture, and breathtaking natural beauty with this 6 Days / 5 Nights Bali Tour Package. Begin your journey by relaxing on Bali's stunning beaches and enjoy an exciting Banana Boat ride at Tanjung Benoa. Witness the spectacular Kecak Dance Performance against the backdrop of the majestic Uluwatu Temple at sunset. Explore the picturesque island of Nusa Penida, famous for its dramatic cliffs, crystal-clear waters,...",
+      "overview": "\u201cBALI, INDONESIA TOUR\u201d (5Night / 6Days)\n\n\n\nExperience the perfect blend of adventure, culture, and breathtaking natural beauty with this 6 Days / 5 Nights Bali Tour Package. Begin your journey by relaxing on Bali's stunning beaches and enjoy an exciting Banana Boat ride at Tanjung Benoa. Witness the spectacular Kecak Dance Performance against the backdrop of the majestic Uluwatu Temple at sunset. Explore the picturesque island of Nusa Penida, famous for its dramatic cliffs, crystal-clear waters,...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "“BALI, INDONESIA TOUR” (5Night / 6Days)\n\n\n\nExperience the perfect blend of adventure, culture, and breathtaking natural beauty with this 6 Days / 5 Nights Bali Tour Package. Begin your journey by relaxing on Bali's stunning beaches and enjoy an exciting Banana Boat ride at Tanjung Benoa. Witness the"
+          "description": "\u201cBALI, INDONESIA TOUR\u201d (5Night / 6Days)\n\n\n\nExperience the perfect blend of adventure, culture, and breathtaking natural beauty with this 6 Days / 5 Nights Bali Tour Package. Begin your journey by relaxing on Bali's stunning beaches and enjoy an exciting Banana Boat ride at Tanjung Benoa. Witness the"
         }
       ],
       "inclusions": [],
@@ -1468,7 +1431,7 @@
       "slug": "cambodia-vietnam-new",
       "title": "Cambodia vietnam new",
       "name": "Cambodia vietnam new",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1505,7 +1468,7 @@
       "slug": "dubai-package",
       "title": "Dubai Package",
       "name": "Dubai Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1522,13 +1485,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "Package Details:\n\nPackage Name\n\nWonders Of Dubai Ex Chandigarh\n\nDestination Covered\n\nChandigarh - Delhi – Dubai – Abu Dhabi – Delhi - Chandigarh\n\nTraveling Mode\n\nFlight + Bus\n\nClass\n\nDeluxe\n\nPackage Date\n\n26.10.2026\n\nDuration\n\n06 Nights / 07 Days\n\nSeats\n\n30\n\nFlight Details:\n\nAirlines\n\nTo - From\n\nFlight Timings\n\nAir Arabia - G9464\n\n26.10.2026\n\nDelhi (0315 hrs) to Sharjah (0545 hrs) - Direct Flight\n\nAir Arabia - G9463\n\n30.10.2026\n\nSharjah (2155 hrs) to Delhi (0235 hrs) - Direct Flight\n\n \n\nNote: Fl...",
+      "overview": "Package Details:\n\nPackage Name\n\nWonders Of Dubai Ex Chandigarh\n\nDestination Covered\n\nChandigarh - Delhi \u2013 Dubai \u2013 Abu Dhabi \u2013 Delhi - Chandigarh\n\nTraveling Mode\n\nFlight + Bus\n\nClass\n\nDeluxe\n\nPackage Date\n\n26.10.2026\n\nDuration\n\n06 Nights / 07 Days\n\nSeats\n\n30\n\nFlight Details:\n\nAirlines\n\nTo - From\n\nFlight Timings\n\nAir Arabia - G9464\n\n26.10.2026\n\nDelhi (0315 hrs) to Sharjah (0545 hrs) - Direct Flight\n\nAir Arabia - G9463\n\n30.10.2026\n\nSharjah (2155 hrs) to Delhi (0235 hrs) - Direct Flight\n\n\u00a0\n\nNote:\u00a0Fl...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Package Details:\n\nPackage Name\n\nWonders Of Dubai Ex Chandigarh\n\nDestination Covered\n\nChandigarh - Delhi – Dubai – Abu Dhabi – Delhi - Chandigarh\n\nTraveling Mode\n\nFlight + Bus\n\nClass\n\nDeluxe\n\nPackage Date\n\n26.10.2026\n\nDuration\n\n06 Nights / 07 Days\n\nSeats\n\n30\n\nFlight Details:\n\nAirlines\n\nTo - From\n\nFli"
+          "description": "Package Details:\n\nPackage Name\n\nWonders Of Dubai Ex Chandigarh\n\nDestination Covered\n\nChandigarh - Delhi \u2013 Dubai \u2013 Abu Dhabi \u2013 Delhi - Chandigarh\n\nTraveling Mode\n\nFlight + Bus\n\nClass\n\nDeluxe\n\nPackage Date\n\n26.10.2026\n\nDuration\n\n06 Nights / 07 Days\n\nSeats\n\n30\n\nFlight Details:\n\nAirlines\n\nTo - From\n\nFli"
         }
       ],
       "inclusions": [],
@@ -1542,7 +1505,7 @@
       "slug": "kazakhstan-package",
       "title": "Kazakhstan Package",
       "name": "Kazakhstan Package",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1579,7 +1542,7 @@
       "slug": "maldives-2",
       "title": "Maldives 2",
       "name": "Maldives 2",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1616,7 +1579,7 @@
       "slug": "mauritius",
       "title": "Mauritius",
       "name": "Mauritius",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1653,7 +1616,7 @@
       "slug": "nepal",
       "title": "nepal",
       "name": "nepal",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1690,7 +1653,7 @@
       "slug": "russia-mou-peter",
       "title": "Russia   MOU + PETER",
       "name": "Russia   MOU + PETER",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1727,7 +1690,7 @@
       "slug": "seychelles",
       "title": "Seychelles",
       "name": "Seychelles",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1764,7 +1727,7 @@
       "slug": "singapore-malayasia",
       "title": "Singapore Malayasia",
       "name": "Singapore Malayasia",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1781,13 +1744,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "Package Details:\n\nPackage Name\n\nChandigarh To Singapore Malaysia Package\n\nDestination Covered\n\nChandigarh - Delhi - Singapore - Malaysia - Delhi - Chandigarh\n\nTraveling Mode\n\nRoad + Flight + Road\n\nClass\n\nDeluxe\n\nPackage Date\n\n14.02.2026 to 21.02.2026\n\nDuration\n\n7 Nights / 8 Days\n\nSeats\n\n25\n\n \n\nFlight Details:\n\nNote: Airlines are not confirmed yet, Schedule and Airlines may change on finalization. Flight timings are subject to change. IRCTC will try to complete the itinerary and mentioned sightse...",
+      "overview": "Package Details:\n\nPackage Name\n\nChandigarh To Singapore Malaysia Package\n\nDestination Covered\n\nChandigarh -\u00a0Delhi -\u00a0Singapore -\u00a0Malaysia -\u00a0Delhi - Chandigarh\n\nTraveling Mode\n\nRoad + Flight + Road\n\nClass\n\nDeluxe\n\nPackage Date\n\n14.02.2026 to 21.02.2026\n\nDuration\n\n7 Nights / 8 Days\n\nSeats\n\n25\n\n\u00a0\n\nFlight Details:\n\nNote:\u00a0Airlines are not confirmed yet, Schedule and Airlines may change on finalization.\u00a0Flight timings are subject to change. IRCTC will try to complete the itinerary and mentioned sightse...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Package Details:\n\nPackage Name\n\nChandigarh To Singapore Malaysia Package\n\nDestination Covered\n\nChandigarh - Delhi - Singapore - Malaysia - Delhi - Chandigarh\n\nTraveling Mode\n\nRoad + Flight + Road\n\nClass\n\nDeluxe\n\nPackage Date\n\n14.02.2026 to 21.02.2026\n\nDuration\n\n7 Nights / 8 Days\n\nSeats\n\n25\n\n \n\nFligh"
+          "description": "Package Details:\n\nPackage Name\n\nChandigarh To Singapore Malaysia Package\n\nDestination Covered\n\nChandigarh -\u00a0Delhi -\u00a0Singapore -\u00a0Malaysia -\u00a0Delhi - Chandigarh\n\nTraveling Mode\n\nRoad + Flight + Road\n\nClass\n\nDeluxe\n\nPackage Date\n\n14.02.2026 to 21.02.2026\n\nDuration\n\n7 Nights / 8 Days\n\nSeats\n\n25\n\n\u00a0\n\nFligh"
         }
       ],
       "inclusions": [],
@@ -1801,7 +1764,7 @@
       "slug": "singapore",
       "title": "Singapore",
       "name": "Singapore",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1838,7 +1801,7 @@
       "slug": "sri-lanka-6-nights-7-days",
       "title": "Sri Lanka   6 nights 7 days",
       "name": "Sri Lanka   6 nights 7 days",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1855,13 +1818,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "Sri Lanka\t\t\n\n06 Nights & 07 Days\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you’re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you’re more of an explorer who wants to know more about the beautiful aqua-marine creatures and plant life that inhabit the waters of the island. Whatever your preference maybe, we can find something that’s perfect for you. You can now choose from three breathtakin...",
+      "overview": "Sri Lanka\t\t\n\n06 Nights & 07 Days\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you\u2019re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you\u2019re more of an explorer who wants to know more about the beautiful aqua-marine creatures and plant life that inhabit the waters of the island. Whatever your preference maybe, we can find something that\u2019s perfect for you. You can now choose from three breathtakin...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Sri Lanka\t\t\n\n06 Nights & 07 Days\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you’re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you’re more of an explorer who wants to know more about the beaut"
+          "description": "Sri Lanka\t\t\n\n06 Nights & 07 Days\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you\u2019re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you\u2019re more of an explorer who wants to know more about the beaut"
         }
       ],
       "inclusions": [],
@@ -1875,7 +1838,7 @@
       "slug": "sri-lanka-05-nights-06-days",
       "title": "Sri Lanka 05 nights 06 days",
       "name": "Sri Lanka 05 nights 06 days",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1892,13 +1855,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/e97b55b625311db0391ed5d31752fe46.jpg",
       "gallery": [],
-      "overview": "\n\n1\n\nSri Lanka\n\n05 Nights& 06 Days\n\n\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you’re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you’re more of an explorer who wants to know more about the beautiful aqua-marine creatures and plant life that inhabit the waters of the island. Whatever your preference maybe, we can find something that’s perfect for you. You can now choose from three breatht...",
+      "overview": "\n\n1\n\nSri Lanka\n\n05 Nights& 06 Days\n\n\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you\u2019re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you\u2019re more of an explorer who wants to know more about the beautiful aqua-marine creatures and plant life that inhabit the waters of the island. Whatever your preference maybe, we can find something that\u2019s perfect for you. You can now choose from three breatht...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "\n\n1\n\nSri Lanka\n\n05 Nights& 06 Days\n\n\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you’re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you’re more of an explorer who wants to know more about the b"
+          "description": "\n\n1\n\nSri Lanka\n\n05 Nights& 06 Days\n\n\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you\u2019re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you\u2019re more of an explorer who wants to know more about the b"
         }
       ],
       "inclusions": [],
@@ -1912,7 +1875,7 @@
       "slug": "thailand",
       "title": "Thailand",
       "name": "Thailand",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -1929,13 +1892,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/30ca80d455a76609dc911a25a68d87e2.jpg",
       "gallery": [],
-      "overview": "Package Details\n\nPackage Name\n\nTREASURES OF THAILAND EX MUMBAI\n\nTour Itinerary\n\nBangkok - Pattaya - Bangkok\n\nTravelling Mode\n\nFlight Ex Mumbai\n\nTour Date\n\nComing Soon\n\nDuration\n\n4 Nights/5 Days\n\nMeal Plan\n\nAP (Breakfast, Lunch & Dinner)\n\n\n\nTour Itinerary: - Mumbai - Bangkok - Pattaya - Bangkok – Mumbai\n\nDuration: - 04 Nights/05 Days\n\nDate\n\nDestination\n\nItinerary\n\nDay 01\n\nMumbai- Pattaya\n\nDeparture form Mumbai at 00:40 hrs & Arrival at Bangkok International Airport (Don Mueang) 06:30 hrs. Meet lo...",
+      "overview": "Package Details\n\nPackage Name\n\nTREASURES OF THAILAND EX MUMBAI\n\nTour Itinerary\n\nBangkok - Pattaya - Bangkok\n\nTravelling Mode\n\nFlight Ex Mumbai\n\nTour Date\n\nComing Soon\n\nDuration\n\n4 Nights/5 Days\n\nMeal Plan\n\nAP (Breakfast, Lunch & Dinner)\n\n\n\nTour Itinerary: - Mumbai - Bangkok - Pattaya - Bangkok \u2013 Mumbai\n\nDuration: - 04 Nights/05 Days\n\nDate\n\nDestination\n\nItinerary\n\nDay 01\n\nMumbai- Pattaya\n\nDeparture form Mumbai at 00:40 hrs & Arrival at Bangkok International Airport (Don Mueang) 06:30 hrs. Meet lo...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Package Details\n\nPackage Name\n\nTREASURES OF THAILAND EX MUMBAI\n\nTour Itinerary\n\nBangkok - Pattaya - Bangkok\n\nTravelling Mode\n\nFlight Ex Mumbai\n\nTour Date\n\nComing Soon\n\nDuration\n\n4 Nights/5 Days\n\nMeal Plan\n\nAP (Breakfast, Lunch & Dinner)\n\n\n\nTour Itinerary: - Mumbai - Bangkok - Pattaya - Bangkok – Mum"
+          "description": "Package Details\n\nPackage Name\n\nTREASURES OF THAILAND EX MUMBAI\n\nTour Itinerary\n\nBangkok - Pattaya - Bangkok\n\nTravelling Mode\n\nFlight Ex Mumbai\n\nTour Date\n\nComing Soon\n\nDuration\n\n4 Nights/5 Days\n\nMeal Plan\n\nAP (Breakfast, Lunch & Dinner)\n\n\n\nTour Itinerary: - Mumbai - Bangkok - Pattaya - Bangkok \u2013 Mum"
         }
       ],
       "inclusions": [],
@@ -1949,7 +1912,7 @@
       "slug": "turkey",
       "title": "Turkey",
       "name": "Turkey",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "08 Nights / 09 Days",
       "nights": "08 Nights / 09 Days",
@@ -1966,13 +1929,13 @@
       "reviewsCount": 15,
       "heroImage": "/images/7c677b5e8b51587496b66ed9709845df.jpg",
       "gallery": [],
-      "overview": "Wonderful Turkey On SIC Basis\n\n(8N-9D)\n\n\n\nDay 1: Istanbul\n\nArrival to Istanbul Airport (IST) or SabihaGokcen Airport (SAW). Transfer to your hotel & Rest of the day will be free at leisure for relax and freshen up. (Standard check in time is 14:00 pm)\n\nOvernight in Istanbul.\n\n Day 2: Istanbul\n\nBreakfast at hotel. Tour of \"Sultan Ahmet Center\", the heart of the \"Old City\" from where the Byzantine and Ottoman Empires were ruled. Hagia Sophia, the Church of Divine Wisdom, one of the greatest marvel...",
+      "overview": "Wonderful Turkey On SIC Basis\n\n(8N-9D)\n\n\n\nDay\u00a01: Istanbul\n\nArrival to Istanbul Airport (IST) or SabihaGokcen Airport (SAW). Transfer to your hotel & Rest of the day will be free at leisure for relax and freshen up. (Standard check in time is 14:00 pm)\n\nOvernight in Istanbul.\n\n Day\u00a02: Istanbul\n\nBreakfast at hotel. Tour of \"Sultan Ahmet Center\", the heart of the \"Old City\" from where the Byzantine and Ottoman Empires were ruled. Hagia Sophia, the Church of Divine Wisdom, one of the greatest marvel...",
       "highlights": [],
       "itinerary": [
         {
           "day": 1,
           "title": "Arrival",
-          "description": "Wonderful Turkey On SIC Basis\n\n(8N-9D)\n\n\n\nDay 1: Istanbul\n\nArrival to Istanbul Airport (IST) or SabihaGokcen Airport (SAW). Transfer to your hotel & Rest of the day will be free at leisure for relax and freshen up. (Standard check in time is 14:00 pm)\n\nOvernight in Istanbul.\n\n Day 2: Istanbul\n\nBreak"
+          "description": "Wonderful Turkey On SIC Basis\n\n(8N-9D)\n\n\n\nDay\u00a01: Istanbul\n\nArrival to Istanbul Airport (IST) or SabihaGokcen Airport (SAW). Transfer to your hotel & Rest of the day will be free at leisure for relax and freshen up. (Standard check in time is 14:00 pm)\n\nOvernight in Istanbul.\n\n Day\u00a02: Istanbul\n\nBreak"
         }
       ],
       "inclusions": [],
@@ -1986,7 +1949,7 @@
       "slug": "vietnam",
       "title": "Vietnam",
       "name": "Vietnam",
-      "price": "₹15,000",
+      "price": "\u20b915,000",
       "priceINR": 15000,
       "duration": "03 Nights / 04 Days",
       "nights": "03 Nights / 04 Days",
@@ -2003,7 +1966,7 @@
       "reviewsCount": 15,
       "heroImage": "/images/9dd341eb42d8bf61fd830a7fb49fcea0.jpg",
       "gallery": [],
-      "overview": "VIETNAM\n\nSAIGON\n\n04.10.2026\n\nLAND OF THE ASCENDING DRAGON\n\n\n\n\n\nEmerald Bays. Timeless Charm. Endless Memories.\n\n\n\n\n\n\n\n\n\nMEET THE MAGIC OF VIETNAM\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n04.10.2026\n\nN\n\nA\n\nM\n\nV\n\nI\n\nE\n\nT\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Details\n\n\n\nPackage Name\n\nCLASSICAL VIETNAM\n\nEx-Mumbai With Ho Chi Minh City, Da nang & Hanoi, Halong Bay Cruise\n\n\n\nTour Itinerary\n\nMumbai - Ho Chi Minh City – Da Nang - Hanoi & Halong Bay Cruise – Mumbai.\n\nTraveling Mode\n\nBy Flight\n\nDuration\n\n08N...",
+      "overview": "VIETNAM\n\nSAIGON\n\n04.10.2026\n\nLAND OF THE ASCENDING DRAGON\n\n\n\n\n\nEmerald Bays. Timeless Charm. Endless Memories.\n\n\n\n\n\n\n\n\n\nMEET THE MAGIC OF VIETNAM\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n04.10.2026\n\nN\n\nA\n\nM\n\nV\n\nI\n\nE\n\nT\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Details\n\n\n\nPackage Name\n\nCLASSICAL VIETNAM\n\nEx-Mumbai With Ho Chi Minh City, Da nang & Hanoi, Halong Bay Cruise\n\n\n\nTour Itinerary\n\nMumbai - Ho Chi Minh City \u2013 Da Nang - Hanoi & Halong Bay Cruise \u2013 Mumbai.\n\nTraveling Mode\n\nBy Flight\n\nDuration\n\n08N...",
       "highlights": [],
       "itinerary": [
         {
