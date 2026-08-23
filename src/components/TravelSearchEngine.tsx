@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import db from '../data/mnm_database.json';
 import { Search, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -17,9 +17,6 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
   standalone = false 
 }) => {
   const navigate = useNavigate();
-
-  const checkInRef = useRef<HTMLInputElement>(null);
-  const checkOutRef = useRef<HTMLInputElement>(null);
 
   const [destination, setDestination] = useState(initialDestination);
   const [checkIn, setCheckIn] = useState('');
@@ -127,13 +124,10 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
 
           <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
 
-          {/* Check-in */}
-            <div 
-              onClick={() => checkInRef.current?.showPicker()}
-              className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent"
-            >
-               <div className="flex items-center gap-3 w-full">
-                 <div className="text-gray-400 dark:text-white/80 shrink-0 pointer-events-none">
+            {/* Check-in */}
+            <div className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent relative overflow-hidden">
+               <div className="flex items-center gap-3 w-full pointer-events-none">
+                 <div className="text-gray-400 dark:text-white/80 shrink-0">
                    <Calendar size={20} strokeWidth={2.5} />
                  </div>
                  <div className="flex flex-col justify-center flex-1">
@@ -145,22 +139,18 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                </div>
                <input 
                  type="date"
-                 ref={checkInRef}
                  value={checkIn}
                  min={today}
                  onChange={handleCheckInChange}
-                 className="sr-only"
+                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                />
             </div>
   
             <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
   
             {/* Check-out */}
-            <div 
-              onClick={() => checkOutRef.current?.showPicker()}
-              className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent"
-            >
-               <div className="flex items-center gap-3 w-full">
+            <div className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent relative overflow-hidden">
+               <div className="flex items-center gap-3 w-full pointer-events-none">
                  <div className="flex flex-col justify-center flex-1">
                     <span className="text-sm font-extrabold text-gray-900 dark:text-white">Check-out</span>
                     <span className="text-gray-500 text-sm mt-0.5 font-medium">
@@ -170,11 +160,10 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                </div>
                <input 
                  type="date"
-                 ref={checkOutRef}
                  value={checkOut}
                  min={checkIn || today}
                  onChange={(e) => setCheckOut(e.target.value)}
-                 className="sr-only"
+                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                />
             </div>
   

@@ -91,7 +91,8 @@ export const Home: React.FC = () => {
   const activePackage = heroPackages[currentSlide];
 
   // Popular Packages Logic
-  const popularPackages = db.packages.slice(7, 10); // Pick 3
+  const popularPackageIds = ['2', '15', '16'];
+  const popularPackages = popularPackageIds.map(id => db.packages.find(p => p.id === id)).filter(Boolean) as typeof db.packages;
 
   // Travel Blogs (From scraped data)
   const blogs = blogsData.slice(0, 3);

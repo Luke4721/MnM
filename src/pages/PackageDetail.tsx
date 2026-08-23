@@ -5,6 +5,7 @@ import { MapPin, Star, Calendar, ChevronDown, Check, ArrowRight, Shield, CreditC
 import { useCurrency } from '../context/CurrencyProvider';
 import db from '../data/mnm_database.json';
 import { PageTransition } from '../components/PageTransition';
+import { EnquiryModal } from '../components/EnquiryModal';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -12,6 +13,7 @@ export const PackageDetail: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
   const [activeDay, setActiveDay] = useState<number | null>(1);
   const [selectedDate, setSelectedDate] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fallback to id if slug is not found (for backwards compatibility)
   const pkg = db.packages.find(p => p.slug === slug || p.id.toString() === slug);
@@ -283,13 +285,10 @@ export const PackageDetail: React.FC = () => {
                   </div>
 
                   <button 
-                    onClick={() => {
-                      if (!selectedDate) alert('Please select a date first.');
-                      else alert('Redirecting to checkout/inquiry for ' + selectedDate);
-                    }}
+                    onClick={() => setIsModalOpen(true)}
                     className="w-full py-4 rounded-full bg-[#D97736] text-white font-bold text-lg shadow-[0_8px_24px_rgba(217,119,54,0.4)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(217,119,54,0.6)] transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    Book Now <ArrowRight size={20} />
+                    Enquire Now <ArrowRight size={20} />
                   </button>
 
                   <div className="mt-6 pt-6 border-t border-gray-200 dark:border-white/10 flex items-center justify-between text-xs text-gray-500">
@@ -304,6 +303,12 @@ export const PackageDetail: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      <EnquiryModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        packageName={pkg.title}
+      />
     </PageTransition>
   );
 };
