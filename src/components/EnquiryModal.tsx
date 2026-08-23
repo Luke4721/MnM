@@ -6,9 +6,10 @@ interface EnquiryModalProps {
   isOpen: boolean;
   onClose: () => void;
   packageName: string;
+  variantName?: string;
 }
 
-export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, packageName }) => {
+export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, packageName, variantName }) => {
   const [travelType, setTravelType] = useState('Leisure');
   const [budget, setBudget] = useState('Standard');
   const [travelers, setTravelers] = useState('2');
@@ -24,10 +25,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = encodeURIComponent(`Enquiry for ${packageName}`);
+    const subject = encodeURIComponent(`Enquiry for ${packageName}${variantName ? ` - ${variantName}` : ''}`);
     const body = encodeURIComponent(
       `Hi MNM Travels,\n\n` +
-      `I would like to enquire about the "${packageName}" package.\n\n` +
+      `I would like to enquire about the "${packageName}" package${variantName ? ` (${variantName} option)` : ''}.\n\n` +
       `Here are my preferences:\n` +
       `- Travel Type: ${travelType}\n` +
       `- Budget Range: ${budget}\n` +
@@ -73,6 +74,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Plan Your Trip</h2>
           <p className="text-gray-500 dark:text-gray-400 mb-8">
             Enquiring about <span className="font-semibold text-[#D97736]">{packageName}</span>
+            {variantName && <span className="text-gray-400"> ({variantName})</span>}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-8">

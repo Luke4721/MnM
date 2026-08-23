@@ -14,6 +14,7 @@ export const PackageDetail: React.FC = () => {
   const [activeDay, setActiveDay] = useState<number | null>(1);
   const [selectedDate, setSelectedDate] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
 
   // Fallback to id if slug is not found (for backwards compatibility)
   const pkg = db.packages.find(p => p.slug === slug || p.id.toString() === slug);
@@ -32,10 +33,22 @@ export const PackageDetail: React.FC = () => {
 
   // Handle compatibility for both schemas
   const imageUrl = pkg.heroImage || pkg.image_url || pkg.image || pkg.img;
-  const nights = pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days;
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
-  const priceValue = pkg.startingPrice || pkg.priceINR || 0;
   
+  const variants = pkg.variants && pkg.variants.length > 0 ? [
+    {
+      id: 'base',
+      name: 'Standard',
+      priceINR: pkg.startingPrice || pkg.priceINR || 0,
+      duration: pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days
+    },
+    ...pkg.variants
+  ] : null;
+
+  const activeVariant = variants ? variants[selectedVariantIdx] : null;
+  const nights = activeVariant ? activeVariant.duration : (pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days);
+  const priceValue = activeVariant ? activeVariant.priceINR : (pkg.startingPrice || pkg.priceINR || 0);
+
   const convertedPrice = Math.round(convertPrice(priceValue, true) as number);
   const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
 
@@ -284,6 +297,32 @@ export const PackageDetail: React.FC = () => {
                     </button>
                   </div>
 
+                  {variants && (
+                    <div className="mb-8">
+                      <div className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Package Options</div>
+                      <div className="flex flex-col gap-2">
+                        {variants.map((v: any, idx: number) => (
+                          <button
+                            key={v.id || idx}
+                            onClick={() => setSelectedVariantIdx(idx)}
+                            className={`flex flex-col text-left p-4 rounded-2xl border transition-all duration-300 ${
+                              selectedVariantIdx === idx 
+                                ? 'border-[#D97736] bg-[#D97736]/10 shadow-md ring-1 ring-[#D97736]' 
+                                : 'border-gray-200 dark:border-white/10 hover:border-[#D97736]/50 bg-white/50 dark:bg-white/5'
+                            }`}
+                          >
+                            <span className={`font-bold text-base ${selectedVariantIdx === idx ? 'text-[#D97736]' : 'text-gray-900 dark:text-white'}`}>
+                              {v.name}
+                            </span>
+                            <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                              {v.duration}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <button 
                     onClick={() => setIsModalOpen(true)}
                     className="w-full py-4 rounded-full bg-[#D97736] text-white font-bold text-lg shadow-[0_8px_24px_rgba(217,119,54,0.4)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(217,119,54,0.6)] transition-all duration-300 flex items-center justify-center gap-2"
@@ -308,6 +347,7 @@ export const PackageDetail: React.FC = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         packageName={pkg.title}
+        variantName={activeVariant?.name}
       />
     </PageTransition>
   );
