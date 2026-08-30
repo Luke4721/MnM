@@ -1,4 +1,4 @@
-﻿import { Filter, Calendar, Info, ChevronDown, User } from 'lucide-react';
+import { Filter, Calendar, Info, ChevronDown, User } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, BarChart, Bar } from 'recharts';
 
 const salesData = [
@@ -278,26 +278,26 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Connection */}
+        {/* Leadership Team */}
         <div className="bg-white/50 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-2xl p-6">
           <h3 className="text-gray-900 font-bold flex items-center gap-2 text-sm mb-5">
-            <User size={14} className="text-gray-500" /> Connection
+            <User size={14} className="text-gray-500" /> Leadership Team
           </h3>
           <div className="flex justify-between mb-6 pb-4 border-b border-white/40">
             <div>
-              <div className="text-[11px] text-gray-500 mb-0.5">Following</div>
-              <div className="text-lg font-bold text-gray-900">2598</div>
+              <div className="text-[11px] text-gray-500 mb-0.5">Founded</div>
+              <div className="text-lg font-bold text-gray-900">2008</div>
             </div>
             <div className="text-right">
-              <div className="text-[11px] text-gray-500 mb-0.5">Followers</div>
-              <div className="text-lg font-bold text-gray-900">8547</div>
+              <div className="text-[11px] text-gray-500 mb-0.5">Directors</div>
+              <div className="text-lg font-bold text-gray-900">3</div>
             </div>
           </div>
           <div className="space-y-4">
             {[
-              { name: 'Mahmuda Ruma', role: 'DevOps', img: 'https://ui-avatars.com/api/?name=Mahmuda+Ruma&background=FCA5A5&color=fff' },
-              { name: 'Juwel Jaman', role: 'Founder & CEO', img: 'https://ui-avatars.com/api/?name=Juwel+Jaman&background=93C5FD&color=fff' },
-              { name: 'Elham', role: 'Designer', img: 'https://ui-avatars.com/api/?name=Elham&background=FCD34D&color=fff' },
+              { name: 'Dr. Sharad Kumar Jindal', role: 'Co-founder & Director', img: 'https://ui-avatars.com/api/?name=Dr+Sharad+Kumar+Jindal&background=FCA5A5&color=fff' },
+              { name: 'Dr. Sanjeev K. Verma', role: 'Co-founder & Director', img: 'https://ui-avatars.com/api/?name=Dr+Sanjeev+Kumar+Verma&background=93C5FD&color=fff' },
+              { name: 'Arvind Kumar', role: 'Director', img: 'https://ui-avatars.com/api/?name=Arvind+Kumar&background=FCD34D&color=fff' },
             ].map((user, i) => (
               <div key={i} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
