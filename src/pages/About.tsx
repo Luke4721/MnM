@@ -49,13 +49,15 @@ export const About: React.FC = () => {
                 </h2>
                 <div className="space-y-6 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
                   <p>
-                    {agency.mission}
+                    Welcome to Monks & Monkeys Travels Pvt. Ltd., your trusted partner in discovering the vibrant and diverse beauty of India. Founded with a passion for travel and a deep love for our country's rich cultural heritage, we specialize in creating unforgettable travel experiences for both domestic and international tourists.
                   </p>
                   <p>
-                    {agency.description}
+                    <b className="text-gray-900 dark:text-white block mb-2">Who We Are</b>
+                    At Monks & Monkeys Travels, we are a team of dedicated travel enthusiasts and experts with extensive knowledge of India's most breathtaking destinations. Our journey began with a simple goal: to share the wonders of India with the world. With years of experience in the travel industry, we have grown into a leading travel agency renowned for our personalized services and attention to detail.
                   </p>
-                  <p className="font-semibold text-gray-900 dark:text-white border-l-4 border-[#FF9933] pl-4 italic">
-                    With our more than 15 years of journey, Monks & Monkeys has served thousands of clients, and they are still happily connected with us.
+                  <p>
+                    <b className="text-gray-900 dark:text-white block mb-2">Our Mission</b>
+                    Our mission is to provide exceptional travel experiences that highlight the rich diversity, cultural heritage, and natural beauty of India, Nepal, Bhutan, Sri Lanka, and the Maldives. We aim to create journeys that are tailored to your preferences, offering authentic and immersive experiences that allow you to connect deeply with each destination.
                   </p>
                 </div>
               </div>
