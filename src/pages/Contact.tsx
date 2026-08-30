@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 export const Contact: React.FC = () => {
   return (
     <PageTransition>
-      <div className="page-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-        <div style={{ width: '100%', maxWidth: '1200px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+      <div className="flex items-center justify-center p-4 md:p-8 pt-32 md:pt-40 min-h-[80vh]">
+        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           <motion.div
             initial={{ opacity: 0, x: -50 }}

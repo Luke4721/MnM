@@ -199,28 +199,29 @@ export const Home: React.FC = () => {
               </div>
             </div>
   
-            <div className="flex-1 relative">
-              <div className="relative rounded-t-[10rem] overflow-hidden aspect-[4/5] shadow-2xl max-w-md ml-auto mr-12">
-               {[
-                 "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1280px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
-                 "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-                 "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Oia_sunset_-_panoramio_%282%29.jpg/1280px-Oia_sunset_-_panoramio_%282%29.jpg",
-                 "https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg"
-               ].map((imgUrl, i) => (
-                 <img 
-                   key={i} 
-                   src={imgUrl} 
-                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${currentSlide % 4 === i ? 'opacity-100' : 'opacity-0'}`} 
-                   alt="Travel Destination" 
-                 />
-               ))}
-              </div>
-              <div className="absolute top-1/4 -left-8 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900">
-                 <span className="text-[#D97736] font-bold text-xs">SINCE</span>
-                 <span className="text-3xl font-extrabold text-gray-900 dark:text-white">1990</span>
-              </div>
+          <div className="flex-1 relative mt-16 lg:mt-0">
+            <div className="relative rounded-t-[10rem] overflow-hidden aspect-[4/5] shadow-2xl w-full max-w-md mx-auto lg:ml-auto lg:mr-12">
+             {[
+               "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1280px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
+               "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
+               "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Oia_sunset_-_panoramio_%282%29.jpg/1280px-Oia_sunset_-_panoramio_%282%29.jpg",
+               "https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg"
+             ].map((imgUrl, i) => (
+               <img 
+                 key={i} 
+                 src={imgUrl} 
+                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${currentSlide % 4 === i ? 'opacity-100' : 'opacity-0'}`} 
+                 alt="Travel Destination" 
+               />
+             ))}
+            </div>
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 lg:top-1/4 lg:-left-8 lg:translate-x-0 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900 z-20">
+               <span className="text-[#D97736] font-bold text-xs">SINCE</span>
+               <span className="text-3xl font-extrabold text-gray-900 dark:text-white">1990</span>
             </div>
           </div>
+        </div>
+        
         {/* 4-icon grid features */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-200 dark:border-gray-800 pb-20">
           <div className="flex items-start gap-4">
@@ -453,7 +454,7 @@ export const Home: React.FC = () => {
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-36 z-20 pointer-events-none">
                   <span className="text-7xl text-[#D97736] drop-shadow-lg -rotate-6 inline-block" style={{ fontFamily: 'var(--font-cursive)' }}>Amazing</span>
                </div>
-               <div className="absolute top-1/2 -translate-y-1/2 -left-12 -z-0 text-gray-100 dark:text-[#D97736] font-serif text-7xl font-black tracking-widest select-none rotate-90 opacity-40 dark:opacity-20 whitespace-nowrap">
+               <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -left-12 -z-0 text-gray-100 dark:text-[#D97736] font-serif text-7xl font-black tracking-widest select-none rotate-90 opacity-40 dark:opacity-20 whitespace-nowrap">
                  MONKS & MONKEYS
                </div>
             </div>
@@ -518,9 +519,9 @@ export const Home: React.FC = () => {
         </div>
 
         <div className="bg-[#1a1a1a] dark:bg-black">
-          <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400">
-            <div>© Copyright {new Date().getFullYear()} <span className="font-bold text-white">Monks & Monkey Travels</span></div>
-            <div className="flex gap-6 font-bold uppercase tracking-widest text-white">
+          <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400 text-center">
+            <div>&copy; Copyright {new Date().getFullYear()} <span className="font-bold text-white">Monks & Monkey Travels</span></div>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 font-bold uppercase tracking-widest text-white">
               <Link to="/about" className="hover:text-[#D97736] transition-colors">About</Link>
               <Link to="/packages" className="hover:text-[#D97736] transition-colors">Destinations</Link>
               <Link to="/packages" className="hover:text-[#D97736] transition-colors">Tours</Link>
@@ -529,10 +530,10 @@ export const Home: React.FC = () => {
               <Link to="/contact" className="hover:text-[#D97736] transition-colors">Contact</Link>
             </div>
             <div className="flex gap-4">
-              <Link to="#" className="hover:text-[#D97736] transition-colors">f</Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors">t</Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors">y</Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors">i</Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></Link>
+              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></Link>
             </div>
           </div>
         </div>

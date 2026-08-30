@@ -7,7 +7,7 @@ export const Gallery: React.FC = () => {
     <PageTransition>
       <div className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto min-h-screen relative z-10">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Client Memory Gallery</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-[#FF9933] mb-6">Client Memory Gallery</h1>
           <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             A collection of beautiful moments captured by our amazing travelers around the globe.
           </p>
