@@ -11,7 +11,7 @@ export const Gallery: React.FC = () => {
           <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             A collection of beautiful moments captured by our amazing travelers around the globe.
           </p>
-          <div className="w-12 h-1 bg-[#D97736] mx-auto mt-8"></div>
+          <div className="w-12 h-1 bg-[#FF9933] mx-auto mt-8"></div>
         </div>
 
         <div className="columns-2 md:columns-3 gap-4 space-y-4">

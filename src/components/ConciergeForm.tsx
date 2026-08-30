@@ -49,7 +49,7 @@ export const ConciergeForm: React.FC = () => {
                 type="text"
                 name="name"
                 placeholder="FULL NAME"
-                className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl px-6 py-4 mb-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#D97736] transition-all shadow-sm"
+                className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl px-6 py-4 mb-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF9933] transition-all shadow-sm"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -58,7 +58,7 @@ export const ConciergeForm: React.FC = () => {
                 type="email"
                 name="email"
                 placeholder="EMAIL ADDRESS"
-                className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl px-6 py-4 mb-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#D97736] transition-all shadow-sm"
+                className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl px-6 py-4 mb-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF9933] transition-all shadow-sm"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -67,13 +67,13 @@ export const ConciergeForm: React.FC = () => {
                 type="tel"
                 name="phone"
                 placeholder="PHONE NUMBER"
-                className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl px-6 py-4 mb-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#D97736] transition-all shadow-sm"
+                className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl px-6 py-4 mb-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF9933] transition-all shadow-sm"
                 value={formData.phone}
                 onChange={handleChange}
                 required
               />
               <div className="flex justify-end mt-8">
-                <button type="button" className="px-8 py-4 rounded-full bg-[#D97736] text-white font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(217,119,54,0.6)] transition-all" onClick={handleNext}>NEXT STEP</button>
+                <button type="button" className="px-8 py-4 rounded-full bg-[#FF9933] text-white font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(255,0,60,0.6)] transition-all" onClick={handleNext}>NEXT STEP</button>
               </div>
             </div>
           )}
@@ -83,14 +83,14 @@ export const ConciergeForm: React.FC = () => {
               <p className="text-gray-500 dark:text-gray-400 mb-8 uppercase tracking-[0.1em] text-sm text-center">02 / INTERESTS</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {services.map((service) => (
-                  <label key={service} className={`cursor-pointer w-full bg-white dark:bg-zinc-800 border ${formData.service === service ? 'border-[#D97736] ring-2 ring-[#D97736]/20' : 'border-gray-200 dark:border-zinc-700'} rounded-2xl px-6 py-4 text-gray-900 dark:text-white transition-all shadow-sm flex items-center gap-3`}>
+                  <label key={service} className={`cursor-pointer w-full bg-white dark:bg-zinc-800 border ${formData.service === service ? 'border-[#FF9933] ring-2 ring-[#FF9933]/20' : 'border-gray-200 dark:border-zinc-700'} rounded-2xl px-6 py-4 text-gray-900 dark:text-white transition-all shadow-sm flex items-center gap-3`}>
                     <input
                       type="radio"
                       name="service"
                       value={service}
                       checked={formData.service === service}
                       onChange={handleChange}
-                      className="accent-[#D97736] w-4 h-4"
+                      className="accent-[#FF9933] w-4 h-4"
                     />
                     <span className="font-medium">{service}</span>
                   </label>
@@ -104,7 +104,7 @@ export const ConciergeForm: React.FC = () => {
                 >
                   PREVIOUS
                 </button>
-                <button type="button" className="px-8 py-4 rounded-full bg-[#D97736] text-white font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(217,119,54,0.6)] transition-all" onClick={handleNext}>NEXT STEP</button>
+                <button type="button" className="px-8 py-4 rounded-full bg-[#FF9933] text-white font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(255,0,60,0.6)] transition-all" onClick={handleNext}>NEXT STEP</button>
               </div>
             </div>
           )}
@@ -126,7 +126,7 @@ export const ConciergeForm: React.FC = () => {
                 >
                   PREVIOUS
                 </button>
-                <button type="submit" className="px-8 py-4 rounded-full bg-[#D97736] text-white font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(217,119,54,0.6)] transition-all">SUBMIT INQUIRY</button>
+                <button type="submit" className="px-8 py-4 rounded-full bg-[#FF9933] text-white font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)] hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(255,0,60,0.6)] transition-all">SUBMIT INQUIRY</button>
               </div>
             </div>
           )}

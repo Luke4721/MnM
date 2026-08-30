@@ -43,7 +43,7 @@ const GlobeMesh: React.FC = () => {
           roughness={0.4} 
           metalness={0.2}
           emissiveMap={texture}
-          emissive="#D97736"
+          emissive="#FF9933"
           emissiveIntensity={1.5}
         />
       </Sphere>
@@ -68,7 +68,7 @@ const AirplaneModel = React.forwardRef<THREE.Group, any>((props, ref) => (
     {/* Tail */}
     <mesh position={[0, 0.03, -0.08]}>
       <boxGeometry args={[0.005, 0.06, 0.04]} />
-      <meshStandardMaterial color="#D97736" />
+      <meshStandardMaterial color="#FF9933" />
     </mesh>
   </group>
 ));
@@ -93,7 +93,7 @@ const ShipModel = React.forwardRef<THREE.Group, any>((props, ref) => (
     {/* Funnel */}
     <mesh position={[0, 0.07, -0.06]}>
       <cylinderGeometry args={[0.006, 0.006, 0.04]} />
-      <meshStandardMaterial color="#D97736" />
+      <meshStandardMaterial color="#FF9933" />
     </mesh>
   </group>
 ));
@@ -115,7 +115,7 @@ const TrainModel = React.forwardRef<THREE.Group, any>((props, ref) => (
     {/* Cabin Roof */}
     <mesh position={[0, 0.025, 0.06]}>
       <boxGeometry args={[0.035, 0.01, 0.04]} />
-      <meshStandardMaterial color="#D97736" />
+      <meshStandardMaterial color="#FF9933" />
     </mesh>
     {/* Carriage 1 */}
     <mesh position={[0, 0, -0.02]}>

@@ -63,7 +63,7 @@ export const CategoryDetail: React.FC = () => {
             </div>
             <div className="w-full md:w-auto">
               <Link to="/contact">
-                <button className="w-full md:w-auto px-8 py-4 rounded-full bg-[#D97736] text-white font-bold tracking-widest text-sm shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                <button className="w-full md:w-auto px-8 py-4 rounded-full bg-[#FF9933] text-white font-bold tracking-widest text-sm shadow-[0_4px_14px_rgba(255,0,60,0.4)] hover:scale-105 transition-transform flex items-center justify-center gap-2">
                   CUSTOM ITINERARY <ArrowRight size={18} />
                 </button>
               </Link>
@@ -103,7 +103,7 @@ export const CategoryDetail: React.FC = () => {
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
                             <div>
                               <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>Starting from</span>
-                              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97736' }}>
+                              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#FF9933' }}>
                                 <AnimatedNumber
                                   value={convertPrice(pkg.priceINR, true) as number}
                                   formatFn={(val: number) => {
@@ -142,7 +142,7 @@ export const CategoryDetail: React.FC = () => {
                 We couldn't find any packages in this category. Please explore our other offerings.
               </p>
               <Link to="/packages">
-                <button className="px-8 py-3 rounded-full bg-[#D97736] text-white font-bold tracking-widest text-sm shadow-[0_4px_14px_rgba(217,119,54,0.4)] hover:scale-105 transition-all">
+                <button className="px-8 py-3 rounded-full bg-[#FF9933] text-white font-bold tracking-widest text-sm shadow-[0_4px_14px_rgba(255,0,60,0.4)] hover:scale-105 transition-all">
                   VIEW ALL PACKAGES
                 </button>
               </Link>

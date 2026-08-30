@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Star, ChevronDown, Check, ArrowRight, Shield, CreditCard, ChevronLeft } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import db from '../data/mnm_database.json';
 import { PageTransition } from '../components/PageTransition';
 import { EnquiryModal } from '../components/EnquiryModal';
+
+import { AnimatedNumber } from '../components/AnimatedNumber';
+import { TiltCard } from '../components/TiltCard';
+
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,7 +27,7 @@ export const PackageDetail: React.FC = () => {
       <div className="min-h-screen w-full bg-white dark:bg-black text-gray-900 dark:text-white relative z-10 flex flex-col items-center justify-center transition-colors duration-500">
         <h2 className="text-4xl font-extrabold mb-4">Package Not Found</h2>
         <p className="text-gray-500 mb-8">The travel package you are looking for does not exist or has been removed.</p>
-        <button onClick={() => navigate('/packages')} className="px-8 py-3 bg-[#D97736] text-white rounded-full font-bold tracking-widest shadow-[0_4px_14px_rgba(217,119,54,0.4)]">
+        <button onClick={() => navigate('/packages')} className="px-8 py-3 bg-[#FF9933] text-white rounded-full font-bold tracking-widest shadow-[0_4px_14px_rgba(255,0,60,0.4)]">
           BROWSE ALL PACKAGES
         </button>
       </div>
@@ -33,6 +37,16 @@ export const PackageDetail: React.FC = () => {
   // Handle compatibility for both schemas
   const imageUrl = pkg.heroImage || pkg.image_url || pkg.image || pkg.img;
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
+  
+  const relatedPackages = React.useMemo(() => {
+    if (!location) return [];
+    const locLower = location.toLowerCase();
+    return db.packages.filter((p: any) => {
+        if (p.id === pkg.id) return false;
+        const pLoc = (p.destination || p.location || p.locations || p.highlights_old || '').toLowerCase();
+        return pLoc === locLower || (pLoc && locLower && (pLoc.includes(locLower) || locLower.includes(pLoc)));
+    }).slice(0, 3);
+  }, [location, pkg.id]);
   
   const variants = pkg.variants && pkg.variants.length > 0 ? [
     {
@@ -93,10 +107,10 @@ export const PackageDetail: React.FC = () => {
                 </span>
                 {pkg.rating && (
                   <span className="px-4 py-1.5 rounded-full bg-white/60 dark:bg-black/40 backdrop-blur-md border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white text-xs font-bold flex items-center gap-1 shadow-sm">
-                    <Star size={14} className="fill-[#D97736] text-[#D97736]" /> {pkg.rating} ({pkg.reviewsCount} reviews)
+                    <Star size={14} className="fill-[#FF9933] text-[#FF9933]" /> {pkg.rating} ({pkg.reviewsCount} reviews)
                   </span>
                 )}
-                <span className="px-4 py-1.5 rounded-full bg-[#D97736] text-white text-xs font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(217,119,54,0.4)]">
+                <span className="px-4 py-1.5 rounded-full bg-[#FF9933] text-white text-xs font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)]">
                   {pkg.category}
                 </span>
               </div>
@@ -104,7 +118,7 @@ export const PackageDetail: React.FC = () => {
                 {pkg.title}
               </h1>
               <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-medium flex items-center gap-2 drop-shadow-md">
-                <MapPin className="text-[#D97736]" /> {location}
+                <MapPin className="text-[#FF9933]" /> {location}
               </p>
             </motion.div>
           </div>
@@ -138,8 +152,8 @@ export const PackageDetail: React.FC = () => {
                 <div className="flex flex-wrap gap-3">
                   {(Array.isArray(pkg.highlights) ? pkg.highlights : [pkg.highlights]).map((highlight: string, idx: number) => (
                     <div key={idx} className="px-5 py-3 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 shadow-sm flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#D97736]/10 flex items-center justify-center shrink-0">
-                        <Check size={14} className="text-[#D97736]" />
+                      <div className="w-6 h-6 rounded-full bg-[#FF9933]/10 flex items-center justify-center shrink-0">
+                        <Check size={14} className="text-[#FF9933]" />
                       </div>
                       <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{highlight}</span>
                     </div>
@@ -166,7 +180,7 @@ export const PackageDetail: React.FC = () => {
                         className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer outline-none"
                       >
                         <div className="flex items-center gap-4">
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shrink-0 transition-colors ${activeDay === item.day ? 'bg-[#D97736] text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shrink-0 transition-colors ${activeDay === item.day ? 'bg-[#FF9933] text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
                             D{item.day}
                           </div>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
@@ -232,17 +246,71 @@ export const PackageDetail: React.FC = () => {
               </motion.section>
             )}
             
-            {/* Gallery */}
-            {pkg.gallery && pkg.gallery.length > 0 && (
+            {/* Related Packages */}
+            {relatedPackages.length > 0 && (
               <motion.section 
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
+                className="mb-16"
               >
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {pkg.gallery.map((img: string, idx: number) => (
-                    <div key={idx} className="aspect-square rounded-2xl overflow-hidden shadow-sm group">
-                      <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    </div>
+                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">More in {location}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {relatedPackages.map((relPkg: any, index: number) => (
+                    <motion.div
+                      key={relPkg.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-50px' }}
+                      transition={{ delay: (index % 6) * 0.05 }}
+                    >
+                      <Link to={`/packages/${relPkg.slug || relPkg.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo(0,0)}>
+                        <TiltCard>
+                          <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
+                            <div style={{ height: '180px', position: 'relative' }}>
+                              <img src={relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage} alt={relPkg.title || relPkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.3rem 0.8rem', borderRadius: '999px', color: 'white', fontSize: '0.7rem', fontWeight: 600 }}>
+                                <MapPin size={10} style={{ display: 'inline', marginRight: '4px' }} />
+                                {relPkg.nights || relPkg.duration || (relPkg.durationNights ? `${relPkg.durationNights}N/${relPkg.durationDays}D` : '')}
+                              </div>
+                            </div>
+                            <div style={{ padding: '1rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                              <h3 className="text-base font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">{relPkg.title || relPkg.name}</h3>
+                              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-1 mb-2" style={{ flex: 1 }}>
+                                {relPkg.location || relPkg.locations || relPkg.destination}
+                              </p>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid var(--glass-border, rgba(255,255,255,0.1))' }}>
+                                <div>
+                                  <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.7rem', display: 'block' }}>Starting from</span>
+                                  <div style={{ fontSize: '1rem', fontWeight: 700, color: '#FF9933' }}>
+                                    <AnimatedNumber
+                                      value={Math.round(convertPrice(relPkg.startingPrice || relPkg.priceINR || 0, true) as number)}
+                                      formatFn={(val: number) => {
+                                        const sym = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
+                                        return `${sym}${Math.round(val).toLocaleString()}`;
+                                      }}
+                                    />
+                                  </div>
+                                </div>
+                                <button style={{
+                                  background: '#FF9933',
+                                  color: 'white',
+                                  padding: '0.4rem 0.8rem',
+                                  borderRadius: '999px',
+                                  fontWeight: 600,
+                                  fontSize: '0.75rem',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '0.3rem',
+                                  border: 'none',
+                                  cursor: 'pointer'
+                                }}>
+                                  View <ArrowRight size={12} />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </TiltCard>
+                      </Link>
+                    </motion.div>
                   ))}
                 </div>
               </motion.section>
@@ -255,7 +323,7 @@ export const PackageDetail: React.FC = () => {
               <div className="sticky top-32 z-20 w-full">
               <div className="bg-white/70 dark:bg-zinc-900/40 backdrop-blur-2xl rounded-[40px] p-8 shadow-2xl border border-white dark:border-white/10 relative overflow-hidden">
                 {/* Decorative blob */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#D97736]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF9933]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 
                 <div className="relative z-10">
                   <div className="mb-2 text-gray-500 dark:text-gray-400 font-medium uppercase tracking-widest text-xs">
@@ -271,7 +339,7 @@ export const PackageDetail: React.FC = () => {
                   <div className="space-y-4 mb-8">
                     <button className="w-full flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors">
                       <div className="flex items-center gap-3">
-                        <Star className="text-[#D97736]" />
+                        <Star className="text-[#FF9933]" />
                         <span className="font-medium text-gray-700 dark:text-gray-200">Travelers</span>
                       </div>
                       <div className="font-bold text-gray-900 dark:text-white">2 Adults</div>
@@ -288,11 +356,11 @@ export const PackageDetail: React.FC = () => {
                             onClick={() => setSelectedVariantIdx(idx)}
                             className={`flex flex-col text-left p-4 rounded-2xl border transition-all duration-300 ${
                               selectedVariantIdx === idx 
-                                ? 'border-[#D97736] bg-[#D97736]/10 shadow-md ring-1 ring-[#D97736]' 
-                                : 'border-gray-200 dark:border-white/10 hover:border-[#D97736]/50 bg-white/50 dark:bg-white/5'
+                                ? 'border-[#FF9933] bg-[#FF9933]/10 shadow-md ring-1 ring-[#FF9933]' 
+                                : 'border-gray-200 dark:border-white/10 hover:border-[#FF9933]/50 bg-white/50 dark:bg-white/5'
                             }`}
                           >
-                            <span className={`font-bold text-base ${selectedVariantIdx === idx ? 'text-[#D97736]' : 'text-gray-900 dark:text-white'}`}>
+                            <span className={`font-bold text-base ${selectedVariantIdx === idx ? 'text-[#FF9933]' : 'text-gray-900 dark:text-white'}`}>
                               {v.name}
                             </span>
                             <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -306,7 +374,7 @@ export const PackageDetail: React.FC = () => {
 
                   <button 
                     onClick={() => setIsModalOpen(true)}
-                    className="w-full py-4 rounded-full bg-[#D97736] text-white font-bold text-lg shadow-[0_8px_24px_rgba(217,119,54,0.4)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(217,119,54,0.6)] transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-full bg-[#FF9933] text-white font-bold text-lg shadow-[0_8px_24px_rgba(255,0,60,0.4)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(255,0,60,0.6)] transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     Enquire Now <ArrowRight size={20} />
                   </button>

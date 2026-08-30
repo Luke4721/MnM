@@ -13,12 +13,12 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 // Static fallback rates for demo mode
 const RATES: Record<CurrencyCode, number> = {
   INR: 1,
-  USD: 0.012,
+  USD: 0.0125,
   EUR: 0.011,
   GBP: 0.0095,
   AUD: 0.018,
   CAD: 0.016,
-  RUB: 1.10,
+  RUB: 1.15,
   AED: 0.044,
   JPY: 1.80,
   CNY: 0.086,

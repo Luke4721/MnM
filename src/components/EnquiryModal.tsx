@@ -97,7 +97,7 @@ ${message}
             <>
               <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Plan Your Trip</h2>
               <p className="text-gray-500 dark:text-gray-400 mb-8">
-                Enquiring about <span className="font-semibold text-[#D97736]">{packageName}</span>
+                Enquiring about <span className="font-semibold text-[#FF9933]">{packageName}</span>
                 {variantName && <span className="text-gray-400"> ({variantName})</span>}
               </p>
 
@@ -115,8 +115,8 @@ ${message}
                       onClick={() => setTravelType(type)}
                       className={`py-3 px-4 rounded-xl border font-medium text-sm transition-all duration-200 ${
                         travelType === type 
-                          ? 'border-[#D97736] bg-[#D97736]/10 text-[#D97736] shadow-sm' 
-                          : 'border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-gray-400 hover:border-[#D97736]/50'
+                          ? 'border-[#FF9933] bg-[#FF9933]/10 text-[#FF9933] shadow-sm' 
+                          : 'border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-gray-400 hover:border-[#FF9933]/50'
                       }`}
                     >
                       {type}
@@ -135,8 +135,8 @@ ${message}
                       onClick={() => setBudget(b)}
                       className={`py-3 px-4 rounded-xl border font-medium text-sm transition-all duration-200 ${
                         budget === b 
-                          ? 'border-[#D97736] bg-[#D97736]/10 text-[#D97736] shadow-sm' 
-                          : 'border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-gray-400 hover:border-[#D97736]/50'
+                          ? 'border-[#FF9933] bg-[#FF9933]/10 text-[#FF9933] shadow-sm' 
+                          : 'border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-gray-400 hover:border-[#FF9933]/50'
                       }`}
                     >
                       {b}
@@ -155,8 +155,8 @@ ${message}
                       onClick={() => setTravelers(t)}
                       className={`py-3 px-4 rounded-xl border font-medium text-sm transition-all duration-200 ${
                         travelers === t 
-                          ? 'border-[#D97736] bg-[#D97736]/10 text-[#D97736] shadow-sm' 
-                          : 'border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-gray-400 hover:border-[#D97736]/50'
+                          ? 'border-[#FF9933] bg-[#FF9933]/10 text-[#FF9933] shadow-sm' 
+                          : 'border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-gray-400 hover:border-[#FF9933]/50'
                       }`}
                     >
                       {t}
@@ -179,7 +179,7 @@ ${message}
                     placeholder="Full Name" 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#D97736] transition-colors text-gray-900 dark:text-white"
+                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#FF9933] transition-colors text-gray-900 dark:text-white"
                   />
                 </div>
                 
@@ -191,7 +191,7 @@ ${message}
                     placeholder="Email Address" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#D97736] transition-colors text-gray-900 dark:text-white"
+                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#FF9933] transition-colors text-gray-900 dark:text-white"
                   />
                 </div>
                 
@@ -203,7 +203,7 @@ ${message}
                     placeholder="Phone Number" 
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#D97736] transition-colors text-gray-900 dark:text-white"
+                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#FF9933] transition-colors text-gray-900 dark:text-white"
                   />
                 </div>
 
@@ -213,7 +213,7 @@ ${message}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={3}
-                    className="w-full p-4 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#D97736] transition-colors text-gray-900 dark:text-white resize-none"
+                    className="w-full p-4 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl outline-none focus:border-[#FF9933] transition-colors text-gray-900 dark:text-white resize-none"
                   ></textarea>
                 </div>
               </div>
@@ -221,7 +221,7 @@ ${message}
 
             <button 
               type="submit"
-              className="w-full py-4 rounded-xl bg-[#D97736] text-white font-bold text-lg shadow-lg shadow-[#D97736]/30 hover:-translate-y-0.5 hover:shadow-[#D97736]/40 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-xl bg-[#FF9933] text-white font-bold text-lg shadow-lg shadow-[#FF9933]/30 hover:-translate-y-0.5 hover:shadow-[#FF9933]/40 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Send Enquiry <Send size={20} />
             </button>

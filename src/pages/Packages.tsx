@@ -126,7 +126,12 @@ export const Packages: React.FC = () => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { setActiveCategory(cat); setDisplayLimit(6); }}
+                onClick={() => { 
+                    setSearchQuery('');
+                    setFilters({ destination: '', month: '', duration: '', budget: '' });
+                    setActiveCategory(cat); 
+                    setDisplayLimit(6); 
+                }}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-[#D97736] border-[#D97736] text-white shadow-[0_4px_14px_rgba(217,119,54,0.4)]'

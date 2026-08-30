@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import "tailwindcss";
 
 /* This line forces v4 to respect the manual toggle switch */
 @variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: 'Playfair Display', serif;
-  --font-cursive: 'Dancing Script', cursive;
-  --color-brand: #D97736;
-  --color-brand-hover: #E88A4A;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-serif: "Oswald", sans-serif;
+  --font-cursive: "Great Vibes", cursive;
+  --color-brand: #FF9933;
+  --color-brand-hover: #D00030;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
   --animate-kenburns: kenburns 10s ease-out forwards;
 }
 
@@ -17,8 +24,7 @@
 }
 
 body { 
-  @apply bg-[#f9f8f4] text-gray-900 transition-colors duration-500;
-  font-family: var(--font-sans);
+  @apply bg-[#f9f8f4] text-gray-900 transition-colors duration-500 font-sans;
   -webkit-font-smoothing: antialiased; 
 }
 

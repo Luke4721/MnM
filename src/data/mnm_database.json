@@ -18,9 +18,12 @@
     "Ayurveda & Yoga",
     "Buddhist Circuit",
     "Forts & Palaces",
-    "Temple of India",
+    "Temples of India",
     "The Himalayas",
-    "Backwaters"
+    "Backwaters",
+    "Popular",
+    "Heritage",
+    "International"
   ],
   "packages": [
     {
@@ -40,7 +43,7 @@
         "Visit to Hanuman Garhi and Kanak Bhawan",
         "Guided spiritual walk through ancient Ayodhya"
       ],
-      "category": "Temple of India",
+      "category": "Temples of India",
       "type": "Domestic",
       "image_url": "/images/hires/1.jpg",
       "img": "/images/hires/1.jpg",
@@ -188,7 +191,7 @@
       "locations": "Delhi - Agra - Jaipur - Varanasi - Delhi",
       "location": "Delhi - Agra - Jaipur - Varanasi - Delhi",
       "highlights": "Locations: Delhi - Agra - Jaipur - Varanasi - Delhi",
-      "category": "Temple of India",
+      "category": "Temples of India",
       "type": "Domestic",
       "image_url": "/images/hires/3_f3.jpg",
       "img": "/images/hires/3_f3.jpg",
@@ -604,7 +607,7 @@
       "locations": "Bhubaneshwar - Puri - Konarak - Bhubaneshwar",
       "location": "Bhubaneshwar - Puri - Konarak - Bhubaneshwar",
       "highlights": "Locations: Bhubaneshwar - Puri - Konarak - Bhubaneshwar",
-      "category": "Temple of India",
+      "category": "Temples of India",
       "type": "Domestic",
       "image_url": "/images/hires/19_f3.jpg",
       "img": "/images/hires/19_f3.jpg",
@@ -682,7 +685,7 @@
       "locations": "Chennai - Mahabalipuram - Pondicherry - Tanjore - Trichy - Madurai - Rameshwaram - Chennai",
       "location": "Chennai - Mahabalipuram - Pondicherry - Tanjore - Trichy - Madurai - Rameshwaram - Chennai",
       "highlights": "Locations: Chennai - Mahabalipuram - Pondicherry - Tanjore - Trichy - Madurai - Rameshwaram - Chennai",
-      "category": "Temple of India",
+      "category": "Temples of India",
       "type": "Domestic",
       "image_url": "/images/hires/22_f3.jpg",
       "img": "/images/hires/22_f3.jpg",
@@ -734,7 +737,7 @@
       "locations": "Kolkata - Bhubaneswar - Konark - Puri - Kolkata",
       "location": "Kolkata - Bhubaneswar - Konark - Puri - Kolkata",
       "highlights": "Locations: Kolkata - Bhubaneswar - Konark - Puri - Kolkata",
-      "category": "Temple of India",
+      "category": "Temples of India",
       "type": "Domestic",
       "image_url": "/images/hires/24_fixed.jpg",
       "img": "/images/hires/24_fixed.jpg",
@@ -845,15 +848,15 @@
       "location": "Assam, Meghalaya & Arunachal Pradesh",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/arunachal-meghalaya_fixed.jpg",
-      "img": "/images/hires/arunachal-meghalaya_fixed.jpg",
-      "image": "/images/hires/arunachal-meghalaya_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/arunachal-meghalaya_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/arunachal-meghalaya_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/arunachal-meghalaya_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \"Arunachal & Meghalaya – Peaks, Monasteries & Waterfalls”\n\n(6N/7D)\n\n\n\nDiscover the breathtaking beauty of Arunachal Pradesh and Meghalaya on this unforgettable 7 Days / 6 Nights journey through the Eastern Himalayas. Travel through the scenic hill towns of Dirang, Tawang, Bomdila, Shillong, and Cherrapunji, each offering spectacular landscapes and unique cultural experiences. \n\n\n\nWitness the majestic Sela Pass, explore the iconic Tawang Monastery, and pay tribute to the historic Jaswant Garh War...",
@@ -886,15 +889,15 @@
       "location": "Assam, Meghalaya & Arunachal Pradesh",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/assam-meghalaya-package_fixed.jpg",
-      "img": "/images/hires/assam-meghalaya-package_fixed.jpg",
-      "image": "/images/hires/assam-meghalaya-package_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Beauty_of_Kaziranga_National_Park.jpg/1280px-Beauty_of_Kaziranga_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Beauty_of_Kaziranga_National_Park.jpg/1280px-Beauty_of_Kaziranga_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Beauty_of_Kaziranga_National_Park.jpg/1280px-Beauty_of_Kaziranga_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/assam-meghalaya-package_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Beauty_of_Kaziranga_National_Park.jpg/1280px-Beauty_of_Kaziranga_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/assam-meghalaya-package_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Beauty_of_Kaziranga_National_Park.jpg/1280px-Beauty_of_Kaziranga_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/assam-meghalaya-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \"Assam & Meghalaya – Wildlife, Waterfalls & Scenic Highlands”\n\n(5N/6D)\n\n\n\nDiscover the beauty of Assam and Meghalaya on this unforgettable 6 Days / 5 Nights journey through Northeast India. Begin your adventure in Guwahati, home to the sacred Kamakhya Temple, before exploring the wildlife-rich Kaziranga National Park, famous for the endangered One-Horned Rhinoceros. Continue to the charming hill station of Shillong, known as the \"Scotland of the East,\" and admire its serene lakes, waterfalls, an...",
@@ -927,15 +930,15 @@
       "location": "Assam, Meghalaya & Arunachal Pradesh",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
-      "img": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
-      "image": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TawangMonastery-ArunachalPradesh-1.jpg/1280px-TawangMonastery-ArunachalPradesh-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/assam-meghalaya-arunachal-pradesh-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. ARUNACHAL, MEGHALAYA & ASSAM FAQ\n\nWhat is the best time to visit Arunachal Pradesh, Meghalaya and Assam?\n\nOctober to April is generally a good period for comfortable sightseeing and road travel. For snowfall experiences in Arunachal Pradesh, winter months are preferred, subject to weather and road conditions.\n\nHow many days are enough for this trip?\n\nFor a comfortable combination of all three destinations, 9–12 days is recommended. A shorter itinerary can be designed by covering fewer places.\n\nI...",
@@ -1230,15 +1233,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/7-nights-bhutan_fixed.jpg",
-      "img": "/images/hires/7-nights-bhutan_fixed.jpg",
-      "image": "/images/hires/7-nights-bhutan_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/1280px-Flag_of_Bhutan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/1280px-Flag_of_Bhutan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/1280px-Flag_of_Bhutan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/7-nights-bhutan_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/1280px-Flag_of_Bhutan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/7-nights-bhutan_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/1280px-Flag_of_Bhutan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/7-nights-bhutan_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Bhutan – Happiness is a Place!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the heart of the Himalayas lies Bhutan, a mystical land known as the \"Land of the Thunder Dragon\" or 'Druk Yul'. Secluded and revered as one of the last \"Shangri-La's,\" it captivates with its remoteness, awe-inspiring mountain landscapes, diverse flora and fauna, and ancient Buddhist monasteries.\n\nPicture a realm of rolling hills and towering crags, where charm is woven into every nuance. Magnificent mountains stand proud, dense forest...",
@@ -1280,15 +1283,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/azerbaijian_fixed.jpg",
-      "img": "/images/hires/azerbaijian_fixed.jpg",
-      "image": "/images/hires/azerbaijian_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Baku_Montage.jpg/1280px-Baku_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Baku_Montage.jpg/1280px-Baku_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Baku_Montage.jpg/1280px-Baku_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/azerbaijian_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Baku_Montage.jpg/1280px-Baku_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/azerbaijian_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Baku_Montage.jpg/1280px-Baku_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/azerbaijian_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\nSimply Azerbaijan \n\n4 Nights 5 Days\n\n\n\nItinerary\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\nHotel:\n\nBaku\n\nMeals:\n\nHotel Port Rivoli (Standard) / Hilton Garden Inn (Value) / Baku Marriott Boulevard (Premium) or Similar in N/A\n\n\n\nArrive at Baku\n\n\n\nWelcome to Azerbaijan - \"The Land of Fire\"!\n\n\n\nA fascinating country where East meets West, blending rich history, vibrant culture, and stunning landscapes. Known for its eternal flames, ancient traditions, and modern arc...",
@@ -1321,15 +1324,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/bali-package-october-month_fixed.jpg",
-      "img": "/images/hires/bali-package-october-month_fixed.jpg",
-      "image": "/images/hires/bali-package-october-month_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Bali_in_Indonesia_%28special_marker%29.svg/1280px-Bali_in_Indonesia_%28special_marker%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Bali_in_Indonesia_%28special_marker%29.svg/1280px-Bali_in_Indonesia_%28special_marker%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Bali_in_Indonesia_%28special_marker%29.svg/1280px-Bali_in_Indonesia_%28special_marker%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/bali-package-october-month_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Bali_in_Indonesia_%28special_marker%29.svg/1280px-Bali_in_Indonesia_%28special_marker%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/bali-package-october-month_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Bali_in_Indonesia_%28special_marker%29.svg/1280px-Bali_in_Indonesia_%28special_marker%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/bali-package-october-month_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. “BALI, INDONESIA TOUR” (5Night / 6Days)\n\n\n\nExperience the perfect blend of adventure, culture, and breathtaking natural beauty with this 6 Days / 5 Nights Bali Tour Package. Begin your journey by relaxing on Bali's stunning beaches and enjoy an exciting Banana Boat ride at Tanjung Benoa. Witness the spectacular Kecak Dance Performance against the backdrop of the majestic Uluwatu Temple at sunset. Explore the picturesque island of Nusa Penida, famous for its dramatic cliffs, crystal-clear waters,...",
@@ -1362,15 +1365,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/cambodia-vietnam-new_fixed.jpg",
-      "img": "/images/hires/cambodia-vietnam-new_fixed.jpg",
-      "image": "/images/hires/cambodia-vietnam-new_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/cambodia-vietnam-new_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/cambodia-vietnam-new_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/cambodia-vietnam-new_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\n\tOVERVIEW\t\n\nWe offer an all-inclusive tour package to Vietnam & Cambodia. Tourist from all over the world flocks to these countries for its ancient Hindu Temples, amazing river deltas, historical monuments, Buddhist monasteries and unique traditional shows. The South East Asian gem is surrounded by China.\n\nPackage Details\n\n\n\nPackage Name\n\n\n\nDestination Covered Travelling Mode Duration\n\nTour Date Meal Plan Total Seats\n\nIRCTC TOUR MANAGER\n\nAYODHYA TO ANGKOR WAT MANDIR. (CAMBODIA)- VIETNAM WITH...",
@@ -1403,15 +1406,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/dubai-package_fixed.jpg",
-      "img": "/images/hires/dubai-package_fixed.jpg",
-      "image": "/images/hires/dubai-package_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg/1280px-Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg/1280px-Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg/1280px-Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/dubai-package_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg/1280px-Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/dubai-package_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg/1280px-Burj_Khalifa_%28worlds_tallest_building%29_and_the_Dubai_skyline_%2825781049892%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/dubai-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Package Details:\n\nPackage Name\n\nWonders Of Dubai Ex Chandigarh\n\nDestination Covered\n\nChandigarh - Delhi – Dubai – Abu Dhabi – Delhi - Chandigarh\n\nTraveling Mode\n\nFlight + Bus\n\nClass\n\nDeluxe\n\nPackage Date\n\n26.10.2026\n\nDuration\n\n06 Nights / 07 Days\n\nSeats\n\n30\n\nFlight Details:\n\nAirlines\n\nTo - From\n\nFlight Timings\n\nAir Arabia - G9464\n\n26.10.2026\n\nDelhi (0315 hrs) to Sharjah (0545 hrs) - Direct Flight\n\nAir Arabia - G9463\n\n30.10.2026\n\nSharjah (2155 hrs) to Delhi (0235 hrs) - Direct Flight\n\n \n\nNote: Fl...",
@@ -1444,15 +1447,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/kazakhstan-package_fixed.jpg",
-      "img": "/images/hires/kazakhstan-package_fixed.jpg",
-      "image": "/images/hires/kazakhstan-package_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Astana_Esil_view.jpg/1280px-Astana_Esil_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Astana_Esil_view.jpg/1280px-Astana_Esil_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Astana_Esil_view.jpg/1280px-Astana_Esil_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/kazakhstan-package_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Astana_Esil_view.jpg/1280px-Astana_Esil_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/kazakhstan-package_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Astana_Esil_view.jpg/1280px-Astana_Esil_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/kazakhstan-package_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Details\n\nPackage Summary\n\n\n\n\n\nPackage:\tWonders of Almaty\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo of Nights:\t4 Nights or 5 Days\n\n\n\nTimeline:\tAlmaty (4N )\n\n\n\nInclusions:\n\n\n\n\n\nFlights\tHotel\tMeals\tTransfer\tSightseeing\n\n\n\n\n\n\n\n\n\nVisa\tTour Manager\tGroup Tour\n\n\n\n\n\n\n\nDaywise Itinerary\n\n\n\n\n\n\n\nDay 1\n\n\n\nWelcome to Almaty, Kazakhstan - Arrival - Check in - Almarasan\n\nWelcome to Kazakhstan. On arrival in Almaty our local representative outside the baggage hall area at the airport. Proceed to the hot...",
@@ -1485,15 +1488,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/maldives-2_fixed.jpg",
-      "img": "/images/hires/maldives-2_fixed.jpg",
-      "image": "/images/hires/maldives-2_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg/1280px-Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg/1280px-Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg/1280px-Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/maldives-2_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg/1280px-Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg",
       "gallery": [
-        "/images/hires/maldives-2_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg/1280px-Maldives_-_Mal%C3%A9_-_%E2%88%9A.jpg",
         "/images/hires/maldives-2_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\t\n\n\n\nMaldives - Sheraton Full Moon Resort and Spa\n\n\n\n4 Nights 5 Days\tPremium\n\n\n\n4N Male\n\n\n\nPackage Inclusions\n\n\n\n\n\nHighlights\tHotels\tMeal\tFlights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBook Now\n\n\n\n\n\nPackage price, payment schedule and cancellation policy are tentative and subject to change\n\n\n\nPackage Summary\n\n\n\n\n\nDay wise summary\n\n\n\nDay 1\tArrive Male\n\n\n\n\tSheraton Full Moon Resort and Spa \tDinner\n\nMale Airport to Resort transfers by Speedboat\n\nDay 2\tMale - Day at Leisure\n\n\n\n\tSheraton Full Moon Resort and Spa \t...",
@@ -1526,15 +1529,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/mauritius_fixed.jpg",
-      "img": "/images/hires/mauritius_fixed.jpg",
-      "image": "/images/hires/mauritius_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mauritius_beach_at_Flic_en_Flac.jpg/1280px-Mauritius_beach_at_Flic_en_Flac.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mauritius_beach_at_Flic_en_Flac.jpg/1280px-Mauritius_beach_at_Flic_en_Flac.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mauritius_beach_at_Flic_en_Flac.jpg/1280px-Mauritius_beach_at_Flic_en_Flac.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/mauritius_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mauritius_beach_at_Flic_en_Flac.jpg/1280px-Mauritius_beach_at_Flic_en_Flac.jpg",
       "gallery": [
-        "/images/hires/mauritius_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mauritius_beach_at_Flic_en_Flac.jpg/1280px-Mauritius_beach_at_Flic_en_Flac.jpg",
         "/images/hires/mauritius_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\t\t\n\n\n\nCrazy Deal Mauritius - Hotel Le Grand Bleu\n\n\n\n5 Nights 6 Days\tStandard\n\n\n\n5N Mauritius\n\n\n\nPackage Inclusions\n\n\n\n\n\nHighlights\tHotels\tSightseeing\tMeal\tFlights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage price, payment schedule and cancellation policy are tentative and subject to change\n\n\n\nPackage Summary\n\n\n\n\n\nDay wise summary\n\n\n\nDay 1\tArrive Mauritius\n\n\n\n\tHotel Le Grand Bleu \tDinner\n\nTransfer by seat in coach.\n\nDay 2\tFull Day North Island Tour\n\n\n\n\tHotel Le Grand Bleu\n\nFull Day North Island tour (...",
@@ -1567,15 +1570,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/nepal_fixed.jpg",
-      "img": "/images/hires/nepal_fixed.jpg",
-      "image": "/images/hires/nepal_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/nepal_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
       "gallery": [
-        "/images/hires/nepal_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
         "/images/hires/nepal_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\nPackage  valid  Till 30 December 2025\n\n\n\nHeritage Kathmandu Tours: 3 Night 4 Days \n\nHighlight: Word Heritage site \n\nDay  \n\n Itinerary \n\n01\n\nKathmandu Arrival \n\nPick-up from international airport by scenic Mountain Travel representativethen Transfer to Nagarkot at Hotel After check-in at Hotel we will give you short briefing about your Tours. Kathmandu is Largest city and Capital City of Nepal. Kathmandu valley consists of three main cities of great historic and cultural interest Kathmandu, Lal...",
@@ -1608,15 +1611,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/russia-mou-peter_fixed.jpg",
-      "img": "/images/hires/russia-mou-peter_fixed.jpg",
-      "image": "/images/hires/russia-mou-peter_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mocsow_and_Mocsow_Oblast_-_Montage.jpg/1280px-Mocsow_and_Mocsow_Oblast_-_Montage.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mocsow_and_Mocsow_Oblast_-_Montage.jpg/1280px-Mocsow_and_Mocsow_Oblast_-_Montage.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mocsow_and_Mocsow_Oblast_-_Montage.jpg/1280px-Mocsow_and_Mocsow_Oblast_-_Montage.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/russia-mou-peter_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mocsow_and_Mocsow_Oblast_-_Montage.jpg/1280px-Mocsow_and_Mocsow_Oblast_-_Montage.jpg",
       "gallery": [
-        "/images/hires/russia-mou-peter_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mocsow_and_Mocsow_Oblast_-_Montage.jpg/1280px-Mocsow_and_Mocsow_Oblast_-_Montage.jpg",
         "/images/hires/russia-mou-peter_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\nDay 1: Arrival in Moscow\n\nAfternoon: Arrive in Moscow. After clearing customs, transfer to your hotel for check-in.\n\nPrivate airport pickup by our chauffeur and guide.\n\nEvening: Take a leisurely stroll along Arbat Street, one of Moscow's oldest streets, known for its artistic heritage, souvenir shops, and street performances.\n\n\n\nDay 2: Exploring Central Moscow - private guided tour\n\nMorning: Visit the Kremlin, the historic fortified complex that serves as the official residence of the Presiden...",
@@ -1649,15 +1652,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/seychelles_fixed.jpg",
-      "img": "/images/hires/seychelles_fixed.jpg",
-      "image": "/images/hires/seychelles_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Praslin%2C_Seychelles_%284%29.jpg/1280px-Praslin%2C_Seychelles_%284%29.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Praslin%2C_Seychelles_%284%29.jpg/1280px-Praslin%2C_Seychelles_%284%29.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Praslin%2C_Seychelles_%284%29.jpg/1280px-Praslin%2C_Seychelles_%284%29.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/seychelles_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Praslin%2C_Seychelles_%284%29.jpg/1280px-Praslin%2C_Seychelles_%284%29.jpg",
       "gallery": [
-        "/images/hires/seychelles_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Praslin%2C_Seychelles_%284%29.jpg/1280px-Praslin%2C_Seychelles_%284%29.jpg",
         "/images/hires/seychelles_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. \n\n\n\n\n\nExotic Seychelles\n\n\n\n5 Nights 6 Days\tStandard\n\n\n\n2N Praslin Island\t3N Mahe Island\n\n\n\nPackage Inclusions\n\n\n\n\n\nHighlights\tHotels\tSightseeing\tMeal\tFlights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBook Now\n\n\n\n\n\nPackage price, payment schedule and cancellation policy are tentative and subject to change\n\n\n\nPackage Summary\n\n\n\n\n\nDay wise summary\n\n\n\nDay 1\tArrive at Mahe - Ferry ride to Praslin\n\n\n\n\tHotel Berjaya Praslin Resort\n\nAirport transfer from Mahe Ferry ride to Praslin\n\nDay 2\tDay trip to La Digue Island\n\n\n\n\tHo...",
@@ -1690,15 +1693,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/singapore-malayasia_fixed.jpg",
-      "img": "/images/hires/singapore-malayasia_fixed.jpg",
-      "image": "/images/hires/singapore-malayasia_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/singapore-malayasia_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
       "gallery": [
-        "/images/hires/singapore-malayasia_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
         "/images/hires/singapore-malayasia_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Package Details:\n\nPackage Name\n\nChandigarh To Singapore Malaysia Package\n\nDestination Covered\n\nChandigarh - Delhi - Singapore - Malaysia - Delhi - Chandigarh\n\nTraveling Mode\n\nRoad + Flight + Road\n\nClass\n\nDeluxe\n\nPackage Date\n\n14.02.2026 to 21.02.2026\n\nDuration\n\n7 Nights / 8 Days\n\nSeats\n\n25\n\n \n\nFlight Details:\n\nNote: Airlines are not confirmed yet, Schedule and Airlines may change on finalization. Flight timings are subject to change. IRCTC will try to complete the itinerary and mentioned sightse...",
@@ -1731,15 +1734,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/singapore_fixed.jpg",
-      "img": "/images/hires/singapore_fixed.jpg",
-      "image": "/images/hires/singapore_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/singapore_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
       "gallery": [
-        "/images/hires/singapore_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/A_view_of_Marina_Bay_from_MBS.jpg/1280px-A_view_of_Marina_Bay_from_MBS.jpg",
         "/images/hires/singapore_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. SIZZLING SINGAPORE & MALAYSIA (Festive Spl.) 05 NIGHTS/06 DAYS\n\n\n\nOVERVIEW: Experience the Ultimate Singapore and Malaysia Getaway with IRCTC's exclusive 'Singapore & Malaysia' tour package! Embark on a luxurious journey showcasing iconic Gardens by the Bay, thrilling Night Safari, and Sentosa Island in Singapore, and vibrant Kuala Lumpur, spiritual Batu Caves, and scenic Genting Highlands in Malaysia. Our thoughtfully crafted itinerary ensures a smooth and memorable experience, with premium acc...",
@@ -1772,15 +1775,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
-      "img": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
-      "image": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sri_Lanka_Collage.jpg/1280px-Sri_Lanka_Collage.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sri_Lanka_Collage.jpg/1280px-Sri_Lanka_Collage.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sri_Lanka_Collage.jpg/1280px-Sri_Lanka_Collage.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sri_Lanka_Collage.jpg/1280px-Sri_Lanka_Collage.jpg",
       "gallery": [
-        "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sri_Lanka_Collage.jpg/1280px-Sri_Lanka_Collage.jpg",
         "/images/hires/sri-lanka-6-nights-7-days_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Sri Lanka\t\t\n\n06 Nights & 07 Days\n\n\n\nSri Lanka is an Island blessed with beautiful beaches and perfect weather all year round if you’re the kind of person who likes to sit back and soak up the sun and enjoy some fresh seafood. Or maybe you’re more of an explorer who wants to know more about the beautiful aqua-marine creatures and plant life that inhabit the waters of the island. Whatever your preference maybe, we can find something that’s perfect for you. You can now choose from three breathtakin...",
@@ -1822,15 +1825,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/thailand_fixed.jpg",
-      "img": "/images/hires/thailand_fixed.jpg",
-      "image": "/images/hires/thailand_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Khao_Tapu.jpg/1280px-Khao_Tapu.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Khao_Tapu.jpg/1280px-Khao_Tapu.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Khao_Tapu.jpg/1280px-Khao_Tapu.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/thailand_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Khao_Tapu.jpg/1280px-Khao_Tapu.jpg",
       "gallery": [
-        "/images/hires/thailand_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Khao_Tapu.jpg/1280px-Khao_Tapu.jpg",
         "/images/hires/thailand_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Package Details\n\nPackage Name\n\nTREASURES OF THAILAND EX MUMBAI\n\nTour Itinerary\n\nBangkok - Pattaya - Bangkok\n\nTravelling Mode\n\nFlight Ex Mumbai\n\nTour Date\n\nComing Soon\n\nDuration\n\n4 Nights/5 Days\n\nMeal Plan\n\nAP (Breakfast, Lunch & Dinner)\n\n\n\nTour Itinerary: - Mumbai - Bangkok - Pattaya - Bangkok – Mumbai\n\nDuration: - 04 Nights/05 Days\n\nDate\n\nDestination\n\nItinerary\n\nDay 01\n\nMumbai- Pattaya\n\nDeparture form Mumbai at 00:40 hrs & Arrival at Bangkok International Airport (Don Mueang) 06:30 hrs. Meet lo...",
@@ -1863,15 +1866,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/turkey_fixed.jpg",
-      "img": "/images/hires/turkey_fixed.jpg",
-      "image": "/images/hires/turkey_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cappadocia_Balloon_Flights.jpg/1280px-Cappadocia_Balloon_Flights.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cappadocia_Balloon_Flights.jpg/1280px-Cappadocia_Balloon_Flights.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cappadocia_Balloon_Flights.jpg/1280px-Cappadocia_Balloon_Flights.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/turkey_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cappadocia_Balloon_Flights.jpg/1280px-Cappadocia_Balloon_Flights.jpg",
       "gallery": [
-        "/images/hires/turkey_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cappadocia_Balloon_Flights.jpg/1280px-Cappadocia_Balloon_Flights.jpg",
         "/images/hires/turkey_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Wonderful Turkey On SIC Basis\n\n(8N-9D)\n\n\n\nDay 1: Istanbul\n\nArrival to Istanbul Airport (IST) or SabihaGokcen Airport (SAW). Transfer to your hotel & Rest of the day will be free at leisure for relax and freshen up. (Standard check in time is 14:00 pm)\n\nOvernight in Istanbul.\n\n Day 2: Istanbul\n\nBreakfast at hotel. Tour of \"Sultan Ahmet Center\", the heart of the \"Old City\" from where the Byzantine and Ottoman Empires were ruled. Hagia Sophia, the Church of Divine Wisdom, one of the greatest marvel...",
@@ -1904,15 +1907,15 @@
       "location": "Outbound Itineraries",
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/vietnam_fixed.jpg",
-      "img": "/images/hires/vietnam_fixed.jpg",
-      "image": "/images/hires/vietnam_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/011_Halong_Bay_2011.jpg/1280px-011_Halong_Bay_2011.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/011_Halong_Bay_2011.jpg/1280px-011_Halong_Bay_2011.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/011_Halong_Bay_2011.jpg/1280px-011_Halong_Bay_2011.jpg",
       "startingPrice": 15000,
       "rating": 4.8,
       "reviewsCount": 15,
-      "heroImage": "/images/hires/vietnam_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/011_Halong_Bay_2011.jpg/1280px-011_Halong_Bay_2011.jpg",
       "gallery": [
-        "/images/hires/vietnam_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/011_Halong_Bay_2011.jpg/1280px-011_Halong_Bay_2011.jpg",
         "/images/hires/vietnam_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. VIETNAM\n\nSAIGON\n\n04.10.2026\n\nLAND OF THE ASCENDING DRAGON\n\n\n\n\n\nEmerald Bays. Timeless Charm. Endless Memories.\n\n\n\n\n\n\n\n\n\nMEET THE MAGIC OF VIETNAM\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n04.10.2026\n\nN\n\nA\n\nM\n\nV\n\nI\n\nE\n\nT\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Details\n\n\n\nPackage Name\n\nCLASSICAL VIETNAM\n\nEx-Mumbai With Ho Chi Minh City, Da nang & Hanoi, Halong Bay Cruise\n\n\n\nTour Itinerary\n\nMumbai - Ho Chi Minh City – Da Nang - Hanoi & Halong Bay Cruise – Mumbai.\n\nTraveling Mode\n\nBy Flight\n\nDuration\n\n08N...",
@@ -2151,16 +2154,16 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/south-india_fixed.jpg",
-      "img": "/images/hires/south-india_fixed.jpg",
-      "image": "/images/hires/south-india_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Meenakshi_temple_gopuram_overlook.jpg/1280px-Meenakshi_temple_gopuram_overlook.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Meenakshi_temple_gopuram_overlook.jpg/1280px-Meenakshi_temple_gopuram_overlook.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Meenakshi_temple_gopuram_overlook.jpg/1280px-Meenakshi_temple_gopuram_overlook.jpg",
       "slug": "south-india",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/south-india_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Meenakshi_temple_gopuram_overlook.jpg/1280px-Meenakshi_temple_gopuram_overlook.jpg",
       "gallery": [
-        "/images/hires/south-india_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Meenakshi_temple_gopuram_overlook.jpg/1280px-Meenakshi_temple_gopuram_overlook.jpg",
         "/images/hires/south-india_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. South India is the area including the five Indian states of Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana, as well as the three union territories of Lakshadweep, Andaman and Nicobar Islands and Puducherry, occupying 19% of India's area (635,780 km2 or 245,480 sq mi). Covering the southern part of the peninsular Deccan Plateau, South India is bounded by the Bay of Bengal in the east, the Arabian Sea in the west and the Indian Ocean in the south. The geography of the region is diverse with two mountain ranges–the Western and Eastern Ghats, bordering the plateau heartland. Godavari, Krishna, Kaveri, Tungabhadra and Vaigai rivers are important non-perennial sources of water. Chennai, Bangalore, Hyderabad, Trivandrum, Coimbatore, Visakhapatnam, Madurai and Kochi are the largest urban areas.",
@@ -2576,16 +2579,16 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/classical-inida-nepal_fixed.jpg",
-      "img": "/images/hires/classical-inida-nepal_fixed.jpg",
-      "image": "/images/hires/classical-inida-nepal_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
       "slug": "classical-inida-nepal",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/classical-inida-nepal_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
       "gallery": [
-        "/images/hires/classical-inida-nepal_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boudhanath_Stupa-201602.jpg/1280px-Boudhanath_Stupa-201602.jpg",
         "/images/hires/classical-inida-nepal_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Besides soaking in the grandeur of historical cities like Delhi, Agra (which has one of the seven wonders of the world- Taj Mahal), the pink city of Jaipur, this tour also takes you to Orchha which just appears out of a fairytale, and Khajuraho which is a masterpiece of architectural brilliance for its temples of medieval age with their intricate carvings and erotic sculptures. The last but by no means least important, visit Varanasi, the oldest living city in the world. It is both an illustrious place of pilgrimage and a centre of faith. Considered to be the holiest place for all Hindus, it is a must visit to get a glimpse of the Indian culture.",
@@ -2758,16 +2761,16 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/india-232_fixed.jpg",
-      "img": "/images/hires/india-232_fixed.jpg",
-      "image": "/images/hires/india-232_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg/1280px-1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg/1280px-1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg/1280px-1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg",
       "slug": "india-232",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/india-232_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg/1280px-1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg",
       "gallery": [
-        "/images/hires/india-232_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg/1280px-1_A_view_of_Tea_Gardens_in_Srimangal%2C_Sylhet.jpg",
         "/images/hires/india-232_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. North East India Tour Packages - Ghoomloduniya.com",
@@ -2889,16 +2892,16 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/classical-tour21_fixed.jpg",
-      "img": "/images/hires/classical-tour21_fixed.jpg",
-      "image": "/images/hires/classical-tour21_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotus_temple_in_new_delhi_at_evening.jpg/1280px-Lotus_temple_in_new_delhi_at_evening.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotus_temple_in_new_delhi_at_evening.jpg/1280px-Lotus_temple_in_new_delhi_at_evening.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotus_temple_in_new_delhi_at_evening.jpg/1280px-Lotus_temple_in_new_delhi_at_evening.jpg",
       "slug": "classical-tour21",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/classical-tour21_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotus_temple_in_new_delhi_at_evening.jpg/1280px-Lotus_temple_in_new_delhi_at_evening.jpg",
       "gallery": [
-        "/images/hires/classical-tour21_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotus_temple_in_new_delhi_at_evening.jpg/1280px-Lotus_temple_in_new_delhi_at_evening.jpg",
         "/images/hires/classical-tour21_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. Discover classical India like never before with our 11 days and 10 nights package. The package will give you a wonderful insight into the religious and cultural heritage of incredible India that cannot be seen elsewhere. During your tour, you will experience something different and unforgettable in each city. Delhi will offer a combination of everything like magnificent forts, mosques, food and shopping. Agra will take you back to the golden period of the Mughals. Jaipur will offer you a glimpse into the grandeur of Rajputana’s and Varanasi will lift up your religious spirits.",
@@ -3269,16 +3272,16 @@
       ],
       "category": "Popular",
       "type": "Domestic",
-      "image_url": "/images/hires/south-indiatour_fixed.jpg",
-      "img": "/images/hires/south-indiatour_fixed.jpg",
-      "image": "/images/hires/south-indiatour_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tirumala_090615.jpg/1280px-Tirumala_090615.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tirumala_090615.jpg/1280px-Tirumala_090615.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tirumala_090615.jpg/1280px-Tirumala_090615.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "slug": "south-indiatour",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/south-indiatour_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tirumala_090615.jpg/1280px-Tirumala_090615.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "gallery": [
-        "/images/hires/south-indiatour_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tirumala_090615.jpg/1280px-Tirumala_090615.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
         "/images/hires/south-indiatour_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. South India is the area including the five Indian states of Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana, as well as the three union territories of Lakshadweep, Andaman and Nicobar Islands and Puducherry, occupying 19% of India's area.",
@@ -3663,16 +3666,16 @@
       ],
       "category": "Adventure & Wildlife",
       "type": "Domestic",
-      "image_url": "/images/hires/golden-widlife_fixed.jpg",
-      "img": "/images/hires/golden-widlife_fixed.jpg",
-      "image": "/images/hires/golden-widlife_fixed.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/North_India.jpg/1280px-North_India.jpg",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/North_India.jpg/1280px-North_India.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/North_India.jpg/1280px-North_India.jpg",
       "slug": "golden-widlife",
       "startingPrice": 15000,
       "rating": 4.5,
       "reviewsCount": 100,
-      "heroImage": "/images/hires/golden-widlife_fixed.jpg",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/North_India.jpg/1280px-North_India.jpg",
       "gallery": [
-        "/images/hires/golden-widlife_fixed.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/North_India.jpg/1280px-North_India.jpg",
         "/images/hires/golden-widlife_fixed.jpg"
       ],
       "overview": "Embark on an extraordinary journey. A classic 9 day itinerary combining the Golden Triangle and a Tiger safari in Ranthambore. The tour begins in the capital city, Delhi, and then goes to Agra, the city of the Taj Mahal, before continuing to Ranthambore, one of the best known Tiger Reserves in India. The tour finally ends in Jaipur, the city that arrays a pink carpet to all its visitors. This classic itinerary, combines India’s famous Golden Triangle with a wildlife safari.",
@@ -5361,6 +5364,934 @@
       "durationNights": 4,
       "durationDays": 5,
       "metaDescription": "Experience the best of Kashmir. Visit Srinagar, Gulmarg, and Pahalgam. Book your dream Kashmir holiday package today for an unforgettable mountain escape."
+    },
+    {
+      "id": "317103f3-9078-49de-8c97-856efb555e06",
+      "slug": "bangalore",
+      "name": "Discover Bangalore",
+      "title": "Discover Bangalore",
+      "destination": "Bangalore",
+      "location": "Bangalore",
+      "locations": "Bangalore",
+      "category": "Heritage",
+      "type": "Domestic",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 15000,
+      "priceINR": 15000,
+      "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920",
+      "image_url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920",
+      "img": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920",
+      "heroImage": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Bangalore",
+          "description": "Welcome to Bangalore. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Bangalore."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "95449120-ba5c-47f2-9c6c-f0f5ffee9c27",
+      "slug": "bhimbetka",
+      "name": "Discover Bhimbetka",
+      "title": "Discover Bhimbetka",
+      "destination": "Bhimbetka",
+      "location": "Bhimbetka",
+      "locations": "Bhimbetka",
+      "category": "Heritage",
+      "type": "Domestic",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 15000,
+      "priceINR": 15000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rock_Shelter_8%2C_Bhimbetka_02.jpg/1280px-Rock_Shelter_8%2C_Bhimbetka_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rock_Shelter_8%2C_Bhimbetka_02.jpg/1280px-Rock_Shelter_8%2C_Bhimbetka_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rock_Shelter_8%2C_Bhimbetka_02.jpg/1280px-Rock_Shelter_8%2C_Bhimbetka_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rock_Shelter_8%2C_Bhimbetka_02.jpg/1280px-Rock_Shelter_8%2C_Bhimbetka_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Bhimbetka",
+          "description": "Welcome to Bhimbetka. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Bhimbetka."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rock_Shelter_8%2C_Bhimbetka_02.jpg/1280px-Rock_Shelter_8%2C_Bhimbetka_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "e2a5e8e2-461e-42cf-9e50-333ec26afd9a",
+      "slug": "durham",
+      "name": "Discover Durham",
+      "title": "Discover Durham",
+      "destination": "Durham",
+      "location": "Durham",
+      "locations": "Durham",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Durham_Castle_Bergfried.jpg/1280px-Durham_Castle_Bergfried.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Durham_Castle_Bergfried.jpg/1280px-Durham_Castle_Bergfried.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Durham_Castle_Bergfried.jpg/1280px-Durham_Castle_Bergfried.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Durham_Castle_Bergfried.jpg/1280px-Durham_Castle_Bergfried.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Durham",
+          "description": "Welcome to Durham. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Durham."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Durham_Castle_Bergfried.jpg/1280px-Durham_Castle_Bergfried.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "7c01f361-7f0d-4e5d-b2a9-2923aa355d94",
+      "slug": "geneva",
+      "name": "Discover Geneva",
+      "title": "Discover Geneva",
+      "destination": "Geneva",
+      "location": "Geneva",
+      "locations": "Geneva",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Geneve_2005_001_Ork.ch.jpg/1280px-Geneve_2005_001_Ork.ch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Geneve_2005_001_Ork.ch.jpg/1280px-Geneve_2005_001_Ork.ch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Geneve_2005_001_Ork.ch.jpg/1280px-Geneve_2005_001_Ork.ch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Geneve_2005_001_Ork.ch.jpg/1280px-Geneve_2005_001_Ork.ch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Geneva",
+          "description": "Welcome to Geneva. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Geneva."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Geneve_2005_001_Ork.ch.jpg/1280px-Geneve_2005_001_Ork.ch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "0c958805-32a9-4df5-93ef-7b16c76edd26",
+      "slug": "kintamani",
+      "name": "Discover Kintamani",
+      "title": "Discover Kintamani",
+      "destination": "Kintamani",
+      "location": "Kintamani",
+      "locations": "Kintamani",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Indonesia_Bangli_Kintamani_district_location_map.svg/1280px-Indonesia_Bangli_Kintamani_district_location_map.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Indonesia_Bangli_Kintamani_district_location_map.svg/1280px-Indonesia_Bangli_Kintamani_district_location_map.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Indonesia_Bangli_Kintamani_district_location_map.svg/1280px-Indonesia_Bangli_Kintamani_district_location_map.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Indonesia_Bangli_Kintamani_district_location_map.svg/1280px-Indonesia_Bangli_Kintamani_district_location_map.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Kintamani",
+          "description": "Welcome to Kintamani. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Kintamani."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Indonesia_Bangli_Kintamani_district_location_map.svg/1280px-Indonesia_Bangli_Kintamani_district_location_map.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "71d7c804-07e6-4d86-91d9-850da60c496e",
+      "slug": "lviv",
+      "name": "Discover Lviv",
+      "title": "Discover Lviv",
+      "destination": "Lviv",
+      "location": "Lviv",
+      "locations": "Lviv",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg/1280px-%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg/1280px-%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg/1280px-%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg/1280px-%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Lviv",
+          "description": "Welcome to Lviv. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Lviv."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg/1280px-%D0%9B%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%28%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%29_16.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "45107d5e-0d5f-469f-a6a7-30c5a81381f5",
+      "slug": "maheshwar",
+      "name": "Discover Maheshwar",
+      "title": "Discover Maheshwar",
+      "destination": "Maheshwar",
+      "location": "Maheshwar",
+      "locations": "Maheshwar",
+      "category": "Heritage",
+      "type": "Domestic",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 15000,
+      "priceINR": 15000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Maheshwar_fort.JPG/1280px-Maheshwar_fort.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Maheshwar_fort.JPG/1280px-Maheshwar_fort.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Maheshwar_fort.JPG/1280px-Maheshwar_fort.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Maheshwar_fort.JPG/1280px-Maheshwar_fort.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Maheshwar",
+          "description": "Welcome to Maheshwar. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Maheshwar."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Maheshwar_fort.JPG/1280px-Maheshwar_fort.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "93174aee-bbc6-4202-ba11-5bb844cba5b6",
+      "slug": "naypyidaw",
+      "name": "Discover Naypyidaw",
+      "title": "Discover Naypyidaw",
+      "destination": "Naypyidaw",
+      "location": "Naypyidaw",
+      "locations": "Naypyidaw",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/NPT_Water_Fountain.jpg/1280px-NPT_Water_Fountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/NPT_Water_Fountain.jpg/1280px-NPT_Water_Fountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/NPT_Water_Fountain.jpg/1280px-NPT_Water_Fountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/NPT_Water_Fountain.jpg/1280px-NPT_Water_Fountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Naypyidaw",
+          "description": "Welcome to Naypyidaw. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Naypyidaw."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/NPT_Water_Fountain.jpg/1280px-NPT_Water_Fountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "32d6ef6e-4743-40de-88ac-965ba9272e5e",
+      "slug": "omkareshwar",
+      "name": "Discover Omkareshwar",
+      "title": "Discover Omkareshwar",
+      "destination": "Omkareshwar",
+      "location": "Omkareshwar",
+      "locations": "Omkareshwar",
+      "category": "Heritage",
+      "type": "Domestic",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 15000,
+      "priceINR": 15000,
+      "image": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920",
+      "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920",
+      "img": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920",
+      "heroImage": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Omkareshwar",
+          "description": "Welcome to Omkareshwar. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Omkareshwar."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "ca417118-e8f7-40db-b58e-db72d08d7a3e",
+      "slug": "pindaya",
+      "name": "Discover Pindaya",
+      "title": "Discover Pindaya",
+      "destination": "Pindaya",
+      "location": "Pindaya",
+      "locations": "Pindaya",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Pone_Taloke_Lake_and_Pindaya.jpg/1280px-Pone_Taloke_Lake_and_Pindaya.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Pone_Taloke_Lake_and_Pindaya.jpg/1280px-Pone_Taloke_Lake_and_Pindaya.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Pone_Taloke_Lake_and_Pindaya.jpg/1280px-Pone_Taloke_Lake_and_Pindaya.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Pone_Taloke_Lake_and_Pindaya.jpg/1280px-Pone_Taloke_Lake_and_Pindaya.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Pindaya",
+          "description": "Welcome to Pindaya. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Pindaya."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Pone_Taloke_Lake_and_Pindaya.jpg/1280px-Pone_Taloke_Lake_and_Pindaya.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "4fb12559-2dc2-4138-8a75-1fe36b0c4f97",
+      "slug": "pisa",
+      "name": "Discover Pisa",
+      "title": "Discover Pisa",
+      "destination": "Pisa",
+      "location": "Pisa",
+      "locations": "Pisa",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Italy_-_Pisa.jpg/1280px-Italy_-_Pisa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Italy_-_Pisa.jpg/1280px-Italy_-_Pisa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Italy_-_Pisa.jpg/1280px-Italy_-_Pisa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Italy_-_Pisa.jpg/1280px-Italy_-_Pisa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Pisa",
+          "description": "Welcome to Pisa. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Pisa."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Italy_-_Pisa.jpg/1280px-Italy_-_Pisa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "3f032cf1-516c-4068-9331-921df5a8b4e3",
+      "slug": "saint-petersburg",
+      "name": "Discover Saint Petersburg",
+      "title": "Discover Saint Petersburg",
+      "destination": "Saint Petersburg",
+      "location": "Saint Petersburg",
+      "locations": "Saint Petersburg",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/1280px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/1280px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/1280px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/1280px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Saint Petersburg",
+          "description": "Welcome to Saint Petersburg. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Saint Petersburg."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/1280px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "ceb4c01e-a0fa-4ead-9b1a-bd06e2fcc28a",
+      "slug": "san-francisco",
+      "name": "Discover San Francisco",
+      "title": "Discover San Francisco",
+      "destination": "San Francisco",
+      "location": "San Francisco",
+      "locations": "San Francisco",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1280px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1280px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1280px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1280px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in San Francisco",
+          "description": "Welcome to San Francisco. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of San Francisco."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1280px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "0c8a1b91-e323-4a73-9a07-17df1a22a895",
+      "slug": "stratford",
+      "name": "Discover Stratford",
+      "title": "Discover Stratford",
+      "destination": "Stratford",
+      "location": "Stratford",
+      "locations": "Stratford",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg/1280px-Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg/1280px-Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg/1280px-Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg/1280px-Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Stratford",
+          "description": "Welcome to Stratford. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Stratford."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg/1280px-Stratford-Upon-Avon%2C_High_Street%2C_geograph_3969622_by_Lewis_Clarke.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "5896235b-2701-4465-a1f0-211d89177f11",
+      "slug": "uluwatu",
+      "name": "Discover Uluwatu",
+      "title": "Discover Uluwatu",
+      "destination": "Uluwatu",
+      "location": "Uluwatu",
+      "locations": "Uluwatu",
+      "category": "International",
+      "type": "International",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 45000,
+      "priceINR": 45000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg/1280px-Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg/1280px-Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg/1280px-Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg/1280px-Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Uluwatu",
+          "description": "Welcome to Uluwatu. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Uluwatu."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg/1280px-Pura_Luhur_Uluwatu_2017-08-17_%2834%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
+    },
+    {
+      "id": "57f8bd76-ea76-41b1-b6e0-6ef0eb4741b2",
+      "slug": "ujjain",
+      "name": "Discover Ujjain",
+      "title": "Discover Ujjain",
+      "destination": "Ujjain",
+      "location": "Ujjain",
+      "locations": "Ujjain",
+      "category": "Heritage",
+      "type": "Domestic",
+      "duration": "3 Nights / 4 Days",
+      "nights": "3 Nights",
+      "days": "4 Days",
+      "startingPrice": 15000,
+      "priceINR": 15000,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mahakaleshwar_Temple%2C_Ujjain.jpg/1280px-Mahakaleshwar_Temple%2C_Ujjain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mahakaleshwar_Temple%2C_Ujjain.jpg/1280px-Mahakaleshwar_Temple%2C_Ujjain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mahakaleshwar_Temple%2C_Ujjain.jpg/1280px-Mahakaleshwar_Temple%2C_Ujjain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mahakaleshwar_Temple%2C_Ujjain.jpg/1280px-Mahakaleshwar_Temple%2C_Ujjain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "rating": 4.8,
+      "reviewsCount": 12,
+      "inclusions": [
+        "Accommodation",
+        "Breakfast",
+        "Sightseeing"
+      ],
+      "exclusions": [
+        "Flights",
+        "Personal Expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Ujjain",
+          "description": "Welcome to Ujjain. Check into your hotel and relax."
+        },
+        {
+          "day": 2,
+          "title": "City Tour",
+          "description": "Explore the magnificent sights and sounds of Ujjain."
+        },
+        {
+          "day": 3,
+          "title": "Leisure Day",
+          "description": "Spend the day at your own pace exploring local markets."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "After breakfast, depart for your onward journey."
+        }
+      ],
+      "gallery": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mahakaleshwar_Temple%2C_Ujjain.jpg/1280px-Mahakaleshwar_Temple%2C_Ujjain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920",
+        "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=1920"
+      ]
     }
   ]
 }

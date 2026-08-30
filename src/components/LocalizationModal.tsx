@@ -1,28 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import ALL_REGIONS from '../data/countries.json';
 
 export const LocalizationModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const { currency, setCurrency } = useCurrency();
   const [search, setSearch] = useState('');
-  const [expanded, setExpanded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
       setSearch('');
-      setExpanded(false);
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (search.length > 0) {
-      setExpanded(true);
-    }
-  }, [search]);
+
 
   const handleSelect = (code: any) => {
     setCurrency(code);
@@ -33,9 +27,9 @@ export const LocalizationModal: React.FC<{ isOpen: boolean; onClose: () => void 
     (r) => r.name.toLowerCase().includes(search.toLowerCase()) || r.code.toLowerCase().includes(search.toLowerCase())
   );
 
-  const popularRegions = ALL_REGIONS.filter((r) => r.popular);
+  
   // Re-sort popular to match exact requested order if possible, or just slice top 5
-  const top5 = popularRegions.slice(0, 5);
+  
 
   return (
     <AnimatePresence>
@@ -97,7 +91,7 @@ export const LocalizationModal: React.FC<{ isOpen: boolean; onClose: () => void 
                   color: '#1D1D1F',
                   width: '100%',
                   fontWeight: 400,
-                  caretColor: '#D97736'
+                  caretColor: '#FF9933'
                 }}
               />
             </div>
@@ -105,72 +99,16 @@ export const LocalizationModal: React.FC<{ isOpen: boolean; onClose: () => void 
             {/* Content List */}
             <div 
               className="max-h-[350px] overflow-y-auto overscroll-contain block w-full custom-scrollbar pointer-events-auto pr-2" 
-              style={{ paddingRight: '8px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+              style={{ paddingRight: '8px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}
               onWheel={(e) => e.stopPropagation()}
             >
-              
-              {/* Popular Destinations (Hidden if searching) */}
-              {search === '' && (
-                <div>
-                  <h3 style={{ fontSize: '0.85rem', textTransform: 'uppercase', color: '#666666', letterSpacing: '0.1em', marginBottom: '1rem', fontWeight: 600 }}>Top 5 Popular</h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    {top5.map(opt => (
-                      <RegionOption key={`pop-${opt.code}-${opt.name}`} opt={opt} isSelected={currency === opt.code} onSelect={handleSelect} />
-                    ))}
-                  </div>
-                </div>
+              {filteredRegions.length > 0 ? (
+                filteredRegions.map((opt, i) => (
+                  <RegionOption key={`all-${opt.code}-${opt.name}-${i}`} opt={opt} isSelected={currency === opt.code} onSelect={handleSelect} />
+                ))
+              ) : (
+                <p style={{ color: '#666666', textAlign: 'center', padding: '2rem 0' }}>No results found.</p>
               )}
-
-              {/* View All Regions Toggle (Hidden if searching) */}
-              {search === '' && (
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '1rem',
-                    background: 'rgba(0,0,0,0.03)',
-                    border: '1px solid rgba(0,0,0,0.05)',
-                    borderRadius: '12px',
-                    color: '#1D1D1F',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.06)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.03)'}
-                >
-                  <span style={{ letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.85rem' }}>View All Regions</span>
-                  {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                </button>
-              )}
-
-              {/* All Regions (Visible if expanded OR searching) */}
-              <AnimatePresence>
-                {expanded && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    style={{ overflow: 'hidden' }}
-                  >
-                    <h3 style={{ fontSize: '0.85rem', textTransform: 'uppercase', color: '#666666', letterSpacing: '0.1em', marginBottom: '1rem', marginTop: search !== '' ? '0' : '0.5rem', fontWeight: 600 }}>
-                      {search === '' ? 'All Regions' : 'Search Results'}
-                    </h3>
-                    {filteredRegions.length > 0 ? (
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                        {filteredRegions.map((opt, i) => (
-                          <RegionOption key={`all-${opt.code}-${opt.name}-${i}`} opt={opt} isSelected={currency === opt.code} onSelect={handleSelect} />
-                        ))}
-                      </div>
-                    ) : (
-                      <p style={{ color: '#666666', textAlign: 'center', padding: '2rem 0' }}>No results found.</p>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              
             </div>
           </motion.div>
         </motion.div>
@@ -210,7 +148,7 @@ const RegionOption = ({ opt, isSelected, onSelect }: any) => {
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <span style={{ color: '#666666', fontWeight: 600, fontSize: '0.9rem' }}>{opt.code}</span>
         {isSelected && (
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#D97736' }} />
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FF9933' }} />
         )}
       </div>
     </button>

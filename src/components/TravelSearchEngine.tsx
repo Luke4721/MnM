@@ -80,10 +80,10 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
 
 
       {/* Main Search Container */}
-      <div className="bg-white dark:bg-[#D97736] rounded-[2.5rem] p-4 md:p-5 shadow-2xl border border-gray-100 dark:border-[#D97736]">
+      <div className="bg-white dark:bg-[#FF9933] rounded-[2.5rem] p-4 md:p-5 shadow-2xl border border-gray-100 dark:border-[#FF9933]">
         
         {/* Input Row */}
-        <div className="flex flex-col lg:flex-row items-center bg-[#f3f4f6] dark:bg-black/10 rounded-full p-2 relative shadow-inner">
+        <div className="flex flex-col lg:flex-row items-center bg-[#f3f4f6] dark:bg-black/10 rounded-[2rem] lg:rounded-full p-2 relative shadow-inner gap-2 lg:gap-0">
           
           {/* Destinations */}
           <div className="flex-[1.5] w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-6 py-3 transition-all flex items-center gap-4">
@@ -113,7 +113,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                            setDestination(option);
                            setIsDestOpen(false);
                          }}
-                         className="px-5 py-3 hover:bg-[#D97736]/10 hover:text-[#D97736] text-gray-700 dark:text-gray-300 transition-colors duration-200 cursor-pointer text-sm"
+                         className="px-5 py-3 hover:bg-[#FF9933]/10 hover:text-[#FF9933] text-gray-700 dark:text-gray-300 transition-colors duration-200 cursor-pointer text-sm"
                       >
                          {option}
                       </li>
@@ -122,7 +122,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
               </div>
           </div>
 
-          <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
+          <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div><div className="block lg:hidden h-[1px] w-full bg-gray-200 dark:bg-white/20 my-1"></div>
 
             {/* Check-in */}
             <div className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent relative overflow-hidden">
@@ -153,7 +153,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                />
             </div>
   
-            <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
+            <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div><div className="block lg:hidden h-[1px] w-full bg-gray-200 dark:bg-white/20 my-1"></div>
   
             {/* Check-out */}
             <div className="flex-1 w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex items-center justify-between gap-2 cursor-pointer bg-transparent relative overflow-hidden">
@@ -181,7 +181,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                />
             </div>
   
-            <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
+            <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div><div className="block lg:hidden h-[1px] w-full bg-gray-200 dark:bg-white/20 my-1"></div>
   
             {/* Guests */}
           <div className="flex-[0.8] w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex flex-col justify-center">
@@ -197,7 +197,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                       <li 
                          key={option}
                          onClick={() => setGuests(option)}
-                         className="px-5 py-3 hover:bg-[#D97736]/10 hover:text-[#D97736] text-gray-700 dark:text-gray-300 transition-colors duration-200"
+                         className="px-5 py-3 hover:bg-[#FF9933]/10 hover:text-[#FF9933] text-gray-700 dark:text-gray-300 transition-colors duration-200"
                       >
                          {option}
                       </li>
@@ -206,7 +206,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
              </div>
           </div>
 
-          <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div>
+          <div className="hidden lg:block w-[1px] h-12 bg-gray-200 dark:bg-white/20 mx-1"></div><div className="block lg:hidden h-[1px] w-full bg-gray-200 dark:bg-white/20 my-1"></div>
 
           {/* Budget */}
           <div className="flex-[0.8] w-full lg:w-auto hover:bg-white dark:hover:bg-white/20 hover:shadow-md rounded-full px-4 py-3 transition-all flex flex-col justify-center">
@@ -229,7 +229,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
                       <li 
                          key={option.value}
                          onClick={() => setBudget(option.value)}
-                         className="px-5 py-3 hover:bg-[#D97736]/10 hover:text-[#D97736] text-gray-700 dark:text-gray-300 transition-colors duration-200"
+                         className="px-5 py-3 hover:bg-[#FF9933]/10 hover:text-[#FF9933] text-gray-700 dark:text-gray-300 transition-colors duration-200"
                       >
                          {option.label}
                       </li>
@@ -242,7 +242,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
           <div className="px-2 shrink-0">
             <button 
               onClick={handleSearch}
-              className="w-full lg:w-[60px] lg:h-[60px] py-4 lg:py-0 bg-[#1e3a8a] dark:bg-white hover:bg-[#1e40af] dark:hover:bg-gray-100 text-white dark:text-[#D97736] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-transform hover:scale-105"
+              className="w-full lg:w-[60px] lg:h-[60px] py-4 lg:py-0 bg-[#1e3a8a] dark:bg-white hover:bg-[#1e40af] dark:hover:bg-gray-100 text-white dark:text-[#FF9933] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-transform hover:scale-105"
             >
               <Search size={22} strokeWidth={2.5} />
             </button>

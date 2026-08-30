@@ -5,7 +5,7 @@ import { Plane, ArrowRight, Star, Compass, Camera, Heart, Shield, MapPin, Map } 
 import { useCurrency } from '../context/CurrencyProvider';
 import db from '../data/mnm_database.json';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
-import blogsData from '../data/blogs_database.json';
+import { ReelsCarousel } from '../components/ReelsCarousel';
 
 
 export const Home: React.FC = () => {
@@ -94,9 +94,6 @@ export const Home: React.FC = () => {
   const popularPackageIds = ['2', '15', '16'];
   const popularPackages = popularPackageIds.map(id => db.packages.find(p => p.id === id)).filter(Boolean) as typeof db.packages;
 
-  // Travel Blogs (From scraped data)
-  const blogs = blogsData.slice(0, 3);
-
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black w-full relative z-10 transition-colors duration-500">
       
@@ -164,7 +161,7 @@ export const Home: React.FC = () => {
       </div>
 
       {/* Floating Search Engine Widget */}
-      <div className="relative z-20 my-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative z-[100] my-10 max-w-6xl mx-auto px-4 sm:px-6">
         <TravelSearchEngine standalone={true} />
       </div>
 
@@ -473,31 +470,8 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Travel Blogs */}
-      <div className="bg-[#f9f8f4] dark:bg-zinc-950 py-24 border-t border-gray-200 dark:border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 flex flex-col items-center">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Travel blogs</h2>
-            <div className="w-12 h-1 bg-[#D97736] mb-8"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
-              <Link to={`/blog/${blog.slug}`} key={blog.id} className="group cursor-pointer flex flex-col no-underline">
-                <div className="relative h-64 overflow-hidden shadow-md">
-                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-                <div className="bg-white dark:bg-zinc-900 mx-4 -mt-12 relative z-10 p-6 shadow-xl flex flex-col items-center text-center">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#D97736] transition-colors line-clamp-2">{blog.title}</h3>
-                  <p className="text-xs text-gray-400 font-medium uppercase tracking-widest">
-                    By {blog.author} &nbsp;-&nbsp; {blog.date}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Reels Carousel */}
+      <ReelsCarousel />
 
       {/* Footer & Newsletter */}
       <footer className="bg-[#f9f8f4] dark:bg-zinc-950 pt-24">
