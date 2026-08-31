@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Plane, ArrowRight, Star, Compass, Camera, Heart, Shield, MapPin, Map } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import db from '../data/mnm_database.json';
@@ -10,7 +10,6 @@ import { ReelsCarousel } from '../components/ReelsCarousel';
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
-  const navigate = useNavigate();
 
   // Phase 2: Hero Slideshow Logic
   const heroPackages = [
@@ -151,11 +150,7 @@ export const Home: React.FC = () => {
               </span>
               <span className="text-sm text-gray-300 uppercase tracking-wider text-[10px] mt-1">Superb Hotel</span>
             </div>
-            <div className="flex-1 py-4 md:py-0 px-6 flex items-center justify-end">
-              <button onClick={() => navigate(`/package/${activePackage.id}`)} className="text-white font-bold tracking-widest text-lg hover:text-[#D97736] transition-colors flex items-center gap-2 pointer-events-auto">
-                Book holiday <ArrowRight size={20} />
-              </button>
-            </div>
+
           </div>
         </div>
       </div>
