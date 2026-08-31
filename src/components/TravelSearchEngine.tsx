@@ -239,10 +239,10 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
           </div>
 
           {/* Search Button */}
-          <div className="px-2 shrink-0">
+          <div className="px-2 w-full lg:w-auto shrink-0 mt-2 lg:mt-0">
             <button 
               onClick={handleSearch}
-              className="w-full lg:w-[60px] lg:h-[60px] py-4 lg:py-0 bg-[#1e3a8a] dark:bg-white hover:bg-[#1e40af] dark:hover:bg-gray-100 text-white dark:text-[#FF9933] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-transform hover:scale-105"
+              className="w-full lg:w-[60px] lg:h-[60px] py-3 lg:py-0 bg-[#1e3a8a] dark:bg-white hover:bg-[#1e40af] dark:hover:bg-gray-100 text-white dark:text-[#FF9933] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-transform hover:scale-105"
             >
               <Search size={22} strokeWidth={2.5} />
             </button>
