@@ -31,6 +31,20 @@ export const AdminPackages = () => {
     }
   };
 
+  const handleDelete = async (pkg: any) => {
+    if (!window.confirm(`Are you sure you want to delete "${pkg.name}"?`)) return;
+    try {
+      const res = await fetch(`${API_URL}/${pkg.id}`, {
+        method: 'DELETE'
+      });
+      if (!res.ok) throw new Error('Failed to delete');
+      await refreshPackages();
+      alert('Package deleted successfully!');
+    } catch (err: any) {
+      alert('Error deleting: ' + err.message);
+    }
+  };
+
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
@@ -69,6 +83,15 @@ export const AdminPackages = () => {
                   rows={4}
                 />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
+                <input 
+                  type="text" 
+                  value={editingPkg.image_url || editingPkg.img || editingPkg.image || ''} 
+                  onChange={e => setEditingPkg({...editingPkg, image_url: e.target.value})}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500"
+                />
+              </div>
               <div className="flex gap-3">
                 <button type="submit" disabled={isSaving} className="px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-lg font-medium">{isSaving ? 'Saving...' : 'Save Changes'}</button>
                 <button type="button" onClick={() => setEditingPkg(null)} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Cancel</button>
@@ -97,8 +120,9 @@ export const AdminPackages = () => {
                       <span className="px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-full text-xs font-medium">Active</span>
                     </td>
                     <td className="px-6 py-4">{pkg.startingPrice || 'N/A'}</td>
-                    <td className="px-6 py-4 text-right">
-                      <button onClick={() => setEditingPkg(pkg)} className="text-indigo-600 hover:text-indigo-900 font-medium text-xs uppercase tracking-wider">Edit</button>
+                    <td className="px-6 py-4 text-right whitespace-nowrap">
+                      <button onClick={() => setEditingPkg(pkg)} className="text-indigo-600 hover:text-indigo-900 font-medium text-xs uppercase tracking-wider mr-4">Edit</button>
+                      <button onClick={() => handleDelete(pkg)} className="text-red-600 hover:text-red-900 font-medium text-xs uppercase tracking-wider">Delete</button>
                     </td>
                   </tr>
                 ))}

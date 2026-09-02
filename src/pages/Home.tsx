@@ -90,9 +90,8 @@ export const Home: React.FC = () => {
 
   const activePackage = heroPackages[currentSlide];
 
-  // Popular Packages Logic
-  const popularPackageIds = ['2', '15', '16'];
-  const popularPackages = popularPackageIds.map(id => dbPackages.find(p => p.id === id)).filter(Boolean) as typeof dbPackages;
+  // Popular Packages Logic - use first 3 packages if hardcoded IDs aren't found
+  const popularPackages = (dbPackages.length > 0 ? dbPackages.slice(0, 3) : []);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black w-full relative z-10 transition-colors duration-500">
@@ -278,7 +277,7 @@ export const Home: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link to={`/package/${pkg.id}`} className="block h-full group">
+                <Link to={`/packages/${pkg.slug || pkg.id}`} className="block h-full group">
                   <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-2xl transition-all duration-300 h-full group hover:-translate-y-1">
                     <div className="h-56 relative overflow-hidden">
                       <img src={pkg.img || pkg.image_url || pkg.image} alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
