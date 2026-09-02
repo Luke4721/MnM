@@ -49,7 +49,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
         // Fallback for testing: still open mail client if they haven't set up the API yet
         const subject = `Enquiry for ${packageName}${variantName ? ' - ' + variantName : ''}`;
         const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nPackage: ${packageName}\nTravel Type: ${travelType}\nBudget: ${budget}\nTravelers: ${travelers}\n\nSpecial Requests:\n${message}`;
-        window.location.href = `mailto:info@mnmtravels.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:bharatreviews.mnm@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       } else {
         const response = await fetch(API_URL, {
           method: 'POST',
@@ -61,7 +61,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
       setIsSuccess(true);
     } catch (err) {
       console.error('Failed to submit enquiry:', err);
-      alert('Failed to send enquiry. Please try again or email info@mnmtravels.com directly.');
+      alert('Failed to send enquiry. Please try again or email bharatreviews.mnm@gmail.com directly.');
     }
   };
 
