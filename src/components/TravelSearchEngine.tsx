@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import db from '../data/mnm_database.json';
 import { Search, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { usePackages } from '../context/PackagesProvider';
 
 interface TravelSearchEngineProps {
   initialDestination?: string;
@@ -17,6 +17,7 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
   standalone = false 
 }) => {
   const navigate = useNavigate();
+  const { packages: dbPackages } = usePackages();
 
   const [destination, setDestination] = useState(initialDestination);
   const [checkIn, setCheckIn] = useState('');
@@ -31,11 +32,10 @@ export const TravelSearchEngine: React.FC<TravelSearchEngineProps> = ({
   const today = new Date().toISOString().split('T')[0];
 
   const allDestinations = Array.from(new Set([
-    ...db.packages.flatMap(p => p.location.split(', ')),
-    ...db.packages.map(p => p.title || p.name)
+    ...dbPackages.flatMap(p => p.location ? p.location.split(', ') : []),
+    ...dbPackages.map(p => p.title || p.name)
   ])).filter(Boolean).filter(d => d !== 'Outbound Itineraries').sort();
   const matchedDestinations = destination ? allDestinations.filter(d => d.toLowerCase().includes(destination.toLowerCase())) : allDestinations.slice(0, 10);
-
 
   const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCheckIn = e.target.value;

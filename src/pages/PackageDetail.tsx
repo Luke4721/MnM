@@ -3,24 +3,32 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Star, ChevronDown, Check, ArrowRight, Shield, CreditCard, ChevronLeft } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
-import db from '../data/mnm_database.json';
 import { PageTransition } from '../components/PageTransition';
 import { EnquiryModal } from '../components/EnquiryModal';
 
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
-
+import { usePackages } from '../context/PackagesProvider';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { currency, convertPrice } = useCurrency();
+  const { packages: dbPackages, loading } = usePackages();
   const [activeDay, setActiveDay] = useState<number | null>(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
 
   // Fallback to id if slug is not found (for backwards compatibility)
-  const pkg = db.packages.find(p => p.slug === slug || p.id.toString() === slug);
+  const pkg = dbPackages.find(p => p.slug === slug || p.id.toString() === slug);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center">
+        <p>Loading package...</p>
+      </div>
+    );
+  }
 
   if (!pkg) {
     return (
@@ -41,12 +49,12 @@ export const PackageDetail: React.FC = () => {
   const relatedPackages = React.useMemo(() => {
     if (!location) return [];
     const locLower = location.toLowerCase();
-    return db.packages.filter((p: any) => {
+    return dbPackages.filter((p: any) => {
         if (p.id === pkg.id) return false;
         const pLoc = (p.destination || p.location || p.locations || p.highlights_old || '').toLowerCase();
         return pLoc === locLower || (pLoc && locLower && (pLoc.includes(locLower) || locLower.includes(pLoc)));
     }).slice(0, 3);
-  }, [location, pkg.id]);
+  }, [location, pkg.id, dbPackages]);
   
   const variants = pkg.variants && pkg.variants.length > 0 ? [
     {

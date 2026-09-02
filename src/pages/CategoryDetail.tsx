@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
-import db from '../data/mnm_database.json';
+import { usePackages } from '../context/PackagesProvider';
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { PageTransition } from '../components/PageTransition';
@@ -26,10 +26,11 @@ const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt })
 export const CategoryDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { currency, convertPrice } = useCurrency();
+  const { packages: dbPackages } = usePackages();
   
   const formattedCategory = slug ? slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase() : '';
   
-  const categoryPackages = db.packages.filter(pkg => (pkg.category || '').toLowerCase() === (slug || '').toLowerCase());
+  const categoryPackages = dbPackages.filter(pkg => (pkg.category || '').toLowerCase() === (slug || '').toLowerCase());
   
   const heroImage = categoryPackages.length > 0 
     ? (categoryPackages[0].image_url || categoryPackages[0].img || categoryPackages[0].image)

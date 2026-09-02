@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Plane, ArrowRight, Star, Compass, Camera, Heart, Shield, MapPin, Map } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
-import db from '../data/mnm_database.json';
+import { usePackages } from '../context/PackagesProvider';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
 import { ReelsCarousel } from '../components/ReelsCarousel';
 
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
+  const { packages: dbPackages } = usePackages();
 
   // Phase 2: Hero Slideshow Logic
   const heroPackages = [
@@ -91,7 +92,7 @@ export const Home: React.FC = () => {
 
   // Popular Packages Logic
   const popularPackageIds = ['2', '15', '16'];
-  const popularPackages = popularPackageIds.map(id => db.packages.find(p => p.id === id)).filter(Boolean) as typeof db.packages;
+  const popularPackages = popularPackageIds.map(id => dbPackages.find(p => p.id === id)).filter(Boolean) as typeof dbPackages;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black w-full relative z-10 transition-colors duration-500">

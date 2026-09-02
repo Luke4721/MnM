@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
+import { usePackages } from '../context/PackagesProvider';
 import db from '../data/mnm_database.json';
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
@@ -26,6 +27,7 @@ const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt })
 
 export const Packages: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
+  const { packages: dbPackages } = usePackages();
   const [searchParams] = useSearchParams();
   const initialSearch = searchParams.get('q') || '';
   
@@ -63,7 +65,7 @@ export const Packages: React.FC = () => {
   };
 
   const filteredPackages = useMemo(() => {
-    return db.packages.filter((pkg) => {
+    return dbPackages.filter((pkg) => {
       const matchesCategory = activeCategory === 'All' || pkg.category === activeCategory;
       const matchesSearch =
         (pkg.title || pkg.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
