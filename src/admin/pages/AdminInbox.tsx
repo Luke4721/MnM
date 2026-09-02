@@ -6,7 +6,7 @@ export const AdminInbox = () => {
   const [loading, setLoading] = useState(true);
 
   // This will be replaced by the user's actual AWS Lambda API endpoint
-  const API_URL = 'https://PLACEHOLDER.execute-api.us-east-1.amazonaws.com/enquiries';
+  const API_URL = 'https://p86hnz1tyf.execute-api.us-east-1.amazonaws.com/prod/enquiries';
   console.log('Using Inbox API:', API_URL);
 
   useEffect(() => {
@@ -16,28 +16,9 @@ export const AdminInbox = () => {
   const fetchEnquiries = async () => {
     try {
       setLoading(true);
-      // Simulating fetch or uncomment to use real API
-      /*
       const res = await fetch(API_URL);
       const data = await res.json();
       setEnquiries(data);
-      */
-      
-      // Temporary mock data until API is hooked up
-      setEnquiries([
-        {
-          id: '1',
-          name: 'John Doe',
-          email: 'john@example.com',
-          phone: '+1 234 567 890',
-          packageName: 'Bali Escape',
-          travelType: 'Leisure',
-          budget: 'Premium',
-          travelers: '2',
-          message: 'We want an ocean view room if possible.',
-          timestamp: new Date().toISOString()
-        }
-      ]);
     } catch (err) {
       console.error(err);
     } finally {

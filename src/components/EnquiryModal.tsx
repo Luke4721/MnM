@@ -27,7 +27,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const API_URL = 'https://PLACEHOLDER.execute-api.us-east-1.amazonaws.com/enquiries'; // Replace with actual AWS API URL for enquiries
+    const API_URL = 'https://p86hnz1tyf.execute-api.us-east-1.amazonaws.com/prod/enquiries'; // Replace with actual AWS API URL for enquiries
 
     const enquiryData = {
       id: Date.now().toString(),
