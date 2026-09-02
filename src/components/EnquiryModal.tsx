@@ -24,26 +24,45 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose, pac
   const budgets = ['Budget', 'Standard', 'Premium', 'Luxury'];
   const travelersOptions = ['1', '2', '3-5', '6+'];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = `Enquiry for ${packageName}${variantName ? ' - ' + variantName : ''}`;
-    const body = `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
+    const API_URL = 'https://PLACEHOLDER.execute-api.us-east-1.amazonaws.com/enquiries'; // Replace with actual AWS API URL for enquiries
 
-Package: ${packageName} ${variantName ? '(' + variantName + ')' : ''}
-Travel Type: ${travelType}
-Budget: ${budget}
-Travelers: ${travelers}
+    const enquiryData = {
+      id: Date.now().toString(),
+      name,
+      email,
+      phone,
+      packageName: `${packageName}${variantName ? ' - ' + variantName : ''}`,
+      travelType,
+      budget,
+      travelers,
+      message,
+      timestamp: new Date().toISOString()
+    };
 
-Special Requests:
-${message}
-    `.trim();
-
-    window.location.href = `mailto:info@mnmtravels.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setIsSuccess(true);
+    try {
+      // If placeholder, we simulate success
+      if (API_URL.includes('PLACEHOLDER')) {
+        console.log('Simulated API Call to AWS with data:', enquiryData);
+        // Fallback for testing: still open mail client if they haven't set up the API yet
+        const subject = `Enquiry for ${packageName}${variantName ? ' - ' + variantName : ''}`;
+        const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nPackage: ${packageName}\nTravel Type: ${travelType}\nBudget: ${budget}\nTravelers: ${travelers}\n\nSpecial Requests:\n${message}`;
+        window.location.href = `mailto:info@mnmtravels.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      } else {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(enquiryData)
+        });
+        if (!response.ok) throw new Error('API Error');
+      }
+      setIsSuccess(true);
+    } catch (err) {
+      console.error('Failed to submit enquiry:', err);
+      alert('Failed to send enquiry. Please try again or email info@mnmtravels.com directly.');
+    }
   };
 
   const handleClose = () => {

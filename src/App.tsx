@@ -20,6 +20,7 @@ import { AdminLayout } from './admin/components/AdminLayout';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
 import { AdminPackages } from './admin/pages/AdminPackages';
 import { AdminLogin } from './admin/pages/AdminLogin';
+import { AdminInbox } from './admin/pages/AdminInbox';
 
 
 function App() {
@@ -121,6 +122,7 @@ function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="packages" element={<AdminPackages />} />
+              <Route path="inbox" element={<AdminInbox />} />
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="/packages" element={<Packages />} />

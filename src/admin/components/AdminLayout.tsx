@@ -1,7 +1,7 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
 import { isAdminAuthenticated } from '../auth';
-import { LayoutDashboard, Inbox, MessageSquare, Calendar, CheckSquare, Folder, FileText, Lock, FilePlus, Map, User, Settings, Bell, Search, Plus, UserCircle, LogOut } from 'lucide-react';
+import { LayoutDashboard, Inbox, Folder, FileText, Lock, FilePlus, User, Settings, Bell, Plus, UserCircle, LogOut } from 'lucide-react';
 import db from '../../data/mnm_database.json';
 
 export const AdminLayout = () => {
@@ -41,13 +41,10 @@ export const AdminLayout = () => {
           <div>
             <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2 px-3">App</div>
             <div className="space-y-0.5">
-              <Link to="#" className="flex items-center justify-between px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-white/60 rounded-xl text-[13px] transition-colors font-medium">
+              <Link to="/admin/inbox" className="flex items-center justify-between px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-white/60 rounded-xl text-[13px] transition-colors font-medium">
                 <div className="flex items-center gap-3"><Inbox size={16} /> Inbox</div>
-                <span className="bg-white/80 text-gray-600 font-bold text-[10px] px-1.5 py-0.5 rounded-md shadow-sm border border-white/40">14</span>
+                <span className="bg-white/80 text-gray-600 font-bold text-[10px] px-1.5 py-0.5 rounded-md shadow-sm border border-white/40">1</span>
               </Link>
-              <Link to="#" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-white/60 rounded-xl text-[13px] transition-colors font-medium"><MessageSquare size={16} /> Chat</Link>
-              <Link to="#" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-white/60 rounded-xl text-[13px] transition-colors font-medium"><Calendar size={16} /> Calendar</Link>
-              <Link to="#" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-white/60 rounded-xl text-[13px] transition-colors font-medium"><CheckSquare size={16} /> Task</Link>
             </div>
           </div>
 
@@ -67,7 +64,7 @@ export const AdminLayout = () => {
                 <div className="flex items-center gap-3"><FilePlus size={16} /> Pages</div>
                 <Plus size={14} />
               </Link>
-              <Link to="#" className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-white/60 rounded-xl text-[13px] transition-colors font-medium"><Map size={16} /> Maps</Link>
+
             </div>
           </div>
 
@@ -106,18 +103,7 @@ export const AdminLayout = () => {
           </div>
 
           <div className="flex items-center gap-5">
-            <div className="relative flex items-center group">
-              <Search size={14} className="absolute left-3.5 text-gray-500 group-focus-within:text-indigo-500 transition-colors" />
-              <input 
-                type="text" 
-                placeholder="Search or type a command" 
-                className="pl-10 pr-14 py-2 bg-white/60 border border-white/60 rounded-xl text-[13px] focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400 w-64 transition-all shadow-sm placeholder:text-gray-400"
-              />
-              <div className="absolute right-2 flex gap-1">
-                <kbd className="px-1.5 py-0.5 bg-white/80 border border-white rounded text-[10px] text-gray-500 font-sans shadow-sm font-semibold">⌘</kbd>
-                <kbd className="px-1.5 py-0.5 bg-white/80 border border-white rounded text-[10px] text-gray-500 font-sans shadow-sm font-semibold">Space</kbd>
-              </div>
-            </div>
+
             
             <div className="flex items-center gap-2 border-l border-white/40 pl-5">
               <button className="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-gray-800 bg-white/60 hover:bg-white/80 border border-white/60 rounded-xl transition-all shadow-sm"><Plus size={16} /></button>
