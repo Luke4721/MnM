@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
 import { CurrencyProvider } from './context/CurrencyProvider.tsx'
+import { PackagesProvider } from './context/PackagesProvider.tsx'
 
 // TEMPORARY: Clear cookies and language preference on load for testing
 localStorage.removeItem('languagePreference');
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <CurrencyProvider>
-        <App />
+        <PackagesProvider>
+          <App />
+        </PackagesProvider>
       </CurrencyProvider>
     </BrowserRouter>
   </React.StrictMode>,

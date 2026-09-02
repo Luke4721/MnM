@@ -1,28 +1,34 @@
-import { useState, useEffect } from 'react';
-import db from '../../data/mnm_database.json';
+import { useState } from 'react';
+import { usePackages } from '../../context/PackagesProvider';
+
+const API_URL = 'https://yjdlz1pnwl.execute-api.us-east-1.amazonaws.com';
 
 export const AdminPackages = () => {
-  const [packages, setPackages] = useState<any[]>([]);
+  const { packages, refreshPackages, loading } = usePackages();
   const [editingPkg, setEditingPkg] = useState<any | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
-  useEffect(() => {
-    const localData = localStorage.getItem('admin_packages_data');
-    if (localData) {
-      setPackages(JSON.parse(localData));
-    } else {
-      setPackages(db.packages || []);
-    }
-  }, []);
-
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingPkg) return;
     
-    const updated = packages.map(p => p.id === editingPkg.id ? editingPkg : p);
-    setPackages(updated);
-    localStorage.setItem('admin_packages_data', JSON.stringify(updated));
-    setEditingPkg(null);
-    alert('Saved! (Saved locally in browser, ready for AWS later)');
+    setIsSaving(true);
+    try {
+      const res = await fetch(API_URL, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(editingPkg)
+      });
+      if (!res.ok) throw new Error('Failed to save');
+      
+      await refreshPackages();
+      setEditingPkg(null);
+      alert('Saved successfully to AWS DynamoDB!');
+    } catch (err: any) {
+      alert('Error saving: ' + err.message);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -64,13 +70,16 @@ export const AdminPackages = () => {
                 />
               </div>
               <div className="flex gap-3">
-                <button type="submit" className="px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-lg font-medium">Save Changes</button>
+                <button type="submit" disabled={isSaving} className="px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-lg font-medium">{isSaving ? 'Saving...' : 'Save Changes'}</button>
                 <button type="button" onClick={() => setEditingPkg(null)} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Cancel</button>
               </div>
             </form>
           </div>
         ) : (
           <div className="overflow-x-auto">
+            {loading ? (
+              <div className="p-8 text-center text-gray-500">Loading packages from AWS...</div>
+            ) : (
             <table className="w-full text-left text-sm text-gray-600">
               <thead className="bg-gray-50/50 border-b border-gray-100 text-xs uppercase font-semibold text-gray-500">
                 <tr>
@@ -95,6 +104,7 @@ export const AdminPackages = () => {
                 ))}
               </tbody>
             </table>
+            )}
           </div>
         )}
       </div>
