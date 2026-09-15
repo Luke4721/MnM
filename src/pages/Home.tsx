@@ -7,6 +7,52 @@ import { usePackages } from '../context/PackagesProvider';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
 import { ReelsCarousel } from '../components/ReelsCarousel';
 
+/**
+ * ⬇️ PASTE YOUR SOCIAL MEDIA URLs HERE ⬇️
+ *
+ * Replace the "#" in each `href` below with the real profile URL, for example:
+ *   { name: 'Facebook', href: 'https://www.facebook.com/mnmtravels', icon: ... }
+ *
+ * These render as real links that open in a new tab. While a value is still "#"
+ * the click is ignored, so the page does not jump — no code change is needed
+ * once the real URLs are in.
+ */
+const SOCIAL_LINKS: { name: string; href: string; icon: React.ReactNode }[] = [
+  {
+    name: 'Facebook',
+    href: '#', // TODO: paste the Facebook page URL here
+    icon: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
+  },
+  {
+    name: 'X (Twitter)',
+    href: '#', // TODO: paste the X / Twitter profile URL here
+    icon: <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />,
+  },
+  {
+    name: 'YouTube',
+    href: '#', // TODO: paste the YouTube channel URL here
+    icon: (
+      <>
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" />
+        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+      </>
+    ),
+  },
+  {
+    name: 'Instagram',
+    href: '#', // TODO: paste the Instagram profile URL here
+    icon: (
+      <>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      </>
+    ),
+  },
+];
+
+const PLACEHOLDER_LINK = '#';
+
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
@@ -525,10 +571,22 @@ export const Home: React.FC = () => {
               <Link to="/contact" className="hover:text-[#D97736] transition-colors">Contact</Link>
             </div>
             <div className="flex gap-4">
-              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></Link>
+              {SOCIAL_LINKS.map(({ name, href, icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${name} (opens in a new tab)`}
+                  onClick={(event) => {
+                    // A placeholder href would otherwise jump the page to the top.
+                    if (href === PLACEHOLDER_LINK) event.preventDefault();
+                  }}
+                  className="hover:text-[#D97736] transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                </a>
+              ))}
             </div>
           </div>
         </div>
