@@ -20,7 +20,7 @@ export const Contact: React.FC = () => {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <p><strong>Email:</strong> concierge@mnmtravels.com</p>
-              <p><strong>Phone:</strong> +91 (123) 456-7890</p>
+              <p><strong>Phone:</strong> +91-11-35919499 or +91-11-35537525</p>
               <p><strong>Address:</strong> Delhi, India</p>
             </div>
           </motion.div>

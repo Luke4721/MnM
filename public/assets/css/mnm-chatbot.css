@@ -1,0 +1,688 @@
+/* =====================================================================
+   MNM CONCIERGE — Menu-Driven FAQ Chat Widget Stylesheet
+   Monks & Monkeys Travels · mnmtravels.com
+   ---------------------------------------------------------------------
+   Brand palette: Deep Navy #0A192F · Gold #D4AF37 · Clean Whites
+   All rules are scoped under #mnm-chatbot-root (mnm- prefixed classes)
+   so they can never collide with Tailwind or the app's own styles.
+   ===================================================================== */
+
+#mnm-chatbot-root {
+  /* Brand tokens */
+  --mnm-navy: #0A192F;
+  --mnm-navy-800: #102A4C;
+  --mnm-navy-700: #16345E;
+  --mnm-gold: #D4AF37;
+  --mnm-gold-dark: #B8952B;
+  --mnm-gold-soft: rgba(212, 175, 55, 0.16);
+  --mnm-white: #FFFFFF;
+  --mnm-bg: #F5F7FB;
+  --mnm-text: #17263F;
+  --mnm-text-muted: #64748B;
+  --mnm-border: #E3E9F2;
+  --mnm-shadow-lg: 0 24px 60px -12px rgba(10, 25, 47, 0.38);
+  --mnm-font: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  font-family: var(--mnm-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#mnm-chatbot-root.mnm-hidden {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Launcher button (floating bubble, bottom-right)
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-launcher {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 2px solid var(--mnm-gold);
+  background: linear-gradient(145deg, var(--mnm-navy-800) 0%, var(--mnm-navy) 60%);
+  color: var(--mnm-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  box-shadow: 0 14px 30px -8px rgba(10, 25, 47, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
+  overflow: visible;
+}
+
+#mnm-chatbot-root .mnm-launcher:hover,
+#mnm-chatbot-root .mnm-launcher:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 18px 36px -8px rgba(10, 25, 47, 0.6), 0 0 22px rgba(212, 175, 55, 0.35);
+  outline: none;
+}
+
+#mnm-chatbot-root .mnm-launcher svg {
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+}
+
+/* Gold pulse ring — draws attention until the widget is opened once */
+#mnm-chatbot-root:not(.mnm-seen) .mnm-launcher::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--mnm-gold);
+  animation: mnm-pulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mnm-pulse {
+  0%   { transform: scale(1);    opacity: 0.85; }
+  70%  { transform: scale(1.38); opacity: 0; }
+  100% { transform: scale(1.38); opacity: 0; }
+}
+
+/* Unread badge */
+#mnm-chatbot-root .mnm-launcher-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--mnm-gold);
+  color: var(--mnm-navy);
+  border: 2px solid var(--mnm-white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#mnm-chatbot-root.mnm-seen .mnm-launcher::before,
+#mnm-chatbot-root.mnm-seen .mnm-launcher-badge {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Chat panel
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-panel {
+  position: absolute;
+  right: 22px;
+  bottom: 100px;
+  width: min(392px, calc(100vw - 28px));
+  height: min(620px, calc(100vh - 132px));
+  height: min(620px, calc(100dvh - 132px));
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  background: var(--mnm-white);
+  border: 1px solid var(--mnm-border);
+  border-radius: 20px;
+  box-shadow: var(--mnm-shadow-lg);
+  overflow: hidden;
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px) scale(0.95);
+  transform-origin: bottom right;
+  transition: opacity 0.28s ease,
+              transform 0.28s cubic-bezier(0.21, 1.02, 0.55, 1),
+              visibility 0.28s;
+  z-index: 1;
+}
+
+#mnm-chatbot-root.mnm-open .mnm-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* ---------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 16px;
+  background: linear-gradient(135deg, var(--mnm-navy) 0%, var(--mnm-navy-700) 68%, #1C3F6E 100%);
+  border-bottom: 2px solid var(--mnm-gold);
+  flex-shrink: 0;
+  color: var(--mnm-white);
+}
+
+#mnm-chatbot-root .mnm-header-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--mnm-gold), var(--mnm-gold-dark));
+  color: var(--mnm-navy);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+#mnm-chatbot-root .mnm-header-text {
+  min-width: 0;
+}
+
+#mnm-chatbot-root .mnm-header-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+#mnm-chatbot-root .mnm-header-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
+
+#mnm-chatbot-root .mnm-online-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 6px #34D399;
+  flex-shrink: 0;
+}
+
+#mnm-chatbot-root .mnm-close {
+  margin-left: auto;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--mnm-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#mnm-chatbot-root .mnm-close:hover,
+#mnm-chatbot-root .mnm-close:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  transform: rotate(90deg);
+  outline: none;
+}
+
+#mnm-chatbot-root .mnm-close svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Message history
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-messages {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 16px 12px;
+  background: var(--mnm-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #C3CEDD transparent;
+}
+
+#mnm-chatbot-root .mnm-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+#mnm-chatbot-root .mnm-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#mnm-chatbot-root .mnm-messages::-webkit-scrollbar-thumb {
+  background: #C3CEDD;
+  border-radius: 3px;
+}
+
+#mnm-chatbot-root .mnm-msg {
+  display: flex;
+  gap: 8px;
+  max-width: 88%;
+  animation: mnm-msg-in 0.3s ease both;
+}
+
+#mnm-chatbot-root .mnm-msg-bot {
+  align-self: flex-start;
+}
+
+#mnm-chatbot-root .mnm-msg-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+#mnm-chatbot-root .mnm-msg-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--mnm-gold), var(--mnm-gold-dark));
+  color: var(--mnm-navy);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+#mnm-chatbot-root .mnm-msg-bubble {
+  padding: 10px 14px 8px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  box-shadow: 0 2px 6px rgba(10, 25, 47, 0.06);
+  min-width: 0;
+}
+
+/* User messages: deep navy, right-aligned */
+#mnm-chatbot-root .mnm-msg-user .mnm-msg-bubble {
+  background: var(--mnm-navy);
+  color: var(--mnm-white);
+  border-bottom-right-radius: 6px;
+}
+
+/* Bot messages: clean white with hairline border, left-aligned */
+#mnm-chatbot-root .mnm-msg-bot .mnm-msg-bubble {
+  background: var(--mnm-white);
+  color: var(--mnm-text);
+  border: 1px solid var(--mnm-border);
+  border-bottom-left-radius: 6px;
+}
+
+#mnm-chatbot-root .mnm-msg-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+#mnm-chatbot-root .mnm-msg-time {
+  font-size: 10px;
+  color: var(--mnm-text-muted);
+  margin-top: 4px;
+  text-align: right;
+}
+
+#mnm-chatbot-root .mnm-msg-user .mnm-msg-time {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@keyframes mnm-msg-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------------------------
+   Typing indicator — subtle 3-dot bounce
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-typing .mnm-msg-bubble {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 15px 16px;
+}
+
+#mnm-chatbot-root .mnm-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mnm-gold-dark);
+  opacity: 0.35;
+  animation: mnm-bounce 1.2s infinite ease-in-out;
+}
+
+#mnm-chatbot-root .mnm-dot:nth-child(2) { animation-delay: 0.15s; }
+#mnm-chatbot-root .mnm-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes mnm-bounce {
+  0%, 60%, 100% { transform: translateY(0);    opacity: 0.35; }
+  30%           { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------
+   Quick Reply pills (menu buttons)
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-self: flex-start;
+  max-width: 92%;
+  animation: mnm-msg-in 0.3s ease both;
+}
+
+#mnm-chatbot-root .mnm-quick-reply {
+  border: 1.5px solid var(--mnm-gold);
+  background: var(--mnm-white);
+  color: var(--mnm-navy);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease,
+              box-shadow 0.2s ease;
+}
+
+#mnm-chatbot-root .mnm-quick-reply:hover,
+#mnm-chatbot-root .mnm-quick-reply:focus-visible {
+  background: var(--mnm-gold);
+  color: var(--mnm-navy);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px -3px rgba(212, 175, 55, 0.55);
+  outline: none;
+}
+
+/* Once any option in a group is used, fade + lock the whole group */
+#mnm-chatbot-root .mnm-quick-replies.mnm-used .mnm-quick-reply {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Feedback action pair ("✅ Got it" / "❌ Not helpful")
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-self: flex-start;
+  max-width: 92%;
+  animation: mnm-msg-in 0.3s ease both;
+}
+
+#mnm-chatbot-root .mnm-action-btn {
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              transform 0.15s ease;
+}
+
+#mnm-chatbot-root .mnm-action-btn:hover,
+#mnm-chatbot-root .mnm-action-btn:focus-visible {
+  transform: translateY(-1px);
+  outline: none;
+}
+
+#mnm-chatbot-root .mnm-action-yes {
+  border: 1.5px solid #34D399;
+  background: var(--mnm-white);
+  color: #0F766E;
+}
+
+#mnm-chatbot-root .mnm-action-yes:hover,
+#mnm-chatbot-root .mnm-action-yes:focus-visible {
+  background: #34D399;
+  color: var(--mnm-white);
+}
+
+#mnm-chatbot-root .mnm-action-no {
+  border: 1.5px solid var(--mnm-border);
+  background: var(--mnm-white);
+  color: var(--mnm-text-muted);
+}
+
+#mnm-chatbot-root .mnm-action-no:hover,
+#mnm-chatbot-root .mnm-action-no:focus-visible {
+  border-color: #E11D48;
+  background: #FFF1F2;
+  color: #BE123C;
+}
+
+/* Once feedback is given, fade + lock the pair */
+#mnm-chatbot-root .mnm-actions.mnm-used .mnm-action-btn {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Input row + send button
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--mnm-white);
+  border-top: 1px solid var(--mnm-border);
+  flex-shrink: 0;
+}
+
+#mnm-chatbot-root .mnm-input {
+  flex: 1;
+  min-width: 0;
+  border: 1.5px solid var(--mnm-border);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--mnm-text);
+  background: var(--mnm-bg);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#mnm-chatbot-root .mnm-input::placeholder {
+  color: #94A3B8;
+}
+
+#mnm-chatbot-root .mnm-input:focus {
+  border-color: var(--mnm-gold);
+  background: var(--mnm-white);
+  box-shadow: 0 0 0 3px var(--mnm-gold-soft);
+}
+
+#mnm-chatbot-root .mnm-send {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--mnm-gold), var(--mnm-gold-dark));
+  color: var(--mnm-navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px -4px rgba(212, 175, 55, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#mnm-chatbot-root .mnm-send:hover,
+#mnm-chatbot-root .mnm-send:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px -4px rgba(212, 175, 55, 0.6);
+  outline: none;
+}
+
+#mnm-chatbot-root .mnm-send svg {
+  width: 19px;
+  height: 19px;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------- */
+
+#mnm-chatbot-root .mnm-footer {
+  padding: 6px 14px 10px;
+  text-align: center;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--mnm-text-muted);
+  background: var(--mnm-white);
+  flex-shrink: 0;
+}
+
+#mnm-chatbot-root .mnm-footer a {
+  color: var(--mnm-gold-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#mnm-chatbot-root .mnm-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------
+   Dark mode (site toggles .dark on <html>)
+   --------------------------------------------------------------------- */
+
+html.dark #mnm-chatbot-root .mnm-panel {
+  border-color: #24395C;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65);
+}
+
+html.dark #mnm-chatbot-root .mnm-messages {
+  background: #0D1B31;
+}
+
+html.dark #mnm-chatbot-root .mnm-msg-bot .mnm-msg-bubble {
+  background: #14243F;
+  border-color: #24395C;
+  color: #E6EDF7;
+}
+
+html.dark #mnm-chatbot-root .mnm-quick-reply {
+  background: transparent;
+  color: #E6EDF7;
+}
+
+html.dark #mnm-chatbot-root .mnm-quick-reply:hover,
+html.dark #mnm-chatbot-root .mnm-quick-reply:focus-visible {
+  background: var(--mnm-gold);
+  color: var(--mnm-navy);
+}
+
+html.dark #mnm-chatbot-root .mnm-action-yes {
+  background: transparent;
+}
+
+html.dark #mnm-chatbot-root .mnm-action-no {
+  background: transparent;
+  border-color: #24395C;
+  color: #7C8DA6;
+}
+
+html.dark #mnm-chatbot-root .mnm-action-no:hover,
+html.dark #mnm-chatbot-root .mnm-action-no:focus-visible {
+  border-color: #E11D48;
+  background: rgba(225, 29, 72, 0.15);
+  color: #FDA4AF;
+}
+
+html.dark #mnm-chatbot-root .mnm-input-row {
+  background: #0D1B31;
+  border-top-color: #24395C;
+}
+
+html.dark #mnm-chatbot-root .mnm-input {
+  background: #14243F;
+  border-color: #24395C;
+  color: #E6EDF7;
+}
+
+html.dark #mnm-chatbot-root .mnm-input:focus {
+  background: #10203A;
+}
+
+html.dark #mnm-chatbot-root .mnm-footer {
+  background: #0D1B31;
+  color: #7C8DA6;
+}
+
+/* ---------------------------------------------------------------------
+   Small screens — pills wrap, panel spans the viewport
+   --------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  #mnm-chatbot-root .mnm-launcher {
+    right: 16px;
+    bottom: 16px;
+    width: 56px;
+    height: 56px;
+  }
+
+  #mnm-chatbot-root .mnm-launcher svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  #mnm-chatbot-root .mnm-panel {
+    right: 12px;
+    left: 12px;
+    bottom: 84px;
+    width: auto;
+    height: min(560px, calc(100vh - 110px));
+    height: min(560px, calc(100dvh - 110px));
+  }
+
+  #mnm-chatbot-root .mnm-quick-replies,
+  #mnm-chatbot-root .mnm-actions {
+    max-width: 100%;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  #mnm-chatbot-root,
+  #mnm-chatbot-root *,
+  #mnm-chatbot-root *::before,
+  #mnm-chatbot-root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -225,7 +225,7 @@ export const Home: React.FC = () => {
             </div>
             <div>
               <h4 className="font-bold text-gray-900 dark:text-white mb-1">Superior service</h4>
-              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+              <p className="text-sm text-gray-500">Top-notch support for your travels.</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -234,7 +234,7 @@ export const Home: React.FC = () => {
             </div>
             <div>
               <h4 className="font-bold text-gray-900 dark:text-white mb-1">Cheapest package</h4>
-              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+              <p className="text-sm text-gray-500">Competitive rates without compromise.</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -243,7 +243,7 @@ export const Home: React.FC = () => {
             </div>
             <div>
               <h4 className="font-bold text-gray-900 dark:text-white mb-1">Greatest guides</h4>
-              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+              <p className="text-sm text-gray-500">Expert local guides at your service.</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -252,7 +252,7 @@ export const Home: React.FC = () => {
             </div>
             <div>
               <h4 className="font-bold text-gray-900 dark:text-white mb-1">Fully protected</h4>
-              <p className="text-sm text-gray-500">Lorem ipsum text</p>
+              <p className="text-sm text-gray-500">Secure bookings and peace of mind.</p>
             </div>
           </div>
         </div>
