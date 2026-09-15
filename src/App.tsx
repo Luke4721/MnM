@@ -9,6 +9,7 @@ import PackageDetail from './pages/PackageDetail.tsx';
 import Packages from './pages/Packages.tsx';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
+import { Pay } from './pages/Pay';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { Gallery } from './pages/Gallery.tsx';
@@ -29,6 +30,8 @@ function App() {
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isAdminRoute = location.pathname.startsWith('/admin');
+  // /pay is an unlisted internal page — it renders without the public site chrome.
+  const isStandaloneRoute = isAdminRoute || location.pathname.startsWith('/pay');
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -46,13 +49,13 @@ function App() {
 
   return (
     <>
-      {!isAdminRoute && <LanguagePrompt />}
+      {!isStandaloneRoute && <LanguagePrompt />}
       <SmoothScroll>
-        {!isAdminRoute && (
+        {!isStandaloneRoute && (
           <div className="fixed inset-0 z-[-5] backdrop-blur-2xl bg-white/10 dark:bg-black/40 border-y border-white/20 pointer-events-none" />
         )}
         
-        {!isAdminRoute && (
+        {!isStandaloneRoute && (
           <nav className="fixed top-0 left-0 w-full z-[100] rounded-none px-4 md:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between bg-white/70 dark:bg-zinc-900/80 backdrop-blur-2xl border-b border-white/40 dark:border-white/10 shadow-md transition-all duration-300">
             <div className="flex items-center justify-between w-full md:w-auto">
               <NavLink to="/" className="group flex items-center gap-2 md:gap-4 transition-transform duration-300 hover:scale-105 cursor-pointer text-gray-900 dark:text-white no-underline">
@@ -112,7 +115,7 @@ function App() {
         )}
 
 
-      {!isAdminRoute && <LocalizationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />}
+      {!isStandaloneRoute && <LocalizationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />}
 
       <div className="min-h-screen w-full relative z-10">
         <AnimatePresence mode="wait">
@@ -134,6 +137,8 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/category/:slug" element={<CategoryDetail />} />
+            {/* Unlisted internal payment desk — intentionally absent from the nav */}
+            <Route path="/pay" element={<Pay />} />
           </Routes>
         </AnimatePresence>
       </div>

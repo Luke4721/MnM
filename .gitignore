@@ -25,3 +25,5 @@ dist-ssr
 
 .vercel
 .env*
+# Env files: keep secrets out of git, but allow the committed template.
+!.env.example
