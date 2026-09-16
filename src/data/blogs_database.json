@@ -1,5 +1,87 @@
 [
   {
+    "id": "307a402e-746d-4dab-a47b-46db9606e52e",
+    "title": "Test Blog 1",
+    "slug": "test-blog-1",
+    "category": "India",
+    "content": "Test 1 Article Content&nbsp;",
+    "excerpt": "Test",
+    "featuredImage": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/test-blog-1-1789558366493.png",
+    "image": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/test-blog-1-1789558366493.png",
+    "imageAlt": "T",
+    "status": "draft",
+    "featured": false,
+    "author": "MNM Team",
+    "readTime": "1 min read",
+    "publishedAt": "2026-09-16T11:32",
+    "date": "16 SEPT 2026",
+    "seo": {
+      "title": "T",
+      "description": "Test",
+      "keywords": "",
+      "ogImage": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/test-blog-1-1789558366493.png"
+    },
+    "tags": [],
+    "relatedBlogIds": [],
+    "createdAt": "2026-09-16T11:32:52.828Z",
+    "deletedAt": "2026-09-16T11:35:48.167Z"
+  },
+  {
+    "id": "b31e2088-c87d-453f-9492-3af3ead9bee0",
+    "title": "Test 1",
+    "slug": "test-1",
+    "category": "India",
+    "content": "Test 1",
+    "excerpt": "",
+    "featuredImage": "/images/blog_image_1.jpg",
+    "image": "/images/blog_image_1.jpg",
+    "imageAlt": "T",
+    "status": "draft",
+    "featured": false,
+    "author": "MNM Team",
+    "readTime": "1 min read",
+    "publishedAt": "2026-09-16T11:24",
+    "date": "16 SEPT 2026",
+    "seo": {
+      "title": "T",
+      "description": "",
+      "keywords": "",
+      "ogImage": "/images/blog_image_1.jpg"
+    },
+    "tags": [],
+    "relatedBlogIds": [],
+    "createdAt": "2026-09-16T11:25:14.436Z",
+    "deletedAt": "2026-09-16T11:25:26.647Z"
+  },
+  {
+    "id": "2bcee56b-614e-4caf-94d5-94d461a6a935",
+    "title": "Spiti Valley Winter Expedition [Verified 2026]",
+    "slug": "spiti-valley-winter-expedition-high-altitude-monasteries-stargazing-2026",
+    "category": "India",
+    "content": "<p>Spiti Valley is one of the most breathtaking cold deserts on the planet. From Key Monastery to Chandratal, every corner tells a majestic tale.</p><p>Prepare your warm thermals, acclimatize in Kaza, and respect the fragile high-altitude environment.</p>",
+    "excerpt": "Explore the frozen wonders of Spiti Valley in winter with ancient monasteries, snow leopard sightings, and crystal clear night skies.",
+    "featuredImage": "/images/blog_image_1.jpg",
+    "image": "/images/blog_image_1.jpg",
+    "imageAlt": "Spiti Valley Winter Expedition: High-Altitude Monasteries & Stargazing 2026",
+    "status": "draft",
+    "featured": false,
+    "author": "MNM Team",
+    "readTime": "1 min read",
+    "publishedAt": "2026-09-16T11:21",
+    "date": "16 SEPT 2026",
+    "seo": {
+      "title": "Spiti Valley Winter Expedition: High-Altitude Monasteries & Stargazing 2026",
+      "description": "Explore the frozen wonders of Spiti Valley in winter with ancient monasteries, snow leopard sightings, and crystal clear night skies.",
+      "keywords": "",
+      "ogImage": "/images/blog_image_1.jpg"
+    },
+    "tags": [],
+    "relatedBlogIds": [],
+    "createdAt": "2026-09-16T11:22:01.954Z",
+    "updatedAt": "2026-09-16T11:22:39.469Z",
+    "deletedAt": "2026-09-16T11:25:28.725Z"
+  },
+  {
     "id": "aa166dab-634a-4a17-92c0-b256d0d1be01",
     "title": "Updated Automated Test Blog Post 2026",
     "slug": "automated-test-blog-post-2026",
@@ -60,7 +142,10 @@
       "photoId": "38903362",
       "query": "mizoram tourism",
       "score": 0.8
-    }
+    },
+    "tags": [],
+    "relatedBlogIds": [],
+    "updatedAt": "2026-09-16T11:18:24.971Z"
   },
   {
     "id": "2286795b-7116-464b-9b84-635963c5b8b7",

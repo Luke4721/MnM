@@ -3,33 +3,35 @@ import { z } from 'zod';
 export const blogFormSchema = z.object({
   title: z
     .string()
-    .min(3, 'Title must be at least 3 characters')
+    .min(2, 'Title must be at least 2 characters')
     .max(500, 'Title cannot exceed 500 characters'),
   slug: z
     .string()
-    .min(3, 'Slug must be at least 3 characters')
-    .max(200, 'Slug cannot exceed 200 characters')
-    .regex(
-      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      'Slug must contain only lowercase alphanumeric characters and hyphens (e.g. "goa-beach-guide")',
-    ),
-  category: z.enum(['India', 'International']),
+    .min(2, 'Slug must be at least 2 characters')
+    .max(300, 'Slug cannot exceed 300 characters'),
+  category: z.string().min(1, 'Category is required'),
   tags: z.array(z.string()).default([]),
-  publishedAt: z.string().min(1, 'Publish date is required'),
-  status: z.enum(['draft', 'published']),
+  publishedAt: z.string().default(() => new Date().toISOString()),
+  status: z.enum(['draft', 'published']).default('published'),
   featured: z.boolean().default(false),
-  author: z.string().min(1, 'Author is required').default('MNM Team'),
-  excerpt: z.string().max(1000, 'Excerpt cannot exceed 1000 characters').default(''),
-  content: z.string().min(10, 'Content must have at least 10 characters'),
-  featuredImage: z.string().url('Featured image must be a valid URL').or(z.literal('')),
+  author: z.string().default('MNM Team'),
+  excerpt: z.string().max(2500, 'Excerpt cannot exceed 2500 characters').default(''),
+  content: z.string().min(1, 'Article content cannot be empty'),
+  featuredImage: z.string().default(''),
   imageAlt: z.string().default(''),
-  seo: z.object({
-    title: z.string().max(70, 'Meta title should be under 70 characters').default(''),
-    description: z.string().max(160, 'Meta description should be under 160 characters').default(''),
-    keywords: z.string().default(''),
-    ogImage: z.string().optional(),
-  }),
-  relatedBlogIds: z.array(z.string()).max(4, 'Select up to 4 related blogs').default([]),
+  seo: z
+    .object({
+      title: z.string().max(300, 'Meta title is too long').default(''),
+      description: z.string().max(1000, 'Meta description is too long').default(''),
+      keywords: z.string().default(''),
+      ogImage: z.string().optional(),
+    })
+    .default({
+      title: '',
+      description: '',
+      keywords: '',
+    }),
+  relatedBlogIds: z.array(z.string()).default([]),
 });
 
 export type BlogFormSchema = z.infer<typeof blogFormSchema>;

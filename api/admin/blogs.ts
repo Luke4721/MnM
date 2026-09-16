@@ -63,7 +63,10 @@ export default async function handler(
       const status = url.searchParams.get('status') || 'all';
       const category = url.searchParams.get('category') || 'all';
       const page = Math.max(1, parseInt(url.searchParams.get('page') || '1', 10));
-      const limit = Math.max(1, Math.min(100, parseInt(url.searchParams.get('limit') || '20', 10)));
+      const limitParam = url.searchParams.get('limit');
+      const limit = limitParam
+        ? Math.max(1, Math.min(10000, parseInt(limitParam, 10) || 10000))
+        : 10000;
 
       let filtered = activeBlogs.filter((b) => {
         if (status !== 'all' && b.status !== status) return false;

@@ -61,7 +61,7 @@ export const AdminBlogEditor: React.FC = () => {
 
   // Fetch all blogs for the "Related Blogs" selector
   useEffect(() => {
-    fetch('/api/admin/blogs?limit=500')
+    fetch('/api/admin/blogs?limit=1000')
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.blogs)) {
@@ -168,15 +168,24 @@ export const AdminBlogEditor: React.FC = () => {
     return () => clearInterval(timer);
   }, [formData, id]);
 
-  const validate = (): boolean => {
-    const result = blogFormSchema.safeParse(formData);
+  const validate = (dataToValidate = formData): boolean => {
+    console.log('[AdminBlogEditor] Validating form data:', dataToValidate);
+    const result = blogFormSchema.safeParse(dataToValidate);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
       result.error.issues.forEach((issue) => {
-        const key = issue.path[0]?.toString() || 'form';
-        fieldErrors[key] = issue.message;
+        const fullPath = issue.path.join('.');
+        fieldErrors[fullPath] = issue.message;
+        const rootKey = issue.path[0]?.toString() || 'form';
+        if (!fieldErrors[rootKey]) {
+          fieldErrors[rootKey] = issue.message;
+        }
       });
       setErrors(fieldErrors);
+      const firstError =
+        result.error.issues[0]?.message || 'Please check required form fields.';
+      toast.error(`Validation Error: ${firstError}`);
+      console.warn('[AdminBlogEditor] Validation failed with issues:', result.error.issues);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return false;
     }
@@ -186,13 +195,23 @@ export const AdminBlogEditor: React.FC = () => {
 
   const handleSubmit = async (overrideStatus?: 'draft' | 'published') => {
     const currentStatus = overrideStatus || formData.status;
-    const submissionData = { ...formData, status: currentStatus };
+    console.log('[AdminBlogEditor] handleSubmit invoked with status:', currentStatus);
 
-    if (!validate()) return;
+    const submissionData = {
+      ...formData,
+      status: currentStatus,
+      // Auto-fallback slug if empty
+      slug: (formData.slug || generateSlug(formData.title || 'travel-journal')).trim(),
+      // Fallback featured image if empty when publishing
+      featuredImage:
+        formData.featuredImage ||
+        (currentStatus === 'published' ? '/images/blog_image_1.jpg' : ''),
+    };
 
-    if (currentStatus === 'published' && !submissionData.featuredImage) {
-      setErrors({ featuredImage: 'A featured image is required before publishing.' });
-      toast.warning('Please upload a featured image before publishing.');
+    console.log('[AdminBlogEditor] Prepared submission payload:', submissionData);
+
+    if (!validate(submissionData)) {
+      console.warn('[AdminBlogEditor] Form validation failed. Halting submission.');
       return;
     }
 
@@ -200,6 +219,8 @@ export const AdminBlogEditor: React.FC = () => {
     try {
       const url = isEditMode ? `/api/admin/blogs?id=${id}` : '/api/admin/blogs';
       const method = isEditMode ? 'PUT' : 'POST';
+
+      console.log(`[AdminBlogEditor] Sending ${method} to ${url}...`);
 
       const res = await fetch(url, {
         method,
@@ -211,12 +232,20 @@ export const AdminBlogEditor: React.FC = () => {
       });
 
       const data = await res.json();
+      console.log('[AdminBlogEditor] Received server response:', data);
+
       if (!res.ok || !data.success) {
         throw new Error(data.error || 'Failed to save blog');
       }
 
       toast.success(
-        isEditMode ? 'Blog updated successfully!' : 'Blog created successfully!'
+        isEditMode
+          ? currentStatus === 'published'
+            ? 'Blog updated and published successfully!'
+            : 'Draft updated successfully!'
+          : currentStatus === 'published'
+          ? 'Blog created and published successfully!'
+          : 'Draft saved successfully!'
       );
 
       try {
@@ -225,8 +254,9 @@ export const AdminBlogEditor: React.FC = () => {
 
       setTimeout(() => {
         navigate('/admin/blogs');
-      }, 1000);
+      }, 800);
     } catch (err: any) {
+      console.error('[AdminBlogEditor] Error during submit:', err);
       toast.error('Error saving blog: ' + err.message);
     } finally {
       setIsSaving(false);
@@ -495,13 +525,14 @@ export const AdminBlogEditor: React.FC = () => {
             <Textarea
               label="Short Excerpt / Summary"
               showCount
-              maxLength={500}
+              maxLength={2000}
               value={formData.excerpt}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, excerpt: e.target.value }))
               }
               rows={3}
               placeholder="A compelling 1-2 sentence teaser for cards and preview snippets..."
+              error={errors.excerpt}
             />
 
             {/* Tags */}
@@ -558,7 +589,7 @@ export const AdminBlogEditor: React.FC = () => {
               Section B
             </span>
             <h2 className="text-lg font-bold text-gray-900 mt-2">
-              Article Content
+              Article Content <span className="text-rose-500">*</span>
             </h2>
           </div>
 
@@ -633,14 +664,8 @@ export const AdminBlogEditor: React.FC = () => {
                 <label className="block text-[12px] font-semibold text-gray-700 tracking-wide">
                   Meta Title
                 </label>
-                <span
-                  className={`text-[10px] font-mono font-bold ${
-                    formData.seo.title.length > 70
-                      ? 'text-rose-500'
-                      : 'text-gray-400'
-                  }`}
-                >
-                  {formData.seo.title.length}/70 chars
+                <span className="text-[10px] font-mono text-gray-400">
+                  {formData.seo.title.length} chars (approx 60-70 recommended)
                 </span>
               </div>
               <input
@@ -655,23 +680,31 @@ export const AdminBlogEditor: React.FC = () => {
                 placeholder="e.g. Travel Guide to Reiek Peak, Mizoram | Monks & Monkeys Travels"
                 className="w-full px-3.5 py-2 text-[13px] border border-white/60 rounded-xl bg-white/60 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 shadow-sm outline-none"
               />
+              {errors['seo.title'] && (
+                <p className="text-[11px] text-rose-500 font-medium mt-1">
+                  {errors['seo.title']}
+                </p>
+              )}
             </div>
 
             {/* Meta Description */}
-            <Textarea
-              label="Meta Description"
-              showCount
-              maxLength={160}
-              value={formData.seo.description}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  seo: { ...prev.seo, description: e.target.value },
-                }))
-              }
-              rows={2}
-              placeholder="Concise, high-impact summary displayed in Google search results..."
-            />
+            <div>
+              <Textarea
+                label="Meta Description"
+                showCount
+                maxLength={1000}
+                value={formData.seo.description}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    seo: { ...prev.seo, description: e.target.value },
+                  }))
+                }
+                rows={2}
+                placeholder="Concise, high-impact summary displayed in Google search results..."
+                error={errors['seo.description']}
+              />
+            </div>
 
             {/* Meta Keywords */}
             <Input

@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import "tailwindcss";
 
 /* This line forces v4 to respect the manual toggle switch */
@@ -50,9 +50,9 @@ body {
   100% { background-position: 0% 50%; }
 }
 .bg-wave-gradient {
-  background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a18cd1);
+  background: linear-gradient(-45deg, #dbeafe, #bae6fd, #e0e7ff, #f0f9ff, #dbeafe);
   background-size: 400% 400%;
-  animation: waveGradient 15s ease infinite;
+  animation: waveGradient 20s ease infinite;
 }
 
 ::-webkit-scrollbar {

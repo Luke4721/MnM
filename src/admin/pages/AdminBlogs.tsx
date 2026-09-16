@@ -159,6 +159,22 @@ export const AdminBlogs: React.FC = () => {
   const draftCount = blogs.filter((b) => b.status === 'draft').length;
   const featuredCount = blogs.filter((b) => b.featured).length;
 
+  // Helper for generating pagination buttons (e.g. 1, 2, 3, '...', 30)
+  const paginationRange = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    const pages: (number | string)[] = [];
+    if (safePage <= 3) {
+      pages.push(1, 2, 3, 4, '...', totalPages);
+    } else if (safePage >= totalPages - 2) {
+      pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      pages.push(1, '...', safePage - 1, safePage, safePage + 1, '...', totalPages);
+    }
+    return pages;
+  }, [safePage, totalPages]);
+
   return (
     <div className="max-w-[1240px] mx-auto space-y-6 pb-20">
       {/* Page Header */}
@@ -435,43 +451,88 @@ export const AdminBlogs: React.FC = () => {
 
         {/* Pagination Bar */}
         {totalPages > 1 && (
-          <div className="p-4 border-t border-white/40 flex items-center justify-between text-xs text-gray-500">
+          <div className="p-4 border-t border-white/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <div>
               Showing{' '}
-              <strong className="text-gray-900">
+              <strong className="text-gray-900 font-bold">
                 {(safePage - 1) * PAGE_SIZE + 1}
               </strong>{' '}
               to{' '}
-              <strong className="text-gray-900">
+              <strong className="text-gray-900 font-bold">
                 {Math.min(safePage * PAGE_SIZE, filteredBlogs.length)}
               </strong>{' '}
-              of <strong className="text-gray-900">{filteredBlogs.length}</strong> blogs
+              of <strong className="text-gray-900 font-bold">{filteredBlogs.length}</strong> blogs{' '}
+              <span className="text-gray-400 font-medium">({totalPages} pages)</span>
             </div>
 
-            <div className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center gap-1.5">
+              {/* Previous Page Button */}
               <button
                 type="button"
                 disabled={safePage === 1}
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                className="p-1.5 rounded-xl border border-white/60 bg-white/60 hover:bg-white text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition-colors shadow-sm"
+                className="px-2.5 py-1.5 rounded-xl border border-white/60 bg-white/60 hover:bg-white text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-sm font-semibold flex items-center gap-1"
                 aria-label="Previous page"
               >
-                <ChevronLeft size={16} />
+                <ChevronLeft size={14} /> Prev
               </button>
 
-              <span className="px-3 py-1 font-bold text-gray-900 bg-white/50 border border-white/60 rounded-xl shadow-sm">
-                {safePage} / {totalPages}
-              </span>
+              {/* Numbered Page Buttons */}
+              {paginationRange.map((item, idx) => {
+                if (typeof item === 'string') {
+                  return (
+                    <span
+                      key={`ellipsis-${idx}`}
+                      className="px-2 py-1 text-gray-400 font-bold select-none"
+                    >
+                      ...
+                    </span>
+                  );
+                }
 
+                const isActive = item === safePage;
+                return (
+                  <button
+                    key={`page-${item}`}
+                    type="button"
+                    onClick={() => setCurrentPage(item)}
+                    className={`min-w-[32px] h-8 px-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
+                      isActive
+                        ? 'bg-gradient-to-r from-rose-500 to-indigo-600 text-white shadow-md'
+                        : 'bg-white/60 hover:bg-white text-gray-700 border border-white/60'
+                    }`}
+                    aria-label={`Go to page ${item}`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+
+              {/* Next Page Button */}
               <button
                 type="button"
                 disabled={safePage === totalPages}
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                className="p-1.5 rounded-xl border border-white/60 bg-white/60 hover:bg-white text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition-colors shadow-sm"
+                className="px-2.5 py-1.5 rounded-xl border border-white/60 bg-white/60 hover:bg-white text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-sm font-semibold flex items-center gap-1"
                 aria-label="Next page"
               >
-                <ChevronRight size={16} />
+                Next <ChevronRight size={14} />
               </button>
+
+              {/* Jump to Page Dropdown */}
+              <select
+                value={safePage}
+                onChange={(e) => setCurrentPage(Number(e.target.value))}
+                aria-label="Jump to page"
+                className="ml-2 text-xs py-1.5 px-2.5 border border-white/60 rounded-xl bg-white/60 font-semibold text-gray-700 outline-none focus:bg-white shadow-sm cursor-pointer"
+              >
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pg) => (
+                  <option key={pg} value={pg}>
+                    Page {pg}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         )}

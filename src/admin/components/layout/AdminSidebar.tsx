@@ -5,9 +5,6 @@ import {
   Inbox,
   Folder,
   FileText,
-  Lock,
-  FilePlus,
-  User,
   Settings,
   LogOut,
   X,
@@ -32,11 +29,6 @@ interface NavItem {
   matchPrefix?: boolean;
 }
 
-interface NavGroup {
-  group: string;
-  items: NavItem[];
-}
-
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   collapsed,
   onToggleCollapse,
@@ -46,70 +38,31 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
 }) => {
   const location = useLocation();
 
-  const navGroups: NavGroup[] = [
+  // Primary Navigation Items - Clean, minimal: Dashboard, Inbox, Packages, Blogs
+  const navItems: NavItem[] = [
     {
-      group: 'Main',
-      items: [
-        {
-          label: 'Dashboard',
-          to: '/admin/dashboard',
-          icon: <LayoutDashboard size={18} className="text-indigo-500" />,
-        },
-      ],
+      label: 'Dashboard',
+      to: '/admin/dashboard',
+      icon: <LayoutDashboard size={19} />,
     },
     {
-      group: 'App',
-      items: [
-        {
-          label: 'Inbox',
-          to: '/admin/inbox',
-          icon: <Inbox size={18} className="text-sky-500" />,
-          badge: 1,
-          matchPrefix: true,
-        },
-      ],
+      label: 'Inbox',
+      to: '/admin/inbox',
+      icon: <Inbox size={19} />,
+      badge: 1,
+      matchPrefix: true,
     },
     {
-      group: 'Management',
-      items: [
-        {
-          label: 'Packages',
-          to: '/admin/packages',
-          icon: <Folder size={18} className="text-indigo-600" />,
-          matchPrefix: true,
-        },
-        {
-          label: 'Blogs',
-          to: '/admin/blogs',
-          icon: <FileText size={18} className="text-[#FF9933]" />,
-          matchPrefix: true,
-        },
-      ],
+      label: 'Packages',
+      to: '/admin/packages',
+      icon: <Folder size={19} />,
+      matchPrefix: true,
     },
     {
-      group: 'Extra',
-      items: [
-        {
-          label: 'Authentication',
-          to: '#',
-          icon: <Lock size={18} className="text-gray-400" />,
-        },
-        {
-          label: 'Pages',
-          to: '#',
-          icon: <FilePlus size={18} className="text-gray-400" />,
-        },
-      ],
-    },
-    {
-      group: 'Account',
-      items: [
-        {
-          label: 'Profile',
-          to: '#',
-          icon: <User size={18} className="text-gray-400" />,
-        },
-      ],
+      label: 'Blogs',
+      to: '/admin/blogs',
+      icon: <FileText size={19} />,
+      matchPrefix: true,
     },
   ];
 
@@ -127,45 +80,53 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   };
 
   const sidebarContent = (
-    <div className="h-full flex flex-col justify-between">
-      {/* Brand Header */}
+    <div className="h-full flex flex-col justify-between select-none">
+      {/* Brand & Collapse Header */}
       <div
         className={`h-[72px] ${
           collapsed ? 'px-2 justify-center' : 'px-5 justify-between'
-        } flex items-center border-b border-white/40 shrink-0`}
+        } flex items-center border-b border-slate-200/60 shrink-0`}
       >
         {collapsed ? (
           <button
             type="button"
             onClick={onToggleCollapse}
-            className="flex items-center justify-center p-2 text-gray-500 hover:text-gray-900 rounded-xl hover:bg-white/70 transition-all group relative"
+            className="flex items-center justify-center p-2 text-slate-500 hover:text-slate-900 rounded-xl hover:bg-white/80 transition-all group relative"
             title="Expand sidebar"
             aria-label="Expand sidebar"
           >
             <img
               src={db.company.logo_url}
-              alt="Logo"
-              className="h-8 w-8 object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
+              alt="Monks & Monkeys"
+              className="h-8 w-8 object-contain drop-shadow-xs group-hover:scale-105 transition-transform"
             />
           </button>
         ) : (
           <>
-            <div className="flex items-center gap-3 min-w-0">
+            <Link
+              to="/admin/dashboard"
+              className="flex items-center gap-3 min-w-0 group"
+            >
               <img
                 src={db.company.logo_url}
-                alt="Logo"
-                className="h-8 w-8 object-contain drop-shadow-sm shrink-0"
+                alt="Monks & Monkeys"
+                className="h-8 w-8 object-contain drop-shadow-xs shrink-0 group-hover:scale-105 transition-transform"
               />
-              <span className="font-extrabold text-[14px] tracking-tight text-gray-900 leading-tight truncate">
-                {db.company.name}
-              </span>
-            </div>
+              <div className="flex flex-col min-w-0">
+                <span className="font-extrabold text-[14px] tracking-tight text-slate-900 leading-tight truncate">
+                  {db.company.name}
+                </span>
+                <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
+                  Admin Panel
+                </span>
+              </div>
+            </Link>
 
             {/* Mobile close button */}
             <button
               type="button"
               onClick={onCloseMobile}
-              className="md:hidden p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-white/60"
+              className="md:hidden p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-white/70 transition-colors"
               aria-label="Close sidebar"
             >
               <X size={18} />
@@ -175,7 +136,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
             <button
               type="button"
               onClick={onToggleCollapse}
-              className="hidden md:flex p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-white/60 transition-colors"
+              className="hidden md:flex p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-white/70 transition-colors"
               aria-label="Collapse sidebar"
               title="Collapse sidebar"
             >
@@ -185,76 +146,92 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         )}
       </div>
 
-      {/* Nav List */}
+      {/* Primary Navigation List */}
       <div
-        className="flex-1 overflow-y-auto px-3 py-5 space-y-5"
+        className="flex-1 overflow-y-auto px-3 py-6 space-y-1.5"
         data-lenis-prevent
       >
-        {navGroups.map((grp) => (
-          <div key={grp.group}>
-            {!collapsed ? (
-              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2 px-3">
-                {grp.group}
-              </div>
-            ) : (
-              <div className="h-2 border-b border-white/40 mb-2 mx-2" />
-            )}
-
-            <div className="space-y-1">
-              {grp.items.map((item) => {
-                const active = isRouteActive(item);
-
-                return (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={() => {
-                      if (mobileOpen) onCloseMobile();
-                    }}
-                    title={collapsed ? item.label : undefined}
-                    className={`flex items-center ${
-                      collapsed ? 'justify-center px-2 py-2.5' : 'justify-between px-3 py-2'
-                    } rounded-xl text-[13px] transition-all group relative ${
-                      active
-                        ? 'bg-white/95 text-gray-950 font-bold shadow-sm border border-white/80'
-                        : 'text-gray-600 hover:text-gray-950 hover:bg-white/60 font-medium'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className="shrink-0">{item.icon}</span>
-                      {!collapsed && (
-                        <span className="truncate">{item.label}</span>
-                      )}
-                    </div>
-
-                    {!collapsed && item.badge !== undefined && (
-                      <span className="bg-white/90 text-indigo-700 font-bold text-[10px] px-2 py-0.5 rounded-full shadow-sm border border-white/60">
-                        {item.badge}
-                      </span>
-                    )}
-
-                    {/* Floating badge for collapsed mode */}
-                    {collapsed && item.badge !== undefined && (
-                      <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-indigo-600 rounded-full ring-2 ring-white" />
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
+        {!collapsed && (
+          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-3">
+            Menu
           </div>
-        ))}
+        )}
+
+        {navItems.map((item) => {
+          const active = isRouteActive(item);
+
+          return (
+            <Link
+              key={item.label}
+              to={item.to}
+              onClick={() => {
+                if (mobileOpen) onCloseMobile();
+              }}
+              title={collapsed ? item.label : undefined}
+              className={`flex items-center ${
+                collapsed
+                  ? 'justify-center px-2 py-3'
+                  : 'justify-between px-3.5 py-2.5'
+              } rounded-xl text-[13px] transition-all group relative ${
+                active
+                  ? 'bg-white text-indigo-700 font-bold shadow-xs border border-slate-200/80'
+                  : 'text-slate-600 hover:text-slate-950 hover:bg-white/70 font-medium'
+              }`}
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <span
+                  className={`shrink-0 transition-colors ${
+                    active
+                      ? 'text-indigo-600'
+                      : 'text-slate-400 group-hover:text-slate-700'
+                  }`}
+                >
+                  {item.icon}
+                </span>
+                {!collapsed && (
+                  <span className="truncate">{item.label}</span>
+                )}
+              </div>
+
+              {/* Badge for notifications (e.g. Inbox) */}
+              {!collapsed && item.badge !== undefined && (
+                <span
+                  className={`font-bold text-[11px] px-2 py-0.5 rounded-full border transition-all ${
+                    active
+                      ? 'bg-indigo-50 text-indigo-700 border-indigo-200/80'
+                      : 'bg-white text-slate-700 border-slate-200/80 shadow-xs'
+                  }`}
+                >
+                  {item.badge}
+                </span>
+              )}
+
+              {/* Collapsed mode floating indicator badge */}
+              {collapsed && item.badge !== undefined && (
+                <span className="absolute top-2 right-2 w-2 h-2 bg-indigo-600 rounded-full ring-2 ring-white" />
+              )}
+            </Link>
+          );
+        })}
       </div>
 
-      {/* Bottom Profile & Settings */}
-      <div className="p-3 border-t border-white/40 shrink-0 space-y-2">
+      {/* Bottom Area: Settings & Admin Profile */}
+      <div className="p-3 border-t border-slate-200/60 shrink-0 space-y-2">
+        {/* Settings item at bottom */}
         <Link
-          to="#"
+          to="/admin/dashboard"
+          onClick={() => {
+            if (mobileOpen) onCloseMobile();
+          }}
           title={collapsed ? 'Settings' : undefined}
           className={`flex items-center ${
-            collapsed ? 'justify-center p-2' : 'gap-3 px-3 py-2'
-          } text-gray-600 hover:text-gray-900 rounded-xl text-[13px] hover:bg-white/50 transition-colors font-medium`}
+            collapsed ? 'justify-center p-2.5' : 'gap-3 px-3.5 py-2.5'
+          } text-slate-600 hover:text-slate-950 rounded-xl text-[13px] hover:bg-white/70 transition-all font-medium group`}
         >
-          <Settings size={18} className="shrink-0 text-gray-500" />
+          <Settings
+            size={18}
+            className="shrink-0 text-slate-400 group-hover:text-slate-700 transition-colors"
+          />
           {!collapsed && <span>Settings</span>}
         </Link>
 
@@ -262,22 +239,22 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         <div
           className={`flex items-center ${
             collapsed ? 'justify-center p-2' : 'justify-between p-2.5'
-          } bg-white/60 rounded-2xl border border-white/50 shadow-sm`}
+          } bg-white/70 rounded-2xl border border-slate-200/60 shadow-xs`}
         >
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center font-bold text-white shadow-sm overflow-hidden ring-2 ring-white shrink-0">
+            <div className="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-bold text-white shadow-xs overflow-hidden ring-2 ring-white shrink-0">
               <img
                 src="https://ui-avatars.com/api/?name=Admin+User&background=EAB308&color=fff"
-                alt="User"
+                alt="Admin User"
                 className="w-full h-full object-cover"
               />
             </div>
             {!collapsed && (
               <div className="truncate">
-                <div className="text-[12px] font-bold text-gray-900 leading-tight truncate">
+                <div className="text-[12px] font-bold text-slate-900 leading-tight truncate">
                   Admin User
                 </div>
-                <div className="text-[10px] text-gray-500 font-medium">Administrator</div>
+                <div className="text-[10px] text-slate-400 font-medium">Administrator</div>
               </div>
             )}
           </div>
@@ -289,7 +266,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                 logoutAdmin();
                 onLogout();
               }}
-              className="text-gray-400 hover:text-rose-500 transition-colors p-1.5 rounded-lg hover:bg-white/80"
+              className="text-slate-400 hover:text-rose-600 transition-colors p-1.5 rounded-lg hover:bg-white/80"
               title="Logout"
               aria-label="Logout"
             >
@@ -305,7 +282,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
     <>
       {/* Desktop & Tablet Persistent Sidebar */}
       <aside
-        className={`hidden md:flex flex-col shrink-0 bg-white/50 backdrop-blur-xl border-r border-white/40 z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-all duration-300 ${
+        className={`hidden md:flex flex-col shrink-0 bg-white/70 backdrop-blur-xl border-r border-slate-200/60 z-20 shadow-[2px_0_16px_rgba(0,0,0,0.02)] transition-all duration-300 ${
           collapsed ? 'w-[72px]' : 'w-[250px]'
         }`}
       >
@@ -315,14 +292,14 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       {/* Mobile Drawer Backdrop */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-40 md:hidden animate-in fade-in duration-200"
+          className="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-200"
           onClick={onCloseMobile}
         />
       )}
 
       {/* Mobile Slide-Over Drawer */}
       <aside
-        className={`fixed inset-y-0 left-0 w-[270px] bg-white/95 backdrop-blur-2xl border-r border-white/60 z-50 shadow-2xl flex flex-col md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 w-[270px] bg-white/95 backdrop-blur-2xl border-r border-slate-200 z-50 shadow-2xl flex flex-col md:hidden transition-transform duration-300 ease-in-out ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

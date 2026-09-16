@@ -15,6 +15,7 @@ const devApiRoutes: Record<string, string> = {
   '/api/admin/blogs': '/api/admin/blogs.ts',
   '/api/admin/upload-image': '/api/admin/upload-image.ts',
   '/api/admin/delete-image': '/api/admin/delete-image.ts',
+  '/api/admin/stats/dashboard': '/api/admin/stats/dashboard.ts',
 }
 
 const devApiPlugin = (): Plugin => ({

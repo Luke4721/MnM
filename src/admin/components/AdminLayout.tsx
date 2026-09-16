@@ -27,7 +27,7 @@ export const AdminLayout = () => {
   return (
     <ToastProvider>
       <div
-        className="flex h-screen w-screen overflow-hidden bg-wave-gradient text-gray-900"
+        className="flex h-screen w-screen overflow-hidden bg-wave-gradient dark:bg-slate-950 text-gray-900 dark:text-slate-100 transition-colors duration-200"
         style={{
           fontFamily:
             'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
