@@ -13,7 +13,8 @@
                          best pre-baked answer (after a short typing
                          indicator), otherwise the bot hands off.
      4. HUMAN HANDOFF  — any unknown query, or a "not helpful" tap,
-                         instantly shows the concierge's phone + email.
+                         instantly shows the concierge's phone, email and
+                         WhatsApp click-to-chat buttons.
 
    Fully offline · $0 running cost · zero security surface.
    ===================================================================== */
@@ -31,11 +32,66 @@
 
   const GREETING = "Hello! I'm the MNM Concierge. How can I help you today?";
 
-  const FALLBACK_HTML =
+  /* ----------------------------------------------------------------
+   * Direct-contact block — phone · email · WhatsApp.
+   * Numbers are the ones published on the Contact page. WhatsApp uses
+   * the click-to-chat API (wa.me) and always opens in a new tab.
+   * ---------------------------------------------------------------- */
+  const PHONE_PRIMARY = { display: '+91-11-35919499', tel: '+911135919499' };
+  const PHONE_SECONDARY = { display: '+91-11-35537525', tel: '+911135537525' };
+  const CONTACT_EMAIL = 'concierge@mnmtravels.com';
+
+  const WHATSAPP_NUMBERS = [
+    { display: '+91-11-35919499', link: 'https://wa.me/911135919499' },
+    { display: '+91-11-35537525', link: 'https://wa.me/911135537525' }
+  ];
+
+  // Official WhatsApp glyph — Lucide ships no brand marks, so the icon is
+  // inlined (inherits the button's colour via currentColor).
+  const WHATSAPP_ICON =
+    '<svg class="mnm-wa-icon" viewBox="0 0 24 24" width="15" height="15" ' +
+    'aria-hidden="true" focusable="false" fill="currentColor">' +
+    '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.347-.347.52-.52.174-.174.232-.298.347-.497.115-.198.057-.371-.058-.52-.116-.148-.694-1.67-.95-2.278-.25-.598-.503-.518-.69-.527l-.588-.01c-.204 0-.535.075-.815.372-.28.297-1.07 1.045-1.07 2.549 0 1.504 1.096 2.957 1.249 3.156.153.198 2.156 3.292 5.224 4.615.73.315 1.3.503 1.744.644.733.233 1.4.2 1.928.121.589-.088 1.814-.741 2.07-1.457.256-.716.256-1.33.18-1.458-.077-.128-.28-.204-.578-.353m-5.475 7.404h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>' +
+    '</svg>';
+
+  /** WhatsApp CTA buttons — one per published number. These live inside bot
+   *  bubbles, so they are real anchors (new tab) rather than menu buttons. */
+  function whatsappButtonsHtml() {
+    return WHATSAPP_NUMBERS.map(function (number) {
+      return (
+        '<a class="mnm-wa-btn" href="' + number.link + '" target="_blank" ' +
+        'rel="noopener noreferrer" ' +
+        'aria-label="Chat on WhatsApp with MNM Travels at ' + number.display + '">' +
+        WHATSAPP_ICON +
+        '<span class="mnm-wa-label">Chat on WhatsApp</span>' +
+        '<span class="mnm-wa-num">' + number.display + '</span>' +
+        '</a>'
+      );
+    }).join('');
+  }
+
+  /** Phone + email + WhatsApp, shared by the handoff and WhatsApp replies. */
+  function contactSectionHtml(intro) {
+    return (
+      intro + '<br><br>' +
+      '📞 <a href="tel:' + PHONE_PRIMARY.tel + '">' + PHONE_PRIMARY.display + '</a>' +
+      ' &middot; ' +
+      '<a href="tel:' + PHONE_SECONDARY.tel + '">' + PHONE_SECONDARY.display + '</a><br>' +
+      '✉️ <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>' +
+      '<div class="mnm-wa-row">' + whatsappButtonsHtml() + '</div>'
+    );
+  }
+
+  const FALLBACK_HTML = contactSectionHtml(
     'I want to make sure you get the perfect itinerary! For personalized assistance, ' +
-    'please reach out to our travel experts directly:<br><br>' +
-    '📞 +91-11-35919499 or +91-11-35537525<br>' +
-    '✉️ concierge@mnmtravels.com';
+    'please reach out to our travel experts directly:'
+  );
+
+  const WHATSAPP_HTML =
+    "Great choice — WhatsApp is the fastest way to reach our travel experts! 💬 " +
+    "Tap a number below to start chatting. It opens WhatsApp in a new tab, " +
+    "so your place on the site is kept:" +
+    '<div class="mnm-wa-row">' + whatsappButtonsHtml() + '</div>';
 
   const THANKS_REPLY = "Wonderful! 🌟 I'm glad I could help. Is there anything else you'd like to explore?";
 
@@ -153,7 +209,8 @@
     { label: '🌍 Popular Destinations', action: { type: 'category', id: 'destinations' } },
     { label: '💰 Budget & Pricing', action: { type: 'category', id: 'budget' } },
     { label: '📅 Booking & Payments', action: { type: 'category', id: 'booking' } },
-    { label: '📞 Contact Support', action: { type: 'support' } }
+    { label: '📞 Contact Support', action: { type: 'support' } },
+    { label: '💬 Chat on WhatsApp', action: { type: 'whatsapp' } }
   ];
 
   const CATEGORY_MENUS = {
@@ -523,7 +580,20 @@
   function showFallback() {
     state.view = 'fallback';
     addBotText(FALLBACK_HTML);
-    addQuickReplies([{ label: '🔄 Back to Main Menu', action: { type: 'menu' } }]);
+    addQuickReplies([
+      { label: '💬 Chat on WhatsApp', action: { type: 'whatsapp' } },
+      { label: '🔄 Back to Main Menu', action: { type: 'menu' } }
+    ]);
+  }
+
+  /** WhatsApp path: both click-to-chat buttons, then easy ways back. */
+  function showWhatsApp() {
+    state.view = 'whatsapp';
+    addBotText(WHATSAPP_HTML);
+    addQuickReplies([
+      { label: '📞 Contact Support', action: { type: 'support' } },
+      { label: '🔄 Back to Main Menu', action: { type: 'menu' } }
+    ]);
   }
 
   /** Positive feedback → cheerful close + fresh main menu. */
@@ -561,6 +631,9 @@
       }
       case 'support':
         showFallback();
+        break;
+      case 'whatsapp':
+        showWhatsApp();
         break;
       case 'positive':
         showPositive();

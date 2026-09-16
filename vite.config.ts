@@ -12,6 +12,9 @@ import react from '@vitejs/plugin-react'
 const devApiRoutes: Record<string, string> = {
   '/api/create-order': '/api/create-order.ts',
   '/api/verify-payment': '/api/verify-payment.ts',
+  '/api/admin/blogs': '/api/admin/blogs.ts',
+  '/api/admin/upload-image': '/api/admin/upload-image.ts',
+  '/api/admin/delete-image': '/api/admin/delete-image.ts',
 }
 
 const devApiPlugin = (): Plugin => ({

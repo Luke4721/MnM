@@ -1,0 +1,22 @@
+{
+  "ranAt": "2026-09-15T16:32:10.249Z",
+  "sqlPath": "C:\\Users\\Windows\\Downloads\\mnm_backup_complete.sql",
+  "legacyRowsParsed": 600,
+  "migratedCount": 600,
+  "errors": 0,
+  "errorDetails": [],
+  "existingBefore": 600,
+  "previouslyMigratedReplaced": 600,
+  "placeholderEntriesReplaced": 0,
+  "untouchedExistingEntries": 0,
+  "finalCollectionSize": 600,
+  "byCategory": {
+    "India": 598,
+    "International": 2
+  },
+  "featuredCount": 6,
+  "statusBreakdown": {
+    "published": 600
+  },
+  "durationMs": 581
+}

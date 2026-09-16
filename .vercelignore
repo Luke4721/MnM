@@ -1,0 +1,9 @@
+# Never ship local secrets or migration tooling into a deployment.
+.env
+.env.*
+!.env.example
+
+# Local migration/maintenance scripts (not needed at runtime)
+scripts/
+__pycache__/
+test_cdn.cjs

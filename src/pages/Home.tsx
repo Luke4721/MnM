@@ -1,58 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Plane, ArrowRight, Star, Compass, Camera, Heart, Shield, MapPin, Map } from 'lucide-react';
+import { Plane, ArrowRight, Star, Compass, Heart, Shield, MapPin, Map } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import { usePackages } from '../context/PackagesProvider';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
 import { ReelsCarousel } from '../components/ReelsCarousel';
 
-/**
- * ⬇️ PASTE YOUR SOCIAL MEDIA URLs HERE ⬇️
- *
- * Replace the "#" in each `href` below with the real profile URL, for example:
- *   { name: 'Facebook', href: 'https://www.facebook.com/mnmtravels', icon: ... }
- *
- * These render as real links that open in a new tab. While a value is still "#"
- * the click is ignored, so the page does not jump — no code change is needed
- * once the real URLs are in.
- */
-const SOCIAL_LINKS: { name: string; href: string; icon: React.ReactNode }[] = [
-  {
-    name: 'Facebook',
-    href: '#', // TODO: paste the Facebook page URL here
-    icon: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
-  },
-  {
-    name: 'X (Twitter)',
-    href: '#', // TODO: paste the X / Twitter profile URL here
-    icon: <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />,
-  },
-  {
-    name: 'YouTube',
-    href: '#', // TODO: paste the YouTube channel URL here
-    icon: (
-      <>
-        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" />
-        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-      </>
-    ),
-  },
-  {
-    name: 'Instagram',
-    href: '#', // TODO: paste the Instagram profile URL here
-    icon: (
-      <>
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-      </>
-    ),
-  },
-];
-
-const PLACEHOLDER_LINK = '#';
-
+// Lazy-loaded so the multi-megabyte blog JSON stays out of the home bundle.
+const HomeBlogSection = lazy(() => import('../components/HomeBlogSection'));
+import { Footer } from '../components/Footer';
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
@@ -515,83 +472,13 @@ export const Home: React.FC = () => {
       {/* Reels Carousel */}
       <ReelsCarousel />
 
-      {/* Footer & Newsletter */}
-      <footer className="bg-[#f9f8f4] dark:bg-zinc-950 pt-24">
-        <div className="max-w-4xl mx-auto px-6 text-center mb-24 relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-20 opacity-20 pointer-events-none">
-             <span className="text-8xl text-[#D97736] tracking-tighter" style={{ fontFamily: 'var(--font-cursive)' }}>great</span>
-             <br/><span className="text-2xl font-black tracking-[0.3em] uppercase -mt-4 block">Journeys</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 relative z-10">
-            Get the amazing travel<br/>offers into your inbox!
-          </h2>
-          
-          <div className="relative max-w-lg mx-auto bg-white dark:bg-zinc-900 rounded-full shadow-xl flex items-center p-2 mt-12 border border-gray-100 dark:border-zinc-800 z-10">
-            <input 
-              type="email" 
-              placeholder="Enter your email address"
-              className="flex-1 bg-transparent border-none outline-none pl-6 text-gray-900 dark:text-white placeholder-gray-400 text-sm" 
-            />
-            <button className="bg-transparent text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest px-6 py-3 hover:text-[#D97736] transition-colors flex items-center gap-2">
-              <span className="w-4 h-4 rounded-full border border-current flex items-center justify-center shrink-0"><ArrowRight size={10} /></span>
-              SUBSCRIBE
-            </button>
-          </div>
-          <p className="text-xs text-gray-400 mt-6 z-10 relative">We are committed to protecting your <Link to="#" className="underline hover:text-[#D97736]">privacy policy</Link>.</p>
-        </div>
+      {/* Featured & Latest Blogs (lazy — keeps blog data out of the initial bundle) */}
+      <Suspense fallback={<div className="bg-white dark:bg-black py-24" />}>
+        <HomeBlogSection />
+      </Suspense>
 
-        {/* Instagram / Gallery Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-0">
-          {[
-            "/images/6b2bb97f0c1b6d7f2e78e37589eae965.jpg",
-            "/images/6f3ad43a139e289fdcc2ccc6d497923b.jpg",
-            "/images/7c677b5e8b51587496b66ed9709845df.jpg",
-            "/images/8b2e185fc79ab5f9983920bbc1f8f6b5.jpg",
-            "/images/8c22906dc1ab06a9031e5f0fde298c5b.jpg",
-            "/images/9c904a1b42b78bb14a34bb65cc768a40.jpg"
-          ].map((src, i) => (
-            <div key={i} className="aspect-square relative group overflow-hidden">
-              <img src={src} alt="Gallery" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-[#D97736]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                 <Camera size={32} className="text-white" />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-[#1a1a1a] dark:bg-black">
-          <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400 text-center">
-            <div>&copy; Copyright {new Date().getFullYear()} <span className="font-bold text-white">Monks & Monkey Travels</span></div>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 font-bold uppercase tracking-widest text-white">
-              <Link to="/about" className="hover:text-[#D97736] transition-colors">About</Link>
-              <Link to="/packages" className="hover:text-[#D97736] transition-colors">Destinations</Link>
-              <Link to="/packages" className="hover:text-[#D97736] transition-colors">Tours</Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors">Reviews</Link>
-              <Link to="#" className="hover:text-[#D97736] transition-colors">Blog</Link>
-              <Link to="/contact" className="hover:text-[#D97736] transition-colors">Contact</Link>
-            </div>
-            <div className="flex gap-4">
-              {SOCIAL_LINKS.map(({ name, href, icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${name} (opens in a new tab)`}
-                  onClick={(event) => {
-                    // A placeholder href would otherwise jump the page to the top.
-                    if (href === PLACEHOLDER_LINK) event.preventDefault();
-                  }}
-                  className="hover:text-[#D97736] transition-colors"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
-      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

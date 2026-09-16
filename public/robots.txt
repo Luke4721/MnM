@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Internal tools — never indexed
+Disallow: /admin
+Disallow: /admin/
+# Unlisted internal payment desk
+Disallow: /pay
+
+Sitemap: https://www.mnmtravels.com/sitemap-blogs.xml

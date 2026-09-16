@@ -1,0 +1,13 @@
+{
+  "_comment": "Manual search-term overrides for scripts/fetch-blog-images.mjs. Key = blog slug, value = one query string or an array of fallback queries. Override queries are searched FIRST and skip the relevance threshold (you asked for them explicitly). Find problem slugs in scripts/failed-blogs.json, add an override here, then re-run: node scripts/fetch-blog-images.mjs --retry-failed",
+  "kurukshetra-the-sacred-land-of-the-mahabharata-and-bhagavad-gita": "kurukshetra haryana temple",
+  "guptar-ghat-ayodhya-the-sacred-place-of-lord-ram-s-jal-samadhi": "ayodhya india temple",
+  "saryu-river-saryu-aarti-ayodhya-the-sacred-flow-of-devotion-light": "ganga aarti ceremony india",
+  "sandipani-ashram-ujjain-the-ancient-gurukul-of-lord-krishna": "ancient hindu temple india",
+  "ram-ghat-ujjain-the-sacred-heart-of-the-shipra-river": "ujjain india temple river",
+  "bhujodi-village-the-handicraft-hub-of-kutch": "kutch gujarat textile craft",
+  "kesi-ghat-vrindavan-history-timings-aarti-and-travel-guide": "vrindavan india temple ghat",
+  "rangbhoomi-mathura-history-attractions-visiting-guide": "mathura vrindavan temple india",
+  "vishram-ghat-mathura-travel-guide-timings-tips-entry-fee": "mathura ghat river india",
+  "agam-kuan-patna-the-mysterious-ancient-well-of-emperor-ashoka": ["ancient stepwell india", "patna india temple"]
+}
