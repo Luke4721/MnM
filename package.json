@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/sync-db.mjs && tsc -b && vite build",
+    "build": "node server/sync-db.mjs && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "parse-drive": "node scripts/parseDrivePackages.js"

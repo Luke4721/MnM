@@ -4,6 +4,7 @@
 !.env.example
 
 # Local migration/maintenance scripts (not needed at runtime)
-scripts/
+scripts/*
+!scripts/sync-db.mjs
 __pycache__/
 test_cdn.cjs
