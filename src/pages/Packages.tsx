@@ -94,7 +94,7 @@ export const Packages: React.FC = () => {
 
       return matchesCategory && matchesSearch && matchesDuration && matchesBudget;
     });
-  }, [activeCategory, searchQuery, filters.duration, filters.budget]);
+  }, [dbPackages, activeCategory, searchQuery, filters.duration, filters.budget]);
 
   const displayedPackages = filteredPackages.slice(0, displayLimit);
   console.log("Total Filtered:", filteredPackages.length, " | Currently Displaying:", displayedPackages.length, " | displayLimit State:", displayLimit);
