@@ -1,5 +1,35 @@
 [
   {
+    "id": "test-himalayan-escape-1792067243455",
+    "title": "Test Blog: Luxury Himalayan Escapes",
+    "slug": "test-blog-luxury-himalayan-escapes",
+    "category": "India",
+    "content": "<p>This is a live test blog post published to verify that updates to the blog system are saved to AWS S3 and deployed to the live website.</p>",
+    "excerpt": "A live test blog verifying that AWS S3 database updates and Vercel deployments reflect on the live website.",
+    "featuredImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=80",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=80",
+    "imageAlt": "Test Blog: Luxury Himalayan Escapes",
+    "status": "published",
+    "featured": true,
+    "author": "MNM Team",
+    "readTime": "1 min read",
+    "publishedAt": "2026-10-15T12:27:23.455Z",
+    "date": "15 OCT 2026",
+    "seo": {
+      "title": "Test Blog: Luxury Himalayan Escapes",
+      "description": "A live test blog verifying that AWS S3 database updates and Vercel deployments reflect on the live website.",
+      "keywords": "himalayas, luxury, test",
+      "ogImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=80"
+    },
+    "tags": [
+      "Test",
+      "Himalayas",
+      "India"
+    ],
+    "relatedBlogIds": [],
+    "createdAt": "2026-10-15T12:27:23.473Z"
+  },
+  {
     "id": "307a402e-746d-4dab-a47b-46db9606e52e",
     "title": "Test Blog 1",
     "slug": "test-blog-1",
