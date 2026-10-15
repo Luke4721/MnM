@@ -75,8 +75,25 @@ async function readJsonBody<T = any>(
   }
 }
 
-import { getS3Client, S3_BUCKET } from '../../server/adminHelper.ts';
-import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+
+const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
+const AWS_REGION = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || 'ap-south-1';
+
+function getS3Client(): S3Client {
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+  return new S3Client({
+    region: AWS_REGION,
+    credentials:
+      accessKeyId && secretAccessKey
+        ? {
+            accessKeyId,
+            secretAccessKey,
+          }
+        : undefined,
+  });
+}
 
 // In-Memory Caching for blogs database
 let cachedBlogs: any[] | null = null;

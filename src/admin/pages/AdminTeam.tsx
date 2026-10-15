@@ -56,7 +56,13 @@ export const AdminTeam: React.FC = () => {
     try {
       const res = await fetch('/api/admin/site-config?section=team');
       if (!res.ok) throw new Error('Failed to load team data');
-      const data = await res.json();
+      const text = await res.text();
+      let data: any;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error('Server returned invalid data');
+      }
       if (data.success && Array.isArray(data.data)) {
         setTeam(data.data);
       } else {
@@ -93,32 +99,62 @@ export const AdminTeam: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setIsUploading(true);
-    const bodyData = new FormData();
-    bodyData.append('file', file);
-    bodyData.append('folder', 'team');
-
-    try {
-      const res = await fetch('/api/admin/upload-image', {
-        method: 'POST',
-        body: bodyData,
-      });
-      const data = await res.json();
-      if (data.success && data.url) {
-        setFormData((prev) => ({ ...prev, photo_url: data.url }));
-        toast.success('Image uploaded successfully');
-      } else {
-        throw new Error(data.error || 'Upload failed');
-      }
-    } catch (err: any) {
-      toast.error('Image upload failed: ' + err.message);
-    } finally {
-      setIsUploading(false);
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error('Image size exceeds 5MB limit');
+      return;
     }
+
+    setIsUploading(true);
+    const reader = new FileReader();
+
+    reader.onload = async () => {
+      try {
+        const resultString = reader.result as string;
+        const base64Data = resultString.includes(',') ? resultString.split(',')[1] : resultString;
+
+        const res = await fetch('/api/admin/upload-image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fileData: base64Data,
+            fileName: file.name,
+            fileType: file.type || 'image/jpeg',
+            folder: 'team',
+            slug: 'team-' + Date.now(),
+          }),
+        });
+
+        const text = await res.text();
+        let data: any;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          throw new Error(text.slice(0, 100) || 'Server returned invalid response');
+        }
+
+        if (data.success && data.url) {
+          setFormData((prev) => ({ ...prev, photo_url: data.url }));
+          toast.success('Image uploaded successfully');
+        } else {
+          throw new Error(data.error || 'Upload failed');
+        }
+      } catch (err: any) {
+        toast.error('Image upload failed: ' + err.message);
+      } finally {
+        setIsUploading(false);
+      }
+    };
+
+    reader.onerror = () => {
+      setIsUploading(false);
+      toast.error('Failed to read image file');
+    };
+
+    reader.readAsDataURL(file);
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -143,7 +179,13 @@ export const AdminTeam: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedList),
       });
-      const data = await res.json();
+      const text = await res.text();
+      let data: any;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(text.slice(0, 100) || 'Server returned non-JSON response');
+      }
       if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save team member');
 
       setTeam(updatedList);
@@ -164,7 +206,13 @@ export const AdminTeam: React.FC = () => {
       const res = await fetch(`/api/admin/site-config?section=team&id=${deleteModalId}`, {
         method: 'DELETE',
       });
-      const data = await res.json();
+      const text = await res.text();
+      let data: any;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(text.slice(0, 100) || 'Server returned non-JSON response');
+      }
       if (!res.ok || !data.success) throw new Error(data.error || 'Failed to delete');
 
       setTeam((prev) => prev.filter((m) => m.id !== deleteModalId));

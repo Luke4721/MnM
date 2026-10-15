@@ -153,7 +153,13 @@ export const AdminSupportRouting: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedMap),
       });
-      const data = await res.json();
+      const text = await res.text();
+      let data: any;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(text.slice(0, 100) || 'Server returned non-JSON response');
+      }
       if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save routing');
 
       setRouting(updatedMap);
@@ -174,7 +180,13 @@ export const AdminSupportRouting: React.FC = () => {
       const res = await fetch(`/api/admin/site-config?section=routing&key=${encodeURIComponent(deleteKey)}`, {
         method: 'DELETE',
       });
-      const data = await res.json();
+      const text = await res.text();
+      let data: any;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(text.slice(0, 100) || 'Server returned non-JSON response');
+      }
       if (!res.ok || !data.success) throw new Error(data.error || 'Failed to delete');
 
       const updated = { ...routing };

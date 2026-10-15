@@ -1,8 +1,25 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { getS3Client, S3_BUCKET } from '../../server/adminHelper.ts';
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+
+const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
+const AWS_REGION = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || 'ap-south-1';
+
+function getS3Client(): S3Client {
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+  return new S3Client({
+    region: AWS_REGION,
+    credentials:
+      accessKeyId && secretAccessKey
+        ? {
+            accessKeyId,
+            secretAccessKey,
+          }
+        : undefined,
+  });
+}
 
 function sendJson(res: any, status: number, payload: unknown) {
   if (res && typeof res.status === 'function' && typeof res.json === 'function') {
@@ -79,10 +96,15 @@ async function readSectionData(section: string): Promise<any> {
   }
 
   // Local fallback
-  const localFile = path.resolve(process.cwd(), conf.localPath);
-  if (fs.existsSync(localFile)) {
-    return JSON.parse(fs.readFileSync(localFile, 'utf8'));
+  try {
+    const localFile = path.resolve(process.cwd(), conf.localPath);
+    if (fs.existsSync(localFile)) {
+      return JSON.parse(fs.readFileSync(localFile, 'utf8'));
+    }
+  } catch (e: any) {
+    console.warn(`[site-config] Local file read failed:`, e.message);
   }
+
   return section === 'team' ? [] : {};
 }
 
@@ -92,8 +114,8 @@ async function writeSectionData(section: string, data: any): Promise<void> {
 
   const jsonString = JSON.stringify(data, null, 2);
 
-  // 1. Try S3
-  let s3Success = false;
+  // 1. Write to S3
+  let s3Error: Error | null = null;
   try {
     const s3 = getS3Client();
     const cmd = new PutObjectCommand({
@@ -103,12 +125,12 @@ async function writeSectionData(section: string, data: any): Promise<void> {
       ContentType: 'application/json',
     });
     await s3.send(cmd);
-    s3Success = true;
   } catch (err: any) {
+    s3Error = err;
     console.error(`[site-config] S3 write failed for ${section}:`, err);
   }
 
-  // 2. Local fallback write
+  // 2. Local fallback write (if filesystem is writable)
   try {
     const localFile = path.resolve(process.cwd(), conf.localPath);
     fs.writeFileSync(localFile, jsonString, 'utf8');
@@ -123,8 +145,12 @@ async function writeSectionData(section: string, data: any): Promise<void> {
     );
   }
 
-  if (!s3Success && process.env.NODE_ENV === 'production') {
-    throw new Error('Failed to persist to AWS S3. Check server AWS credentials.');
+  // If S3 failed and no AWS credentials found
+  if (s3Error) {
+    if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
+      throw new Error('AWS credentials missing on server. Please add AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in Vercel settings.');
+    }
+    throw new Error('S3 write failed: ' + s3Error.message);
   }
 }
 
@@ -164,13 +190,11 @@ export default async function handler(
       let payloadToSave: any;
 
       if (section === 'team') {
-        // If a single member is passed with action, or full array
         if (Array.isArray(body)) {
           payloadToSave = body;
         } else if (body.members && Array.isArray(body.members)) {
           payloadToSave = body.members;
         } else if (body.id) {
-          // Single item update / add
           const currentList: any[] = await readSectionData('team');
           const index = currentList.findIndex((m) => m.id === body.id);
           if (index !== -1) {
@@ -183,7 +207,6 @@ export default async function handler(
           return sendJson(res, 400, { success: false, error: 'Invalid team payload.' });
         }
       } else {
-        // routing or settings
         payloadToSave = body.data !== undefined ? body.data : body;
       }
 
@@ -222,10 +245,10 @@ export default async function handler(
       return sendJson(res, 400, { success: false, error: `DELETE not supported for section ${section}` });
     }
 
-    res.setHeader('Allow', 'GET, POST, PUT, DELETE');
+    if (res.setHeader) res.setHeader('Allow', 'GET, POST, PUT, DELETE');
     return sendJson(res, 405, { success: false, error: `Method ${method} Not Allowed` });
   } catch (error: any) {
-    console.error('[site-config-api] Error:', error);
+    console.error('[site-config-api] Handler error:', error);
     return sendJson(res, 500, { success: false, error: error.message || 'Internal Server Error' });
   }
 }
