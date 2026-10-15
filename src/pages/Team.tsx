@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { TeamCard } from '../components/TeamCard';
 import type { TeamMember } from '../components/TeamCard';
-import teamData from '../data/team.json';
+import initialTeamData from '../data/team.json';
 import { motion } from 'framer-motion';
 
 export const Team: React.FC = () => {
-  const team: TeamMember[] = teamData;
+  const [team, setTeam] = useState<TeamMember[]>(initialTeamData);
+
+  useEffect(() => {
+    fetch('/api/admin/site-config?section=team')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (json && json.success && Array.isArray(json.data) && json.data.length > 0) {
+          setTeam(json.data);
+        }
+      })
+      .catch((err) => {
+        console.warn('[Team] Using build-time team data fallback:', err);
+      });
+  }, []);
 
   return (
     <PageTransition>

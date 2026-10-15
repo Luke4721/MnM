@@ -5,6 +5,8 @@ import {
   Inbox,
   Folder,
   FileText,
+  Users,
+  Headphones,
   Settings,
   LogOut,
   X,
@@ -38,7 +40,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
 }) => {
   const location = useLocation();
 
-  // Primary Navigation Items - Clean, minimal: Dashboard, Inbox, Packages, Blogs
+  // Primary Navigation Items - Clean, minimal: Dashboard, Inbox, Packages, Blogs, Team, Support Routing
   const navItems: NavItem[] = [
     {
       label: 'Dashboard',
@@ -62,6 +64,18 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       label: 'Blogs',
       to: '/admin/blogs',
       icon: <FileText size={19} />,
+      matchPrefix: true,
+    },
+    {
+      label: 'Team',
+      to: '/admin/team',
+      icon: <Users size={19} />,
+      matchPrefix: true,
+    },
+    {
+      label: 'Support Routing',
+      to: '/admin/support',
+      icon: <Headphones size={19} />,
       matchPrefix: true,
     },
   ];

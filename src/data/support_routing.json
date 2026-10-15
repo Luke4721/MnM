@@ -1,0 +1,9 @@
+{
+  "Vietnam": { "type": "Outbound", "name": "Alice Smith", "email": "alice.outbound@mnmtravels.com", "phone": "+91-9876543210" },
+  "Thailand": { "type": "Outbound", "name": "Alice Smith", "email": "alice.outbound@mnmtravels.com", "phone": "+91-9876543210" },
+  "Kerala": { "type": "Inbound", "name": "Rahul Sharma", "email": "rahul.inbound@mnmtravels.com", "phone": "+91-1234567890" },
+  "Rajasthan": { "type": "Inbound", "name": "Rahul Sharma", "email": "rahul.inbound@mnmtravels.com", "phone": "+91-1234567890" },
+  "Europe": { "type": "Outbound", "name": "John Doe", "email": "john.europe@mnmtravels.com", "phone": "+91-1122334455" },
+  "Kashmir": { "type": "Inbound", "name": "Neha Gupta", "email": "neha.kashmir@mnmtravels.com", "phone": "+91-9988776655" },
+  "Maldives": { "type": "Outbound", "name": "John Doe", "email": "john.europe@mnmtravels.com", "phone": "+91-1122334455" }
+}

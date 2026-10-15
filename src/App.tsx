@@ -22,6 +22,8 @@ const Blog = lazy(() => import('./pages/Blog').then((m) => ({ default: m.Blog })
 const BlogPost = lazy(() => import('./pages/BlogPost').then((m) => ({ default: m.BlogPost })));
 const AdminBlogs = lazy(() => import('./admin/pages/AdminBlogs').then((m) => ({ default: m.AdminBlogs })));
 const AdminBlogEditor = lazy(() => import('./admin/pages/AdminBlogEditor').then((m) => ({ default: m.AdminBlogEditor })));
+const AdminTeam = lazy(() => import('./admin/pages/AdminTeam').then((m) => ({ default: m.AdminTeam })));
+const AdminSupportRouting = lazy(() => import('./admin/pages/AdminSupportRouting').then((m) => ({ default: m.AdminSupportRouting })));
 import { AdminLayout } from './admin/components/AdminLayout';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
 import { AdminPackages } from './admin/pages/AdminPackages';
@@ -79,6 +81,8 @@ function App() {
               <Route path="blogs" element={<AdminBlogs />} />
               <Route path="blogs/create" element={<AdminBlogEditor />} />
               <Route path="blogs/edit/:id" element={<AdminBlogEditor />} />
+              <Route path="team" element={<AdminTeam />} />
+              <Route path="support" element={<AdminSupportRouting />} />
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="/packages" element={<Packages />} />

@@ -1,25 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import initialRouting from '../data/support_routing.json';
 
-// Localized data mapping for destinations and handlers
-const destinationHandlers: Record<string, { type: 'Inbound' | 'Outbound', name: string, email: string, phone: string }> = {
-  'Vietnam': { type: 'Outbound', name: 'Alice Smith', email: 'alice.outbound@mnmtravels.com', phone: '+91-9876543210' },
-  'Thailand': { type: 'Outbound', name: 'Alice Smith', email: 'alice.outbound@mnmtravels.com', phone: '+91-9876543210' },
-  'Kerala': { type: 'Inbound', name: 'Rahul Sharma', email: 'rahul.inbound@mnmtravels.com', phone: '+91-1234567890' },
-  'Rajasthan': { type: 'Inbound', name: 'Rahul Sharma', email: 'rahul.inbound@mnmtravels.com', phone: '+91-1234567890' },
-  'Europe': { type: 'Outbound', name: 'John Doe', email: 'john.europe@mnmtravels.com', phone: '+91-1122334455' },
-  'Kashmir': { type: 'Inbound', name: 'Neha Gupta', email: 'neha.kashmir@mnmtravels.com', phone: '+91-9988776655' },
-  'Maldives': { type: 'Outbound', name: 'John Doe', email: 'john.europe@mnmtravels.com', phone: '+91-1122334455' }
-};
+interface DestinationHandler {
+  type: 'Inbound' | 'Outbound';
+  name: string;
+  email: string;
+  phone: string;
+}
 
 export const ConciergeForm: React.FC = () => {
   const [step, setStep] = useState(1);
+  const [handlers, setHandlers] = useState<Record<string, DestinationHandler>>(
+    initialRouting as Record<string, DestinationHandler>
+  );
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     destination: '',
   });
+
+  useEffect(() => {
+    fetch('/api/admin/site-config?section=routing')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (json && json.success && json.data && Object.keys(json.data).length > 0) {
+          setHandlers(json.data);
+        }
+      })
+      .catch((err) => {
+        console.warn('[ConciergeForm] Using static routing fallback:', err);
+      });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,7 +50,7 @@ export const ConciergeForm: React.FC = () => {
     setFormData({ name: '', email: '', phone: '', destination: '' });
   };
 
-  const assignedHelper = formData.destination ? destinationHandlers[formData.destination] : null;
+  const assignedHelper = formData.destination ? handlers[formData.destination] : null;
 
   return (
     <div className="bg-gray-50 dark:bg-black w-full flex justify-center py-12 px-4 transition-colors duration-500">
@@ -100,7 +113,7 @@ export const ConciergeForm: React.FC = () => {
                 required
               >
                 <option value="" disabled>Select your query type</option>
-                {Object.entries(destinationHandlers).map(([dest, info]) => (
+                {Object.entries(handlers).map(([dest, info]) => (
                   <option key={dest} value={dest}>
                     [{info.type}] {dest}
                   </option>
