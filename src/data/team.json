@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Alice Smith",
+    "photo_url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+    "email": "alice@mnmtravels.com",
+    "branch": "New Delhi - HQ",
+    "phone_number": "+91-9876543210"
+  },
+  {
+    "id": "2",
+    "name": "Rahul Sharma",
+    "photo_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
+    "email": "rahul@mnmtravels.com",
+    "branch": "Mumbai Branch",
+    "phone_number": "+91-1234567890"
+  },
+  {
+    "id": "3",
+    "name": "John Doe",
+    "photo_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+    "email": "john@mnmtravels.com",
+    "branch": "London Branch",
+    "phone_number": "+44-20-7946-0958"
+  }
+]

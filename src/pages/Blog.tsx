@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, ChevronLeft, ChevronRight, Clock, Calendar } from 'lucide-react';
 import {
-  searchBlogs, formatBlogDate, truncateExcerpt, getBlogCategories,
+  searchBlogs, formatBlogDate, truncateExcerpt,
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
 import { Footer } from '../components/Footer';
@@ -15,7 +15,6 @@ export const Blog: React.FC = () => {
   const [category, setCategory] = useState<string>('All');
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  const categories = getBlogCategories();
 
   const results = useMemo(
     () => searchBlogs(category, query),
@@ -86,9 +85,6 @@ export const Blog: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map((cat) => {
-              const count = cat === 'All'
-                ? categories.total
-                : categories.counts[cat] ?? 0;
               const active = category === cat;
               return (
                 <button
@@ -101,7 +97,6 @@ export const Blog: React.FC = () => {
                   }`}
                 >
                   {cat}
-                  <span className={`ml-2 text-xs ${active ? 'text-white/75' : 'text-gray-400'}`}>({count})</span>
                 </button>
               );
             })}

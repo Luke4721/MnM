@@ -10,9 +10,14 @@
       ]
     }
   ],
+  "functions": {
+    "api/**": {
+      "includeFiles": "src/data/blogs_database.json"
+    }
+  },
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ]

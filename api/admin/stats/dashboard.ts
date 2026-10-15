@@ -1,9 +1,80 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import { sendJson, HttpError } from '../../../server/adminHelper.ts';
+import { fileURLToPath } from 'node:url';
 
-const BLOGS_DB_PATH = path.resolve(process.cwd(), 'src/data/blogs_database.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+class HttpError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+    this.name = 'HttpError';
+  }
+}
+
+function sendJson(res: any, status: number, payload: unknown) {
+  if (res && typeof res.status === 'function' && typeof res.json === 'function') {
+    return res.status(status).json(payload);
+  }
+  if (res && typeof res.setHeader === 'function' && typeof res.end === 'function') {
+    res.statusCode = status;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    res.end(JSON.stringify(payload));
+    return;
+  }
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
+
+// In-Memory Caching for blogs database
+let cachedBlogs: any[] | null = null;
+
+function getBlogs(): any[] {
+  if (cachedBlogs) return cachedBlogs;
+
+  const primaryPath = path.join(process.cwd(), 'src', 'data', 'blogs_database.json');
+  const candidatePaths = [
+    primaryPath,
+    path.resolve(process.cwd(), 'src/data/blogs_database.json'),
+    path.join(__dirname, '..', '..', '..', 'src', 'data', 'blogs_database.json'),
+    path.join(__dirname, '..', '..', 'src', 'data', 'blogs_database.json'),
+    path.join(__dirname, 'src', 'data', 'blogs_database.json'),
+    path.join(process.cwd(), 'data', 'blogs_database.json'),
+  ];
+
+  for (const p of candidatePaths) {
+    try {
+      if (fs.existsSync(p)) {
+        const raw = fs.readFileSync(p, 'utf8');
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          cachedBlogs = parsed;
+          return cachedBlogs;
+        }
+      }
+    } catch {
+      // Continue to next path candidate
+    }
+  }
+
+  try {
+    const raw = fs.readFileSync(primaryPath, 'utf8');
+    cachedBlogs = JSON.parse(raw);
+    return cachedBlogs || [];
+  } catch (err) {
+    console.warn('[api/admin/stats/dashboard] Unable to read blogs from disk, defaulting to empty list:', err);
+    return [];
+  }
+}
 
 interface RawEnquiry {
   id?: string;
@@ -31,23 +102,20 @@ interface RawPackage {
 export default async function handler(
   req: IncomingMessage,
   res: ServerResponse,
-): Promise<void> {
+): Promise<any> {
   try {
     if (req.method !== 'GET') {
-      res.setHeader('Allow', 'GET');
+      if (res.setHeader) res.setHeader('Allow', 'GET');
       throw new HttpError(405, 'Method Not Allowed. Use GET.');
     }
 
-    // 1. Fetch Blogs Count from blogs_database.json
+    // 1. Fetch Blogs Count from in-memory cached blogs
     let totalBlogs = 600;
     try {
-      if (fs.existsSync(BLOGS_DB_PATH)) {
-        const rawBlogs = fs.readFileSync(BLOGS_DB_PATH, 'utf-8');
-        const blogsArray = JSON.parse(rawBlogs);
-        if (Array.isArray(blogsArray)) {
-          const publishedBlogs = blogsArray.filter((b: any) => b.status === 'published');
-          totalBlogs = publishedBlogs.length || blogsArray.length;
-        }
+      const blogsArray = getBlogs();
+      if (Array.isArray(blogsArray) && blogsArray.length > 0) {
+        const publishedBlogs = blogsArray.filter((b: any) => b.status === 'published');
+        totalBlogs = publishedBlogs.length || blogsArray.length;
       }
     } catch (err) {
       console.warn('[api/admin/stats/dashboard] Error reading blogs database:', err);
@@ -260,11 +328,11 @@ export default async function handler(
         enquirySources,
       },
     });
-  } catch (err: any) {
-    console.error('[api/admin/stats/dashboard] Error:', err);
-    sendJson(res, err.status || 500, {
+  } catch (error: any) {
+    console.error("Dashboard API Error:", error);
+    return sendJson(res, error.status || 500, {
       success: false,
-      error: err.message || 'Internal Server Error',
+      error: error.message || 'Internal Server Error',
     });
   }
 }

@@ -22,6 +22,20 @@ export const PackageDetail: React.FC = () => {
   // Fallback to id if slug is not found (for backwards compatibility)
   const pkg = dbPackages.find(p => p.slug === slug || p.id.toString() === slug);
 
+  // Hooks must run unconditionally — compute before the early returns below.
+  const locationForMemo = pkg
+    ? (pkg.destination || pkg.location || pkg.locations || pkg.highlights_old || '')
+    : '';
+  const relatedPackages = React.useMemo(() => {
+    if (!locationForMemo) return [];
+    const locLower = locationForMemo.toLowerCase();
+    return dbPackages.filter((p: any) => {
+        if (pkg && p.id === pkg.id) return false;
+        const pLoc = (p.destination || p.location || p.locations || p.highlights_old || '').toLowerCase();
+        return pLoc === locLower || (pLoc && locLower && (pLoc.includes(locLower) || locLower.includes(pLoc)));
+    }).slice(0, 3);
+  }, [locationForMemo, pkg?.id, dbPackages]);
+
   if (loading) {
     return (
       <div className="min-h-screen w-full flex items-center justify-center">
@@ -46,16 +60,6 @@ export const PackageDetail: React.FC = () => {
   const imageUrl = pkg.heroImage || pkg.image_url || pkg.image || pkg.img;
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
   
-  const relatedPackages = React.useMemo(() => {
-    if (!location) return [];
-    const locLower = location.toLowerCase();
-    return dbPackages.filter((p: any) => {
-        if (p.id === pkg.id) return false;
-        const pLoc = (p.destination || p.location || p.locations || p.highlights_old || '').toLowerCase();
-        return pLoc === locLower || (pLoc && locLower && (pLoc.includes(locLower) || locLower.includes(pLoc)));
-    }).slice(0, 3);
-  }, [location, pkg.id, dbPackages]);
-  
   const variants = pkg.variants && pkg.variants.length > 0 ? [
     {
       id: 'base',
@@ -70,7 +74,7 @@ export const PackageDetail: React.FC = () => {
   const nights = activeVariant ? activeVariant.duration : (pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days);
   const priceValue = activeVariant ? activeVariant.priceINR : (pkg.startingPrice || pkg.priceINR || 0);
 
-  const convertedPrice = Math.round(convertPrice(priceValue, true) as number);
+  const convertedPrice = Math.round(convertPrice(Number(priceValue) || 0, true) as number);
   const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
 
   return (
@@ -115,7 +119,7 @@ export const PackageDetail: React.FC = () => {
                 </span>
                 {pkg.rating && (
                   <span className="px-4 py-1.5 rounded-full bg-white/60 dark:bg-black/40 backdrop-blur-md border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white text-xs font-bold flex items-center gap-1 shadow-sm">
-                    <Star size={14} className="fill-[#FF9933] text-[#FF9933]" /> {pkg.rating} ({pkg.reviewsCount} reviews)
+                    <Star size={14} className="fill-[#FF9933] text-[#FF9933]" /> {String(pkg.rating ?? '')} ({String(pkg.reviewsCount ?? 0)} reviews)
                   </span>
                 )}
                 <span className="px-4 py-1.5 rounded-full bg-[#FF9933] text-white text-xs font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)]">
@@ -123,7 +127,7 @@ export const PackageDetail: React.FC = () => {
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white drop-shadow-lg leading-tight mb-4">
-                {pkg.title}
+                {pkg.title ?? pkg.name}
               </h1>
               <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-medium flex items-center gap-2 drop-shadow-md">
                 <MapPin className="text-[#FF9933]" /> {location}
@@ -403,7 +407,7 @@ export const PackageDetail: React.FC = () => {
       <EnquiryModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        packageName={pkg.title}
+        packageName={pkg.title ?? pkg.name ?? 'Package'}
         variantName={activeVariant?.name}
       />
     </PageTransition>

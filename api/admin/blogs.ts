@@ -2,48 +2,172 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { readJsonBody, sendJson, HttpError } from '../../server/adminHelper.ts';
+import { fileURLToPath } from 'node:url';
 
-const DB_PATH = path.resolve(process.cwd(), 'src/data/blogs_database.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// In-memory cache fallback if file system is read-only
-let memoryBlogs: any[] | null = null;
-
-function loadBlogs(): any[] {
-  if (memoryBlogs) return memoryBlogs;
-  try {
-    if (fs.existsSync(DB_PATH)) {
-      const raw = fs.readFileSync(DB_PATH, 'utf-8');
-      memoryBlogs = JSON.parse(raw);
-      return memoryBlogs || [];
-    }
-  } catch (err) {
-    console.error('[blogs-api] Error reading blogs database:', err);
+class HttpError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+    this.name = 'HttpError';
   }
-  memoryBlogs = [];
-  return memoryBlogs;
 }
 
-function saveBlogs(blogs: any[]): void {
-  memoryBlogs = blogs;
+function sendJson(res: any, status: number, payload: unknown) {
+  if (res && typeof res.status === 'function' && typeof res.json === 'function') {
+    return res.status(status).json(payload);
+  }
+  if (res && typeof res.setHeader === 'function' && typeof res.end === 'function') {
+    res.statusCode = status;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    res.end(JSON.stringify(payload));
+    return;
+  }
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
+
+interface RequestWithParsedBody extends IncomingMessage {
+  body?: unknown;
+}
+
+async function readJsonBody<T = any>(
+  req: IncomingMessage,
+  maxBytes: number = 15 * 1024 * 1024,
+): Promise<T> {
+  const preParsed = (req as RequestWithParsedBody).body;
+  if (preParsed !== undefined && preParsed !== null) {
+    if (typeof preParsed === 'string') {
+      try {
+        return JSON.parse(preParsed);
+      } catch {
+        throw new HttpError(400, 'Request body must be valid JSON.');
+      }
+    }
+    return preParsed as T;
+  }
+
+  const chunks: Buffer[] = [];
+  let size = 0;
+
+  for await (const chunk of req) {
+    const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk as string);
+    size += buffer.length;
+    if (size > maxBytes) throw new HttpError(413, 'Request payload too large.');
+    chunks.push(buffer);
+  }
+
+  if (size === 0) return {} as T;
+
   try {
-    fs.writeFileSync(DB_PATH, JSON.stringify(blogs, null, 2), 'utf-8');
+    return JSON.parse(Buffer.concat(chunks).toString('utf8')) as T;
+  } catch {
+    throw new HttpError(400, 'Request body must be valid JSON.');
+  }
+}
+
+import { getS3Client, S3_BUCKET } from '../../server/adminHelper.ts';
+import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+
+// In-Memory Caching for blogs database
+let cachedBlogs: any[] | null = null;
+
+function getBlogsFilePath(): string {
+  const primaryPath = path.join(process.cwd(), 'src', 'data', 'blogs_database.json');
+  const candidatePaths = [
+    primaryPath,
+    path.resolve(process.cwd(), 'src/data/blogs_database.json'),
+    path.join(__dirname, '..', '..', 'src', 'data', 'blogs_database.json'),
+    path.join(__dirname, '..', 'src', 'data', 'blogs_database.json'),
+    path.join(__dirname, 'src', 'data', 'blogs_database.json'),
+    path.join(process.cwd(), 'data', 'blogs_database.json'),
+  ];
+
+  for (const p of candidatePaths) {
+    try {
+      if (fs.existsSync(p)) return p;
+    } catch {
+      // Continue searching candidate paths
+    }
+  }
+  return primaryPath;
+}
+
+async function getBlogs(): Promise<any[]> {
+  if (cachedBlogs) return cachedBlogs;
+
+  try {
+    const s3 = getS3Client();
+    const cmd = new GetObjectCommand({ Bucket: S3_BUCKET, Key: 'database/blogs_database.json' });
+    const response = await s3.send(cmd);
+    const raw = await response.Body?.transformToString();
+    cachedBlogs = JSON.parse(raw || '[]');
+    return cachedBlogs || [];
+  } catch (err: any) {
+    console.warn('[blogs-api] Failed to load blogs from S3, falling back to local file. Error:', err.message);
+    const resolvedPath = getBlogsFilePath();
+    try {
+      const raw = fs.readFileSync(resolvedPath, 'utf8');
+      cachedBlogs = JSON.parse(raw);
+      if (!Array.isArray(cachedBlogs)) {
+        cachedBlogs = [];
+      }
+      return cachedBlogs;
+    } catch (fsErr) {
+      console.error('Blogs API Error: Failed to read local fallback from', resolvedPath, fsErr);
+      return [];
+    }
+  }
+}
+
+async function saveBlogs(blogs: any[]): Promise<void> {
+  cachedBlogs = blogs;
+  try {
+    const s3 = getS3Client();
+    const cmd = new PutObjectCommand({
+      Bucket: S3_BUCKET,
+      Key: 'database/blogs_database.json',
+      Body: JSON.stringify(blogs, null, 2),
+      ContentType: 'application/json',
+    });
+    await s3.send(cmd);
+    
+    // Trigger Vercel rebuild webhook to update the static frontend
+    if (process.env.VERCEL_DEPLOY_WEBHOOK) {
+      await fetch(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' }).catch((e) => console.error('Webhook trigger failed', e));
+    }
   } catch (err) {
-    console.warn('[blogs-api] File write failed (possibly serverless environment), cached in memory:', err);
+    console.error('Failed to upload blogs database to S3:', err);
+    // Fallback to local write
+    const resolvedPath = getBlogsFilePath();
+    try {
+      fs.writeFileSync(resolvedPath, JSON.stringify(blogs, null, 2), 'utf-8');
+    } catch (e) {
+      console.warn('[blogs-api] Fallback file write failed:', e);
+    }
   }
 }
 
 export default async function handler(
   req: IncomingMessage,
   res: ServerResponse,
-): Promise<void> {
+): Promise<any> {
   try {
     const url = new URL(req.url || '/', 'http://localhost');
     const method = req.method?.toUpperCase();
     const idParam = url.searchParams.get('id');
     const slugParam = url.searchParams.get('slug');
 
-    const allBlogs = loadBlogs();
+    const allBlogs = await getBlogs();
     const activeBlogs = allBlogs.filter((b) => !b.deletedAt);
 
     // ==========================================
@@ -163,7 +287,7 @@ export default async function handler(
       };
 
       allBlogs.unshift(newBlog);
-      saveBlogs(allBlogs);
+      await saveBlogs(allBlogs);
 
       sendJson(res, 201, { success: true, blog: newBlog });
       return;
@@ -238,7 +362,7 @@ export default async function handler(
       };
 
       allBlogs[index] = updatedBlog;
-      saveBlogs(allBlogs);
+      await saveBlogs(allBlogs);
 
       sendJson(res, 200, { success: true, blog: updatedBlog });
       return;
@@ -271,7 +395,7 @@ export default async function handler(
         }
       });
 
-      saveBlogs(allBlogs);
+      await saveBlogs(allBlogs);
 
       sendJson(res, 200, {
         success: true,
@@ -284,11 +408,11 @@ export default async function handler(
     res.setHeader('Allow', 'GET, POST, PUT, DELETE');
     throw new HttpError(405, `Method ${method} Not Allowed`);
   } catch (error: any) {
+    console.error("Blogs API Error:", error);
     if (error instanceof HttpError) {
-      sendJson(res, error.status, { success: false, error: error.message });
-      return;
+      return sendJson(res, error.status, { success: false, error: error.message });
     }
-    console.error('[blogs-api] Unexpected error:', error);
-    sendJson(res, 500, { success: false, error: error.message || 'Internal Server Error' });
+    return sendJson(res, 500, { success: false, error: error.message || 'Internal Server Error' });
   }
 }
+

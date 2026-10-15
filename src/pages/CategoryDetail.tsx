@@ -87,11 +87,11 @@ export const CategoryDetail: React.FC = () => {
                   viewport={{ once: true, margin: '-50px' }}
                   transition={{ delay: (index % 6) * 0.05 }}
                 >
-                  <Link to={`/packages/${pkg.slug}`} style={{ textDecoration: 'none' }}>
+                  <Link to={`/packages/${pkg.slug || pkg.id}`} style={{ textDecoration: 'none' }}>
                     <TiltCard>
                       <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                         <div style={{ height: '240px', position: 'relative' }}>
-                          <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image} alt={pkg.title || pkg.name} />
+                          <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image || ''} alt={pkg.title || pkg.name || 'Package'} />
                           <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: '999px', color: 'white', fontSize: '0.8rem', fontWeight: 600 }}>
                             <MapPin size={12} style={{ display: 'inline', marginRight: '4px' }} />
                             {pkg.nights || pkg.duration}
@@ -106,7 +106,7 @@ export const CategoryDetail: React.FC = () => {
                               <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>Starting from</span>
                               <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#FF9933' }}>
                                 <AnimatedNumber
-                                  value={convertPrice(pkg.priceINR, true) as number}
+                                  value={convertPrice(Number(pkg.priceINR) || 0, true) as number}
                                   formatFn={(val: number) => {
                                     const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
                                     return `${symbol}${Math.round(val).toLocaleString()}`;

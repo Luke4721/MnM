@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
+import { Team } from './pages/Team';
 import PackageDetail from './pages/PackageDetail.tsx';
 import Packages from './pages/Packages.tsx';
 import { Services } from './pages/Services';
@@ -83,6 +84,7 @@ function App() {
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:slug" element={<PackageDetail />} />
             <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />

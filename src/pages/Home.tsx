@@ -13,7 +13,12 @@ import { Footer } from '../components/Footer';
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
-  const { packages: dbPackages } = usePackages();
+  const { packages: dbPackages, refreshPackages } = usePackages();
+  const [travelType, setTravelType] = useState<'inbound' | 'outbound'>('inbound');
+
+  useEffect(() => {
+    refreshPackages(travelType);
+  }, [travelType, refreshPackages]);
 
   // Phase 2: Hero Slideshow Logic
   const heroPackages = [
@@ -158,8 +163,34 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Floating Search Engine Widget */}
+      {/* Floating Search Engine Widget with Travel Type Toggle */}
       <div className="relative z-[100] my-10 max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex justify-center mb-10 mt-6 relative z-10">
+          <div className="relative flex bg-gray-100/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-full shadow-inner p-1.5 border border-gray-200/50 dark:border-zinc-800/50">
+            {['inbound', 'outbound'].map((type) => {
+              const isActive = travelType === type;
+              return (
+                <button
+                  key={type}
+                  onClick={() => setTravelType(type as 'inbound' | 'outbound')}
+                  className={`relative px-6 sm:px-10 py-3 rounded-full text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300 z-10 ${
+                    isActive ? 'text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTravelToggle"
+                      className="absolute inset-0 bg-gradient-to-r from-[#FF9933] to-[#e68a2e] rounded-full shadow-md"
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                      style={{ zIndex: -1 }}
+                    />
+                  )}
+                  {type === 'inbound' ? 'Explore India' : 'International Getaways'}
+                </button>
+              );
+            })}
+          </div>
+        </div>
         <TravelSearchEngine standalone={true} />
       </div>
 
@@ -261,15 +292,42 @@ export const Home: React.FC = () => {
         </div>
 
         {/* Popular Packages */}
-        <div className="mt-32 mb-16 text-center flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Popular packages</h2>
-          <div className="w-12 h-1 bg-[#D97736] mb-8"></div>
+        <div className="mt-32 mb-16 flex flex-col items-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full max-w-4xl mx-auto rounded-3xl p-[1px] bg-gradient-to-r from-[#FF9933]/40 via-transparent to-[#FF9933]/40 mb-12 shadow-sm"
+          >
+            <div className="bg-gradient-to-br from-orange-50 to-white dark:from-zinc-900 dark:to-black rounded-[23px] py-8 px-6 sm:px-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left">
+              <div className="w-16 h-16 rounded-full bg-[#FF9933]/10 flex items-center justify-center flex-shrink-0 text-[#FF9933]">
+                {travelType === 'inbound' ? <MapPin size={32} /> : <Plane size={32} />}
+              </div>
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">
+                  {travelType === 'inbound' 
+                    ? 'Discover the Magic of India' 
+                    : 'Explore the World'}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400 font-medium">
+                  {travelType === 'inbound'
+                    ? 'Curated heritage, wildlife, and cultural experiences across the subcontinent.'
+                    : 'Premium international getaways tailored for the modern traveler.'}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="text-center flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Popular packages</h2>
+            <div className="w-12 h-1 bg-[#D97736] mb-8"></div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {popularPackages.map((pkg, index) => {
-            const originalPrice = Math.round((convertPrice(pkg.priceINR, true) as number) * 1.3);
-            const currentPrice = Math.round(convertPrice(pkg.priceINR, true) as number);
+            const originalPrice = Math.round((convertPrice(Number(pkg.priceINR) || 0, true) as number) * 1.3);
+            const currentPrice = Math.round(convertPrice(Number(pkg.priceINR) || 0, true) as number);
             const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
 
             return (
