@@ -17,6 +17,16 @@ interface TeamCardProps {
 }
 
 export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
+  const photoSrc = React.useMemo(() => {
+    const raw = member.photo_url || '';
+    if (!raw) return 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256&auto=format&fit=crop';
+    if (raw.includes('images.unsplash.com')) {
+      const sep = raw.includes('?') ? '&' : '?';
+      return `${raw}${sep}fm=webp&w=256&h=256`;
+    }
+    return raw;
+  }, [member.photo_url]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -27,12 +37,15 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
     >
       <div className="w-32 h-32 mb-6 rounded-full overflow-hidden border-4 border-[#FF9933]/20 group-hover:border-[#FF9933]/50 transition-colors duration-300">
         <img
-          src={`${member.photo_url}&fm=webp&w=256&h=256`}
+          src={photoSrc}
           alt={member.name}
           loading="lazy"
           width={256}
           height={256}
           className="w-full h-full object-cover"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256&auto=format&fit=crop';
+          }}
         />
       </div>
       

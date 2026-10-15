@@ -115,7 +115,7 @@ export default async function handler(
         .replace(/\.[^/.]+$/, '');
       s3Key = `package-images/${safeSlug}/${cleanFileName}-${timestamp}.${ext}`;
     } else if (folder === 'team' || folder === 'team-images') {
-      s3Key = `team-images/${safeSlug}-${timestamp}.${ext}`;
+      s3Key = `blog-images/team-${safeSlug}-${timestamp}.${ext}`;
     } else {
       s3Key = `blog-images/${safeSlug}-${timestamp}.${ext}`;
     }

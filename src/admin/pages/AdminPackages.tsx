@@ -169,6 +169,7 @@ export const AdminPackages: React.FC = () => {
           name,
           startingPrice,
           expiryDate: expiryIso,
+          updatedAt: new Date().toISOString(),
         };
         const res = await fetch(`${API_URL}/${editingPkg.id}`, {
           method: 'PUT',
@@ -192,6 +193,8 @@ export const AdminPackages: React.FC = () => {
           description: editingPkg.description || '',
           startingPrice,
           expiryDate: expiryIso,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
           ...imageCompat,
         });
         toast.success(`"${name}" created successfully!`);

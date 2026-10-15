@@ -53,8 +53,27 @@ export const PackagesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const res = await fetch(url.toString());
       if (!res.ok) throw new Error('Failed to fetch packages');
       const data = await res.json();
-      const list: TourPackage[] = Array.isArray(data) ? data : (data?.Items ?? data?.items ?? data?.packages ?? []);
-      setAllPackages(list);
+      const rawList: TourPackage[] = Array.isArray(data) ? data : (data?.Items ?? data?.items ?? data?.packages ?? []);
+      
+      const getPkgTimestamp = (pkg: TourPackage): number => {
+        if (pkg.createdAt) {
+          const t = new Date(pkg.createdAt).getTime();
+          if (!isNaN(t)) return t;
+        }
+        if (pkg.updatedAt) {
+          const t = new Date(pkg.updatedAt).getTime();
+          if (!isNaN(t)) return t;
+        }
+        const match = String(pkg.id || '').match(/(\d{10,13})/);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          if (num > 1577836800000 && num < 2051222400000) return num;
+        }
+        return 0;
+      };
+
+      const sortedList = [...rawList].sort((a, b) => getPkgTimestamp(b) - getPkgTimestamp(a));
+      setAllPackages(sortedList);
       setError(null);
     } catch (err: any) {
       setError(err.message);
