@@ -3,8 +3,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
-import { S3_BUCKET, S3_REGION } from '../../../config/appConfig.ts';
-import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } from '../../_serverConfig.ts';
+import {
+  S3_BUCKET,
+  S3_REGION,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+} from '../../_serverConfig.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

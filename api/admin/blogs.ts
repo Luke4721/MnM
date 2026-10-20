@@ -76,8 +76,14 @@ async function readJsonBody<T = any>(
 }
 
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { S3_BUCKET, S3_REGION, VERCEL_DEPLOY_WEBHOOK, ADMIN_API_TOKEN } from '../../config/appConfig.ts';
-import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } from '../_serverConfig.ts';
+import {
+  S3_BUCKET,
+  S3_REGION,
+  VERCEL_DEPLOY_WEBHOOK,
+  ADMIN_API_TOKEN,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+} from '../_serverConfig.ts';
 
 function getS3Client(): S3Client {
   return new S3Client({

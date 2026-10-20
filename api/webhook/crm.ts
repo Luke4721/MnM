@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { VERCEL_DEPLOY_WEBHOOK } from '../../config/appConfig.ts';
+import { VERCEL_DEPLOY_WEBHOOK } from '../_serverConfig.ts';
 
 // Simple authentication token verification
 const WEBHOOK_SECRET = process.env.CRM_WEBHOOK_SECRET;
