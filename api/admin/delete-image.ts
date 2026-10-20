@@ -1,12 +1,10 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { S3Client, DeleteObjectCommand } from '@aws-sdk/client-s3';
-import {
-  S3_BUCKET,
-  S3_REGION,
-  ADMIN_API_TOKEN,
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY,
-} from '../_serverConfig.ts';
+const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID || '';
+const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY || '';
+const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
+const S3_REGION = process.env.S3_REGION || process.env.AWS_REGION || 'ap-south-1';
+const ADMIN_API_TOKEN = process.env.ADMIN_API_TOKEN || process.env.VITE_ADMIN_API_TOKEN || 'mnm_admin_secure_token_2026';
 
 function getS3Client(): S3Client {
   return new S3Client({
@@ -71,14 +69,6 @@ export default async function handler(
   res: ServerResponse,
 ): Promise<any> {
   try {
-    // Fail loud if config is unresolved
-    if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
-      return sendJson(res, 500, {
-        success: false,
-        error: 'Server config missing: check api/_serverConfig.ts',
-      });
-    }
-
     if (req.method !== 'POST' && req.method !== 'DELETE') {
       if (res.setHeader) res.setHeader('Allow', 'POST, DELETE');
       return sendJson(res, 405, { success: false, error: 'Use POST or DELETE to remove an image.' });
@@ -91,6 +81,14 @@ export default async function handler(
       return sendJson(res, 401, {
         success: false,
         error: 'Unauthorized: missing or invalid x-admin-token header.',
+      });
+    }
+
+    // Fail loud if S3 config is unresolved
+    if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+      return sendJson(res, 500, {
+        success: false,
+        error: 'Server config missing: AWS credentials not configured.',
       });
     }
 

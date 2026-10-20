@@ -2,14 +2,12 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import {
-  S3_BUCKET,
-  S3_REGION,
-  VERCEL_DEPLOY_WEBHOOK,
-  ADMIN_API_TOKEN,
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY,
-} from '../_serverConfig.ts';
+const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID || '';
+const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY || '';
+const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
+const S3_REGION = process.env.S3_REGION || process.env.AWS_REGION || 'ap-south-1';
+const VERCEL_DEPLOY_WEBHOOK = process.env.VERCEL_DEPLOY_WEBHOOK || 'https://api.vercel.com/v1/integrations/deploy/prj_EvQWtmw17Bf4icqpqEplu8EilxRw/FZx1l4inJg';
+const ADMIN_API_TOKEN = process.env.ADMIN_API_TOKEN || process.env.VITE_ADMIN_API_TOKEN || 'mnm_admin_secure_token_2026';
 
 function getS3Client(): S3Client {
   return new S3Client({
@@ -154,7 +152,7 @@ async function writeSectionData(section: string, data: any): Promise<void> {
   // If S3 failed
   if (s3Error) {
     if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
-      throw new Error('AWS credentials missing on server: check api/_serverConfig.ts');
+      throw new Error('AWS credentials missing on server');
     }
     throw new Error('S3 write failed: ' + s3Error.message);
   }
@@ -165,14 +163,6 @@ export default async function handler(
   res: ServerResponse
 ): Promise<any> {
   try {
-    // Fail loud if config is unresolved
-    if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
-      return sendJson(res, 500, {
-        success: false,
-        error: 'Server config missing: check api/_serverConfig.ts',
-      });
-    }
-
     const url = new URL(req.url || '/', 'http://localhost');
     const method = req.method?.toUpperCase();
     const section = (url.searchParams.get('section') || 'team').toLowerCase();
@@ -193,6 +183,14 @@ export default async function handler(
         return sendJson(res, 401, {
           success: false,
           error: 'Unauthorized: missing or invalid x-admin-token header.',
+        });
+      }
+
+      // Fail loud if config is unresolved for mutations
+      if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+        return sendJson(res, 500, {
+          success: false,
+          error: 'Server config missing: AWS credentials not configured.',
         });
       }
     }
