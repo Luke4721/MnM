@@ -3,7 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, BookOpen, Link2, Check } from 'lucide-react';
 import {
-  blogBySlug, relatedBlogs, formatBlogDate, truncateExcerpt, sanitizeBlogHtml, SITE_URL,
+  blogBySlug, relatedBlogs, formatBlogDate, truncateExcerpt, sanitizeBlogHtml,
+  fetchBlogBySlug, optimizePostImages, SITE_URL, type Blog
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
 import { SOCIAL_LINKS } from '../components/SocialLinks';
@@ -14,19 +15,56 @@ export const BlogPost: React.FC = () => {
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
 
-  const blog = blogBySlug(slug);
+  const localBlog = blogBySlug(slug);
+  const [blog, setBlog] = useState<Blog | undefined>(localBlog);
+  const [isFetching, setIsFetching] = useState(!localBlog || !localBlog.content);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (!blog) navigate('/blog');
-  }, [slug, blog, navigate]);
+    let isMounted = true;
+
+    // Fast path: use bundled blog metadata if present
+    if (localBlog) {
+      setBlog((prev) => (prev?.slug === slug && prev?.content ? prev : localBlog));
+    }
+
+    if (slug) {
+      setIsFetching(true);
+      fetchBlogBySlug(slug)
+        .then((fullPost) => {
+          if (!isMounted) return;
+          if (fullPost && fullPost.content) {
+            setBlog(fullPost);
+          } else if (fullPost) {
+            setBlog(fullPost);
+          } else if (!localBlog) {
+            navigate('/blog');
+          }
+        })
+        .catch(() => {
+          if (!isMounted) return;
+          if (!localBlog) {
+            navigate('/blog');
+          }
+        })
+        .finally(() => {
+          if (isMounted) setIsFetching(false);
+        });
+    } else if (!localBlog) {
+      navigate('/blog');
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [slug, navigate]);
 
   const related = useMemo(() => (blog ? relatedBlogs(blog, 4) : []), [blog]);
   const shareUrl = blog ? `${SITE_URL}/blog/${blog.slug}` : '';
 
   useSeo(blog ? {
-    title: `${blog.seo.title || blog.title} | Monks & Monkeys Travels`,
-    description: blog.seo.description || truncateExcerpt(blog.excerpt, 158),
+    title: `${blog.seo?.title || blog.title} | Monks & Monkeys Travels`,
+    description: blog.seo?.description || truncateExcerpt(blog.excerpt, 158),
     image: blog.featuredImage,
     canonicalPath: `/blog/${blog.slug}`,
     type: 'article',
@@ -34,12 +72,12 @@ export const BlogPost: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       headline: blog.title,
-      description: blog.seo.description || blog.excerpt,
+      description: blog.seo?.description || blog.excerpt,
       image: [blog.featuredImage],
       datePublished: blog.publishedAt,
       dateModified: blog.publishedAt,
       articleSection: blog.category,
-      keywords: blog.seo.keywords,
+      keywords: blog.seo?.keywords || '',
       author: { '@type': 'Organization', name: 'Monks & Monkeys Travels' },
       publisher: {
         '@type': 'Organization',
@@ -49,7 +87,19 @@ export const BlogPost: React.FC = () => {
     },
   } : { title: 'Travel Journal | Monks & Monkeys Travels', description: '' });
 
-  if (!blog) return null;
+  if (!blog) {
+    if (isFetching) {
+      return (
+        <div className="min-h-screen bg-gray-50 dark:bg-black w-full flex items-center justify-center pt-32">
+          <div className="flex flex-col items-center gap-3">
+            <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#FF9933] border-t-transparent"></div>
+            <p className="text-sm font-medium text-gray-500">Loading travel story...</p>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  }
 
   const copyLink = async () => {
     try {
@@ -107,10 +157,10 @@ export const BlogPost: React.FC = () => {
 
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-lg font-bold text-gray-600 dark:text-gray-300">
-              {blog.author.charAt(0)}
+              {(blog.author || 'M').charAt(0)}
             </div>
             <div className="text-left">
-              <div className="text-sm font-bold text-gray-900 dark:text-white">{blog.author}</div>
+              <div className="text-sm font-bold text-gray-900 dark:text-white">{blog.author || 'MNM Team'}</div>
               <div className="text-xs text-gray-500">Travel Expert</div>
             </div>
           </div>
@@ -121,9 +171,24 @@ export const BlogPost: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl mb-16 relative"
+          className="w-full mb-16"
         >
-          <img src={blog.featuredImage} alt={blog.imageAlt || blog.title} className="w-full h-full object-cover" />
+          <div className="w-full aspect-[16/9] rounded-[24px] overflow-hidden shadow-2xl relative">
+            <img
+              src={blog.featuredImage}
+              alt={blog.imageAlt || blog.title}
+              width={1200}
+              height={675}
+              loading="eager"
+              fetchPriority="high"
+              className="w-full h-full aspect-[16/9] object-cover"
+            />
+          </div>
+          {(blog.imageAlt || blog.title) && (
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 italic text-center mt-3">
+              {blog.imageAlt || blog.title}
+            </p>
+          )}
         </motion.div>
 
         {/* Article Content */}
@@ -131,7 +196,7 @@ export const BlogPost: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-2xl border border-white/60 dark:border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] relative"
+          className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-2xl border border-white/60 dark:border-white/10 rounded-[24px] p-8 md:p-12 lg:p-16 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] relative"
         >
           {/* Social Links sidebar - sticky on desktop (icons only, Instagram / Facebook / YouTube) */}
           <div className="hidden lg:flex flex-col gap-3 absolute -left-20 top-16 sticky-share">
@@ -156,10 +221,17 @@ export const BlogPost: React.FC = () => {
             </button>
           </div>
 
-          <div
-            className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-extrabold prose-a:text-[#FF9933] prose-img:rounded-2xl"
-            dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(blog.content) }}
-          />
+          {blog.content ? (
+            <div
+              className="blog-content prose prose-lg dark:prose-invert max-w-none prose-headings:font-extrabold prose-a:text-[#FF9933] prose-img:rounded-2xl"
+              dangerouslySetInnerHTML={{ __html: optimizePostImages(sanitizeBlogHtml(blog.content)) }}
+            />
+          ) : (
+            <div className="py-12 flex flex-col items-center justify-center gap-3">
+              <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#FF9933] border-t-transparent"></div>
+              <p className="text-sm font-medium text-gray-500">Loading travel story...</p>
+            </div>
+          )}
 
           {/* Mobile Social Links (icons only, Instagram / Facebook / YouTube) */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/10 lg:hidden flex justify-center items-center gap-3">
@@ -197,14 +269,16 @@ export const BlogPost: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((rel) => (
                 <Link key={rel.id} to={`/blog/${rel.slug}`} className="group no-underline">
-                  <div className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/60 dark:border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-1.5 flex flex-col h-full">
-                    <div className="h-36 relative overflow-hidden shrink-0">
+                  <div className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/60 dark:border-white/10 rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-1.5 flex flex-col h-full">
+                    <div className="h-36 relative overflow-hidden shrink-0 rounded-t-[20px]">
                       <img
                         src={rel.featuredImage}
                         alt={rel.imageAlt || rel.title}
+                        width={400}
+                        height={144}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-t-[20px]"
                       />
                     </div>
                     <div className="p-5 flex flex-col grow">

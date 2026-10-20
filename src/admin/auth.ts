@@ -1,5 +1,15 @@
+import { ADMIN_API_TOKEN } from '../../config/appConfig.ts';
+
 export const isAdminAuthenticated = () => {
   return localStorage.getItem('admin_auth') === 'true';
+};
+
+export const getAdminToken = (): string => {
+  return (
+    ADMIN_API_TOKEN ||
+    localStorage.getItem('admin_api_token') ||
+    'mnm_admin_secure_token_2026'
+  );
 };
 
 export const loginAdmin = (password: string) => {

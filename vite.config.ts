@@ -13,10 +13,21 @@ const devApiRoutes: Record<string, string> = {
   '/api/create-order': '/api/create-order.ts',
   '/api/verify-payment': '/api/verify-payment.ts',
   '/api/admin/blogs': '/api/admin/blogs.ts',
+  '/api/admin/blogs/version': '/api/admin/blogs/version.ts',
   '/api/admin/upload-image': '/api/admin/upload-image.ts',
   '/api/admin/delete-image': '/api/admin/delete-image.ts',
+  '/api/admin/site-config': '/api/admin/site-config.ts',
   '/api/admin/stats/dashboard': '/api/admin/stats/dashboard.ts',
 }
+
+const committedConfigWarningPlugin = (): Plugin => ({
+  name: 'committed-config-warning',
+  buildStart() {
+    console.log(
+      '[notice] Client bundle includes ADMIN_API_TOKEN and S3_BUCKET — this is expected under the committed-config pattern. Do not add AWS credentials to config/appConfig.ts.'
+    );
+  },
+})
 
 const devApiPlugin = (): Plugin => ({
   name: 'mnm-dev-api',
@@ -60,13 +71,16 @@ const devApiPlugin = (): Plugin => ({
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), devApiPlugin()],
+  plugins: [react(), devApiPlugin(), committedConfigWarningPlugin()],
   build: {
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules/react') || id.includes('node_modules/react-router-dom')) {
             return 'vendor';
+          }
+          if (id.includes('blogs_index.json')) {
+            return 'blogs-index';
           }
         }
       }

@@ -17,6 +17,7 @@ import {
   RotateCcw,
   RotateCw,
   RemoveFormatting,
+  AlignJustify,
 } from 'lucide-react';
 import { countWords, calculateReadTime } from '../lib/blogValidation';
 
@@ -34,6 +35,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   placeholder = 'Write your captivating travel story here...',
 }) => {
   const [activeTab, setActiveTab] = useState<'visual' | 'html' | 'preview'>('visual');
+  const [isJustified, setIsJustified] = useState(false);
   const editorRef = useRef<HTMLDivElement>(null);
   const isUpdatingRef = useRef(false);
 
@@ -45,6 +47,47 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
       }
     }
   }, [value]);
+
+  const updateFormatStates = () => {
+    if (activeTab !== 'visual') return;
+    try {
+      let justified = false;
+      try {
+        justified = document.queryCommandState('justifyFull');
+      } catch {
+        // queryCommandState may fail if editor not focused
+      }
+
+      if (!justified) {
+        const sel = window.getSelection();
+        if (sel && sel.rangeCount > 0) {
+          let node: Node | null = sel.anchorNode;
+          while (node && node !== editorRef.current) {
+            if (node instanceof HTMLElement) {
+              if (node.style?.textAlign === 'justify') {
+                justified = true;
+                break;
+              }
+            }
+            node = node.parentNode;
+          }
+        }
+      }
+      setIsJustified(justified);
+    } catch {
+      // Ignore if document selection is unavailable
+    }
+  };
+
+  useEffect(() => {
+    const onSelChange = () => {
+      if (activeTab === 'visual') {
+        updateFormatStates();
+      }
+    };
+    document.addEventListener('selectionchange', onSelChange);
+    return () => document.removeEventListener('selectionchange', onSelChange);
+  }, [activeTab]);
 
   const handleInput = () => {
     if (!editorRef.current) return;
@@ -61,6 +104,40 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
     editorRef.current?.focus();
     document.execCommand(command, false, val);
     handleInput();
+    updateFormatStates();
+  };
+
+  const handleJustify = () => {
+    if (activeTab !== 'visual') return;
+    editorRef.current?.focus();
+    let currentlyJustified = false;
+    try {
+      currentlyJustified = document.queryCommandState('justifyFull');
+    } catch {}
+
+    if (!currentlyJustified) {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0) {
+        let node: Node | null = sel.anchorNode;
+        while (node && node !== editorRef.current) {
+          if (node instanceof HTMLElement) {
+            if (node.style?.textAlign === 'justify') {
+              currentlyJustified = true;
+              break;
+            }
+          }
+          node = node.parentNode;
+        }
+      }
+    }
+
+    if (currentlyJustified) {
+      document.execCommand('justifyLeft', false, undefined);
+    } else {
+      document.execCommand('justifyFull', false, undefined);
+    }
+    handleInput();
+    updateFormatStates();
   };
 
   const handleInsertLink = () => {
@@ -214,6 +291,19 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             >
               <Quote size={15} />
             </button>
+            <button
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={handleJustify}
+              title="Justify Text"
+              className={`p-1.5 rounded-lg transition-colors ${
+                isJustified
+                  ? 'bg-orange-100 dark:bg-orange-950/60 text-[#FF9933]'
+                  : 'text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-zinc-800'
+              }`}
+            >
+              <AlignJustify size={15} />
+            </button>
 
             <span className="w-[1px] h-4 bg-gray-300 dark:bg-zinc-700 mx-1" />
 
@@ -272,6 +362,9 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             contentEditable
             onInput={handleInput}
             onBlur={handleInput}
+            onKeyUp={updateFormatStates}
+            onMouseUp={updateFormatStates}
+            onFocus={updateFormatStates}
             data-placeholder={placeholder}
             className="w-full h-full p-5 outline-none prose prose-sm md:prose-base dark:prose-invert max-w-none focus:ring-0 leading-relaxed overflow-y-auto"
             style={{ minHeight }}

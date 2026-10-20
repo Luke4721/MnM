@@ -18,6 +18,7 @@ import { Select } from '../components/ui/Select';
 import { Modal, ConfirmModal } from '../components/ui/Modal';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { useToast } from '../context/ToastContext';
+import { getAdminToken } from '../auth';
 import fallbackRouting from '../../data/support_routing.json';
 import fallbackTeam from '../../data/team.json';
 
@@ -150,7 +151,10 @@ export const AdminSupportRouting: React.FC = () => {
     try {
       const res = await fetch('/api/admin/site-config?section=routing', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': getAdminToken(),
+        },
         body: JSON.stringify(updatedMap),
       });
       const text = await res.text();
@@ -179,6 +183,9 @@ export const AdminSupportRouting: React.FC = () => {
     try {
       const res = await fetch(`/api/admin/site-config?section=routing&key=${encodeURIComponent(deleteKey)}`, {
         method: 'DELETE',
+        headers: {
+          'x-admin-token': getAdminToken(),
+        },
       });
       const text = await res.text();
       let data: any;

@@ -2,20 +2,17 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-
-const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
-const AWS_REGION = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || 'ap-south-1';
+import { S3_BUCKET, S3_REGION, VERCEL_DEPLOY_WEBHOOK, ADMIN_API_TOKEN } from '../../config/appConfig.ts';
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } from '../_serverConfig.ts';
 
 function getS3Client(): S3Client {
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
   return new S3Client({
-    region: AWS_REGION,
+    region: S3_REGION,
     credentials:
-      accessKeyId && secretAccessKey
+      AWS_ACCESS_KEY_ID && AWS_SECRET_ACCESS_KEY
         ? {
-            accessKeyId,
-            secretAccessKey,
+            accessKeyId: AWS_ACCESS_KEY_ID,
+            secretAccessKey: AWS_SECRET_ACCESS_KEY,
           }
         : undefined,
   });
@@ -130,25 +127,28 @@ async function writeSectionData(section: string, data: any): Promise<void> {
     console.error(`[site-config] S3 write failed for ${section}:`, err);
   }
 
-  // 2. Local fallback write (if filesystem is writable)
-  try {
-    const localFile = path.resolve(process.cwd(), conf.localPath);
-    fs.writeFileSync(localFile, jsonString, 'utf8');
-  } catch (err: any) {
-    console.warn(`[site-config] Local write failed for ${section}:`, err.message);
+  // 2. Local fallback write (only in local development)
+  const isLocalDev = process.env.NODE_ENV !== 'production' && process.env.VERCEL !== '1';
+  if (isLocalDev) {
+    try {
+      const localFile = path.resolve(process.cwd(), conf.localPath);
+      fs.writeFileSync(localFile, jsonString, 'utf8');
+    } catch (err: any) {
+      console.warn(`[site-config] Local write failed for ${section}:`, err.message);
+    }
   }
 
   // 3. Trigger Vercel deploy webhook if configured
-  if (process.env.VERCEL_DEPLOY_WEBHOOK) {
-    fetch(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' }).catch((e) =>
+  if (VERCEL_DEPLOY_WEBHOOK) {
+    fetch(VERCEL_DEPLOY_WEBHOOK, { method: 'POST' }).catch((e) =>
       console.error('[site-config] Deploy webhook failed:', e)
     );
   }
 
-  // If S3 failed and no AWS credentials found
+  // If S3 failed
   if (s3Error) {
-    if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
-      throw new Error('AWS credentials missing on server. Please add AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in Vercel settings.');
+    if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+      throw new Error('AWS credentials missing on server: check api/_serverConfig.ts');
     }
     throw new Error('S3 write failed: ' + s3Error.message);
   }
@@ -159,6 +159,14 @@ export default async function handler(
   res: ServerResponse
 ): Promise<any> {
   try {
+    // Fail loud if config is unresolved
+    if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+      return sendJson(res, 500, {
+        success: false,
+        error: 'Server config missing: check api/_serverConfig.ts',
+      });
+    }
+
     const url = new URL(req.url || '/', 'http://localhost');
     const method = req.method?.toUpperCase();
     const section = (url.searchParams.get('section') || 'team').toLowerCase();
@@ -168,6 +176,19 @@ export default async function handler(
         success: false,
         error: `Invalid section "${section}". Expected "team", "routing", or "settings".`,
       });
+    }
+
+    // Enforce auth on mutation routes (POST, PUT, DELETE)
+    if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+      const expectedToken = ADMIN_API_TOKEN;
+      const headerToken = req.headers['x-admin-token'];
+      const token = Array.isArray(headerToken) ? headerToken[0] : headerToken;
+      if (!token || token !== expectedToken) {
+        return sendJson(res, 401, {
+          success: false,
+          error: 'Unauthorized: missing or invalid x-admin-token header.',
+        });
+      }
     }
 
     // ==========================================

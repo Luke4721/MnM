@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, ChevronLeft, ChevronRight, Clock, Calendar } from 'lucide-react';
 import {
-  searchBlogs, formatBlogDate, truncateExcerpt,
+  searchBlogs, formatBlogDate, truncateExcerpt, publishedBlogs, BUILD_LAST_UPDATED, type Blog as BlogType
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
 import { Footer } from '../components/Footer';
@@ -15,10 +15,45 @@ export const Blog: React.FC = () => {
   const [category, setCategory] = useState<string>('All');
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [blogList, setBlogList] = useState<BlogType[]>(publishedBlogs);
+
+  // Background check /version first. Only fetch full list if lastUpdated differs from build-time constant.
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/api/admin/blogs/version')
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch blog version');
+        return res.json();
+      })
+      .then((ver) => {
+        if (!isMounted) return;
+        // If unchanged from build-time constant, skip the full payload fetch
+        if (ver?.lastUpdated && ver.lastUpdated === BUILD_LAST_UPDATED) {
+          return;
+        }
+        return fetch('/api/admin/blogs?status=published&limit=1000')
+          .then((res) => {
+            if (!res.ok) throw new Error('Failed to fetch from API');
+            return res.json();
+          })
+          .then((data) => {
+            if (isMounted && data.success && Array.isArray(data.blogs)) {
+              setBlogList(data.blogs);
+            }
+          });
+      })
+      .catch((err) => {
+        console.warn('[Blog] Background refresh notice:', err.message);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const results = useMemo(
-    () => searchBlogs(category, query),
-    [category, query],
+    () => searchBlogs(category, query, blogList),
+    [category, query, blogList],
   );
 
   const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
@@ -137,15 +172,17 @@ export const Blog: React.FC = () => {
                 to={`/blog/${blog.slug}`}
                 className="block h-full group no-underline"
               >
-                <div className="h-full bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/60 dark:border-white/10 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col relative">
+                <div className="h-full bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/60 dark:border-white/10 rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col relative">
 
-                  <div className="h-56 relative overflow-hidden shrink-0">
+                  <div className="h-56 relative overflow-hidden shrink-0 rounded-t-[20px]">
                     <img
                       src={blog.featuredImage}
                       alt={blog.imageAlt || blog.title}
+                      width={400}
+                      height={224}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-t-[20px]"
                     />
                     <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-white">
                       {blog.category}
@@ -170,10 +207,10 @@ export const Blog: React.FC = () => {
 
                     <div className="mt-auto flex items-center gap-3 pt-4 border-t border-gray-200/50 dark:border-white/10">
                       <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300">
-                        {blog.author.charAt(0)}
+                        {(blog.author || 'M').charAt(0)}
                       </div>
                       <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                        {blog.author}
+                        {blog.author || 'MNM Team'}
                       </span>
                     </div>
                   </div>

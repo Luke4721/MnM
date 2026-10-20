@@ -1,19 +1,16 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { S3Client, DeleteObjectCommand } from '@aws-sdk/client-s3';
-
-const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
-const AWS_REGION = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || 'ap-south-1';
+import { S3_BUCKET, S3_REGION, ADMIN_API_TOKEN } from '../../config/appConfig.ts';
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } from '../_serverConfig.ts';
 
 function getS3Client(): S3Client {
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
   return new S3Client({
-    region: AWS_REGION,
+    region: S3_REGION,
     credentials:
-      accessKeyId && secretAccessKey
+      AWS_ACCESS_KEY_ID && AWS_SECRET_ACCESS_KEY
         ? {
-            accessKeyId,
-            secretAccessKey,
+            accessKeyId: AWS_ACCESS_KEY_ID,
+            secretAccessKey: AWS_SECRET_ACCESS_KEY,
           }
         : undefined,
   });
@@ -69,9 +66,27 @@ export default async function handler(
   res: ServerResponse,
 ): Promise<any> {
   try {
+    // Fail loud if config is unresolved
+    if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+      return sendJson(res, 500, {
+        success: false,
+        error: 'Server config missing: check api/_serverConfig.ts',
+      });
+    }
+
     if (req.method !== 'POST' && req.method !== 'DELETE') {
       if (res.setHeader) res.setHeader('Allow', 'POST, DELETE');
       return sendJson(res, 405, { success: false, error: 'Use POST or DELETE to remove an image.' });
+    }
+
+    const expectedToken = ADMIN_API_TOKEN;
+    const headerToken = req.headers['x-admin-token'];
+    const token = Array.isArray(headerToken) ? headerToken[0] : headerToken;
+    if (!token || token !== expectedToken) {
+      return sendJson(res, 401, {
+        success: false,
+        error: 'Unauthorized: missing or invalid x-admin-token header.',
+      });
     }
 
     const body = await readJsonBody<{ urlOrKey?: string }>(req);

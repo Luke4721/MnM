@@ -1,67 +1,127 @@
-import blogsJson from '../data/blogs_database.json';
+import blogsIndexJson from '../data/blogs_index.json';
+import blogVersion from '../data/blogs_version.json';
+import { PUBLIC_SITE_URL } from '../../config/appConfig.ts';
+
+export const BUILD_LAST_UPDATED: string = blogVersion.lastUpdated;
+export const BUILD_BLOG_COUNT: number = blogVersion.count;
 
 export interface BlogSeo {
-  title: string;
-  description: string;
-  keywords: string;
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
 }
 
 export interface BlogLegacy {
-  source: string;
-  oldId: number;
-  oldUrl: string;
-  oldImage: string;
-  oldThumbnail: string;
+  source?: string;
+  oldId?: number;
+  oldUrl?: string;
+  oldImage?: string;
+  oldThumbnail?: string;
 }
 
 export interface Blog {
   id: string;
   title: string;
   slug: string;
-  content: string;
+  content?: string;
   excerpt: string;
   featuredImage: string;
   category: 'India' | 'International' | string;
   publishedAt: string;
   status: 'draft' | 'published' | string;
   featured?: boolean;
-  author: string;
+  author?: string;
   imageAlt: string;
   readTime: string;
-  date: string;
-  seo: BlogSeo;
-  legacy: BlogLegacy;
+  date?: string;
+  seo?: BlogSeo;
+  legacy?: BlogLegacy;
   /** Compat alias for featuredImage — the original pages read `image`. */
-  image: string;
+  image?: string;
+  imageCaption?: string;
   imageCredit?: { source: string; photoId: string | null; query: string | null };
+  relatedBlogIds?: string[];
+  tags?: string[];
+  updatedAt?: string;
+  deletedAt?: string;
 }
+
+export type BlogMeta = Blog;
 
 // Canonical site origin. The live site is www.mnmtravels.com (the bare
 // domain 308-redirects here), so canonical/OG/share URLs must use it.
-// Override per-environment with VITE_SITE_URL.
-export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined)
-  || 'https://www.mnmtravels.com';
+export const SITE_URL = PUBLIC_SITE_URL;
 
-export const blogs = blogsJson as unknown as Blog[];
+export const blogs = blogsIndexJson as unknown as Blog[];
 
 /** Published blogs, newest first. The JSON module is parsed once per page
  *  load, so this sort runs a single time per session. */
 export const publishedBlogs: Blog[] = [...blogs]
-  .filter((b) => b.status === 'published')
+  .filter((b) => !b.deletedAt && b.status === 'published')
   .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 
-export const blogBySlug = (slug?: string): Blog | undefined =>
-  slug ? blogs.find((b) => b.slug === slug) : undefined;
+/** Helper to list all published blogs from the index */
+export function listBlogs(): Blog[] {
+  return publishedBlogs;
+}
 
 /** Homepage featured blogs (legacy display_home=1). */
 export const featuredBlogs: Blog[] = publishedBlogs.filter((b) => b.featured);
 
+/** Functional getter for featured blogs */
+export function getFeaturedBlogs(): Blog[] {
+  return featuredBlogs;
+}
+
 /** Six most recent blogs for the homepage "Latest" section. */
 export const latestBlogs: Blog[] = publishedBlogs.slice(0, 6);
 
-/** Related blogs: same category first, newest first, padded with recent
- *  posts from other categories when the category is too small. */
+/** Find blog metadata by slug from the lightweight index */
+export function blogMetaBySlug(slug?: string): Blog | undefined {
+  return slug ? blogs.find((b) => b.slug === slug) : undefined;
+}
+
+/** Synchronous lookup from index (title, hero, tags, metadata) */
+export const blogBySlug = blogMetaBySlug;
+
+/** Asynchronous fetch for full blog post (including full content body) */
+export async function fetchBlogBySlug(slug?: string): Promise<Blog | undefined> {
+  if (!slug) return undefined;
+  // 1. Try static individual post file generated at build time
+  try {
+    const res = await fetch(`/data/blogs/${encodeURIComponent(slug)}.json`);
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.content) return data as Blog;
+    }
+  } catch {}
+
+  // 2. Fallback to API endpoint
+  try {
+    const res = await fetch(`/api/admin/blogs?slug=${encodeURIComponent(slug)}`);
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && data.blog) return data.blog as Blog;
+    }
+  } catch {}
+
+  return blogMetaBySlug(slug);
+}
+
+/** Related blogs: honour admin selections if present, falling back to same
+ *  category first, newest first, padded with recent posts from other categories. */
 export function relatedBlogs(current: Blog, count = 4): Blog[] {
+  if (Array.isArray(current.relatedBlogIds) && current.relatedBlogIds.length > 0) {
+    const idMap = new Map<string, Blog>(blogs.map((b: Blog) => [b.id, b]));
+    const selected = current.relatedBlogIds
+      .map((id: string) => idMap.get(id))
+      .filter((b): b is Blog => !!b && b.status === 'published' && b.slug !== current.slug);
+    if (selected.length > 0) {
+      return selected.slice(0, count);
+    }
+  }
+
   const sameCategory = publishedBlogs.filter(
     (b) => b.slug !== current.slug && b.category === current.category,
   );
@@ -93,39 +153,31 @@ export function truncateExcerpt(text: string, max = 150): string {
   return `${(lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).trim()}…`;
 }
 
-/**
- * Defense-in-depth sanitizer for migrated HTML. The migration already
- * verified there are no <script>/<iframe>/on* attributes in the content —
- * this strips them again right before render so a future re-import can't
- * sneak active markup into blog pages.
- */
-export function sanitizeBlogHtml(html: string): string {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
-    .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
-    .replace(/(href|src)\s*=\s*(["'])\s*javascript:[^"']*\2/gi, '$1=$2#$2');
+export { sanitizeBlogHtml } from './sanitize';
+
+/** Post-process HTML to ensure in-body images have loading="lazy" and decoding="async" */
+export function optimizePostImages(html: string): string {
+  if (!html) return '';
+  return html.replace(/<img\b([^>]*?)>/gi, (_match, attrs) => {
+    let newAttrs = attrs;
+    if (!/loading\s*=/i.test(newAttrs)) {
+      newAttrs += ' loading="lazy"';
+    }
+    if (!/decoding\s*=/i.test(newAttrs)) {
+      newAttrs += ' decoding="async"';
+    }
+    return `<img${newAttrs}>`;
+  });
 }
 
-/** Lowercased title+excerpt+content per slug, built once on first search. */
-let searchIndex: Map<string, string> | null = null;
-function getSearchIndex(): Map<string, string> {
-  if (!searchIndex) {
-    searchIndex = new Map(
-      publishedBlogs.map((b) => [b.slug, `${b.title} ${b.excerpt} ${b.content}`.toLowerCase()]),
-    );
-  }
-  return searchIndex;
-}
-
-/** Filter by category tab and free-text query (title + content). */
-export function searchBlogs(category: string, query: string): Blog[] {
+/** Filter by category tab and free-text query (title + excerpt). */
+export function searchBlogs(category: string, query: string, source: Blog[] = publishedBlogs): Blog[] {
   const q = query.trim().toLowerCase();
-  const index = getSearchIndex();
-  return publishedBlogs.filter((b) => {
-    if (category !== 'All' && b.category !== category) return false;
+  return source.filter((b) => {
+    if (category !== 'All' && b.category?.toLowerCase() !== category.toLowerCase()) return false;
     if (!q) return true;
-    return (index.get(b.slug) || '').includes(q);
+    const text = `${b.title} ${b.excerpt} ${b.content || ''}`.toLowerCase();
+    return text.includes(q);
   });
 }
 

@@ -1,5 +1,6 @@
 import type { S3UploadResult } from '../../types/blogAdmin';
 import { compressImage } from './imageCompression';
+import { getAdminToken } from '../auth';
 
 export interface UploadOptions {
   file: File;
@@ -56,6 +57,7 @@ export async function uploadImageToS3({
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/admin/upload-image', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('x-admin-token', getAdminToken());
 
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable && onProgress) {
@@ -115,7 +117,10 @@ export async function deleteImageFromS3(urlOrKey: string): Promise<boolean> {
   try {
     const res = await fetch('/api/admin/delete-image', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-admin-token': getAdminToken(),
+      },
       body: JSON.stringify({ urlOrKey }),
     });
     if (!res.ok) {

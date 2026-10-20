@@ -22,6 +22,7 @@ import { Input } from '../components/ui/Input';
 import { ConfirmModal } from '../components/ui/Modal';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { useToast } from '../context/ToastContext';
+import { getAdminToken } from '../auth';
 
 const PAGE_SIZE = 20;
 
@@ -118,6 +119,9 @@ export const AdminBlogs: React.FC = () => {
     try {
       const res = await fetch(`/api/admin/blogs?id=${deleteModalId}`, {
         method: 'DELETE',
+        headers: {
+          'x-admin-token': getAdminToken(),
+        },
       });
       if (!res.ok) throw new Error('Failed to delete blog');
       setBlogs((prev) => prev.filter((b) => b.id !== deleteModalId));
@@ -138,7 +142,10 @@ export const AdminBlogs: React.FC = () => {
     try {
       const res = await fetch('/api/admin/blogs', {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': getAdminToken(),
+        },
         body: JSON.stringify({ ids: selectedIds }),
       });
       if (!res.ok) throw new Error('Failed to bulk delete');

@@ -9,6 +9,8 @@ import { EnquiryModal } from '../components/EnquiryModal';
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { usePackages } from '../context/PackagesProvider';
+import { sanitizeBlogHtml } from '../lib/sanitize';
+import { plainTextToHtml } from '../lib/packageUtils';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -93,11 +95,11 @@ export const PackageDetail: React.FC = () => {
         </button>
 
         {/* ABSOLUTE BACKGROUND - Ignores all parent padding */}
-        <div className="absolute inset-x-0 top-0 h-[55vh] md:h-[70vh] z-0 overflow-hidden bg-black">
+        <div className="absolute inset-x-0 top-0 h-[55vh] md:h-[70vh] z-0 overflow-hidden bg-black rounded-[24px]">
           <img 
             src={imageUrl} 
             alt={pkg.title} 
-            className="w-full h-full object-cover animate-kenburns scale-105"
+            className="w-full h-full aspect-[16/9] object-cover animate-kenburns scale-105"
           />
           {/* Gradient fade into the background color */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f6] via-[#faf9f6]/20 to-transparent dark:from-black dark:via-black/20" />
@@ -142,15 +144,18 @@ export const PackageDetail: React.FC = () => {
             <div className="w-full lg:w-2/3 flex flex-col gap-8">
             
             {/* Overview Section */}
-            {pkg.overview && (
+            {(pkg.overview || pkg.description) && (
               <motion.section 
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
                 className="mb-16"
               >
                 <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Overview</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {pkg.overview}
-                </p>
+                <div
+                  className="blog-content"
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizeBlogHtml(plainTextToHtml(pkg.overview || pkg.description || ''))
+                  }}
+                />
               </motion.section>
             )}
 
@@ -276,7 +281,7 @@ export const PackageDetail: React.FC = () => {
                     >
                       <Link to={`/packages/${relPkg.slug || relPkg.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo(0,0)}>
                         <TiltCard>
-                          <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
+                          <div className="rounded-[20px] bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                             <div style={{ height: '180px', position: 'relative' }}>
                               <img src={relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage} alt={relPkg.title || relPkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.3rem 0.8rem', borderRadius: '999px', color: 'white', fontSize: '0.7rem', fontWeight: 600 }}>

@@ -1,4 +1,2971 @@
 {
+  "redirects": [
+    {
+      "source": "/blog/reiek-tourism-guide",
+      "destination": "/blog/reiek-tourism-guide-2026-best-things-to-do-trekking-travel-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/radhanagar-beach-andaman-travel-guide",
+      "destination": "/blog/radhanagar-beach-asias-award-winning-tropical-paradise-in-andaman",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tamdil-lake-mizoram-travel-guide",
+      "destination": "/blog/tamdil-lake-mizoram-the-serene-lake-of-mustard-amid-nature-s-paradise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/havelock-island-swaraj-dweep-travel-guide",
+      "destination": "/blog/havelock-island-swaraj-dweep-the-tropical-paradise-of-the-andaman-islands",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-in-aizawl",
+      "destination": "/blog/aizawl-travel-guide-2026-top-places-to-visit-best-time-to-visit-tourist",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-in-mizoram",
+      "destination": "/blog/mizoram-tourism-guide-2026-explore-the-hidden-gem-of-northeast-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tea-gardens-of-assam-green-paradise",
+      "destination": "/blog/assam-tea-gardens-top-places-to-visit-food-and-travel-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/anthropological-museum-port-blair-travel-guide",
+      "destination": "/blog/anthropological-museum-discover-the-indigenous-heritage-of-andaman-islands",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chidiya-tapu-andaman-travel-guide",
+      "destination": "/blog/chidiya-tapu-the-sunset-paradise-and-birdwatchers-haven-in-andaman",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sivasagar-assam-travel-guide",
+      "destination": "/blog/why-sivasagar-should-be-on-every-history-lover-s-travel-bucket-list",
+      "permanent": true
+    },
+    {
+      "source": "/blog/satras-of-majuli-assam",
+      "destination": "/blog/why-the-satras-of-majuli-are-the-soul-of-assamese-culture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/north-bay-island-andaman-travel-guide",
+      "destination": "/blog/north-bay-island-the-adventure-capital-of-andaman-islands",
+      "permanent": true
+    },
+    {
+      "source": "/blog/majuli-world-largest-river-island-assam-travel-guide",
+      "destination": "/blog/why-majuli-is-one-of-india-s-most-unique-travel-destinations",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-street-food-in-chandigarh",
+      "destination": "/blog/best-street-food-in-chandigarh-you-must-try-a-complete-food-lover-s-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/guwahati-the-gateway-to-northeast-india-travel-guide",
+      "destination": "/blog/guwahati-the-gateway-to-northeast-india-a-complete-travel-guide-to-assam-s",
+      "permanent": true
+    },
+    {
+      "source": "/blog/netaji-subhash-chandra-bose-island-travel-guide",
+      "destination": "/blog/netaji-subhash-chandra-bose-island-the-historic-jewel-of-andaman-islands",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kaziranga-national-park-land-of-one-horned-rhinos-travel-guide",
+      "destination": "/blog/kaziranga-the-land-of-one-horned-rhinos-a-journey-into-assam-s-wild-heart",
+      "permanent": true
+    },
+    {
+      "source": "/blog/explore-assam-tea-gardens-wildlife-culture",
+      "destination": "/blog/discover-the-enchanting-beauty-of-assam-a-complete-travel-guide-to-india-s",
+      "permanent": true
+    },
+    {
+      "source": "/blog/corbyns-cove-beach-port-blair-travel-guide",
+      "destination": "/blog/corbyns-cove-beach-the-coastal-gem-of-port-blair",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shillong-scotland-of-the-east-travel-guide",
+      "destination": "/blog/why-shillong-should-be-your-next-travel-destination-in-northeast-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/meghalaya-travel-guide-india",
+      "destination": "/blog/meghalaya-the-abode-of-clouds-a-complete-travel-guide-to-india-s-most-beautiful",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dzukou-valley-trek-nagaland-guide",
+      "destination": "/blog/dzukou-valley-heaven-for-trekkers-in-northeast-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/imphal-manipur-cultural-heart-travel-guide",
+      "destination": "/blog/imphal-the-cultural-heart-of-manipur-and-a-hidden-gem-of-northeast-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/loktak-lake-manipur-floating-wonder-india",
+      "destination": "/blog/why-loktak-lake-in-manipur-is-a-must-visit-hidden-gem-in-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/port-blair-andaman-tour-guide",
+      "destination": "/blog/port-blair-the-historic-gateway-to-andaman-islands",
+      "permanent": true
+    },
+    {
+      "source": "/blog/manipur-travel-guide-india",
+      "destination": "/blog/manipur-the-hidden-jewel-of-northeast-india-every-traveler-must-explore",
+      "permanent": true
+    },
+    {
+      "source": "/blog/most-beautiful-tea-gardens-in-india",
+      "destination": "/blog/most-beautiful-tea-gardens-in-india-best-destinations-when-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cellular-jail-andaman-history-travel-guide",
+      "destination": "/blog/cellular-jail-the-symbol-of-india-s-freedom-struggle-in-andaman",
+      "permanent": true
+    },
+    {
+      "source": "/blog/darjeeling-travel-guide",
+      "destination": "/blog/the-ultimate-darjeeling-travel-guide-beyond-the-clouds-in-the-queen-of-hills",
+      "permanent": true
+    },
+    {
+      "source": "/blog/famous-street-foods-you-must-try-in-kolkata",
+      "destination": "/blog/famous-street-foods-you-must-try-in-kolkata-monks-monkeys-travels",
+      "permanent": true
+    },
+    {
+      "source": "/blog/west-bengal-travel-guide-best-tourist-places",
+      "destination": "/blog/the-soul-of-the-east-why-west-bengal-should-be-your-next-escape",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ranchi-travel-guide-jharkhand-waterfalls-tourism",
+      "destination": "/blog/ranchi-travel-guide-explore-the-city-of-waterfalls-in-jharkhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/patratu-valley-jharkhand-travel-guide-scenic-road-trip",
+      "destination": "/blog/discover-the-hidden-beauty-of-patratu-valley-a-scenic-gem-of-jharkhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/andaman-travel-guide",
+      "destination": "/blog/andaman-nicobar-islands-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/deoghar-jharkhand-travel-guide",
+      "destination": "/blog/deoghar-jharkhand-the-spiritual-heart-of-jharkhand-you-must-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/betla-national-park-jharkhand-travel-guide",
+      "destination": "/blog/betla-national-park-a-hidden-wildlife-paradise-in-jharkhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/netarhat-queen-of-chotanagpur-travel-guide",
+      "destination": "/blog/netarhat-the-unspoiled-magic-of-the",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jharkhand-tourism-best-places-to-visit",
+      "destination": "/blog/jharkhand-tourism-guide-explore-nature-waterfalls-hidden-wonders",
+      "permanent": true
+    },
+    {
+      "source": "/blog/visit-zero-point-sikkim",
+      "destination": "/blog/north-sikkim-zero-point-a-journey-to-the-edge-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/yumthang-valley-sikkim-travel-guide",
+      "destination": "/blog/discover-the-beauty-of-yumthang-valley-the-valley-of-flowers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dehotsarg-teerth-somnath-krishna-death-place",
+      "destination": "/blog/dehotsarg-teerth-where-divinity-meets-departure-a-journey-into-sacred-stillness",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nathula-pass-travel-guide-sikkim",
+      "destination": "/blog/visit-nathula-pass-everything-you-need-to-know-before-you-go",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pelling-sikkim-travel-guide",
+      "destination": "/blog/pelling-sikkim-the-hidden-gem-you-need-to-visit-in-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/north-sikkim-travel-guide-places-to-visit-best-time",
+      "destination": "/blog/why-north-sikkim-should-be-your-next-dream-destination",
+      "permanent": true
+    },
+    {
+      "source": "/blog/panch-pandav-caves-somnath-travel-guide",
+      "destination": "/blog/panch-pandav-caves-somnath-a-hidden-mythological-gem-by-the-sea",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tsomgo-lake-sikkim-travel-guide",
+      "destination": "/blog/why-tsomgo-lake-in-sikkim-feels-like-a-dream-destination",
+      "permanent": true
+    },
+    {
+      "source": "/blog/explore-gangtok-sikkim-guide",
+      "destination": "/blog/gangtok-the-hidden-gem-of-the-himalayas-you-need-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/most-peaceful-place-in-india-sikkim",
+      "destination": "/blog/sikkim-the-most-peaceful-place-in-india-you-need-to-visit-right-now",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-paragliding-spots-in-india-price-safety-guide",
+      "destination": "/blog/best-paragliding-spots-in-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-adventure-activities-summer-india",
+      "destination": "/blog/top-adventure-activities-to-try-this-summer-in-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/budget-travel-tips-delhi-trips",
+      "destination": "/blog/budget-travel-tips-for-delhi-trips-explore-more-spend-less",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-5-places-to-visit-near-delhi-in-summer",
+      "destination": "/blog/where-to-travel-near-delhi-in-summer-top-5-cool-destinations",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vaishno-devi-yatra-guide-travel-tips-trek-route-best-time",
+      "destination": "/blog/planning-vaishno-devi-yatra-complete-guide-with-travel-tips-trek-details",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajarani-temple-bhubaneswar-travel-guide",
+      "destination": "/blog/rajarani-temple-bhubaneswar-the-temple-of-love-and-art",
+      "permanent": true
+    },
+    {
+      "source": "/blog/offbeat-destinations-india-peaceful-escape",
+      "destination": "/blog/best-offbeat-destinations-in-india-for-a-peaceful-nature",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mukteshwar-temple-bhubaneswar-travel-guide",
+      "destination": "/blog/mukteshwar-temple-odisha-the-gem-of-kalinga-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lingaraj-temple-bhubaneswar-travel-guide",
+      "destination": "/blog/lingaraj-temple-the-iconic-shiva-temple-of-bhubaneswar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhubaneswar-temple-city-travel-guide",
+      "destination": "/blog/bhubaneswar-the-temple-city-of-india-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chilika-lake-odisha-dolphin-boat-ride-guide",
+      "destination": "/blog/chilika-lake-the-largest-brackish-water-lagoon-in-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/abc-valley-pahalgam-kashmir-travel-guide",
+      "destination": "/blog/where-heaven-feels-real-abc-valley-journey-through-pahalgam-in-the-heart-of",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sri-lanka-travel-guide-for-indians",
+      "destination": "/blog/sri-lanka-travel-guide-welcome-to-the-pearl-of-the-indian-ocean",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gundicha-temple-puri-rath-yatra-guide",
+      "destination": "/blog/gundicha-temple-puri-the-sacred-home-of-lord-jagannath",
+      "permanent": true
+    },
+    {
+      "source": "/blog/konark-sun-temple-travel-guide",
+      "destination": "/blog/konark-sun-temple-the-magnificent-chariot-of-the-sun-god",
+      "permanent": true
+    },
+    {
+      "source": "/blog/zoji-la-pass-glacier-travel-guide",
+      "destination": "/blog/zoji-la-pass-glacier-india-s-most-thrilling-snowy-mountain-drive",
+      "permanent": true
+    },
+    {
+      "source": "/blog/Thajiwas-Glacier-sonmarg-kashmir-travel-guide",
+      "destination": "/blog/dreamy-snow-escape-why-thajiwas-glacier-is-sonmarg-s-top-attraction",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kailash-mansarovar-yatra-via-nepal-2026",
+      "destination": "/blog/why-the-kailash-mansarovar-yatra-via-nepal-is-becoming-the-preferred-route-for",
+      "permanent": true
+    },
+    {
+      "source": "/blog/puri-travel-guide",
+      "destination": "/blog/puri-the-spiritual-beach-city-of-odisha",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-best-places-to-visit-in-jaipur-2026",
+      "destination": "/blog/top-best-places-to-visit-in-jaipur-in-2026-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jagannath-temple-puri-travel-guide",
+      "destination": "/blog/jagannath-temple-puri-the-divine-heart-of-odisha",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-places-to-visit-in-february-with-best-aqi-in-india",
+      "destination": "/blog/5-places-to-visit-in-february-with-better-aqi-within-200-km-from-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/muktinath-temple-travel-guide",
+      "destination": "/blog/muktinath-a-sacred-journey-to-the-gateway-of-salvation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sonmarg-kashmir-travel-guide-best-time-to-visit-things-to-do",
+      "destination": "/blog/experience-the-golden-beauty-of-sonmarg",
+      "permanent": true
+    },
+    {
+      "source": "/blog/odisha-travel-guide",
+      "destination": "/blog/odisha-the-land-of-temples-tribes-and-timeless-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/panipat-travel-guide",
+      "destination": "/blog/panipat-the-historic-city-of-three-great-battles",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gulmarg-golf-course-kashmir-travel-guide",
+      "destination": "/blog/gulmarg-golf-course-world-s-highest-green-paradise-in-kashmir",
+      "permanent": true
+    },
+    {
+      "source": "/blog/st-marys-church-gulmarg-kashmir",
+      "destination": "/blog/st-mary-s-church-gulmarg-historic-gem-in-kashmir-s-snowy-hills",
+      "permanent": true
+    },
+    {
+      "source": "/blog/karnal-travel-guide",
+      "destination": "/blog/karnal-the-historic-city-of-haryana-with-royal-and-cultural-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-indians-choosing-vietnam-over-thailand",
+      "destination": "/blog/why-indians-are-choosing-vietnam-over-thailand-in-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/maharani-temple-gulmarg",
+      "destination": "/blog/exploring-maharani-temple-gulmarg-history-architecture-kashmir-s-serenity",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pinjore-gardens-travel-guide",
+      "destination": "/blog/pinjore-gardens-a-beautiful-mughal-heritage-garden-in-haryana",
+      "permanent": true
+    },
+    {
+      "source": "/blog/morni-hills-travel-guide",
+      "destination": "/blog/morni-hills-the-hidden-hill-station-of-haryana",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kurukshetra-travel-guide",
+      "destination": "/blog/kurukshetra-the-sacred-land-of-the-mahabharata-and-bhagavad-gita",
+      "permanent": true
+    },
+    {
+      "source": "/blog/strawbery-valley-jammu-kashmir",
+      "destination": "/blog/strawbery-valley-jammu-kashmir-hidden-paradise-you-must-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rudraprayag-travel-guide",
+      "destination": "/blog/rudraprayag-where-rivers-meet-and-spirituality-begins",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tungnath-temple-travel-guide",
+      "destination": "/blog/tungnath-temple-a-spiritual-journey-to-the-world-s-highest-shiva-temple",
+      "permanent": true
+    },
+    {
+      "source": "/blog/apharwat-peak-gulmarg-travel-guide",
+      "destination": "/blog/apharwat-peak-in-gulmarg-explore-kashmir-s-highest-snow-point-gondola-experience",
+      "permanent": true
+    },
+    {
+      "source": "/blog/khajuraho-temple-complex-travel-guide",
+      "destination": "/blog/khajuraho-the-timeless-marvel-of-indian-temple-art",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gulmarg-gondola-ride-kashmir",
+      "destination": "/blog/gulmarg-gondola-asia-s-highest-cable-car-ride-in-kashmir",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gwalior-travel-guide",
+      "destination": "/blog/gwalior-a-majestic-city-of-forts-music-and-royal-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/maheshwar-travel-guide",
+      "destination": "/blog/maheshwar-a-timeless-riverside-heritage-town-of-madhya-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gulmarg-travel-guide",
+      "destination": "/blog/gulmarg-jammu-and-kashmir-favourite-tourist-spot-complete-tourist-guide-to",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kanha-national-park-safari-guide",
+      "destination": "/blog/kanha-national-park-the-inspiration-behind-the-jungle-book",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bandhavgarh-national-park-safari-guide",
+      "destination": "/blog/bandhavgarh-national-park-the-land-of-the-royal-bengal-tiger",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hazratbal-shrine-srinagar",
+      "destination": "/blog/hazratbal-shrine-srinagar-history-spiritual-significance-dal-lake-views",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pachmarhi-hill-station-travel-guide",
+      "destination": "/blog/pachmarhi-the-queen-of-satpura",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kushinagar-buddhist-pilgrimage",
+      "destination": "/blog/kushinagar-the-sacred-land-of-buddha-s-mahaparinirvana",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shankaracharya-temple-srinagar",
+      "destination": "/blog/shankaracharya-temple-srinagar-a-spiritual-jewel-above-dal-lake",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mughal-garden-kashmir-srinagar",
+      "destination": "/blog/mughal-garden-kashmir-a-royal-escape-into-srinagar-s-timeless-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dudhwa-national-park",
+      "destination": "/blog/dudhwa-national-park-the-wild-jewel-of-terai-forests-in-uttar-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dal-lake-srinagar-travel-guide",
+      "destination": "/blog/dal-lake-srinagar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/srinagar-jammu-kashmir-travel-guide",
+      "destination": "/blog/srinagar-jammu-kashmir",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chitrakoot-travel-guide",
+      "destination": "/blog/chitrakoot-the-sacred-land-of-lord-rama-s-exile-and-divine-peace",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kanpur-city-guide",
+      "destination": "/blog/kanpur-the-industrial-heart-and-cultural-soul-of-uttar-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jammu-kashmir-travel-faqs",
+      "destination": "/blog/jammu-kashmir",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rose-garden-chandigarh",
+      "destination": "/blog/zakir-hussain-rose-garden-chandigarh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ram-tirth-amritsar-valmiki-ashram-travel-guide",
+      "destination": "/blog/ram-tirth-amritsar-punjab",
+      "permanent": true
+    },
+    {
+      "source": "/blog/holla-mohalla-anandpur-sahib-punjab",
+      "destination": "/blog/holla-mohalla-at-anandpur-sahib-punjab",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bade-hanuman-ji-mandir",
+      "destination": "/blog/hanuman-mandir-prayagraj-the-sacred-bade-hanuman-ji-temple-near-sangam",
+      "permanent": true
+    },
+    {
+      "source": "/blog/swaraj-bhawan-prayagraj",
+      "destination": "/blog/swaraj-bhawan-allahabad-a-symbol-of-india-s-freedom-movement",
+      "permanent": true
+    },
+    {
+      "source": "/blog/khusro-bagh-allahabad",
+      "destination": "/blog/khusro-bagh-prayagraj-a-hidden-mughal-garden-of-history-and-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rakh-bagh-park-ludhiana",
+      "destination": "/blog/rakh-bagh-ludhiana-a-green-escape-in-the-heart-of-the-city",
+      "permanent": true
+    },
+    {
+      "source": "/blog/all-saints-cathedral-prayagraj",
+      "destination": "/blog/all-saints-cathedral-prayagraj-the-patthar-girja-of-uttar-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/virasat-e-khalsa-museum-anandpur-sahib",
+      "destination": "/blog/virasat-e-khalsa-museum-a-tribute-to-sikh-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chetak-park-location-attractions",
+      "destination": "/blog/chetak-park-a-peaceful-green-space-for-families-walkers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/takht-sri-damdama-sahib-talbandi-sabo",
+      "destination": "/blog/takht-sri-damdama-sahib-the-guru-ki-kashi-of-sikhism",
+      "permanent": true
+    },
+    {
+      "source": "/blog/qila-mubarak-bathinda-fort",
+      "destination": "/blog/qila-mubarak-bathinda-a-historic-fort-that-tells-stories-of-punjab",
+      "permanent": true
+    },
+    {
+      "source": "/blog/allahabad-museum-prayagraj",
+      "destination": "/blog/allahabad-museum-prayagraj-a-treasure-house-of-indian-history-art",
+      "permanent": true
+    },
+    {
+      "source": "/blog/anand-bhavan-prayagraj",
+      "destination": "/blog/anand-bhavan-prayagraj-home-of-india-s-freedom-struggle",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prayagraj-travel-guide",
+      "destination": "/blog/prayagraj-the-sacred-confluence-of-faith-history-culture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/panchatantra-park-jhansi-travel-guide",
+      "destination": "/blog/panchatantra-park-jhansi-playground-picnic-spots-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/parichha-dam-jhansi-travel-guide",
+      "destination": "/blog/parichha-dam-jhansi-boating-sunset-views-location-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/barua-sagar-lake-jhansi-travel-guide",
+      "destination": "/blog/barua-sagar-lake-jhansi-history-viewpoints-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jarai-ka-math-jhansi-travel-guide",
+      "destination": "/blog/jarai-ka-math-jhansi-history-architecture-location-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/karguvanji-jain-temple-jhansi-travel-guide",
+      "destination": "/blog/karguvanji-jain-temple-jhansi-history-architecture-timings-visitor-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shri-ganesh-temple-jhansi-travel-guide",
+      "destination": "/blog/shri-ganesh-temple-jhansi-timings-history-location-and-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/explore_indian_most_popular_destinations",
+      "destination": "/blog/exclusive-tour-packages-for-2025-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mahalakshmi-temple-jhansi",
+      "destination": "/blog/mahalakshmi-temple-jhansi-a-sacred-blend-of-faith-and-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/st-judes-shrine-jhansi",
+      "destination": "/blog/discovering-faith-and-serenity-at-st-jude-s-shrine-jhansi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jhansi-government-museum",
+      "destination": "/blog/government-museum-jhansi-a-must-visit-heritage-spot-in-bundelkhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rani-mahal-jhansi-history-museum",
+      "destination": "/blog/rani-mahal-jhansi-the-royal-residence-of-courage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jhansi-fort-travel-guide",
+      "destination": "/blog/jhansi-fort-the-mighty-symbol-of-rani-lakshmibai-s-bravery",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jhansi-uttar-pradesh-travel-guide",
+      "destination": "/blog/jhansi-the-land-of-rani-lakshmibai-and-the-spirit-of-courage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lucknow-zoo-guide",
+      "destination": "/blog/lucknow-zoo-a-perfect-wildlife-escape-in-the-heart-of-the-city",
+      "permanent": true
+    },
+    {
+      "source": "/blog/janeshwar-mishra-park-lucknow",
+      "destination": "/blog/janeshwar-mishra-park-lucknow-asia-s-largest-urban-park",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ambedkar-memorial-park-lucknow",
+      "destination": "/blog/ambedkar-memorial-park-lucknow-a-grand-symbol-of-social-justice",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gomti-riverfront-lucknow",
+      "destination": "/blog/gomti-riverfront-lucknow-a-scenic-escape-in-the-city",
+      "permanent": true
+    },
+    {
+      "source": "/blog/british-residency-lucknow",
+      "destination": "/blog/british-residency-lucknow-a-historic-landmark-of-the-1857-revolt",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hazratganj-market-lucknow",
+      "destination": "/blog/hazratganj-market-lucknow-the-heart-of-shopping-culture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rumi-darwaza-lucknow",
+      "destination": "/blog/rumi-darwaza-lucknow-the-iconic-gateway-of-awadh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chota-imambara-lucknow",
+      "destination": "/blog/chota-imambara-lucknow-a-jewel-of-nawabi-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bara-imambara-lucknow",
+      "destination": "/blog/bara-imambara-lucknow-a-marvel-of-history-and-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/guptar-ghat-ayodhya",
+      "destination": "/blog/guptar-ghat-ayodhya-the-sacred-place-of-lord-ram-s-jal-samadhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tulsi-smarak-bhawan-ayodhya",
+      "destination": "/blog/tulsi-smarak-bhawan-ayodhya-a-cultural-tribute-to-goswami-tulsidas",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dashrath-mahal-ayodhya",
+      "destination": "/blog/dashrath-mahal-ayodhya-the-royal-residence-of-king-dashrath",
+      "permanent": true
+    },
+    {
+      "source": "/blog/treta-ke-thakur-ayodhya",
+      "destination": "/blog/treta-ke-thakur-temple-ayodhya-the-sacred-temple-of-shri-ram-s-treta-yuga-avatar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saryu-river-aarti-ayodhya",
+      "destination": "/blog/saryu-river-saryu-aarti-ayodhya-the-sacred-flow-of-devotion-light",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nageshwarnath-temple-ayodhya",
+      "destination": "/blog/nageshwarnath-temple-ayodhya-the-ancient-shiva-temple-blessed-by-kush",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kanak-bhawan-ayodhya",
+      "destination": "/blog/kanak-bhawan-ayodhya-the-golden-palace-of-divine-love",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lucknow-travel-guide",
+      "destination": "/blog/lucknow-the-city-of-nawabs-culture-timeless-elegance",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sheesh-mahal-patiala-travel-guide",
+      "destination": "/blog/sheesh-mahal-punjab-history-architecture-tourist-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hanuman-garhi-temple-ayodhya",
+      "destination": "/blog/hanuman-garhi-temple-ayodhya-a-sacred-hilltop-shrine-of-devotion",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shri-ram-janmabhoomi-temple-ayodhya",
+      "destination": "/blog/shri-ram-janmabhoomi-temple-a-divine-journey-to-the-birthplace-of-lord-rama",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ayodhya-travel-guide-blog",
+      "destination": "/blog/ayodhya-the-sacred-city-of-faith-heritage-devotion",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kailash-mansarovar-yatra-2026-helicopter-ex-kathmandu-11-days-kora-tour",
+      "destination": "/blog/kailash-mansarova-yatra-fixed-departure-2026-heli-trip-ex-kathmandu-11-days",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kailash-mansarovar-yatra-2026-heli-trip-lucknow",
+      "destination": "/blog/kailash-mansarova-yatra-fixed-departure-2026-heli-trip-ex-lucknow-09-days",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kailash-mansarovar-yatra-2026-overland",
+      "destination": "/blog/kailash-mansarova-yatra-fixed-departure-2026-overland-trip-ex-kathmandu-14-days",
+      "permanent": true
+    },
+    {
+      "source": "/blog/visit-capital-complex-chandigarh",
+      "destination": "/blog/capital-complex-chandigarh-a-masterpiece-of-architecture-and-planning",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kailash-mansarovar-yatra-guide",
+      "destination": "/blog/kailash-mansarovar-yatra-a-complete-guide-to-the-sacred-himalayan-pilgrimage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thai-buddhist-temple-sarnath",
+      "destination": "/blog/thai-buddhist-temple-sarnath-a-peaceful-glimpse-of-thailand-in-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sukhna-lake-chandigarh",
+      "destination": "/blog/sukhna-lake-bird-watching-spot-in-chandigarh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sarnath-deer-park",
+      "destination": "/blog/sarnath-deer-park-the-sacred-land-of-buddha-s-first-teaching",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sarnath-museum-varanasi",
+      "destination": "/blog/sarnath-museum-a-journey-through-india-s-ancient-buddhist-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ashoka-pillar-history-guide",
+      "destination": "/blog/ashoka-pillar-sarnath-the-symbol-of-india-s-heritage-and-buddhist-legacy",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chaukhandi-stupa-sarnath",
+      "destination": "/blog/chaukhandi-stupa-the-monument-where-buddha-met-his-first-disciples",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dhamek-stupa-sarnath",
+      "destination": "/blog/dhamek-stupa-the-sacred-heart-of-sarnath",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sarnath-varanasi-guide",
+      "destination": "/blog/sarnath-the-sacred-land-of-buddha-s-first-sermon",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mehrauli-delhi",
+      "destination": "/blog/mehrauli-where-delhi-s-ancient-soul-still-breathes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhu-campus-varanasi",
+      "destination": "/blog/bhu-campus-varanasi-a-green-grand-historic-world-within-a-city",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sankat-mochan-temple-varanasi",
+      "destination": "/blog/sankat-mochan-hanuman-temple-varanasi-a-sanctuary-of-faith-strength-blessings",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tulsi-ghat-varanasi",
+      "destination": "/blog/tulsi-ghat-varanasi-the-sacred-shores-of-poetry-peace-and-devotion",
+      "permanent": true
+    },
+    {
+      "source": "/blog/manikarnika-ghat-varanasi",
+      "destination": "/blog/manikarnika-ghat-varanasi-the-eternal-flame-of-life-and-liberation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/phool-bagh-orchha",
+      "destination": "/blog/phool-bagh-orchha-a-garden-of-royal-grandeur-and-serenity",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lakshmi-narayan-temple-orchha",
+      "destination": "/blog/lakshmi-narayan-temple-orchha-where-architecture-meets-spiritual-grandeur",
+      "permanent": true
+    },
+    {
+      "source": "/blog/betwa-river-kanchana-ghat-orchha",
+      "destination": "/blog/betwa-river-kanchana-ghat-orchha-a-peaceful-riverside-retreat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/orchha-cenotaphs-chhatris",
+      "destination": "/blog/orchha-cenotaphs-chhatris-a-peaceful-riverside-heritage-gem",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chaturbhuj-temple-orchha",
+      "destination": "/blog/chaturbhuj-temple-orchha-a-majestic-blend-of-devotion-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ram-raja-temple-orchha",
+      "destination": "/blog/ram-raja-temple-orchha-a-sacred-palace-turned-divine-shrine",
+      "permanent": true
+    },
+    {
+      "source": "/blog/orchha-fort-guide",
+      "destination": "/blog/orchha-fort-a-grand-legacy-of-bundela-architecture-royal-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/orchha-travel-guide",
+      "destination": "/blog/orchha-a-timeless-town-of-palaces-temples-riverfront-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/iskcon-temple-ujjain-guide",
+      "destination": "/blog/iskcon-temple-ujjain-a-peaceful-spiritual-haven-of-devotion-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kaliadeh-palace-ujjain-guide",
+      "destination": "/blog/kaliadeh-palace-ujjain-a-perfect-blend-of-history-architecture-serenity",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhartrihari-caves-ujjain-guide",
+      "destination": "/blog/bhartrihari-caves-ujjain-a-mystical-retreat-of-meditation-and-legends",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sandipani-ashram-ujjain-guide",
+      "destination": "/blog/sandipani-ashram-ujjain-the-ancient-gurukul-of-lord-krishna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mangalnath-temple-ujjain-guide",
+      "destination": "/blog/mangalnath-temple-ujjain-birthplace-of-planet-mars-center-of-astrology",
+      "permanent": true
+    },
+    {
+      "source": "/blog/harsiddhi-temple-ujjain-guide",
+      "destination": "/blog/harsiddhi-temple-ujjain-a-sacred-shakti-peeth-with-divine-energy",
+      "permanent": true
+    },
+    {
+      "source": "/blog/visit-partition-museum",
+      "destination": "/blog/partition-museum-amritsar-a-journey-through-india-s-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/wagah-border-ceremony",
+      "destination": "/blog/attari-wagah-border-patriotic-experience-you-must-witness",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ram-ghat-ujjain-travel-guide",
+      "destination": "/blog/ram-ghat-ujjain-the-sacred-heart-of-the-shipra-river",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kal-bhairav-temple-ujjain-guide",
+      "destination": "/blog/kal-bhairav-temple-ujjain-a-powerful-shrine-of-lord-bhairav",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ujjain-travel-guide-madhya-pradesh",
+      "destination": "/blog/ujjain-the-ancient-spiritual-city-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/central-museum-indore-travel-guide",
+      "destination": "/blog/central-museum-indore-a-treasure-house-of-ancient-art-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/visit-jallianwala-bagh-amritsar",
+      "destination": "/blog/jallianwala-bagh-a-place-that-echoes-india-s-freedom-struggle",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ralamandal-wildlife-sanctuary-indore-travel-guide",
+      "destination": "/blog/ralamandal-wildlife-sanctuary-indore-a-peaceful-nature-escape-in-the-heart-of",
+      "permanent": true
+    },
+    {
+      "source": "/blog/golden-temple-amritsar-travel-guide",
+      "destination": "/blog/golden-temple-amritsar-a-divine-journey-of-peace-spirituality",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sarafa-bazaar-night-food-market-indore",
+      "destination": "/blog/sarafa-bazaar-night-food-market-indore-the-ultimate-midnight-street-food",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-places-to-visit-in-chandigarh",
+      "destination": "/blog/chandigarh-the-modern-city-beautiful",
+      "permanent": true
+    },
+    {
+      "source": "/blog/anandpur-sahib-tourism-history-guide",
+      "destination": "/blog/anandpur-sahib-the-spiritual-historical-heart-of-sikhism",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lal-bagh-palace-indore-travel-guide",
+      "destination": "/blog/lal-bagh-palace-indore-a-glimpse-into-royal-holkar-grandeur",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajwada-palace-indore-travel-guide",
+      "destination": "/blog/rajwada-palace-indore-a-timeless-symbol-of-holkar-royalty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/indore-travel-guide-madhya-pradesh",
+      "destination": "/blog/indore-the-cleanest-city-of-india-and-the-heart-of-madhya-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/explore-bathinda-punjab",
+      "destination": "/blog/bathinda-a-historic-city-of-culture-faith-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/explore-patiala-travel-guide",
+      "destination": "/blog/explore-patiala-the-royal-city-of-punjab",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jalandhar-travel-guide",
+      "destination": "/blog/jalandhar-the-heart-of-doaba-a-complete-travel-culture-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/state-museum-bhopal",
+      "destination": "/blog/state-museum-bhopal-a-journey-through-madhya-pradesh-s-rich-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sanchi-stupa-madhya-pradesh",
+      "destination": "/blog/sanchi-stupa-a-timeless-symbol-of-peace-buddhism",
+      "permanent": true
+    },
+    {
+      "source": "/blog/van-vihar-national-park-bhopal-travel-guide",
+      "destination": "/blog/van-vihar-national-park-bhopal-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/madhya-pradesh-tribal-museum-bhopal",
+      "destination": "/blog/madhya-pradesh-tribal-museum-bhopal-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/taj-ul-masajid-bhopal-travel-guide",
+      "destination": "/blog/taj-ul-masajid-bhopal-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/upper-lake-lower-lake-bhopal-bhojtal-travel-guide",
+      "destination": "/blog/upper-lake-lower-lake-bhojtal-bhopal-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dashashwamedh-ghat-varanasi-guide",
+      "destination": "/blog/dashashwamedh-ghat-varanasi-ganga-aarti-timings-history-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/assi-ghat-varanasi-guide",
+      "destination": "/blog/assi-ghat-varanasi-ganga-aarti-activities-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ludhiana-tourist-attractions",
+      "destination": "/blog/exploring-ludhiana-the-heartbeat-of-punjab",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhopal-travel-guide-best-places-to-visit",
+      "destination": "/blog/bhopal-the-city-of-lakes-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/madhya-pradesh-travel-guide-tourism",
+      "destination": "/blog/madhya-pradesh-the-ultimate-travel-guide-to-the-heart-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/amritsar-travel-guide",
+      "destination": "/blog/amritsar-the-soul-of-punjab-where-heritage-meets-heart",
+      "permanent": true
+    },
+    {
+      "source": "/blog/punjab-travel-guide",
+      "destination": "/blog/punjab-the-land-of-five-rivers-culture-heritage-vibrant-lifestyle",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sasaram-bihar-travel-guide",
+      "destination": "/blog/sasaram-the-historic-gateway-of-bihar-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kashi-vishwanath-temple-varanasi-guide",
+      "destination": "/blog/kashi-vishwanath-temple-the-heart-of-spiritual-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kesaria-stupa-bihar-travel-guide",
+      "destination": "/blog/kesaria-stupa-world-s-tallest-buddhist-stupa-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vikramshila-university-bihar",
+      "destination": "/blog/vikramshila-the-lost-ancient-university-of-bihar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/varanasi-complete-travel-guide",
+      "destination": "/blog/varanasi-the-eternal-city-on-the-banks-of-the-ganga",
+      "permanent": true
+    },
+    {
+      "source": "/blog/barabar-caves-gaya",
+      "destination": "/blog/barabar-caves-gaya-india-s-oldest-rock-cut-buddhist-caves",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pretshila-hill-gaya",
+      "destination": "/blog/pretshila-hill-gaya-the-sacred-hill-of-ancestral-peace",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mangla-gauri-temple-gaya",
+      "destination": "/blog/mangla-gauri-temple-gaya-the-sacred-shakti-peetha-of-bihar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/phalgu-river-gaya",
+      "destination": "/blog/phalgu-river-gaya-the-sacred-river-of-salvation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vishnupad-temple-gaya",
+      "destination": "/blog/vishnupad-temple-gaya-a-sacred-footprint-of-lord-vishnu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gaya-bihar-tourism",
+      "destination": "/blog/gaya-bihar-the-spiritual-heart-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gandhi-maidan-patna",
+      "destination": "/blog/gandhi-maidan-patna-the-historic-heart-of-bihar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/agam-kuan-patna",
+      "destination": "/blog/agam-kuan-patna-the-mysterious-ancient-well-of-emperor-ashoka",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bihar-museum-patna",
+      "destination": "/blog/bihar-museum-patna-a-modern-gateway-to-the-state-s-glorious-past",
+      "permanent": true
+    },
+    {
+      "source": "/blog/patna-museum",
+      "destination": "/blog/patna-museum-a-treasure-house-of-bihar-s-glorious-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kumhrar-park-patna",
+      "destination": "/blog/kumhrar-park-patna-a-window-to-ancient-pataliputra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/patna-sahib-gurudwara",
+      "destination": "/blog/takht-sri-patna-sahib-gurudwara-a-sacred-sikh-shrine-in-patna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/golghar-patna",
+      "destination": "/blog/golghar-patna-a-historic-granary-with-panoramic-views",
+      "permanent": true
+    },
+    {
+      "source": "/blog/patna-tourism-guide",
+      "destination": "/blog/patna-the-historic-heart-of-bihar-and-gateway-to-ancient-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/venuvana-monastery-rajgir-bihar-travel-guide",
+      "destination": "/blog/venuvana-monastery-rajgir-the-first-monastery-of-lord-buddha",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ajatshatru-fort-rajgir-bihar-travel-guide",
+      "destination": "/blog/ajatshatru-fort-rajgir-a-timeless-symbol-of-magadha-s-power-and-glory",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chakrata-uttarakhand",
+      "destination": "/blog/chakrata-uttarakhand-the-hidden-hill-station-of-serenity-and-adventure",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hot-springs-brahmakund-rajgir",
+      "destination": "/blog/hot-springs-brahmakund-rajgir-sacred-waters-of-healing-and-devotion",
+      "permanent": true
+    },
+    {
+      "source": "/blog/griddhakuta-hill-rajgir",
+      "destination": "/blog/griddhakuta-hill-vulture-s-peak-rajgir-the-sacred-meditation-site-of-lord-buddha",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vishwa-shanti-stupa-rajgir",
+      "destination": "/blog/vishwa-shanti-stupa-world-peace-pagoda-rajgir-a-symbol-of-serenity-and-global",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajgir-bihar",
+      "destination": "/blog/rajgir-the-ancient-city-of-spirituality-and-healing",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nalanda-bihar",
+      "destination": "/blog/nalanda-the-ancient-seat-of-learning-and-wisdom",
+      "permanent": true
+    },
+    {
+      "source": "/blog/archaeological-museum-bodhgaya",
+      "destination": "/blog/archaeological-museum-bodh-gaya-a-treasure-of-buddhist-history-and-art",
+      "permanent": true
+    },
+    {
+      "source": "/blog/royal-bhutan-monastery-bodhgaya",
+      "destination": "/blog/royal-bhutan-monastery-bodh-gaya-a-stunning-reflection-of-bhutanese-art-and",
+      "permanent": true
+    },
+    {
+      "source": "/blog/indosan-nippon-japanese-temple-bodhgaya",
+      "destination": "/blog/indosan-nippon-japanese-temple-bodh-gaya-a-symbol-of-peace-and-japanese-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thai-monastery-bodh-gaya",
+      "destination": "/blog/thai-monastery-a-glimpse-of-thailand-in-bodh-gaya",
+      "permanent": true
+    },
+    {
+      "source": "/blog/great-buddha-statue-bodh-gaya",
+      "destination": "/blog/great-buddha-statue-the-icon-of-peace-and-enlightenment",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bodhi-tree-bodh-gaya",
+      "destination": "/blog/bodhi-tree-the-sacred-tree-of-enlightenment",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mahabodhi-temple-bodh-gaya",
+      "destination": "/blog/mahabodhi-temple-the-sacred-site-of-enlightenment",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bodh-gaya-bihar-tourism",
+      "destination": "/blog/bodh-gaya-the-land-of-enlightenment",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bihar-tourism-guide",
+      "destination": "/blog/bihar-the-land-of-ancient-wisdom-and-spiritual-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mehtab-bagh-agra",
+      "destination": "/blog/mehtab-bagh-the-moonlight-garden-opposite-the-taj-mahal",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fatehpur-sikri-travel-guide",
+      "destination": "/blog/fatehpur-sikri-the-lost-mughal-capital-of-love-power-dreams",
+      "permanent": true
+    },
+    {
+      "source": "/blog/agra-fort-travel-guide",
+      "destination": "/blog/agra-fort-the-glorious-mughal-fortress-of-history-power",
+      "permanent": true
+    },
+    {
+      "source": "/blog/taj-mahal-agra-travel-guide-7-wonders-of-the-world",
+      "destination": "/blog/taj-mahal-agra-history-timings-entry-fee-travel-tips-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gaurishankar-lake-bhavnagar",
+      "destination": "/blog/gaurishankar-lake-bhavnagar-a-serene-escape-amid-nature",
+      "permanent": true
+    },
+    {
+      "source": "/blog/takhteshwar-temple-bhavnagar",
+      "destination": "/blog/takhteshwar-temple-bhavnagar-a-sacred-hilltop-shrine-with-panoramic-views",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dandi-kutir-gandhinagar",
+      "destination": "/blog/dandi-kutir-the-salt-mountain-of-history-gandhinagar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/childrens-park-gandhinagar",
+      "destination": "/blog/children-s-park-gandhinagar-a-fun-filled-destination-for-families",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sarita-udyan-gandhinagar",
+      "destination": "/blog/sarita-udyan-gandhinagar-a-serene-riverside-escape-amidst-nature",
+      "permanent": true
+    },
+    {
+      "source": "/blog/adalaj-stepwell-gandhinagar",
+      "destination": "/blog/adalaj-stepwell-gandhinagar-the-timeless-beauty-of-queen-rudabai-s-creation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/indroda-nature-park-gandhinagar",
+      "destination": "/blog/indroda-nature-park-gandhinagar-india-s-jurassic-park-wildlife-experience",
+      "permanent": true
+    },
+    {
+      "source": "/blog/akshardham-temple-gandhinagar",
+      "destination": "/blog/akshardham-temple-gandhinagar-swaminarayan-mandir-spiritual-landmark-of-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/barda-hills-wildlife-sanctuary-porbandar",
+      "destination": "/blog/barda-hills-wildlife-sanctuary-porbandar-explore-gujarat-s-hidden-nature-gem",
+      "permanent": true
+    },
+    {
+      "source": "/blog/huzoor-palace-porbandar",
+      "destination": "/blog/huzoor-palace-porbandar-royal-heritage-seaside-landmark-in-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chowpatty-beach-porbandar",
+      "destination": "/blog/chowpatty-beach-porbandar-peaceful-seaside-escape-sunset-views",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sudama-mandir-porbandar",
+      "destination": "/blog/sudama-mandir-porbandar-the-temple-of-true-friendship",
+      "permanent": true
+    },
+    {
+      "source": "/blog/porbandar-beach",
+      "destination": "/blog/porbandar-beach-serenity-by-the-arabian-sea",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kirti-mandir-porbandar",
+      "destination": "/blog/kirti-mandir-porbandar-the-birthplace-of-mahatma-gandhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/panchasara-parshwanath-jain-temple-patan",
+      "destination": "/blog/panchasara-parshwanath-jain-temple-patan-a-divine-symbol-of-jain-art-and-faith",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kalikund-temple-patan-gujarat",
+      "destination": "/blog/kalikund-temple-patan-a-sacred-abode-of-divine-energy",
+      "permanent": true
+    },
+    {
+      "source": "/blog/patan-patola-heritage-museum-gujarat",
+      "destination": "/blog/patan-patola-heritage-museum-preserving-gujarat-s-timeless-weaving-art",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sahasralinga-talav-patan-gujarat",
+      "destination": "/blog/sahasralinga-talav-patan-a-timeless-marvel-of-ancient-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rani-ki-vav-patan",
+      "destination": "/blog/rani-ki-vav-patan-the-queen-s-stepwell-and-a-unesco-world-heritage-marvel",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhavnath-fair-temple-junagadh",
+      "destination": "/blog/bhavnath-fair-bhavnath-mahadev-temple-junagadh-a-spiritual-celebration-at-the",
+      "permanent": true
+    },
+    {
+      "source": "/blog/narsinh-mehta-lake-junagadh",
+      "destination": "/blog/narsinh-mehta-lake-junagadh-a-peaceful-retreat-of-serenity-and-devotion",
+      "permanent": true
+    },
+    {
+      "source": "/blog/willingdon-dam-junagadh",
+      "destination": "/blog/willingdon-dam-junagadh-a-serene-escape-amid-nature",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jama-masjid-junagadh",
+      "destination": "/blog/jama-masjid-junagadh-a-timeless-symbol-of-indo-islamic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/swaminarayan-mandir-junagadh",
+      "destination": "/blog/swaminarayan-mandir-junagadh-a-spiritual-gem-of-faith-and-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jatashankar-mahadev-temple-junagadh",
+      "destination": "/blog/jatashankar-mahadev-temple-junagadh-a-sacred-cave-temple-amid-nature",
+      "permanent": true
+    },
+    {
+      "source": "/blog/darbar-hall-museum-junagadh",
+      "destination": "/blog/darbar-hall-museum-junagadh-a-regal-glimpse-into-royal-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/adi-kadi-vav-navghan-kuvo-junagadh",
+      "destination": "/blog/adi-kadi-vav-navghan-kuvo-ancient-stepwells-of-junagadh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/damodar-kund-junagadh",
+      "destination": "/blog/damodar-kund-junagadh-a-sacred-lake-at-the-foothills-of-girnar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sakkarbaug-zoological-park-junagadh",
+      "destination": "/blog/sakkarbaug-zoological-park-junagadh-a-legacy-of-wildlife-conservation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ashoka-rock-edicts-junagadh",
+      "destination": "/blog/ashoka-rock-edicts-junagadh-a-timeless-testament-of-india-s-glorious-past",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mahabat-maqbara-junagadh",
+      "destination": "/blog/mahabat-maqbara-junagadh-a-marvel-of-indo-islamic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/girnar-hill-junagadh",
+      "destination": "/blog/girnar-hill-junagadh-a-sacred-journey-of-faith-and-natural-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uparkot-fort-junagadh",
+      "destination": "/blog/uparkot-fort-junagadh-a-glorious-remnant-of-ancient-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hathni-mata-waterfall-vadodara",
+      "destination": "/blog/hathni-mata-waterfall-nature-s-hidden-gem-near-vadodara",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ajwa-water-park-gardens-vadodara",
+      "destination": "/blog/ajwa-water-park-gardens-vadodara-a-perfect-family-getaway-for-fun-and-relaxation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/champaner-pavagadh-archaeological-park",
+      "destination": "/blog/champaner-pavagadh-archaeological-park-a-journey-through-gujarat-glorious-past",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sur-sagar-lake-vadodara",
+      "destination": "/blog/sur-sagar-lake-the-heart-of-vadodara-s-tranquility",
+      "permanent": true
+    },
+    {
+      "source": "/blog/iskcon-baroda-temple",
+      "destination": "/blog/iskcon-baroda-a-spiritual-oasis-of-peace-and-devotion",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sardar-patel-planetarium-vadodara",
+      "destination": "/blog/sardar-patel-planetarium-vadodara-a-journey-through-the-universe",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eme-temple-vadodara",
+      "destination": "/blog/eme-temple-dakshinamurthy-temple-vadodara-a-fusion-of-faith-and-modern",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kirti-mandir-vadodara",
+      "destination": "/blog/kirti-mandir-vadodara-a-monument-of-glory-and-royal-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vadodara-museum-picture-gallery",
+      "destination": "/blog/vadodara-museum-picture-gallery-a-treasure-of-art-culture-and-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sayaji-baug-vadodara",
+      "destination": "/blog/sayaji-baug-kamati-baug-the-green-heart-of-vadodara",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-lakshmi-vilas-palace",
+      "destination": "/blog/laxmi-vilas-palace-a-glimpse-into-the-royal-heritage-of-vadodara",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prem-mandir-rajkot",
+      "destination": "/blog/prem-mandir-rajkot-a-spiritual-haven-in-the-heart-of-the-city",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ishwariya-park-rajkot",
+      "destination": "/blog/ishwariya-park-rajkot-a-perfect-blend-of-nature-peace-and-recreation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nyari-dam-rajkot",
+      "destination": "/blog/nyari-dam-rajkot-a-tranquil-getaway-amid-nature",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mahatma-gandhi-museum-rajkot",
+      "destination": "/blog/mahatma-gandhi-museum-alfred-high-school-a-tribute-to-the-father-of-the-nation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jubilee-garden-rajkot",
+      "destination": "/blog/jubilee-garden-the-green-heart-of-rajkot",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rotary-dolls-museum-rajkot",
+      "destination": "/blog/rotary-dolls-museum-a-colorful-journey-through-global-cultures-in-rajkot",
+      "permanent": true
+    },
+    {
+      "source": "/blog/watson-museum-rajkot",
+      "destination": "/blog/watson-museum-a-timeless-treasure-of-rajkot-s-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kaba-gandhi-no-delo-rajkot",
+      "destination": "/blog/kaba-gandhi-no-delo-the-ancestral-home-of-mahatma-gandhi-in-rajkot",
+      "permanent": true
+    },
+    {
+      "source": "/blog/white-rann-of-kutch",
+      "destination": "/blog/white-rann-of-kutch-a-dazzling-desert-wonderland",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhujodi-village-kutch",
+      "destination": "/blog/bhujodi-village-the-handicraft-hub-of-kutch",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hamirsar-lake-bhuj",
+      "destination": "/blog/hamirsar-lake-the-heart-of-bhuj",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kutch-museum-bhuj",
+      "destination": "/blog/kutch-museum-the-oldest-museum-in-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prag-mahal-bhuj",
+      "destination": "/blog/prag-mahal-the-gothic-wonder-of-bhuj",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aina-mahal-bhuj",
+      "destination": "/blog/aina-mahal-the-palace-of-mirrors-in-bhuj",
+      "permanent": true
+    },
+    {
+      "source": "/blog/palanpur-gujarat-travel-guide",
+      "destination": "/blog/palanpur-the-gateway-to-north-gujarat-s-hills-and-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mandvi-gujarat-travel-guide",
+      "destination": "/blog/mandvi-the-coastal-jewel-of-kutch",
+      "permanent": true
+    },
+    {
+      "source": "/blog/okha-gujarat-travel-guide",
+      "destination": "/blog/discover-okha-the-gateway-to-dwarka-and-beyt-dwarka-island",
+      "permanent": true
+    },
+    {
+      "source": "/blog/wankaner-gujarat-travel-guide",
+      "destination": "/blog/discover-wankaner-the-royal-gem-of-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/morbi-gujarat-travel-guide",
+      "destination": "/blog/morbi-gujarat-s-royal-town-of-european-charm-and-craftsmanship",
+      "permanent": true
+    },
+    {
+      "source": "/blog/modhera-sun-temple-travel-guide",
+      "destination": "/blog/modhera-the-timeless-beauty-of-gujarat-s-sun-temple",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dholavira-archaeological-site",
+      "destination": "/blog/dholavira-the-lost-city-of-the-harappan-civilization",
+      "permanent": true
+    },
+    {
+      "source": "/blog/diu-island-tourism",
+      "destination": "/blog/diu-the-island-of-serenity-and-seaside-splendor",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-in-champaner",
+      "destination": "/blog/champaner-the-forgotten-kingdom-of-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-in-saputara",
+      "destination": "/blog/saputara-the-serene-hill-station-of-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-in-surat",
+      "destination": "/blog/surat-the-diamond-city-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-in-jamnagar",
+      "destination": "/blog/jamnagar-the-jewel-of-kathiawar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/anand-travel-guide",
+      "destination": "/blog/discover-anand-the-milk-capital-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhavnagar-travel-guide",
+      "destination": "/blog/discover-bhavnagar-the-gem-of-saurashtra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/palitana-travel-guide",
+      "destination": "/blog/discover-palitana-the-sacred-city-of-temples",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gandhinagar-travel-guide",
+      "destination": "/blog/discover-gandhinagar-gujarat-s-serene-capital",
+      "permanent": true
+    },
+    {
+      "source": "/blog/porbandar-travel-guide",
+      "destination": "/blog/discover-porbandar-the-birthplace-of-mahatma-gandhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/patan-gujarat-travel-guide",
+      "destination": "/blog/patan-the-heritage-city-of-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uttar-pradesh-tourism-guide",
+      "destination": "/blog/uttar-pradesh-the-cultural-and-spiritual-heart-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhuj-kutch-travel-guide",
+      "destination": "/blog/bhuj-kutch-the-gateway-to-gujarat-s-white-desert",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gir-national-park",
+      "destination": "/blog/gir-national-park-the-land-of-the-majestic-asiatic-lions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tirthan-valley",
+      "destination": "/blog/tirthan-valley-himachal-s-hidden-paradise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bir-billing",
+      "destination": "/blog/bir-billing-the-paragliding-capital-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kanatal-hill-station",
+      "destination": "/blog/kanatal-a-hidden-gem-in-the-hills-of-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sultanpur-bird-sanctuary",
+      "destination": "/blog/sultanpur-bird-sanctuary-a-paradise-for-bird-lovers-in-haryana",
+      "permanent": true
+    },
+    {
+      "source": "/blog/haryana-travel-guide",
+      "destination": "/blog/haryana-the-land-of-rich-heritage-and-prosperity",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bharatpur-bird-sanctuary",
+      "destination": "/blog/bharatpur-bird-sanctuary-a-paradise-for-bird-lovers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-high-altitude-passes-india",
+      "destination": "/blog/top-high-altitude-passes-in-india-ladakh-rohtang-more",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shanti-stupa-leh-town-sightseeing-guide",
+      "destination": "/blog/shanti-stupa-leh-town-sightseeing-guide-history-best-time-must-visit-places",
+      "permanent": true
+    },
+    {
+      "source": "/blog/khardung-la-pass-ladakh-travel-guide",
+      "destination": "/blog/khardung-la-pass-travel-guide-height-history-best-time-road-trip-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nubra-valley-diskit-monastery-travel-guide",
+      "destination": "/blog/nubra-valley-diskit-monastery-travel-guide-best-time-routes-attractions-stay",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pangong-tso-lake-travel-guide",
+      "destination": "/blog/pangong-tso-pangong-lake-travel-guide-best-time-permits-stay-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/weekend-getaways-near-delhi-within-200-km",
+      "destination": "/blog/short-weekend-escapes-within-200-km-from-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/adventure-activity-trips-from-delhi",
+      "destination": "/blog/adventure-activity-based-trips-from-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/heritage-and-culture-trips-from-delhi",
+      "destination": "/blog/heritage-culture-trips-from-delhi-timeless-escapes-for-long-weekends",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hill-stations-near-delhi",
+      "destination": "/blog/hill-stations-near-delhi-perfect-long-weekend-getaways",
+      "permanent": true
+    },
+    {
+      "source": "/blog/long-weekend-getaways-from-delhi",
+      "destination": "/blog/best-long-weekend-getaways-from-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/must-visit-temples-in-vrindavan-mathura",
+      "destination": "/blog/13-must-visit-temples-in-vrindavan-temples-in-vrindavan-temples-in-mathura",
+      "permanent": true
+    },
+    {
+      "source": "/blog/leh-ladakh-ultimate-travel-guide-Itinerary",
+      "destination": "/blog/leh-ladakh-the-ultimate-travel-guide-itinerary-your-journey-to-the-roof-of-the",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jageshwar-travel-guide-uttarakhand",
+      "destination": "/blog/jageshwar-travel-guide-explore-the-ancient-temples-divine-beauty-of-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajkot-gujarat",
+      "destination": "/blog/rajkot-gujarat-the-cultural-and-historical-heart-of-saurashtra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vadodara-baroda-gujarat",
+      "destination": "/blog/vadodara-baroda-the-cultural-capital-of-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/junagadh-gujarat",
+      "destination": "/blog/junagadh-gujarat-a-heritage-city-at-the-foothills-of-girnar",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prabhas-patan-museum",
+      "destination": "/blog/prabhas-patan-museum-a-treasure-of-somnath-s-glorious-past",
+      "permanent": true
+    },
+    {
+      "source": "/blog/somnath-beach",
+      "destination": "/blog/somnath-beach-gujarat-a-serene-coastal-escape",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhalka-tirth-somnath",
+      "destination": "/blog/bhalka-tirth-somnath-the-sacred-site-where-lord-krishna-left-his-mortal-body",
+      "permanent": true
+    },
+    {
+      "source": "/blog/triveni-sangam-somnath",
+      "destination": "/blog/triveni-sangam-somnath-the-sacred-confluence-of-three-rivers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-5-places-to-visit-in-Vrindavan",
+      "destination": "/blog/must-visit-places-in-vrindavan-explore-the-divine-land-of-lord-krishna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/somnath-gujarat-travel-guide",
+      "destination": "/blog/somnath-gujarat-the-eternal-shrine-of-lord-shiva",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kesi-ghat-vrindavan",
+      "destination": "/blog/kesi-ghat-vrindavan-history-timings-aarti-and-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/madan-mohan-temple-vrindavan",
+      "destination": "/blog/madan-mohan-temple-vrindavan-history-timings-entry-fee-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/govind-dev-ji-temple-vrindavan-timing-history",
+      "destination": "/blog/govind-dev-ji-temple-vrindavan-history-architecture-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seva-kunj-nidhivan-vrindavan-travel-guide",
+      "destination": "/blog/seva-kunj-nidhivan-vrindavan-history-mystery-timings-entry-fee-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/radha-damodar-temple-vrindavan",
+      "destination": "/blog/radha-damodar-temple-the-sacred-heart-of-vrindavan-s-bhakti-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/radha-raman-temple-vrindavan",
+      "destination": "/blog/radha-raman-temple-vrindavan-eternal-love-of-lord-krishna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prem-mandir-vrindavan-mathura",
+      "destination": "/blog/prem-mandir-vrindavan-timings-light-show-entry-fee-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sudama-setu-dwarka",
+      "destination": "/blog/sudama-setu-the-bridge-of-friendship-in-dwarka",
+      "permanent": true
+    },
+    {
+      "source": "/blog/iskcon-vrindavan-krishna-balaram-mandir",
+      "destination": "/blog/iskcon-vrindavan-krishna-balaram-mandir-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/iskcon-temple-mathura-Krishna-balaram-mandir",
+      "destination": "/blog/iskcon-temple-mathura-shri-krishna-janmabhoomi-visiting-guide-krishna-balaram",
+      "permanent": true
+    },
+    {
+      "source": "/blog/banke-bihari-temple-vrindavan-mathura",
+      "destination": "/blog/banke-bihari-temple-vrindavan-history-timings-travel-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gomti-ghat-dwarka",
+      "destination": "/blog/gomti-ghat-dwarka-a-sacred-step-into-the-divine",
+      "permanent": true
+    },
+    {
+      "source": "/blog/birla-gita-mandir-mathura",
+      "destination": "/blog/birla-mandir-mathura-complete-visiting-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rangbhoomi-mathura-travel-guide",
+      "destination": "/blog/rangbhoomi-mathura-history-attractions-visiting-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mathura-museum-government-museum",
+      "destination": "/blog/mathura-museum-government-museum-history-collections-visiting-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kusum-sarovar-mathura",
+      "destination": "/blog/kusum-sarovar-mathura-travel-guide-history-entry-fee",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vishram-ghat-mathura",
+      "destination": "/blog/vishram-ghat-mathura-travel-guide-timings-tips-entry-fee",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dwarkadhish-temple-mathura-timing",
+      "destination": "/blog/dwarkadhish-temple-mathura-travel-guide-timings-entry-fee",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shri-krishna-janmabhoomi-temple-mathura",
+      "destination": "/blog/shri-krishna-janmabhoomi-temple-mathura-travel-guide-timings-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mathura-vrindavan-travel-guide",
+      "destination": "/blog/mathura-vrindavan-travel-guide-temples-ghats-festivals-nearby-attractions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rukmini-devi-temple-dwarka",
+      "destination": "/blog/rukmini-devi-temple-the-sacred-shrine-of-krishna-s-queen-in-dwarka",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bet-dwarka-gujarat",
+      "destination": "/blog/bet-dwarka-the-sacred-island-of-lord-krishna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dwarkadhish-temple-dwarka",
+      "destination": "/blog/dwarkadhish-temple-dwarka-a-divine-journey-to-the-abode-of-lord-krishna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dwarka-gujarat-travel-guide",
+      "destination": "/blog/dwarka-gujarat-the-city-of-lord-krishna",
+      "permanent": true
+    },
+    {
+      "source": "/blog/spiti-chandratal-kibber-langza-kinnaur-travel-guide",
+      "destination": "/blog/ideal-for-explorers-photographers-bikers-offbeat-travellers-to-spiti-valley",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kinnaur-travel-guide-himachal",
+      "destination": "/blog/kinnaur-land-of-apples-valleys-hidden-himalayan-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kibber-langza-villages-spiti-valley",
+      "destination": "/blog/kibber-langza-the-heigh-altitude-village-in-himanchal-cold-desert-of-spiti",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chandratal-lake-travel-guide-himachal",
+      "destination": "/blog/chandratal-lake-travel-guide-the-moon-lake-of-himachal-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/spiti-valley-travel-guide",
+      "destination": "/blog/spiti-valley-travel-guide-adventure-culture-scenic-landscapes-in-himachal",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sach-pass-travel-guide-himachal",
+      "destination": "/blog/sach-pass-travel-guide-adventure-scenic-views-best-time-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ahmedabad-travel-guide",
+      "destination": "/blog/ahmedabad-a-journey-through-history-culture-and-culinary-delights",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dalhousie-khajjiar-chamba-travel-guide-himachal,",
+      "destination": "/blog/dalhousie-khajjiar-chamba-travel-guide-himachal-pradesh-hill-destinations",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kangra-fort-masroor-rock-cut-temples-himachal",
+      "destination": "/blog/kangra-fort-masroor-rock-cut-temples-himachal-pradesh-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhagsu-dharamkot-travel-guide-himachal",
+      "destination": "/blog/bhagsu-dharamkot-travel-guide-things-to-do-nearby-attractions-best-time-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mcleod-ganj-travel-guide-himachal",
+      "destination": "/blog/mcleod-ganj-travel-guide-spiritual-cultural-escape-in-himachal",
+      "permanent": true
+    },
+    {
+      "source": "/blog/manali-kullu-kasol-tosh-malana-travel-guide-himachal",
+      "destination": "/blog/perfect-for-adventure-seekers-couples-backpackers-kullu-manali-parvati-valley",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shimla-kufri-chail-narkanda-travel-guide-himachal",
+      "destination": "/blog/ultimate-himachal-travel-guide-2025-shimla-kufri-chail-narkanda-meta-title",
+      "permanent": true
+    },
+    {
+      "source": "/blog/malana-travel-guide-himachal",
+      "destination": "/blog/malana-travel-guide-the-ancient-village-of-himachal-off-beat-destination",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gujarat-tourism",
+      "destination": "/blog/gujarat-the-land-of-heritage-culture-and-vibrant-traditions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nagaur-rajasthan-tourism",
+      "destination": "/blog/nagaur-the-land-of-forts-fairs-and-heritage-in-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mandawa-travel-guide",
+      "destination": "/blog/mandawa-the-open-air-art-gallery-of-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kumbhalgarh-fort-visit-guide",
+      "destination": "/blog/discover-kumbhalgarh-the-majestic-fort-of-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kasol-tosh-travel-guide-himachal",
+      "destination": "/blog/best-places-to-visit-in-kasol-tosh-parvati-valley-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sariska-tiger-reserve-travel-guide",
+      "destination": "/blog/explore-the-wild-beauty-of-sariska-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/naggar-travel-guide-himachal",
+      "destination": "/blog/best-places-to-visit-in-naggar-complete-travel-guide-for-naggar-and-himachal",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kullu-travel-guide-himachal",
+      "destination": "/blog/best-places-to-visit-in-kullu-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/manali-travel-guide-himachal",
+      "destination": "/blog/best-places-to-visit-in-manali-complete-travel-guide-2025",
+      "permanent": true
+    },
+    {
+      "source": "/blog/narkanda-travel-guide-from-shimla-himanchal",
+      "destination": "/blog/best-places-to-visit-in-narkanda-complete-travel-guide-from-shimla-beyond",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chail-travel-guide-from-shimla-himanchal",
+      "destination": "/blog/best-places-to-visit-in-chail-complete-travel-guide-from-shimla-beyond",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kufri-travel-guide-from-shimla-himanchal",
+      "destination": "/blog/best-places-to-visit-in-kufri-complete-travel-guide-from-shimla-beyond",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shimla-travel-guide-from-delhi",
+      "destination": "/blog/best-places-to-visit-in-shimla-complete-travel-guide-from-delhi-beyond",
+      "permanent": true
+    },
+    {
+      "source": "/blog/alwar-travel-guide-rajasthan",
+      "destination": "/blog/alwar-travel-guide-history-attractions-things-to-do",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pithoragarh-uttarakhand-travel-guide",
+      "destination": "/blog/pithoragarh-uttarakhand-best-places-to-visit-things-to-do-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/munsiyari-uttarakhand-travel-guide",
+      "destination": "/blog/munsiyari-the-hidden-himalayan-paradise-of-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kausani-uttarakhand-travel-guide",
+      "destination": "/blog/kausani-switzerland-of-india-in-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mukteshwar-uttarakhand-travel-guide",
+      "destination": "/blog/mukteshwar-a-peaceful-himalayan-getaway-in-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chopta-mini-switzerland-uttarkhand",
+      "destination": "/blog/chopta-uttarakhand-mini-switzerland-best-time-trekking-nearby-attractions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uttarakhand-char-dham-valley-of-flowers-hemkund-sahib-guide",
+      "destination": "/blog/top-pilgrimage-and-trekking-destinations-in-uttarakhand-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hemkund-sahib-uttarakhand",
+      "destination": "/blog/hemkund-sahib-uttarakhand-trek-guide-best-time-to-visit-distance-nearby-places",
+      "permanent": true
+    },
+    {
+      "source": "/blog/valley-of-flowers-national-park-uttarakhand",
+      "destination": "/blog/valley-of-flowers-national-park-trek-entry-fee-best-time-to-visit-nearby-places",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gangotri-yamunotri-temples-travel-guide",
+      "destination": "/blog/gangotri-yamunotri-temples-uttarakhand-travel-guide-best-time-things-to-do",
+      "permanent": true
+    },
+    {
+      "source": "/blog/badrinath-temple-uttarkhand-history-architecture-legends",
+      "destination": "/blog/shri-badrinath-temple-history-architecture-legends-and-spiritual-significance",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mumbai-international-cruise-terminal-guide",
+      "destination": "/blog/mumbai-international-cruise-terminal-mict-india-s-new-gateway-to-the-seas",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-places-to-visit-near-auli",
+      "destination": "/blog/best-places-to-visit-near-auli-joshimath-gorson-bugyal-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ajmer-travel-guide-spiritual-heritage",
+      "destination": "/blog/ajmer-where-spirituality-meets-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/joshimath-travel-guide-uttarakhand",
+      "destination": "/blog/joshimath-the-real-feel-of-spirituality-and-adventure-in-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gorson-bugyal-uttarakhand-guide",
+      "destination": "/blog/gorson-bugyal-travel-guide-trekking-best-time-to-visit-nearby-attractions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/auli-uttarakhand-trave-guide",
+      "destination": "/blog/auli-nearby-attractions-in-uttarakhand",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jim-corbett-national-park-uttarkhand-guide",
+      "destination": "/blog/jim-corbett-national-park-travel-guide-safari-museum-garjia-devi-temple",
+      "permanent": true
+    },
+    {
+      "source": "/blog/almora-uttarakhand",
+      "destination": "/blog/almora-the-cultural-heart-of-kumaon-things-to-do-best-time-to-visit-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ranikhet-uttarakhand",
+      "destination": "/blog/ranikhet-the-queen-s-meadow-in-uttarakhand-things-to-do-best-time-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajasthan-bundi-travel-guide",
+      "destination": "/blog/bundi-the-hidden-gem-of-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhimtal-sattal-nainital-uttarkhand",
+      "destination": "/blog/bhimtal-sattal-near-nainital-discover-boating-birdwatching-history-best-time-to",
+      "permanent": true
+    },
+    {
+      "source": "/blog/snow-view-point-nainital_uttarkhand",
+      "destination": "/blog/visit-snow-view-point-in-nainital-for-stunning-himalayan-views-learn-about",
+      "permanent": true
+    },
+    {
+      "source": "/blog/naina-devi-temple-nainital-uttarkhand",
+      "destination": "/blog/discover-naina-devi-temple-in-nainital-one-of-the-51-shakti-peeths-explore-its",
+      "permanent": true
+    },
+    {
+      "source": "/blog/naini-lake-nainital-uttarkhand",
+      "destination": "/blog/naini-lake-nainital-boating-best-time-to-visit-things-to-do-best-time-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chittorgarh-travel-guide",
+      "destination": "/blog/chittorgarh-the-pride-of-rajasthans-royal-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-places-to-visit-haridwar-uttarkhand",
+      "destination": "/blog/top-5-places-to-visit-in-haridwar-ghats-temples-national-park",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-places-to-visit-rishikesh-uttarkhand",
+      "destination": "/blog/places-to-visit-in-rishikesh-ghats-temples-ashrams-adventure",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nearby-excursions-haridwar-rishikesh",
+      "destination": "/blog/best-nearby-excursions-from-haridwar-rishikesh-neelkanth-mahadev-kunjapuri-devi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/places-to-visit-near-dehradun-mussoorie-uttarkhand",
+      "destination": "/blog/top-4-places-to-visit-near-dehradun-mussoorie-uttarkhand-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lal-tibba-mussoorie-uttarkhand-travel-guide",
+      "destination": "/blog/lal-tibba-mussoorie-uttarkhant-highest-point-scenic-view-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kempty-falls-mussoorie-uttarkhand-travel-guide",
+      "destination": "/blog/kempty-falls-mussoorie-uttarkhant-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mussoorie-mall-road-uttarkhand-travel-guide",
+      "destination": "/blog/mussoorie-mall-road-travel-guide-the-queen-of-hills",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mindrolling-monastery-dehradun-travel-guide",
+      "destination": "/blog/mindrolling-monastery-dehradun-tibetan-culture-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bikaner-travel-guide",
+      "destination": "/blog/bikaner-the-hidden-gem-of-rajasthan-you-must-explore",
+      "permanent": true
+    },
+    {
+      "source": "/blog/robbers-cave-dehradun-travel-guide",
+      "destination": "/blog/robber-s-cave-dehradun-nature-walk-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/devprayag-uttarakhand-travel-guide",
+      "destination": "/blog/devprayag-uttarakhand-sangam-of-alaknanda-bhagirathi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kunjapuri-devi-temple-rishikesh-travel-guide",
+      "destination": "/blog/kunjapuri-devi-temple-rishikesh-sunrise-view-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/neelkanth-mahadev-temple-rishikesh-travel-guide",
+      "destination": "/blog/neelkanth-mahadev-temple-rishikesh-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mount-abu-travel-guide",
+      "destination": "/blog/mount-abu-rajasthan-s-only-hill-station",
+      "permanent": true
+    },
+    {
+      "source": "/blog/adventure-activities-rishikesh-travel-guide",
+      "destination": "/blog/adventure-activities-in-rishikesh-rafting-bungee-trekking-more",
+      "permanent": true
+    },
+    {
+      "source": "/blog/neer-garh-waterfall-rishikesh-travel-guide",
+      "destination": "/blog/neer-garh-waterfall-rishikesh-trekking-nature-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/beatles-ashram-rishikesh-travel-guide",
+      "destination": "/blog/the-beatles-ashram-rishikesh-history-graffiti-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/parmarth-niketan-ashram-rishikesh-travel-guide",
+      "destination": "/blog/parmarth-niketan-ashram-rishikesh-yoga-ganga-aarti-spiritual-retreat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ram-jhula-laxman-jhula-rishikesh-travel-guide",
+      "destination": "/blog/ram-jhula-laxman-jhula-rishikesh-history-things-to-do-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/triveni-ghat-rishikesh-travel-guide",
+      "destination": "/blog/triveni-ghat-rishikesh-ganga-aarti-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ranthambore-national-park-travel-guide",
+      "destination": "/blog/ranthambore-india-s-wild-wonderland",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajaji-national-park-uttarakhand-travel-guide",
+      "destination": "/blog/rajaji-national-park-uttarakhand-complete-travel-guide-safari-timings",
+      "permanent": true
+    },
+    {
+      "source": "/blog/daksha-mahadev-temple-haridwar-travel-guide",
+      "destination": "/blog/daksha-mahadev-temple-haridwar-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pushkar-travel-guide",
+      "destination": "/blog/pushkar-the-spiritual-gem-of-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mansa-devi-temple-haridwar-travel-guide",
+      "destination": "/blog/mansa-devi-temple-haridwar-complete-travel-guide-with-ropeway-timings-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chandi-devi-temple-haridwar-travel-guide",
+      "destination": "/blog/chandi-devi-temple-haridwar-complete-travel-guide-with-history-ropeway-ride",
+      "permanent": true
+    },
+    {
+      "source": "/blog/har-ki-pauri-haridwar-travel-guide",
+      "destination": "/blog/har-ki-pauri-haridwar-complete-travel-guide-to-ganga-aarti-holy-dip",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jodhpur-blue-city-travel-guide",
+      "destination": "/blog/jodhpur-the-blue-city-of-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jaisalmer-travel-guide",
+      "destination": "/blog/jaisalmer-the-golden-city-of-rajasthan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/udaipur-travel-guide",
+      "destination": "/blog/udaipur-the-city-of-lakes-and-royal-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jaipur-travel-guide",
+      "destination": "/blog/jaipur-the-pink-city-of-india-a-complete-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rajasthan-travel-guide",
+      "destination": "/blog/rajasthan-the-land-of-kings-and-timeless-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-markets-food-spots-delhi",
+      "destination": "/blog/top-markets-food-spots-in-delhi-2025-shopping-street-food-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/top-5-markets-in-delhi",
+      "destination": "/blog/top-5-markets-in-delhi-best-shopping-spots",
+      "permanent": true
+    },
+    {
+      "source": "/blog/delhi-street-food-guide",
+      "destination": "/blog/delhi-street-food-guide-best-places-famous-dishes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/goa-travel-guide",
+      "destination": "/blog/goa-known-as-the-party-capital-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/khan-market-delhi-best-bistros-guide",
+      "destination": "/blog/khan-market-bistros-trendy-dining-in-delhi-s-elite-market",
+      "permanent": true
+    },
+    {
+      "source": "/blog/connaught-place-delhi-best-cafes-guide",
+      "destination": "/blog/connaught-place-cafes-best-cafes-in-delhi-for-coffee-hangouts",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cr-park-bengali-market-delhi-food-shopping-guide",
+      "destination": "/blog/cr-park-bengali-market-delhi-foodie-shopping-paradise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/Sri-aurobindo-ashram-pondicherry-history-travel-guide",
+      "destination": "/blog/sri-aurobindo-ashram-pondicherry-history-timings-and-travel-guide-introduction",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sri-aurobindo-ashram-delhi-history-timings-travel-guide",
+      "destination": "/blog/sri-aurobindo-ashram-delhi-history-timings-meditation-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pichavaram-mangrove-forest",
+      "destination": "/blog/pichavaram-mangrove-forest-a-hidden-paradise-in-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jama-masjid-street-food-delhi-guide",
+      "destination": "/blog/jama-masjid-street-food-delhi-best-mughlai-dishes-famous-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/blog/majnu-ka-tila-delhi-market-food-travel-guide",
+      "destination": "/blog/majnu-ka-tila-delhi-tibetan-market-food-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/paranthe-wali-gali-delhi-food-guide",
+      "destination": "/blog/paranthe-wali-gali-a-food-lover-s-paradise-in-old-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/anamalai-tiger-reserve-topslip",
+      "destination": "/blog/anamalai-tiger-reserve-topslip-safari-travel-guide-best-time-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mudumalai-wildlife-sanctuary",
+      "destination": "/blog/mudumalai-wildlife-sanctuary-safari-travel-guide-best-time-to-visit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pacific-mall-delhi-shopping-travel-timing-guide",
+      "destination": "/blog/pacific-mall-delhi-shopping-food-court-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/janpath-market-delhi-shopping-travel-timing-guide",
+      "destination": "/blog/janpath-market-delhi-street-shopping-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/valparai-travel-guide",
+      "destination": "/blog/valparai-best-tourist-places-travel-guide-things-to-do",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nehru-place-market-delhi-it-hub-shopping-travel-guide",
+      "destination": "/blog/nehru-place-market-delhi-it-hub-shopping-timings-travel-guide-nehru-place-it-hub",
+      "permanent": true
+    },
+    {
+      "source": "/blog/karol-bagh-market-delhi-shopping-food-travel-timing-guide",
+      "destination": "/blog/karol-bagh-market-delhi-shopping-street-food-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/yercaud-travel-guide",
+      "destination": "/blog/yercaud-serene-hill-station-in-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lajpat-nagar-market-delhi-shopping-food-travel-guide",
+      "destination": "/blog/lajpat-nagar-market-delhi-shopping-street-food-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nagapattinam-tourism-places-to-visit",
+      "destination": "/blog/nagapattinam-a-coastal-town-of-temples-beaches-and-pilgrimage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kanchipuram-tourism",
+      "destination": "/blog/kanchipuram-the-city-of-thousand-temples",
+      "permanent": true
+    },
+    {
+      "source": "/blog/khan-market-delhi-shopping-food-travel-guide",
+      "destination": "/blog/khan-market-delhi-shopping-food-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dilli-haat-delhi-shopping-food-travel-guide",
+      "destination": "/blog/dilli-haat-delhi-shopping-food-culture-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/connaught-place-delhi-shopping-food-travel-timing-guide",
+      "destination": "/blog/connaught-place-delhi-shopping-food-nightlife-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sarojini-nagar-market-delhi-shopping-timing-guide",
+      "destination": "/blog/sarojini-nagar-market-delhi-shopping-guide-timings-travel-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chandni-chowk-delhi-shopping-food-travel-timing-guide",
+      "destination": "/blog/chandni-chowk-market-delhi-shopping-food-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tiruvannamalai-tourism",
+      "destination": "/blog/tiruvannamalai-the-spiritual-heart-of-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/waste-to-wonder-park-delhi-timing-guide",
+      "destination": "/blog/waste-to-wonder-park-delhi-timings-ticket-price-location-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aravalli-biodiversity-park-delhi-travel-timing-guide",
+      "destination": "/blog/aravalli-biodiversity-park-delhi-timings-entry-fee-attractions-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tiruchirappalli-tourism",
+      "destination": "/blog/tiruchirappalli-trichy-the-historic-temple-city-of-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rose-garden-chanakyapuri-delhi-history-travel-guide",
+      "destination": "/blog/rose-garden-chanakyapuri-delhi-best-time-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vellore-tourism",
+      "destination": "/blog/vellore-the-fort-city-of-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chidambaram-tourism-travel-guide",
+      "destination": "/blog/chidambaram-the-spiritual-town-of-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/japanese-park-rohini-delhi-history-timings-travel-guide",
+      "destination": "/blog/japanese-park-rohini-history-timings-attractions-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nehru-park-delhi-history-timings-travel-guide",
+      "destination": "/blog/nehru-park-delhi-history-timings-attractions-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pondicherry-tourism-travel-guide",
+      "destination": "/blog/pondicherry-the-french-riviera-of-the-east",
+      "permanent": true
+    },
+    {
+      "source": "/blog/buddha-jayanti-park-delhi-travel-guide-timing",
+      "destination": "/blog/buddha-jayanti-park-delhi-attractions-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/deer-park-delhi-travel-guide-timing",
+      "destination": "/blog/deer-park-delhi-attractions-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/garden-of-five-senses-delhi-travel-guide",
+      "destination": "/blog/garden-of-five-senses-delhi-attractions-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sunder-nursery-delhi-history-travel-guide",
+      "destination": "/blog/sunder-nursery-delhi-history-timings-attractions-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/coimbatore-tourism-travel-guide",
+      "destination": "/blog/coimbatore-the-manchester-of-south-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bharat-darshan-park-delhi-history-timings-travel-guide",
+      "destination": "/blog/bharat-darshan-park-delhi-unique-theme-park-with-iconic-monuments",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kodaikanal-tourism-travel-guide",
+      "destination": "/blog/kodaikanal-the-princess-of-hill-stations",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thanjavur-tourism-guide",
+      "destination": "/blog/thanjavur-tourism-brihadeeswarar-temple-tanjore-paintings-culture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mahabalipuram-travel-guide",
+      "destination": "/blog/mahabalipuram-the-ancient-coastal-heritage-of-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kanyakumari-tourism-travel-guide",
+      "destination": "/blog/kanyakumari-travel-guide-explore-the-southern-tip-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ooty-tourism-travel-guide",
+      "destination": "/blog/ooty-lakes-tea-gardens-hills",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rameswaram-tourism-travel-guide",
+      "destination": "/blog/rameswaram-tourism-temples-beaches-pilgrimage-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/madurai-tourism-travel-guide",
+      "destination": "/blog/madurai-tourism-explore-the-temple-city-of-tamil-nadu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chennai-tourism-travel-guide",
+      "destination": "/blog/chennai-explore-beaches-temples-culture-of-south-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tamil-nadu-tourism-travel-guide",
+      "destination": "/blog/tamil-nadu-the-land-of-temples-culture-and-scenic-beauty",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bapu-museum-delhi-history-timings-travel-guide",
+      "destination": "/blog/bapu-museum-delhi-history-timings-location-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/partition-museum-delhi-history-timings-travel-guide",
+      "destination": "/blog/partition-museum-delhi-history-timings-location-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/athirapilly-waterfalls-kerala",
+      "destination": "/blog/athirapilly-the-niagara-of-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/museum-of-illusions-delhi-timings-ticket-price-travel-guide",
+      "destination": "/blog/museum-of-illusions-delhi-fun-world-of-tricks-and-magic",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sanskriti-museums-delhi-history-timings-entry-fee",
+      "destination": "/blog/sanskriti-museums-hidden-cultural-treasure-in-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/varkala-travel-guide",
+      "destination": "/blog/varkala-a-hidden-gem-in-kerala",
+      "permanent": true
+    },
+    {
+      "source": "/blog/national-rail-museum-delhi-history-timings-travel-guide",
+      "destination": "/blog/national-rail-museum-delhi-journey-through-india-s-railway-heritage",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thiruvananthapuram-travel-guide",
+      "destination": "/blog/thiruvananthapuram-kerala-s-capital-of-culture-and-charm",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kumarakom-travel-guide",
+      "destination": "/blog/kumarakom-kerala-s-serene-backwater-paradise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kochi-travel-guide",
+      "destination": "/blog/kochi-tourism-best-places-to-visit-things-to-do-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kovalam-beach-travel-guide",
+      "destination": "/blog/kovalam-best-beaches-things-to-do-travel-guide-kerala-tourism",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kerala-wayanad-tourism",
+      "destination": "/blog/wayanad-tourism-best-tourist-places-attractions-things-to-do-in-kerala",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thekkady-travel-guide",
+      "destination": "/blog/thekkady-travel-guide-best-places-to-visit-in-kerala-s-wildlife-paradise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/alleppey-travel-guide",
+      "destination": "/blog/alleppey-travel-guide-best-places-to-visit-in-kerala-s-venice-of-the-east",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shankars-international-dolls-museum-delhi-history-timings-travel-guide",
+      "destination": "/blog/shankar-s-international-dolls-museum",
+      "permanent": true
+    },
+    {
+      "source": "/blog/munnar-travel-guide",
+      "destination": "/blog/munnar-travel-guide-best-places-to-visit-in-kerala-s-hill-station",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kiran-nadar-museum-of-art-delhi-history-travel-guide",
+      "destination": "/blog/kiran-nadar-museum-of-art-delhi-timings-entry-fee-history-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kerala-tourism-guide",
+      "destination": "/blog/kerala-best-time-to-visit-top-destinations-travel-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nehru-memorial-museum-delhi-history-travel-guide",
+      "destination": "/blog/nehru-memorial-museum-library-delhi-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gandhi-smriti-delhi-history-travel-guide",
+      "destination": "/blog/gandhi-smriti-remembering-the-father-of-the-nation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/national-gallery-of-modern-art-delhi",
+      "destination": "/blog/national-gallery-of-modern-art-ngma-delhi-paradise-for-art-lovers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/national-museum-delhi",
+      "destination": "/blog/national-museum-delhi-journey-through-india-s-history-culture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uttara-swami-malai-temple-delhi-travel-guide",
+      "destination": "/blog/uttara-swami-malai-temple-delhi-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gauri-shankar-temple-delhi-travel-guide",
+      "destination": "/blog/gauri-shankar-temple-delhi-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fatehpuri-masjid-delhi-travel-guide",
+      "destination": "/blog/fatehpuri-masjid-delhi-history-timings-nearest-metro-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/panch-kailash-yatra-mount-adi-kinnaur-manimahesh",
+      "destination": "/blog/panch-kailash-yatra-route-significance-travel-tips",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nizamuddin-dargah-delhi-travel-guide",
+      "destination": "/blog/nizamuddin-dargah-delhi-timings-history-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/birla-mandir-delhi-travel-guide",
+      "destination": "/blog/birla-mandir-delhi-timings-history-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ganesh-chaturthi-india-famous-celebrations",
+      "destination": "/blog/ganesh-chaturthi-the-festival-of-lord-ganesha",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hanuman-temple-connaught-place-delhi-guide",
+      "destination": "/blog/hanuman-temple-connaught-place-timings-history-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kalkaji-temple-delhi-navratri-timings-guide",
+      "destination": "/blog/kalkaji-temple-delhi-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/iskcon-temple-delhi-history-timings-travel-guide",
+      "destination": "/blog/skcon-temple-delhi-spiritual-journey-into-devotion-and-peace",
+      "permanent": true
+    },
+    {
+      "source": "/blog/12-jyotirlingas-in-india",
+      "destination": "/blog/12-jyotirlingas-in-india-complete-guide-to-lord-shiva-s-sacred-temples",
+      "permanent": true
+    },
+    {
+      "source": "/blog/grishneshwar-jyotirlinga-maharashtra",
+      "destination": "/blog/grishneshwar-jyotirlinga-the-sacred-shiva-temple-in-maharashtra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gurudwara-bangla-sahib-delhi-history-timings-travel-guide",
+      "destination": "/blog/gurudwara-bangla-sahib-spiritual-haven-peace-in-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ramanathaswamy-jyotirlinga-rameswaram",
+      "destination": "/blog/ramanathaswamy-jyotirlinga-a-sacred-pilgrimage-in",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lotus-temple-delhi-history-timings-travel-guide",
+      "destination": "/blog/lotus-temple-delhi-symbol-of-peace-beauty-and-harmony",
+      "permanent": true
+    },
+    {
+      "source": "/blog/akshardham-temple-delhi-history-timings-travel-guide",
+      "destination": "/blog/akshardham-temple-delhi-a-modern-wonder-of-spirituality-and-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/siri-fort-delhi-history-timings-travel-guide",
+      "destination": "/blog/siri-fort-delhi-the-second-city-of-delhi-s-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/coronation-park-delhi-history-timings-travel-guide",
+      "destination": "/blog/coronation-park-delhi-a-monument-of-british-era-history",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nageshwar-jyotirlinga-dwarka",
+      "destination": "/blog/nageshwar-jyotirlinga-the-sacred-abode-of-lord-shiva",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vaidyanath-jyotirlinga-deoghar-guide",
+      "destination": "/blog/vaidyanath-jyotirlinga-the-healing-abode-of-lord-shiva",
+      "permanent": true
+    },
+    {
+      "source": "/blog/trimbakeshwar-jyotirlinga-nashik",
+      "destination": "/blog/trimbakeshwar-jyotirlinga-the-sacred-temple-of-lord-shiva-in-nashik",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kashi-vishwanath-jyotirlinga",
+      "destination": "/blog/kashi-vishwanath-jyotirlinga-the-eternal-abode-of-lord-shiva",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bhimashankar-jyotirlinga",
+      "destination": "/blog/bhimashankar-jyotirlinga-the-sacred-temple-of-lord-shiva-in-maharashtra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kedarnath-jyotirlinga",
+      "destination": "/blog/kedarnath-jyotirlinga-the-sacred-abode-of-lord-shiva",
+      "permanent": true
+    },
+    {
+      "source": "/blog/omkareshwar-jyotirlinga",
+      "destination": "/blog/omkareshwar-jyotirlinga-a-sacred-abode-of-lord-shiva",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mahakaleshwar-jyotirlinga-madhya-pradesh",
+      "destination": "/blog/mahakaleshwar-jyotirlinga-the-eternal-shiva-temple-in-ujjain",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mallikarjuna-jyotirlinga-srisailam-andhra-pradesh",
+      "destination": "/blog/mallikarjuna-jyotirlinga-the-sacred-shiva-temple-in-andhra-pradesh",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tughlaqabad-fort-delhi-history-timings-entry-fee",
+      "destination": "/blog/tughlaqabad-fort-the-stone-giant-of-delhi-s-past",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jantar-mantar-delhi-history-timings-entry-fee",
+      "destination": "/blog/jantar-mantar-delhi-history-timings-entry-fee-facts",
+      "permanent": true
+    },
+    {
+      "source": "/blog/somnath-temple-jyotirlinga-gujarat",
+      "destination": "/blog/somnath-jyotirlinga-the-first-jyotirlinga-of-lord-shiva-in-gujarat",
+      "permanent": true
+    },
+    {
+      "source": "/blog/raj-ghat-delhi-history-travel-guide",
+      "destination": "/blog/raj-ghat-delhi-mahatma-gandhi-memorial-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rashtrapati-bhavan-delhi-history-travel-guide",
+      "destination": "/blog/rashtrapati-bhavan-the-residence-of-india-s-president",
+      "permanent": true
+    },
+    {
+      "source": "/blog/agrasen-ki-baoli-delhi-history-travel-guide",
+      "destination": "/blog/agrasen-ki-baoli-delhi-history-timings-mystery",
+      "permanent": true
+    },
+    {
+      "source": "/blog/safdarjung-tomb-delhi-history-travel-guide",
+      "destination": "/blog/safdarjung-tomb-delhi-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/purana-qila-delhi-history-travel-guide",
+      "destination": "/blog/purana-qila-delhi-history-timings-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jama-masjid-delhi-history-travel-guide",
+      "destination": "/blog/jama-masjid-old-delhi-architecture-best-time-travel-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/india_gate_delhi",
+      "destination": "/blog/india-gate-a-grand-tribute-to-brave-heroes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/humayun_tomb_dehi",
+      "destination": "/blog/humayuns-tomb-dehi-before-the-taj-mahal-stole-the-world-s-heart-d-s-heart-there",
+      "permanent": true
+    },
+    {
+      "source": "/blog/qutub_minar_delhi",
+      "destination": "/blog/qutub-minar-unesco-world-heritage-monuments-in-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/blog/red_fort_delhi",
+      "destination": "/blog/red-fort-delhi-the-historical-and-heritage-tourist-spot-in-delhi",
+      "permanent": true
+    },
+    {
+      "source": "/india-holiday-packages/:path*",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/india-holidays/:path*",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/kailash-mansarovar",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/kailash-mansarovar/:path*",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/blog/detail/:slug",
+      "destination": "/blog/:slug",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

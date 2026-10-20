@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock, Sparkles } from 'lucide-react';
-import { featuredBlogs, latestBlogs, formatBlogDate } from '../lib/blogs';
+import { featuredBlogs, latestBlogs, formatBlogDate, BUILD_LAST_UPDATED, type Blog } from '../lib/blogs';
 
 /**
  * Homepage blog sections: "Featured Stories" (the 6 legacy display_home
@@ -11,12 +11,56 @@ import { featuredBlogs, latestBlogs, formatBlogDate } from '../lib/blogs';
  * blog data stays out of the initial page bundle.
  */
 export const HomeBlogSection: React.FC = () => {
-  // Pad featured with recent posts if fewer than 6 are flagged.
-  const featured = [
+  // Fast path: initial paint uses static bundle immediately without blocking
+  const [featured, setFeatured] = useState<Blog[]>(() => [
     ...featuredBlogs,
     ...latestBlogs.filter((b) => !b.featured),
-  ].slice(0, 6);
-  const latest = latestBlogs;
+  ].slice(0, 6));
+
+  const [latest, setLatest] = useState<Blog[]>(() => latestBlogs);
+
+  // Background check /version first. Only fetch full list if lastUpdated differs from build-time constant.
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/api/admin/blogs/version')
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch blog version');
+        return res.json();
+      })
+      .then((ver) => {
+        if (!isMounted) return;
+        // If unchanged from build-time constant, skip the refresh fetch
+        if (ver?.lastUpdated && ver.lastUpdated === BUILD_LAST_UPDATED) {
+          return;
+        }
+        return fetch('/api/admin/blogs?status=published&limit=20')
+          .then((res) => {
+            if (!res.ok) throw new Error('Failed to fetch from API');
+            return res.json();
+          })
+          .then((data) => {
+            if (isMounted && data.success && Array.isArray(data.blogs)) {
+              const published = data.blogs as Blog[];
+              const feat = published.filter((b) => b.featured);
+              const recents = published.slice(0, 6);
+              const computedFeatured = [
+                ...feat,
+                ...recents.filter((b) => !b.featured),
+              ].slice(0, 6);
+
+              if (computedFeatured.length > 0) setFeatured(computedFeatured);
+              if (recents.length > 0) setLatest(recents);
+            }
+          });
+      })
+      .catch((err) => {
+        console.warn('[HomeBlogSection] Background refresh notice:', err.message);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   if (featured.length === 0) return null;
 
@@ -54,14 +98,16 @@ export const HomeBlogSection: React.FC = () => {
               className="h-full"
             >
               <Link to={`/blog/${blog.slug}`} className="block h-full group no-underline">
-                <div className="h-full bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
-                  <div className="h-48 relative overflow-hidden shrink-0">
+                <div className="h-full bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                  <div className="h-48 relative overflow-hidden shrink-0 rounded-t-[20px]">
                     <img
                       src={blog.featuredImage}
                       alt={blog.imageAlt || blog.title}
+                      width={400}
+                      height={192}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-t-[20px]"
                     />
                     <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-white">
                       {blog.category}
@@ -104,14 +150,16 @@ export const HomeBlogSection: React.FC = () => {
               className="h-full"
             >
               <Link to={`/blog/${blog.slug}`} className="block h-full group no-underline">
-                <div className="h-full bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
-                  <div className="h-48 relative overflow-hidden shrink-0">
+                <div className="h-full bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                  <div className="h-48 relative overflow-hidden shrink-0 rounded-t-[20px]">
                     <img
                       src={blog.featuredImage}
                       alt={blog.imageAlt || blog.title}
+                      width={400}
+                      height={192}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-t-[20px]"
                     />
                     <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-white">
                       {blog.category}

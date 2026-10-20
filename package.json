@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "node server/sync-db.mjs && tsc -b && vite build",
     "lint": "oxlint",
+    "check:secrets": "node scripts/check-secrets.mjs",
     "preview": "vite preview",
     "parse-drive": "node scripts/parseDrivePackages.js"
   },

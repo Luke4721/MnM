@@ -17,6 +17,7 @@ import { Input } from '../components/ui/Input';
 import { Modal, ConfirmModal } from '../components/ui/Modal';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { useToast } from '../context/ToastContext';
+import { getAdminToken } from '../auth';
 import fallbackTeam from '../../data/team.json';
 
 export interface TeamMember {
@@ -118,7 +119,10 @@ export const AdminTeam: React.FC = () => {
 
         const res = await fetch('/api/admin/upload-image', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-token': getAdminToken(),
+          },
           body: JSON.stringify({
             fileData: base64Data,
             fileName: file.name,
@@ -176,7 +180,10 @@ export const AdminTeam: React.FC = () => {
     try {
       const res = await fetch('/api/admin/site-config?section=team', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': getAdminToken(),
+        },
         body: JSON.stringify(updatedList),
       });
       const text = await res.text();
@@ -205,6 +212,9 @@ export const AdminTeam: React.FC = () => {
     try {
       const res = await fetch(`/api/admin/site-config?section=team&id=${deleteModalId}`, {
         method: 'DELETE',
+        headers: {
+          'x-admin-token': getAdminToken(),
+        },
       });
       const text = await res.text();
       let data: any;

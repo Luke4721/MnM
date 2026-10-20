@@ -24,9 +24,11 @@ import {
 import { PageHeader } from '../components/ui/PageHeader';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { Input, Textarea } from '../components/ui/Input';
+import { Input } from '../components/ui/Input';
 import { ConfirmModal } from '../components/ui/Modal';
 import { useToast } from '../context/ToastContext';
+import { RichTextEditor } from '../components/RichTextEditor';
+import { plainTextToHtml } from '../../lib/packageUtils';
 
 const API_URL = 'https://yjdlz1pnwl.execute-api.us-east-1.amazonaws.com';
 
@@ -37,6 +39,7 @@ interface EditingPackage {
   name?: string;
   slug?: string;
   description?: string;
+  overview?: string;
   startingPrice?: string | number;
   [key: string]: unknown;
 }
@@ -87,7 +90,13 @@ export const AdminPackages: React.FC = () => {
   const isEditingExisting = Boolean(editingPkg?.id);
 
   const startEditing = (pkg: TourPackage) => {
-    setEditingPkg(pkg);
+    const rawDesc = pkg.description || pkg.overview || '';
+    const htmlDesc = plainTextToHtml(rawDesc);
+    setEditingPkg({
+      ...pkg,
+      description: htmlDesc,
+      overview: htmlDesc,
+    });
 
     // Show the currently stored validity date in the date input (local YYYY-MM-DD).
     setExpiryInput(toDateInputValue(pkg.expiryDate));
@@ -109,7 +118,10 @@ export const AdminPackages: React.FC = () => {
   };
 
   const startCreating = () => {
-    setEditingPkg({}); // no id => create mode
+    setEditingPkg({
+      description: '',
+      overview: '',
+    }); // no id => create mode
     setExpiryInput('');
     setFormErrors({});
     setFeaturedImage('');
@@ -162,12 +174,16 @@ export const AdminPackages: React.FC = () => {
     };
 
     try {
+      const descHtml = editingPkg.description || editingPkg.overview || '';
+
       if (isEditingExisting) {
         const payload = {
           ...editingPkg,
           ...imageCompat,
           name,
           startingPrice,
+          description: descHtml,
+          overview: descHtml,
           expiryDate: expiryIso,
           updatedAt: new Date().toISOString(),
         };
@@ -190,7 +206,8 @@ export const AdminPackages: React.FC = () => {
             .replace(/[^\w\s-]/g, '')
             .replace(/[\s_-]+/g, '-')
             .replace(/^-+|-+$/g, ''),
-          description: editingPkg.description || '',
+          description: descHtml,
+          overview: descHtml,
           startingPrice,
           expiryDate: expiryIso,
           createdAt: new Date().toISOString(),
@@ -448,15 +465,19 @@ export const AdminPackages: React.FC = () => {
               </div>
             </div>
 
-            <Textarea
-              label="Description"
-              rows={4}
-              value={editingPkg.description || ''}
-              onChange={(e) =>
-                setEditingPkg({ ...editingPkg, description: e.target.value })
-              }
-              placeholder="Comprehensive overview of itinerary, inclusions, and highlights..."
-            />
+            <div className="space-y-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
+                Description &amp; Overview
+              </label>
+              <RichTextEditor
+                value={editingPkg.description || editingPkg.overview || ''}
+                onChange={(html) =>
+                  setEditingPkg({ ...editingPkg, description: html, overview: html })
+                }
+                minHeight="220px"
+                placeholder="Comprehensive overview of itinerary, inclusions, and highlights..."
+              />
+            </div>
 
             {/* Package Images & Multi-Image Gallery Manager */}
             <div className="pt-4 border-t border-white/60">

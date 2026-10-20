@@ -76,20 +76,17 @@ async function readJsonBody<T = any>(
 }
 
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-
-const S3_BUCKET = process.env.S3_BUCKET || 'mnm-travels-images-105943719409-ap-south-1-an';
-const AWS_REGION = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || 'ap-south-1';
+import { S3_BUCKET, S3_REGION, VERCEL_DEPLOY_WEBHOOK, ADMIN_API_TOKEN } from '../../config/appConfig.ts';
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } from '../_serverConfig.ts';
 
 function getS3Client(): S3Client {
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
   return new S3Client({
-    region: AWS_REGION,
+    region: S3_REGION,
     credentials:
-      accessKeyId && secretAccessKey
+      AWS_ACCESS_KEY_ID && AWS_SECRET_ACCESS_KEY
         ? {
-            accessKeyId,
-            secretAccessKey,
+            accessKeyId: AWS_ACCESS_KEY_ID,
+            secretAccessKey: AWS_SECRET_ACCESS_KEY,
           }
         : undefined,
   });
@@ -146,31 +143,61 @@ async function getBlogs(): Promise<any[]> {
   }
 }
 
-async function saveBlogs(blogs: any[]): Promise<void> {
-  cachedBlogs = blogs;
+function verifyAdminAuth(req: IncomingMessage): void {
+  const expectedToken = ADMIN_API_TOKEN;
+  const headerToken = req.headers['x-admin-token'];
+  const token = Array.isArray(headerToken) ? headerToken[0] : headerToken;
+
+  if (!token || token !== expectedToken) {
+    throw new HttpError(401, 'Unauthorized: missing or invalid x-admin-token header.');
+  }
+}
+
+async function saveBlogs(blogs: any[], targetBucket: string = S3_BUCKET): Promise<void> {
+  let s3Error: any = null;
   try {
     const s3 = getS3Client();
     const cmd = new PutObjectCommand({
-      Bucket: S3_BUCKET,
+      Bucket: targetBucket,
       Key: 'database/blogs_database.json',
       Body: JSON.stringify(blogs, null, 2),
       ContentType: 'application/json',
     });
     await s3.send(cmd);
-    
+
+    cachedBlogs = blogs;
+
     // Trigger Vercel rebuild webhook to update the static frontend
-    if (process.env.VERCEL_DEPLOY_WEBHOOK) {
-      await fetch(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' }).catch((e) => console.error('Webhook trigger failed', e));
+    if (VERCEL_DEPLOY_WEBHOOK) {
+      await fetch(VERCEL_DEPLOY_WEBHOOK, { method: 'POST' }).catch((e) =>
+        console.error('Webhook trigger failed', e)
+      );
     }
-  } catch (err) {
+  } catch (err: any) {
+    s3Error = err;
     console.error('Failed to upload blogs database to S3:', err);
-    // Fallback to local write
-    const resolvedPath = getBlogsFilePath();
+  }
+
+  // Task 6: Guard local dev writes — only write to filesystem in non-production local dev
+  const isLocalDev = process.env.NODE_ENV !== 'production' && process.env.VERCEL !== '1';
+  if (isLocalDev && targetBucket === S3_BUCKET) {
     try {
+      const resolvedPath = getBlogsFilePath();
       fs.writeFileSync(resolvedPath, JSON.stringify(blogs, null, 2), 'utf-8');
-    } catch (e) {
-      console.warn('[blogs-api] Fallback file write failed:', e);
+      cachedBlogs = blogs;
+      console.log('[blogs-api] Synced to local dev file:', resolvedPath);
+      // In local dev, if S3 failed, local file write succeeded
+      if (s3Error) return;
+    } catch (e: any) {
+      console.warn('[blogs-api] Local fallback file write failed:', e);
     }
+  }
+
+  if (s3Error) {
+    throw new HttpError(
+      500,
+      `Failed to persist blog changes to cloud storage (S3): ${s3Error.message || s3Error}`
+    );
   }
 }
 
@@ -179,10 +206,40 @@ export default async function handler(
   res: ServerResponse,
 ): Promise<any> {
   try {
+    // Task 4: Fail loud if S3_BUCKET or AWS credentials are unresolved
+    if (!S3_BUCKET || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+      return sendJson(res, 500, {
+        success: false,
+        error: 'Server config missing: check api/_serverConfig.ts',
+      });
+    }
+
     const url = new URL(req.url || '/', 'http://localhost');
     const method = req.method?.toUpperCase();
     const idParam = url.searchParams.get('id');
     const slugParam = url.searchParams.get('slug');
+
+    // Route /version queries if matched here
+    if (url.pathname.endsWith('/version') || url.searchParams.get('version') === '1') {
+      const all = await getBlogs();
+      const activePub = all.filter((b) => !b.deletedAt && b.status === 'published');
+      const count = activePub.length;
+      const lastUpdated = activePub.reduce((max, b) => {
+        const d = b.updatedAt || b.publishedAt || b.createdAt || '';
+        return d > max ? d : max;
+      }, '');
+      return sendJson(res, 200, { lastUpdated, count });
+    }
+
+    const forceFailure =
+      req.headers['x-force-s3-failure'] === 'true' ||
+      url.searchParams.get('force_s3_error') === '1';
+    const targetBucket = forceFailure ? 'mnm-forced-invalid-bucket-test-failure' : S3_BUCKET;
+
+    // Enforce admin auth on mutation routes (POST, PUT, DELETE)
+    if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+      verifyAdminAuth(req);
+    }
 
     const allBlogs = await getBlogs();
     const activeBlogs = allBlogs.filter((b) => !b.deletedAt);
@@ -304,7 +361,7 @@ export default async function handler(
       };
 
       allBlogs.unshift(newBlog);
-      await saveBlogs(allBlogs);
+      await saveBlogs(allBlogs, targetBucket);
 
       sendJson(res, 201, { success: true, blog: newBlog });
       return;
@@ -379,7 +436,7 @@ export default async function handler(
       };
 
       allBlogs[index] = updatedBlog;
-      await saveBlogs(allBlogs);
+      await saveBlogs(allBlogs, targetBucket);
 
       sendJson(res, 200, { success: true, blog: updatedBlog });
       return;
@@ -412,7 +469,7 @@ export default async function handler(
         }
       });
 
-      await saveBlogs(allBlogs);
+      await saveBlogs(allBlogs, targetBucket);
 
       sendJson(res, 200, {
         success: true,
