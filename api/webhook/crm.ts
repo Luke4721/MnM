@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+const WEBHOOK_SECRET = process.env.CRM_WEBHOOK_SECRET;
 const DEPLOY_WEBHOOK_URL =
   process.env.VERCEL_DEPLOY_WEBHOOK ||
   'https://api.vercel.com/v1/integrations/deploy/prj_EvQWtmw17Bf4icqpqEplu8EilxRw/FZx1l4inJg';
