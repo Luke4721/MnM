@@ -2979,7 +2979,7 @@
   ],
   "functions": {
     "api/**": {
-      "includeFiles": "src/data/blogs_database.json"
+      "includeFiles": "src/data/**"
     }
   },
   "rewrites": [

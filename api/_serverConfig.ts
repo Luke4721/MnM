@@ -36,8 +36,10 @@ if (fs.existsSync(envLocalPath)) {
 export const AWS_ACCESS_KEY_ID: string = process.env.AWS_ACCESS_KEY_ID || '';
 export const AWS_SECRET_ACCESS_KEY: string = process.env.AWS_SECRET_ACCESS_KEY || '';
 
-if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
-  throw new Error('Server config missing: check api/_serverConfig.ts');
+export function assertAwsCredentials() {
+  if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
+    throw new Error('Server config missing: AWS credentials not configured.');
+  }
 }
 
 export default {
