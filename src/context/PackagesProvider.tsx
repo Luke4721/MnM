@@ -2,7 +2,9 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { isPackageActive } from '../types/package';
 import type { TourPackage } from '../types/package';
 
-const API_URL = 'https://yjdlz1pnwl.execute-api.us-east-1.amazonaws.com';
+import { PACKAGES_API_URL } from '../../config/appConfig.ts';
+
+const API_URL = PACKAGES_API_URL;
 
 interface PackagesContextType {
   /**
@@ -84,18 +86,33 @@ export const PackagesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const createPackage = useCallback(
     async (payload: Record<string, unknown>): Promise<TourPackage> => {
+      // Ensure id is sent as string (DynamoDB primary key schema requires S)
+      const stringId =
+        payload.id !== undefined && payload.id !== null
+          ? String(payload.id)
+          : String(Date.now());
+      const safePayload = {
+        ...payload,
+        id: stringId,
+      };
+
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(safePayload),
       });
-      if (!res.ok) throw new Error('Failed to create package in DynamoDB');
-      const created = (await res.json().catch(() => null)) as TourPackage | null;
+      if (!res.ok) {
+        const errText = await res.text().catch(() => '');
+        throw new Error(errText || 'Failed to create package in DynamoDB');
+      }
+      const created = (await res.json().catch(() => null)) as any;
       await fetchPackages();
-      // Some backends return the created record, some return nothing — fall
-      // back to locating it in the refreshed list.
-      if (created && (created.id !== undefined || created.name)) return created;
-      const name = String(payload.name ?? '');
+      // Backend returns { message: 'Success', item: {...} } or {...}
+      const createdItem = created?.item || created;
+      if (createdItem && (createdItem.id !== undefined || createdItem.name)) {
+        return createdItem as TourPackage;
+      }
+      const name = String((safePayload as Record<string, unknown>).name ?? '');
       const match = allPackages.find((p) => p.name === name) ?? null;
       if (!match) throw new Error('Package was created but could not be located after refresh');
       return match;

@@ -42,3 +42,13 @@ export function plainTextToHtml(str: string | undefined | null): string {
     .filter(Boolean)
     .join('');
 }
+
+/**
+ * Normalizes package image URLs. If an S3 image was stored under the
+ * root package-images/ prefix (which is not publicly readable by S3 bucket policy),
+ * rewrite it to the publicly served blog-images/package-images/ route.
+ */
+export function normalizeImageUrl(url?: string | null): string {
+  if (!url) return '';
+  return url.replace('.amazonaws.com/package-images/', '.amazonaws.com/blog-images/package-images/');
+}

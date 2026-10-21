@@ -9,7 +9,9 @@ import {
   CheckCircle2,
   AlertCircle,
   RefreshCw,
+  Image as ImageIcon,
 } from 'lucide-react';
+import { normalizeImageUrl } from '../../lib/packageUtils';
 import { uploadImageToS3, deleteImageFromS3 } from '../lib/s3Service';
 import type { PackageGalleryImage } from '../../types/blogAdmin';
 
@@ -71,7 +73,10 @@ export const PackageImageManager: React.FC<PackageImageManagerProps> = ({
 
     setUploadTasks((prev) => [...prev, ...newTasks]);
 
-    // Process uploads concurrently
+    let currentGallery = [...galleryImages];
+    let currentFeatured = featuredImage;
+
+    // Process uploads
     for (const task of newTasks) {
       try {
         const result = await uploadImageToS3({
@@ -94,11 +99,13 @@ export const PackageImageManager: React.FC<PackageImageManagerProps> = ({
         };
 
         // If no featured image yet, set first uploaded as featured
-        if (!featuredImage) {
+        if (!currentFeatured) {
+          currentFeatured = result.url;
           onFeaturedChange(result.url);
         }
 
-        onGalleryChange([...galleryImages, newImage]);
+        currentGallery = [...currentGallery, newImage];
+        onGalleryChange(currentGallery);
 
         // Remove task on completion
         setTimeout(() => {
@@ -309,8 +316,16 @@ export const PackageImageManager: React.FC<PackageImageManagerProps> = ({
       {/* Featured Image Highlight Banner */}
       {featuredImage && (
         <div className="p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-300/40 rounded-2xl flex flex-col sm:flex-row items-center gap-4">
-          <div className="w-24 h-20 rounded-xl overflow-hidden shadow-md shrink-0 bg-zinc-950">
-            <img src={featuredImage} alt="Main featured" className="w-full h-full object-cover" />
+          <div className="w-24 h-20 rounded-xl overflow-hidden shadow-md shrink-0 bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 flex items-center justify-center relative">
+            <ImageIcon size={20} className="text-gray-400 absolute" />
+            <img
+              src={normalizeImageUrl(featuredImage)}
+              alt="Main featured"
+              className="w-full h-full object-cover relative z-10"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
           </div>
           <div className="flex-1 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-1">
@@ -381,10 +396,18 @@ export const PackageImageManager: React.FC<PackageImageManagerProps> = ({
                     </div>
 
                     {/* Thumbnail */}
-                    <div className="w-24 h-24 rounded-xl overflow-hidden bg-zinc-950 shrink-0 relative group shadow-sm">
-                      <img src={img.url} alt={img.alt || 'Gallery image'} className="w-full h-full object-cover" />
+                    <div className="w-24 h-24 rounded-xl overflow-hidden bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 shrink-0 relative group shadow-sm flex items-center justify-center">
+                      <ImageIcon size={20} className="text-gray-400 absolute" />
+                      <img
+                        src={normalizeImageUrl(img.url)}
+                        alt={img.alt || 'Gallery image'}
+                        className="w-full h-full object-cover relative z-10"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
                       {isFeatured && (
-                        <div className="absolute top-1 left-1 bg-amber-500 text-white p-1 rounded-md shadow">
+                        <div className="absolute top-1 left-1 bg-amber-500 text-white p-1 rounded-md shadow z-20">
                           <Star size={12} className="fill-white" />
                         </div>
                       )}

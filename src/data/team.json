@@ -1,26 +1,42 @@
 [
   {
+    "id": "team_1792579002860",
+    "name": "Sanjeev Kr Verma",
+    "photo_url": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/team-team-1792579034092-1792579035056.png",
+    "email": "sanjeev@mnmtravels.in",
+    "branch": "New Delhi, India,",
+    "phone_number": "+91-8010254885"
+  },
+  {
+    "id": "team_1792578879613",
+    "name": "Sharad Kr Jindal",
+    "photo_url": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/team-team-1792578913264-1792578914242.png",
+    "email": "sharad@mnmtravels.in",
+    "branch": "New Delhi, India,",
+    "phone_number": "+91-8800666299"
+  },
+  {
     "id": "1",
-    "name": "Alice Smith",
-    "photo_url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
-    "email": "alice@mnmtravels.com",
-    "branch": "New Delhi - HQ",
-    "phone_number": "+91-9876543210"
+    "name": "Aniruddh Kr",
+    "photo_url": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/team-team-1792578621997-1792578626399.png",
+    "email": "sales@mnmtravels.in",
+    "branch": "New Delhi, India,",
+    "phone_number": "+91-8800666299"
   },
   {
     "id": "2",
-    "name": "Rahul Sharma",
-    "photo_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
-    "email": "rahul@mnmtravels.com",
-    "branch": "Mumbai Branch",
-    "phone_number": "+91-1234567890"
+    "name": "Savita Giri",
+    "photo_url": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/team-team-1792578723870-1792578724387.png",
+    "email": "tour@mnmtravels.in",
+    "branch": "New Delhi, India,",
+    "phone_number": "+91-9310763436"
   },
   {
     "id": "3",
-    "name": "John Doe",
-    "photo_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
-    "email": "john@mnmtravels.com",
-    "branch": "London Branch",
-    "phone_number": "+44-20-7946-0958"
+    "name": "Nishi Bhoj",
+    "photo_url": "https://mnm-travels-images-105943719409-ap-south-1-an.s3.ap-south-1.amazonaws.com/blog-images/team-team-1792578818596-1792578819188.png",
+    "email": "sales@mnmtravels.in",
+    "branch": "New Delhi, India,",
+    "phone_number": "+91-8800666099"
   }
 ]

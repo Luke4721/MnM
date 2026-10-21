@@ -10,7 +10,7 @@ import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { usePackages } from '../context/PackagesProvider';
 import { sanitizeBlogHtml } from '../lib/sanitize';
-import { plainTextToHtml } from '../lib/packageUtils';
+import { plainTextToHtml, normalizeImageUrl } from '../lib/packageUtils';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -59,7 +59,7 @@ export const PackageDetail: React.FC = () => {
   }
 
   // Handle compatibility for both schemas
-  const imageUrl = pkg.heroImage || pkg.image_url || pkg.image || pkg.img;
+  const imageUrl = normalizeImageUrl(pkg.heroImage || pkg.image_url || pkg.image || pkg.img);
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
   
   const variants = pkg.variants && pkg.variants.length > 0 ? [
@@ -283,7 +283,7 @@ export const PackageDetail: React.FC = () => {
                         <TiltCard>
                           <div className="rounded-[20px] bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                             <div style={{ height: '180px', position: 'relative' }}>
-                              <img src={relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage} alt={relPkg.title || relPkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              <img src={normalizeImageUrl(relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage)} alt={relPkg.title || relPkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.3rem 0.8rem', borderRadius: '999px', color: 'white', fontSize: '0.7rem', fontWeight: 600 }}>
                                 <MapPin size={10} style={{ display: 'inline', marginRight: '4px' }} />
                                 {relPkg.nights || relPkg.duration || (relPkg.durationNights ? `${relPkg.durationNights}N/${relPkg.durationDays}D` : '')}

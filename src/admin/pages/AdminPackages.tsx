@@ -28,9 +28,10 @@ import { Input } from '../components/ui/Input';
 import { ConfirmModal } from '../components/ui/Modal';
 import { useToast } from '../context/ToastContext';
 import { RichTextEditor } from '../components/RichTextEditor';
-import { plainTextToHtml } from '../../lib/packageUtils';
+import { plainTextToHtml, normalizeImageUrl } from '../../lib/packageUtils';
+import { PACKAGES_API_URL } from '../../../config/appConfig.ts';
 
-const API_URL = 'https://yjdlz1pnwl.execute-api.us-east-1.amazonaws.com';
+const API_URL = PACKAGES_API_URL;
 
 type PackageTab = 'active' | 'expired';
 
@@ -180,6 +181,7 @@ export const AdminPackages: React.FC = () => {
         const payload = {
           ...editingPkg,
           ...imageCompat,
+          id: String(editingPkg.id),
           name,
           startingPrice,
           description: descHtml,
@@ -192,20 +194,24 @@ export const AdminPackages: React.FC = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
-        if (!res.ok) throw new Error('Failed to save to DynamoDB');
+        if (!res.ok) {
+          const errText = await res.text().catch(() => '');
+          throw new Error(errText || 'Failed to save to DynamoDB');
+        }
         toast.success(`"${name}" updated successfully!`);
       } else {
         // CREATE: new packages must have a future expiry date (enforced above).
         await createPackage({
-          id: Date.now(),
+          id: String(Date.now()),
           name,
           title: name,
-          slug: name
-            .toLowerCase()
-            .trim()
-            .replace(/[^\w\s-]/g, '')
-            .replace(/[\s_-]+/g, '-')
-            .replace(/^-+|-+$/g, ''),
+          slug:
+            name
+              .toLowerCase()
+              .trim()
+              .replace(/[^\w\s-]/g, '')
+              .replace(/[\s_-]+/g, '-')
+              .replace(/^-+|-+$/g, '') || `package-${Date.now()}`,
           description: descHtml,
           overview: descHtml,
           startingPrice,
@@ -234,7 +240,10 @@ export const AdminPackages: React.FC = () => {
       const res = await fetch(`${API_URL}/${pkgToDelete.id}`, {
         method: 'DELETE',
       });
-      if (!res.ok) throw new Error('Failed to delete');
+      if (!res.ok) {
+        const errText = await res.text().catch(() => '');
+        throw new Error(errText || 'Failed to delete');
+      }
       await refreshPackages();
       toast.success(`Package "${pkgToDelete.name}" deleted successfully.`);
       setPkgToDelete(null);
@@ -287,7 +296,14 @@ export const AdminPackages: React.FC = () => {
         <td className="px-6 py-3.5">
           <div className="w-14 h-10 rounded-xl overflow-hidden bg-gray-100 shrink-0 border border-white/80 shadow-sm">
             {cover ? (
-              <img src={cover} alt={pkg.name} className="w-full h-full object-cover" />
+              <img
+                src={normalizeImageUrl(cover)}
+                alt={pkg.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-400 text-[10px]">
                 No Img

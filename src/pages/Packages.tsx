@@ -9,15 +9,17 @@ import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { PageTransition } from '../components/PageTransition';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
+import { normalizeImageUrl } from '../lib/packageUtils';
 
 const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   const [error, setError] = React.useState(false);
-  if (error || !src) {
+  const normalizedSrc = normalizeImageUrl(src);
+  if (error || !normalizedSrc) {
     return <div className="skeleton-image" style={{ width: '100%', height: '100%', backgroundColor: '#111827' }} />;
   }
   return (
     <img
-      src={src}
+      src={normalizedSrc}
       alt={alt}
       onError={() => setError(true)}
       style={{ width: '100%', height: '100%', objectFit: 'cover' }}

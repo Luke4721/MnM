@@ -45,6 +45,10 @@ export const CONTACT_EMAIL: string =
   getEnv('CONTACT_EMAIL') ??
   'concierge@mnmtravels.com';
 
+export const PACKAGES_API_URL: string =
+  getEnv('VITE_PACKAGES_API_URL', 'PACKAGES_API_URL') ??
+  'https://yjdlz1pnwl.execute-api.us-east-1.amazonaws.com';
+
 export default {
   S3_BUCKET,
   S3_REGION,
@@ -52,4 +56,5 @@ export default {
   ADMIN_API_TOKEN,
   PUBLIC_SITE_URL,
   CONTACT_EMAIL,
+  PACKAGES_API_URL,
 };
