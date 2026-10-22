@@ -17,6 +17,19 @@ export const AdminLayout = () => {
     }
   }, [navigate, location]);
 
+  // Ensure body and html are never scroll-locked when inside the admin layout
+  useEffect(() => {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    document.documentElement.classList.remove('lenis');
+    document.body.classList.remove('lenis');
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [location.pathname]);
+
   // Close mobile drawer on route transition
   useEffect(() => {
     setMobileOpen(false);
@@ -52,7 +65,7 @@ export const AdminLayout = () => {
 
           {/* Page Content Viewport */}
           <div
-            className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 relative z-10"
+            className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 relative z-10 overscroll-y-auto"
             data-lenis-prevent
           >
             <Outlet />

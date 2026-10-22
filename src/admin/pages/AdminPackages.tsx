@@ -91,7 +91,12 @@ export const AdminPackages: React.FC = () => {
   const isEditingExisting = Boolean(editingPkg?.id);
 
   const startEditing = (pkg: TourPackage) => {
-    const rawDesc = pkg.description || pkg.overview || '';
+    const rawDesc =
+      typeof pkg.description === 'string' && pkg.description.trim()
+        ? pkg.description
+        : typeof pkg.overview === 'string' && pkg.overview.trim()
+        ? pkg.overview
+        : '';
     const htmlDesc = plainTextToHtml(rawDesc);
     setEditingPkg({
       ...pkg,
@@ -486,9 +491,11 @@ export const AdminPackages: React.FC = () => {
                 Description &amp; Overview
               </label>
               <RichTextEditor
-                value={editingPkg.description || editingPkg.overview || ''}
+                value={String(editingPkg.description || editingPkg.overview || '')}
                 onChange={(html) =>
-                  setEditingPkg({ ...editingPkg, description: html, overview: html })
+                  setEditingPkg((prev) =>
+                    prev ? { ...prev, description: html, overview: html } : prev
+                  )
                 }
                 minHeight="220px"
                 placeholder="Comprehensive overview of itinerary, inclusions, and highlights..."
@@ -597,7 +604,7 @@ export const AdminPackages: React.FC = () => {
           </div>
 
           {/* Packages Table */}
-          <div className="overflow-x-auto" data-lenis-prevent>
+          <div className="overflow-x-auto overscroll-x-contain overscroll-y-auto" data-lenis-prevent>
             {loading ? (
               <div className="p-12 text-center text-gray-500 text-sm">
                 Loading packages from AWS DynamoDB...

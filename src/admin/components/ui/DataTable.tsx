@@ -90,7 +90,7 @@ export function DataTable<T>({
   return (
     <div className="w-full flex flex-col">
       {/* Table Container */}
-      <div className="overflow-x-auto rounded-2xl border border-white/60 bg-white/50 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]" data-lenis-prevent>
+      <div className="overflow-x-auto overscroll-x-contain overscroll-y-auto rounded-2xl border border-white/60 bg-white/50 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]" data-lenis-prevent>
         <table className="w-full border-collapse text-left text-[13px]">
           <thead>
             <tr className="border-b border-white/60 bg-white/40 text-[11px] font-bold text-gray-500 uppercase tracking-wider">

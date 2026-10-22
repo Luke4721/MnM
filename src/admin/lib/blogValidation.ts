@@ -45,7 +45,8 @@ export function generateSlug(title: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-export function calculateReadTime(text: string): string {
+export function calculateReadTime(text: unknown): string {
+  if (typeof text !== 'string') return '1 min read';
   const wordsPerMinute = 200;
   // Strip HTML tags
   const cleanText = text.replace(/<[^>]*>?/gm, ' ');
@@ -54,7 +55,8 @@ export function calculateReadTime(text: string): string {
   return `${Math.max(1, minutes)} min read`;
 }
 
-export function countWords(text: string): number {
+export function countWords(text: unknown): number {
+  if (typeof text !== 'string') return 0;
   const cleanText = text.replace(/<[^>]*>?/gm, ' ');
   return cleanText.trim().split(/\s+/).filter(Boolean).length;
 }

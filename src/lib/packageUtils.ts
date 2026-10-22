@@ -11,9 +11,10 @@
  * - If plain text: escapes HTML entities, splits double newlines into <p> blocks,
  *   and converts single newlines into <br /> tags.
  */
-export function plainTextToHtml(str: string | undefined | null): string {
+export function plainTextToHtml(str: string | undefined | null | unknown): string {
   if (!str) return '';
-  const trimmed = str.trim();
+  const text = typeof str === 'string' ? str : String(str);
+  const trimmed = text.trim();
   if (!trimmed) return '';
 
   // If the value already contains HTML tags, return it as-is

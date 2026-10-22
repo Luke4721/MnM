@@ -298,7 +298,7 @@ export const AdminBlogs: React.FC = () => {
         </div>
 
         {/* Table View */}
-        <div className="overflow-x-auto" data-lenis-prevent>
+        <div className="overflow-x-auto overscroll-x-contain overscroll-y-auto" data-lenis-prevent>
           {loading ? (
             <div className="p-16 text-center text-gray-500 text-xs">
               <LoadingSpinner size="lg" variant="primary" className="mx-auto mb-3" />

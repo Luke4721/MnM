@@ -39,14 +39,22 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   const editorRef = useRef<HTMLDivElement>(null);
   const isUpdatingRef = useRef(false);
 
+  const safeValue = typeof value === 'string' ? value : value ? String(value) : '';
+  const isVisuallyEmpty =
+    !safeValue ||
+    safeValue === '<p><br></p>' ||
+    safeValue === '<br>' ||
+    safeValue === '<p></p>' ||
+    safeValue.trim() === '';
+
   // Sync incoming value to contentEditable when not user-typing
   useEffect(() => {
     if (editorRef.current && !isUpdatingRef.current) {
-      if (editorRef.current.innerHTML !== value) {
-        editorRef.current.innerHTML = value || '';
+      if (editorRef.current.innerHTML !== safeValue) {
+        editorRef.current.innerHTML = safeValue;
       }
     }
-  }, [value]);
+  }, [safeValue, activeTab]);
 
   const updateFormatStates = () => {
     if (activeTab !== 'visual') return;
@@ -158,8 +166,8 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
     exec('formatBlock', tag);
   };
 
-  const words = countWords(value || '');
-  const readingTime = calculateReadTime(value || '');
+  const words = countWords(safeValue);
+  const readingTime = calculateReadTime(safeValue);
 
   return (
     <div className="border border-gray-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm overflow-hidden flex flex-col">
@@ -356,36 +364,46 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
       {/* Editor Body */}
       <div className="relative flex-1 bg-white dark:bg-zinc-900" style={{ minHeight }}>
-        {activeTab === 'visual' && (
-          <div
-            ref={editorRef}
-            contentEditable
-            onInput={handleInput}
-            onBlur={handleInput}
-            onKeyUp={updateFormatStates}
-            onMouseUp={updateFormatStates}
-            onFocus={updateFormatStates}
-            data-placeholder={placeholder}
-            className="w-full h-full p-5 outline-none prose prose-sm md:prose-base dark:prose-invert max-w-none focus:ring-0 leading-relaxed overflow-y-auto"
-            style={{ minHeight }}
-          />
-        )}
+        {/* Visual Editor (Kept mounted to preserve selection, inner state & DOM nodes) */}
+        <div
+          ref={editorRef}
+          contentEditable
+          onInput={handleInput}
+          onBlur={handleInput}
+          onKeyUp={updateFormatStates}
+          onMouseUp={updateFormatStates}
+          onFocus={updateFormatStates}
+          data-placeholder={placeholder}
+          data-empty={isVisuallyEmpty ? 'true' : undefined}
+          className={`w-full h-full p-5 outline-none prose prose-sm md:prose-base dark:prose-invert max-w-none focus:ring-0 leading-relaxed overflow-y-auto ${
+            activeTab === 'visual' ? 'block' : 'hidden'
+          }`}
+          style={{ minHeight }}
+        />
 
+        {/* HTML Source Tab */}
         {activeTab === 'html' && (
           <textarea
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
+            value={safeValue}
+            onChange={(e) => {
+              const newVal = e.target.value;
+              onChange(newVal);
+              if (editorRef.current) {
+                editorRef.current.innerHTML = newVal;
+              }
+            }}
             className="w-full h-full p-4 font-mono text-xs bg-zinc-950 text-emerald-400 outline-none resize-y"
             style={{ minHeight }}
             placeholder="<p>Enter raw HTML content here...</p>"
           />
         )}
 
+        {/* Preview Tab */}
         {activeTab === 'preview' && (
           <div className="w-full h-full p-6 overflow-y-auto bg-gray-50/50 dark:bg-zinc-950" style={{ minHeight }}>
             <div
               className="prose prose-sm md:prose-base dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: value || '<p className="text-gray-400 italic">No content yet.</p>' }}
+              dangerouslySetInnerHTML={{ __html: safeValue || '<p className="text-gray-400 italic">No content yet.</p>' }}
             />
           </div>
         )}
