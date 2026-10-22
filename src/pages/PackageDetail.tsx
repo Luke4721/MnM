@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Star, ChevronDown, Check, ArrowRight, Shield, CreditCard, ChevronLeft } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyProvider';
 import { PageTransition } from '../components/PageTransition';
 import { EnquiryModal } from '../components/EnquiryModal';
+import { scrollToTop } from '../components/SmoothScroll';
 
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
@@ -20,6 +21,10 @@ export const PackageDetail: React.FC = () => {
   const [activeDay, setActiveDay] = useState<number | null>(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+
+  useEffect(() => {
+    scrollToTop(true);
+  }, [slug]);
 
   // Fallback to id if slug is not found (for backwards compatibility)
   const pkg = dbPackages.find(p => p.slug === slug || p.id.toString() === slug);
@@ -290,7 +295,7 @@ export const PackageDetail: React.FC = () => {
                       viewport={{ once: true, margin: '-50px' }}
                       transition={{ delay: (index % 6) * 0.05 }}
                     >
-                      <Link to={`/packages/${relPkg.slug || relPkg.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo(0,0)}>
+                      <Link to={`/packages/${relPkg.slug || relPkg.id}`} style={{ textDecoration: 'none' }} onClick={() => scrollToTop(true)}>
                         <TiltCard>
                           <div className="rounded-[20px] bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                             <div style={{ height: '180px', position: 'relative' }}>

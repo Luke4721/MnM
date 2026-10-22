@@ -6,6 +6,7 @@ import {
   searchBlogs, formatBlogDate, truncateExcerpt, publishedBlogs, BUILD_LAST_UPDATED, type Blog as BlogType
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
+import { scrollToTop } from '../components/SmoothScroll';
 import { Footer } from '../components/Footer';
 
 const PAGE_SIZE = 20;
@@ -65,7 +66,7 @@ export const Blog: React.FC = () => {
 
   const goToPage = (p: number) => {
     setPage(Math.min(Math.max(1, p), totalPages));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop(false);
   };
 
   useSeo({

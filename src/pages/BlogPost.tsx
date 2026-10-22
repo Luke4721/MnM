@@ -8,6 +8,7 @@ import {
   type Blog, type BlogFaq
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
+import { scrollToTop } from '../components/SmoothScroll';
 import { SOCIAL_LINKS } from '../components/SocialLinks';
 import { Footer } from '../components/Footer';
 
@@ -92,7 +93,7 @@ export const BlogPost: React.FC = () => {
   const [isFetching, setIsFetching] = useState(!localBlog || !localBlog.content);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTop(true);
     let isMounted = true;
 
     // Fast path: use bundled blog metadata if present

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { scrollToTop } from './SmoothScroll';
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -12,6 +13,10 @@ const variants = {
 };
 
 export const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
+  useEffect(() => {
+    scrollToTop(true);
+  }, []);
+
   return (
     <motion.div
       variants={variants}
