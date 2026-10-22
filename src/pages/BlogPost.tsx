@@ -1,14 +1,86 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Clock, Calendar, BookOpen, Link2, Check } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, BookOpen, Link2, Check, ChevronDown, HelpCircle } from 'lucide-react';
 import {
   blogBySlug, relatedBlogs, formatBlogDate, truncateExcerpt, sanitizeBlogHtml,
-  fetchBlogBySlug, optimizePostImages, SITE_URL, type Blog
+  fetchBlogBySlug, optimizePostImages, getBlogFaqs, hasFaqInContent, SITE_URL,
+  type Blog, type BlogFaq
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
 import { SOCIAL_LINKS } from '../components/SocialLinks';
 import { Footer } from '../components/Footer';
+
+interface BlogFaqAccordionProps {
+  faqs: BlogFaq[];
+  title?: string;
+}
+
+const BlogFaqAccordion: React.FC<BlogFaqAccordionProps> = ({ faqs, title }) => {
+  const [openIndices, setOpenIndices] = useState<number[]>([0]);
+
+  const toggle = (idx: number) => {
+    setOpenIndices((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
+
+  return (
+    <section aria-labelledby="faq-section-heading" className="mt-16 pt-10 border-t border-gray-200/80 dark:border-white/10">
+      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#FF9933] mb-3">
+        <HelpCircle size={16} />
+        <span>Essential Q&A</span>
+      </div>
+      <h2 id="faq-section-heading" className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-3">
+        Frequently Asked Questions
+      </h2>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+        Common questions and helpful travel details for {title ? title.split(/[:,-]/)[0].trim() : 'this destination'}.
+      </p>
+
+      <div className="space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndices.includes(index);
+          return (
+            <div
+              key={index}
+              className={`rounded-2xl transition-all duration-300 border ${
+                isOpen
+                  ? 'bg-orange-50/40 dark:bg-orange-950/20 border-[#FF9933]/30 shadow-sm'
+                  : 'bg-gray-50/50 dark:bg-zinc-800/30 border-gray-200/70 dark:border-white/5 hover:border-gray-300 dark:hover:border-zinc-700'
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => toggle(index)}
+                aria-expanded={isOpen}
+                className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9933] rounded-2xl group"
+              >
+                <span className="text-base md:text-lg font-bold text-gray-900 dark:text-white group-hover:text-[#FF9933] transition-colors leading-snug">
+                  {faq.question}
+                </span>
+                <span
+                  className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    isOpen
+                      ? 'rotate-180 bg-[#FF9933] text-white shadow-sm'
+                      : 'bg-gray-200/70 dark:bg-zinc-700/60 text-gray-600 dark:text-gray-300 group-hover:bg-[#FF9933]/10 group-hover:text-[#FF9933]'
+                  }`}
+                >
+                  <ChevronDown size={18} />
+                </span>
+              </button>
+              {isOpen && (
+                <div className="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line border-t border-orange-100/60 dark:border-orange-900/20 pt-4">
+                  {faq.answer}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -62,13 +134,13 @@ export const BlogPost: React.FC = () => {
   const related = useMemo(() => (blog ? relatedBlogs(blog, 4) : []), [blog]);
   const shareUrl = blog ? `${SITE_URL}/blog/${blog.slug}` : '';
 
-  useSeo(blog ? {
-    title: `${blog.seo?.title || blog.title} | Monks & Monkeys Travels`,
-    description: blog.seo?.description || truncateExcerpt(blog.excerpt, 158),
-    image: blog.featuredImage,
-    canonicalPath: `/blog/${blog.slug}`,
-    type: 'article',
-    jsonLd: {
+  const blogFaqs = useMemo(() => getBlogFaqs(blog), [blog]);
+  const contentHasFaqs = useMemo(() => hasFaqInContent(blog?.content), [blog?.content]);
+
+  const jsonLd = useMemo(() => {
+    if (!blog) return undefined;
+
+    const blogPosting: Record<string, any> = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       headline: blog.title,
@@ -84,7 +156,35 @@ export const BlogPost: React.FC = () => {
         name: 'Monks & Monkeys Travels',
       },
       mainEntityOfPage: { '@type': 'WebPage', '@id': shareUrl },
-    },
+    };
+
+    if (blogFaqs.length === 0) {
+      return blogPosting;
+    }
+
+    const faqPage: Record<string, any> = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: blogFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+
+    return [blogPosting, faqPage];
+  }, [blog, blogFaqs, shareUrl]);
+
+  useSeo(blog ? {
+    title: `${blog.seo?.title || blog.title} | Monks & Monkeys Travels`,
+    description: blog.seo?.description || truncateExcerpt(blog.excerpt, 158),
+    image: blog.featuredImage,
+    canonicalPath: `/blog/${blog.slug}`,
+    type: 'article',
+    jsonLd,
   } : { title: 'Travel Journal | Monks & Monkeys Travels', description: '' });
 
   if (!blog) {
@@ -231,6 +331,11 @@ export const BlogPost: React.FC = () => {
               <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#FF9933] border-t-transparent"></div>
               <p className="text-sm font-medium text-gray-500">Loading travel story...</p>
             </div>
+          )}
+
+          {/* Frequently Asked Questions Section */}
+          {blogFaqs.length > 0 && !contentHasFaqs && (
+            <BlogFaqAccordion faqs={blogFaqs} title={blog.title} />
           )}
 
           {/* Mobile Social Links (icons only, Instagram / Facebook / YouTube) */}

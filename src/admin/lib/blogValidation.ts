@@ -32,6 +32,14 @@ export const blogFormSchema = z.object({
       keywords: '',
     }),
   relatedBlogIds: z.array(z.string()).default([]),
+  faqs: z
+    .array(
+      z.object({
+        question: z.string(),
+        answer: z.string(),
+      })
+    )
+    .default([]),
 });
 
 export type BlogFormSchema = z.infer<typeof blogFormSchema>;

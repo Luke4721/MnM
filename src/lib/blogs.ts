@@ -20,6 +20,11 @@ export interface BlogLegacy {
   oldThumbnail?: string;
 }
 
+export interface BlogFaq {
+  question: string;
+  answer: string;
+}
+
 export interface Blog {
   id: string;
   title: string;
@@ -37,6 +42,7 @@ export interface Blog {
   date?: string;
   seo?: BlogSeo;
   legacy?: BlogLegacy;
+  faqs?: BlogFaq[];
   /** Compat alias for featuredImage — the original pages read `image`. */
   image?: string;
   imageCaption?: string;
@@ -190,4 +196,74 @@ export function getBlogCategories(): { total: number; counts: Record<string, num
       return acc;
     }, {}),
   };
+}
+
+/** Clean FAQ question string (trim, strip numbers/dots, fix punctuation) */
+export function cleanFaqQuestion(q: string): string {
+  if (!q) return '';
+  let str = q.trim().replace(/^(\d+[\.\)]|\.)\s*/, '');
+  str = str.replace(/\s+\?$/, '?');
+  if (!str.endsWith('?') && !str.endsWith('.') && !str.endsWith('!')) {
+    str += '?';
+  }
+  return str;
+}
+
+/** Check if blog HTML content already includes an FAQ section */
+export function hasFaqInContent(html?: string): boolean {
+  if (!html) return false;
+  return (
+    /<h[23][^>]*>(?:[^<]*\b(?:faq|faqs|frequently\s+asked\s+questions)\b[^<]*)<\/h[23]>/i.test(html) ||
+    /<details[\s\S]*?<summary/i.test(html) ||
+    /class="[^"]*(?:blog-faq|faq-section|faq-item)[^"]*"/i.test(html)
+  );
+}
+
+/** Extract FAQ questions and answers from blog HTML content */
+export function extractFaqsFromHtml(html?: string): BlogFaq[] {
+  if (!html) return [];
+  const faqs: BlogFaq[] = [];
+
+  // 1. Look for <details><summary>Question</summary>Answer</details>
+  const detailsRegex = /<details[^>]*>[\s\S]*?<summary[^>]*>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/gi;
+  let match: RegExpExecArray | null;
+  while ((match = detailsRegex.exec(html)) !== null) {
+    const q = match[1].replace(/<[^>]*>/g, '').trim();
+    const a = match[2].replace(/<[^>]*>/g, '').trim();
+    if (q && a) {
+      faqs.push({ question: cleanFaqQuestion(q), answer: a });
+    }
+  }
+  if (faqs.length > 0) return faqs;
+
+  // 2. Look for FAQ heading (h2 or h3 with FAQ or Frequently Asked Questions)
+  const faqHeadingMatch = /<h([23])[^>]*>(?:[^<]*\b(?:faq|faqs|frequently\s+asked\s+questions)\b[^<]*)<\/h\1>/i.exec(html);
+  if (faqHeadingMatch && faqHeadingMatch.index !== undefined) {
+    const afterHeading = html.slice(faqHeadingMatch.index + faqHeadingMatch[0].length);
+    // Find questions in <h3>, <h4>, or <p><strong>
+    const qaRegex = /<(?:h[34]|p>\s*<strong)[^>]*>([\s\S]*?)<\/(?:h[34]|strong>\s*<\/p>)\s*([\s\S]*?)(?=(?:<(?:h[234]|p>\s*<strong)|$))/gi;
+    let qaMatch: RegExpExecArray | null;
+    while ((qaMatch = qaRegex.exec(afterHeading)) !== null) {
+      const q = qaMatch[1].replace(/<[^>]*>/g, '').trim();
+      const a = qaMatch[2].replace(/<[^>]*>/g, '').trim();
+      if (/faq|frequently\s+asked/i.test(q) && q.length < 35) continue;
+      if (q && a && q.length > 5 && a.length > 5) {
+        faqs.push({ question: cleanFaqQuestion(q), answer: a });
+      }
+    }
+  }
+
+  return faqs;
+}
+
+/** Get FAQs for a blog post (returns blog.faqs if populated, else parses from content) */
+export function getBlogFaqs(blog?: Blog | null): BlogFaq[] {
+  if (!blog) return [];
+  if (Array.isArray(blog.faqs) && blog.faqs.length > 0) {
+    return blog.faqs;
+  }
+  if (blog.content) {
+    return extractFaqsFromHtml(blog.content);
+  }
+  return [];
 }

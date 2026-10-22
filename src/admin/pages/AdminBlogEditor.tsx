@@ -9,6 +9,9 @@ import {
   Tag,
   Globe,
   BookOpen,
+  HelpCircle,
+  Plus,
+  Trash2,
 } from 'lucide-react';
 import { RichTextEditor } from '../components/RichTextEditor';
 import { ImageUpload } from '../components/ImageUpload';
@@ -56,6 +59,7 @@ export const AdminBlogEditor: React.FC = () => {
       ogImage: '',
     },
     relatedBlogIds: [],
+    faqs: [],
   });
 
   const [tagInput, setTagInput] = useState('');
@@ -103,6 +107,7 @@ export const AdminBlogEditor: React.FC = () => {
                 ogImage: b.seo?.ogImage || '',
               },
               relatedBlogIds: Array.isArray(b.relatedBlogIds) ? b.relatedBlogIds : [],
+              faqs: Array.isArray(b.faqs) ? b.faqs : [],
             });
             setAutoSlugLocked(false);
           } else {
@@ -192,6 +197,28 @@ export const AdminBlogEditor: React.FC = () => {
     }
     setErrors({});
     return true;
+  };
+
+  const handleAddFaq = () => {
+    setFormData((prev) => ({
+      ...prev,
+      faqs: [...(prev.faqs || []), { question: '', answer: '' }],
+    }));
+  };
+
+  const handleUpdateFaq = (idx: number, field: 'question' | 'answer', val: string) => {
+    setFormData((prev) => {
+      const updated = [...(prev.faqs || [])];
+      updated[idx] = { ...updated[idx], [field]: val };
+      return { ...prev, faqs: updated };
+    });
+  };
+
+  const handleRemoveFaq = (idx: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      faqs: (prev.faqs || []).filter((_, i) => i !== idx),
+    }));
   };
 
   const handleSubmit = async (overrideStatus?: 'draft' | 'published') => {
@@ -793,6 +820,80 @@ export const AdminBlogEditor: React.FC = () => {
               );
             })}
           </div>
+        </Card>
+
+        {/* ============================================================== */}
+        {/* SECTION F: Frequently Asked Questions (FAQPage Schema) */}
+        {/* ============================================================== */}
+        <Card className="p-6 md:p-8 space-y-6">
+          <div className="flex items-center justify-between border-b border-white/40 pb-3">
+            <div>
+              <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200/60">
+                Section F
+              </span>
+              <h2 className="text-lg font-bold text-gray-900 mt-2">
+                Frequently Asked Questions (FAQ)
+              </h2>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Included in page body and indexed by Google as FAQPage JSON-LD rich snippets.
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="secondary"
+              size="sm"
+              iconLeft={<Plus size={14} />}
+              onClick={handleAddFaq}
+            >
+              Add FAQ
+            </Button>
+          </div>
+
+          {(!formData.faqs || formData.faqs.length === 0) ? (
+            <div className="text-center py-8 border-2 border-dashed border-gray-200 rounded-xl">
+              <HelpCircle size={28} className="mx-auto text-gray-400 mb-2" />
+              <p className="text-sm font-medium text-gray-600">No FAQs added yet</p>
+              <p className="text-xs text-gray-400 mt-1">
+                Click "Add FAQ" to provide questions and answers for readers and Google search snippets.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {formData.faqs.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 bg-gray-50/70 rounded-xl border border-gray-200/80 space-y-3 relative group"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                      FAQ #{idx + 1}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFaq(idx)}
+                      className="text-gray-400 hover:text-rose-600 transition-colors p-1"
+                      title="Remove FAQ"
+                    >
+                      <Trash2 size={15} />
+                    </button>
+                  </div>
+                  <Input
+                    label="Question"
+                    value={faq.question}
+                    onChange={(e) => handleUpdateFaq(idx, 'question', e.target.value)}
+                    placeholder="e.g. What are the visiting hours?"
+                  />
+                  <Textarea
+                    label="Answer"
+                    rows={2}
+                    value={faq.answer}
+                    onChange={(e) => handleUpdateFaq(idx, 'answer', e.target.value)}
+                    placeholder="Provide a clear, direct answer..."
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </Card>
 
         {/* Bottom Save Bar */}

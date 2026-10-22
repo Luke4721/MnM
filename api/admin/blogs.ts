@@ -319,6 +319,7 @@ export default async function handler(
         seo = {},
         tags = [],
         relatedBlogIds = [],
+        faqs = [],
       } = body;
 
       if (!title || !slug || !content) {
@@ -360,6 +361,7 @@ export default async function handler(
         },
         tags: Array.isArray(tags) ? tags : [],
         relatedBlogIds: Array.isArray(relatedBlogIds) ? relatedBlogIds : [],
+        faqs: Array.isArray(faqs) ? faqs : [],
         createdAt: new Date().toISOString(),
       };
 
@@ -402,6 +404,7 @@ export default async function handler(
         seo = current.seo,
         tags = current.tags,
         relatedBlogIds = current.relatedBlogIds,
+        faqs = current.faqs,
       } = body;
 
       // Check slug collision
@@ -435,6 +438,7 @@ export default async function handler(
         },
         tags: Array.isArray(tags) ? tags : current.tags || [],
         relatedBlogIds: Array.isArray(relatedBlogIds) ? relatedBlogIds : current.relatedBlogIds || [],
+        faqs: Array.isArray(faqs) ? faqs : (current.faqs || []),
         updatedAt: new Date().toISOString(),
       };
 

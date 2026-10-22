@@ -100,6 +100,112 @@ body {
 .blog-content a { color: var(--brand, #f97316); text-decoration: underline; text-underline-offset: 2px; }
 .blog-content img { border-radius: 16px; max-width: 100%; height: auto; }
 
+/* Scoped FAQ Accordion & Q&A styling for blog content (Scenario A) */
+.blog-content .faq-section,
+.blog-content .blog-faqs {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(229, 231, 235, 0.8);
+}
+.dark .blog-content .faq-section,
+.dark .blog-content .blog-faqs {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.blog-content details {
+  background: rgba(249, 250, 251, 0.75);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  transition: all 0.2s ease;
+}
+.dark .blog-content details {
+  background: rgba(39, 39, 42, 0.4);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.blog-content details[open] {
+  background: rgba(255, 247, 237, 0.5);
+  border-color: rgba(255, 153, 51, 0.35);
+}
+.dark .blog-content details[open] {
+  background: rgba(67, 30, 8, 0.15);
+  border-color: rgba(255, 153, 51, 0.25);
+}
+.blog-content summary {
+  font-weight: 700;
+  font-size: 1.0625rem;
+  cursor: pointer;
+  color: #111827;
+  padding-right: 1.5rem;
+  position: relative;
+  list-style: none;
+}
+.blog-content summary::-webkit-details-marker {
+  display: none;
+}
+.blog-content summary::after {
+  content: '▾';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #f97316;
+  transition: transform 0.2s ease;
+}
+.blog-content details[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.dark .blog-content summary {
+  color: #f3f4f6;
+}
+.blog-content details > *:not(summary) {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 153, 51, 0.15);
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+.dark .blog-content details > *:not(summary) {
+  color: #d1d5db;
+}
+
+.blog-content .faq-item {
+  background: rgba(249, 250, 251, 0.75);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 1rem;
+  margin: 1.25rem 0;
+  padding: 1.25rem 1.5rem;
+}
+.dark .blog-content .faq-item {
+  background: rgba(39, 39, 42, 0.4);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.blog-content .faq-item h3,
+.blog-content .faq-question {
+  color: #111827;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+.dark .blog-content .faq-item h3,
+.dark .blog-content .faq-question {
+  color: #f3f4f6;
+}
+.blog-content .faq-item p,
+.blog-content .faq-answer {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+.dark .blog-content .faq-item p,
+.dark .blog-content .faq-answer {
+  color: #9ca3af;
+}
+
 /* RichTextEditor contenteditable placeholder */
 [contenteditable][data-placeholder]:empty::before,
 [contenteditable][data-placeholder][data-empty="true"]::before {

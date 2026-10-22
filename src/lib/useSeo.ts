@@ -76,19 +76,24 @@ export function useSeo(seo: SeoTags): void {
     }
     canonical.href = url;
 
-    let ldScript: HTMLScriptElement | null = null;
+    const ldScripts: HTMLScriptElement[] = [];
     if (jsonLd) {
-      ldScript = document.createElement('script');
-      ldScript.type = 'application/ld+json';
-      ldScript.setAttribute('data-seo', 'blog');
-      ldScript.textContent = JSON.stringify(jsonLd);
-      document.head.appendChild(ldScript);
+      const items = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+      for (const item of items) {
+        if (!item || typeof item !== 'object') continue;
+        const s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.setAttribute('data-seo', 'blog');
+        s.textContent = JSON.stringify(item);
+        document.head.appendChild(s);
+        ldScripts.push(s);
+      }
     }
 
     return () => {
       document.title = previousTitle;
       created.forEach((el) => el.remove());
-      ldScript?.remove();
+      ldScripts.forEach((s) => s.remove());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, description, image, canonicalPath, type, JSON.stringify(jsonLd)]);

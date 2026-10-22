@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-10-22T12:48:04.623Z",
+  "sqlPath": "C:\\Users\\Windows\\Downloads\\mnm_backup_complete.sql",
+  "rawFaqRows": 3053,
+  "distinctSqlBlogIds": 602,
+  "blogsInDatabase": 607,
+  "matchedBlogsCount": 599,
+  "totalFaqsAttached": 3038,
+  "sampleUpdated": [
+    {
+      "slug": "reiek-tourism-guide-2026-best-things-to-do-trekking-travel-tips",
+      "title": "Reiek Tourism Guide 2026: Best Things to Do, Trekking & Travel Tips",
+      "oldId": 614,
+      "faqCount": 5,
+      "firstFaq": {
+        "question": "Where is Reiek located?",
+        "answer": "Reiek is a picturesque hill village located approximately 30 km from Aizawl, the capital city of Mizoram, in Northeast India."
+      }
+    },
+    {
+      "slug": "radhanagar-beach-asias-award-winning-tropical-paradise-in-andaman",
+      "title": "Radhanagar Beach - Asia's Award-Winning Tropical Paradise in Andaman",
+      "oldId": 613,
+      "faqCount": 5,
+      "firstFaq": {
+        "question": "Why is Radhanagar Beach famous?",
+        "answer": "It is famous for its white sand, turquoise waters, peaceful atmosphere, and breathtaking sunsets."
+      }
+    },
+    {
+      "slug": "tamdil-lake-mizoram-the-serene-lake-of-mustard-amid-nature-s-paradise",
+      "title": "Tamdil Lake, Mizoram - The Serene Lake of Mustard Amid Nature’s Paradise",
+      "oldId": 612,
+      "faqCount": 5,
+      "firstFaq": {
+        "question": "What is Tamdil Lake famous for?",
+        "answer": "Tamdil Lake is famous for its scenic beauty, boating activities, rich biodiversity, and fascinating folklore related to the \"Lake of Mustard."
+      }
+    },
+    {
+      "slug": "havelock-island-swaraj-dweep-the-tropical-paradise-of-the-andaman-islands",
+      "title": "Havelock Island (Swaraj Dweep) - The Tropical Paradise of the Andaman Islands",
+      "oldId": 611,
+      "faqCount": 5,
+      "firstFaq": {
+        "question": "Why is Havelock Island famous?",
+        "answer": "It is famous for Radhanagar Beach, Elephant Beach, scuba diving, snorkeling, and stunning natural beauty."
+      }
+    },
+    {
+      "slug": "aizawl-travel-guide-2026-top-places-to-visit-best-time-to-visit-tourist",
+      "title": "Aizawl Travel Guide 2026: Top Places to Visit, Best Time to Visit & Tourist Attractions",
+      "oldId": 610,
+      "faqCount": 5,
+      "firstFaq": {
+        "question": "What are the top places to visit in Aizawl?",
+        "answer": "Popular attractions include Durtlang Hills, Solomon's Temple, Mizoram State Museum, Bara Bazar, and nearby Reiek Village."
+      }
+    }
+  ]
+}

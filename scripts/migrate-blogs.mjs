@@ -110,6 +110,17 @@ function extractBlogInserts(sqlText) {
   return rows;
 }
 
+/** Extract every `INSERT INTO `tbl_blog_faqs` VALUES ...;` payload from the dump. */
+function extractBlogFaqInserts(sqlText) {
+  const rows = [];
+  const re = /INSERT INTO `tbl_blog_faqs` VALUES ([\s\S]*?);\r?\n/g;
+  let m;
+  while ((m = re.exec(sqlText)) !== null) {
+    rows.push(...parseTuples(m[1]));
+  }
+  return rows;
+}
+
 // ---------------------------------------------------------------------------
 // Transform helpers
 // ---------------------------------------------------------------------------
@@ -174,7 +185,7 @@ const sqlValue = (v) => (v === 'NULL' ? null : v);
 /** Transform one legacy row into the new blog schema. `stableId` reuses the
  *  UUID of a previously migrated copy of the same legacy blog so re-runs
  *  don't churn ids. */
-function transformBlog(row, slug, stableId) {
+function transformBlog(row, slug, stableId, faqs = []) {
   const oldId = Number(row[0]);
   const heading = decodeEntities(sqlValue(row[1]) || '');
   const content = decodeEntities(sqlValue(row[6]) || '');
@@ -204,6 +215,7 @@ function transformBlog(row, slug, stableId) {
       description: decodeEntities(sqlValue(row[8]) || '') || excerpt,
       keywords: decodeEntities(sqlValue(row[9]) || '') || '',
     },
+    faqs: Array.isArray(faqs) ? faqs : [],
     // -- legacy reference (for redirects / image replacement) ----------------
     legacy: {
       source: 'mnmtravels_sql',
@@ -239,6 +251,21 @@ function main() {
     process.exit(1);
   }
 
+  const legacyFaqRows = extractBlogFaqInserts(sqlText);
+  console.log(`Parsed ${legacyFaqRows.length} legacy FAQ rows from the dump.`);
+  const faqsByOldId = new Map();
+  legacyFaqRows.forEach((r) => {
+    const blogId = Number(r[1]);
+    const qRaw = decodeEntities(sqlValue(r[2]) || '').trim();
+    const aRaw = decodeEntities(sqlValue(r[3]) || '').trim();
+    if (!qRaw || !aRaw) return;
+    let question = qRaw.replace(/^(\d+[\.\)]|\.)\s*/, '').replace(/\s+\?$/, '?');
+    if (!question.endsWith('?') && !question.endsWith('.') && !question.endsWith('!')) question += '?';
+    const answer = aRaw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    if (!faqsByOldId.has(blogId)) faqsByOldId.set(blogId, []);
+    faqsByOldId.get(blogId).push({ question, answer });
+  });
+
   const errors = [];
   const seenOldIds = new Set();
   const migrated = [];
@@ -268,7 +295,7 @@ function main() {
       while (slugCounts.has(slug)) slug = `${base}-${n++}`;
       slugCounts.set(slug, 1);
 
-      migrated.push(transformBlog(row, slug, stableIdByOldId.get(oldId)));
+      migrated.push(transformBlog(row, slug, stableIdByOldId.get(oldId), faqsByOldId.get(oldId) || []));
       if ((idx + 1) % 50 === 0) console.log(`  transformed ${idx + 1}/${legacyRows.length}...`);
     } catch (err) {
       errors.push({ index: idx, heading: row[1], error: String(err.message) });

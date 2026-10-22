@@ -5,6 +5,11 @@ export interface BlogSeo {
   ogImage?: string;
 }
 
+export interface BlogFaq {
+  question: string;
+  answer: string;
+}
+
 export interface BlogItem {
   id: string;
   title: string;
@@ -24,6 +29,7 @@ export interface BlogItem {
   tags?: string[];
   relatedBlogIds?: string[];
   image?: string;
+  faqs?: BlogFaq[];
   legacy?: {
     source?: string;
     oldId?: number;
@@ -49,6 +55,7 @@ export interface BlogFormData {
   imageAlt: string;
   seo: BlogSeo;
   relatedBlogIds: string[];
+  faqs?: BlogFaq[];
 }
 
 export interface BlogListQuery {
