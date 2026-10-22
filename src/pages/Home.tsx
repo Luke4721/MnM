@@ -10,6 +10,7 @@ import { ReelsCarousel } from '../components/ReelsCarousel';
 // Lazy-loaded so the multi-megabyte blog JSON stays out of the home bundle.
 const HomeBlogSection = lazy(() => import('../components/HomeBlogSection'));
 import { Footer } from '../components/Footer';
+import siteSettings from '../data/site_settings.json';
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
@@ -246,7 +247,7 @@ export const Home: React.FC = () => {
             </div>
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 lg:top-1/4 lg:-left-8 lg:translate-x-0 bg-white dark:bg-black rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-2xl border-8 border-gray-50 dark:border-zinc-900 z-20">
                <span className="text-[#D97736] font-bold text-xs">SINCE</span>
-               <span className="text-3xl font-extrabold text-gray-900 dark:text-white">1990</span>
+               <span className="text-3xl font-extrabold text-gray-900 dark:text-white">{siteSettings.establishedYear || '2008'}</span>
             </div>
           </div>
         </div>

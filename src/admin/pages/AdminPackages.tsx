@@ -20,6 +20,8 @@ import {
   Plus,
   CalendarClock,
   AlertTriangle,
+  ChevronUp,
+  ChevronDown,
 } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { Card } from '../components/ui/Card';
@@ -35,6 +37,12 @@ const API_URL = PACKAGES_API_URL;
 
 type PackageTab = 'active' | 'expired';
 
+interface ItineraryDay {
+  day?: number;
+  title?: string;
+  description?: string;
+}
+
 interface EditingPackage {
   id?: string | number;
   name?: string;
@@ -42,6 +50,7 @@ interface EditingPackage {
   description?: string;
   overview?: string;
   startingPrice?: string | number;
+  itinerary?: ItineraryDay[];
   [key: string]: unknown;
 }
 
@@ -98,10 +107,20 @@ export const AdminPackages: React.FC = () => {
         ? pkg.overview
         : '';
     const htmlDesc = plainTextToHtml(rawDesc);
+    let initialItinerary: ItineraryDay[] = [];
+    if (Array.isArray(pkg.itinerary) && pkg.itinerary.length > 0) {
+      initialItinerary = pkg.itinerary.map((item, idx) => ({
+        day: item.day ?? idx + 1,
+        title: item.title || '',
+        description: item.description || '',
+      }));
+    }
+
     setEditingPkg({
       ...pkg,
       description: htmlDesc,
       overview: htmlDesc,
+      itinerary: initialItinerary,
     });
 
     // Show the currently stored validity date in the date input (local YYYY-MM-DD).
@@ -127,6 +146,7 @@ export const AdminPackages: React.FC = () => {
     setEditingPkg({
       description: '',
       overview: '',
+      itinerary: [],
     }); // no id => create mode
     setExpiryInput('');
     setFormErrors({});
@@ -138,6 +158,62 @@ export const AdminPackages: React.FC = () => {
     setEditingPkg(null);
     setExpiryInput('');
     setFormErrors({});
+  };
+
+  // Itinerary Dynamic Management Handlers
+  const handleAddDay = () => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const currentList = prev.itinerary || [];
+      const newDayNumber = currentList.length + 1;
+      return {
+        ...prev,
+        itinerary: [
+          ...currentList,
+          {
+            day: newDayNumber,
+            title: `Day ${newDayNumber}: Exploration & Sightseeing`,
+            description: '',
+          },
+        ],
+      };
+    });
+  };
+
+  const handleRemoveDay = (index: number) => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const currentList = prev.itinerary || [];
+      const updated = currentList
+        .filter((_, i) => i !== index)
+        .map((item, idx) => ({ ...item, day: idx + 1 }));
+      return { ...prev, itinerary: updated };
+    });
+  };
+
+  const handleUpdateDay = (index: number, field: 'title' | 'description', value: string) => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const currentList = [...(prev.itinerary || [])];
+      if (currentList[index]) {
+        currentList[index] = { ...currentList[index], [field]: value };
+      }
+      return { ...prev, itinerary: currentList };
+    });
+  };
+
+  const handleMoveDay = (index: number, direction: 'up' | 'down') => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const list = [...(prev.itinerary || [])];
+      const targetIndex = direction === 'up' ? index - 1 : index + 1;
+      if (targetIndex < 0 || targetIndex >= list.length) return prev;
+      const temp = list[index];
+      list[index] = list[targetIndex];
+      list[targetIndex] = temp;
+      const reindexed = list.map((item, idx) => ({ ...item, day: idx + 1 }));
+      return { ...prev, itinerary: reindexed };
+    });
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -191,6 +267,7 @@ export const AdminPackages: React.FC = () => {
           startingPrice,
           description: descHtml,
           overview: descHtml,
+          itinerary: editingPkg.itinerary || [],
           expiryDate: expiryIso,
           updatedAt: new Date().toISOString(),
         };
@@ -220,6 +297,7 @@ export const AdminPackages: React.FC = () => {
           description: descHtml,
           overview: descHtml,
           startingPrice,
+          itinerary: editingPkg.itinerary || [],
           expiryDate: expiryIso,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -500,6 +578,120 @@ export const AdminPackages: React.FC = () => {
                 minHeight="220px"
                 placeholder="Comprehensive overview of itinerary, inclusions, and highlights..."
               />
+            </div>
+
+            {/* Dynamic Day-by-Day Itinerary Manager */}
+            <div className="pt-6 border-t border-white/60 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                    <CalendarClock size={18} className="text-amber-500" />
+                    Day-by-Day Itinerary ({editingPkg.itinerary?.length || 0}{' '}
+                    {editingPkg.itinerary?.length === 1 ? 'Day' : 'Days'})
+                  </h3>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    Plan daily schedule, sightseeing spots, meals, and activities for travelers.
+                  </p>
+                </div>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  iconLeft={<Plus size={14} />}
+                  onClick={handleAddDay}
+                >
+                  Add Day
+                </Button>
+              </div>
+
+              {!editingPkg.itinerary || editingPkg.itinerary.length === 0 ? (
+                <div className="p-8 text-center rounded-2xl border border-dashed border-gray-300 dark:border-zinc-700 bg-gray-50/50 dark:bg-zinc-800/40">
+                  <p className="text-xs font-semibold text-gray-500">
+                    No daily itinerary schedule defined yet for this package.
+                  </p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    iconLeft={<Plus size={13} />}
+                    onClick={handleAddDay}
+                    className="mt-3"
+                  >
+                    Add Day 1 Schedule
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {editingPkg.itinerary.map((dayItem, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 md:p-5 rounded-2xl bg-white/70 dark:bg-zinc-800/70 border border-gray-200/80 dark:border-zinc-700 shadow-xs space-y-3 transition-all"
+                    >
+                      <div className="flex items-center justify-between gap-2 border-b border-gray-100 dark:border-zinc-700/60 pb-2.5">
+                        <div className="flex items-center gap-2">
+                          <span className="w-8 h-8 rounded-lg bg-[#FF9933] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                            D{dayItem.day || idx + 1}
+                          </span>
+                          <span className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
+                            Day {dayItem.day || idx + 1} Itinerary
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            disabled={idx === 0}
+                            onClick={() => handleMoveDay(idx, 'up')}
+                            title="Move Day Up"
+                            className="p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 disabled:opacity-30 disabled:hover:bg-transparent"
+                          >
+                            <ChevronUp size={15} />
+                          </button>
+                          <button
+                            type="button"
+                            disabled={idx === (editingPkg.itinerary?.length || 1) - 1}
+                            onClick={() => handleMoveDay(idx, 'down')}
+                            title="Move Day Down"
+                            className="p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 disabled:opacity-30 disabled:hover:bg-transparent"
+                          >
+                            <ChevronDown size={15} />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveDay(idx)}
+                            title="Delete Day"
+                            className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors ml-1"
+                          >
+                            <Trash2 size={15} />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        <Input
+                          label="Day Title"
+                          value={dayItem.title || ''}
+                          onChange={(e) => handleUpdateDay(idx, 'title', e.target.value)}
+                          placeholder="e.g. Arrival in Guwahati & Transfer to Shillong"
+                        />
+                        <div className="space-y-1">
+                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
+                            Day Description &amp; Activities
+                          </label>
+                          <textarea
+                            rows={3}
+                            value={dayItem.description || ''}
+                            onChange={(e) =>
+                              handleUpdateDay(idx, 'description', e.target.value)
+                            }
+                            placeholder="Describe itinerary details, places visited, hotel check-in, meals included..."
+                            className="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 shadow-sm leading-relaxed"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Package Images & Multi-Image Gallery Manager */}

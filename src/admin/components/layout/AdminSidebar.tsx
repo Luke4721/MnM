@@ -78,6 +78,12 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       icon: <Headphones size={19} />,
       matchPrefix: true,
     },
+    {
+      label: 'Site Settings',
+      to: '/admin/settings',
+      icon: <Settings size={19} />,
+      matchPrefix: true,
+    },
   ];
 
   const isRouteActive = (item: NavItem) => {
@@ -233,7 +239,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       <div className="p-3 border-t border-slate-200/60 shrink-0 space-y-2">
         {/* Settings item at bottom */}
         <Link
-          to="/admin/dashboard"
+          to="/admin/settings"
           onClick={() => {
             if (mobileOpen) onCloseMobile();
           }}

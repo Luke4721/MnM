@@ -19,7 +19,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'Instagram',
     ariaLabel: 'Instagram',
-    href: 'https://www.instagram.com/monksandmonkeys.travel?stkn=dWNuYXVuMnM0azkw',
+    href: 'https://www.instagram.com/monks_n_monkeys.travels',
     icon: (size = 18) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'Facebook',
     ariaLabel: 'Facebook',
-    href: 'https://www.facebook.com/share/1ZCwCHb8Mi/',
+    href: 'https://www.facebook.com/share/1DjLJ112BB/',
     icon: (size = 18) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"

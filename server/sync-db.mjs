@@ -52,6 +52,7 @@ if (!BUCKET) {
 
 const s3 = new S3Client({
   region: REGION,
+  maxAttempts: 1,
   credentials: {
     accessKeyId: AWS_ACCESS_KEY_ID,
     secretAccessKey: AWS_SECRET_ACCESS_KEY,
@@ -70,7 +71,7 @@ async function run() {
     const targetPath = path.resolve(process.cwd(), item.local);
     try {
       const cmd = new GetObjectCommand({ Bucket: BUCKET, Key: item.key });
-      const response = await s3.send(cmd);
+      const response = await s3.send(cmd, { abortSignal: AbortSignal.timeout(3500) });
       const data = await response.Body.transformToString();
       fs.writeFileSync(targetPath, data, 'utf8');
       console.log(`[sync-db] Successfully synced ${item.key} -> ${item.local}`);

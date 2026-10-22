@@ -10,6 +10,7 @@ import react from '@vitejs/plugin-react'
  * they are never bundled into the browser build.
  */
 const devApiRoutes: Record<string, string> = {
+  '/api/contact': '/api/contact.ts',
   '/api/create-order': '/api/create-order.ts',
   '/api/verify-payment': '/api/verify-payment.ts',
   '/api/admin/blogs': '/api/admin/blogs.ts',

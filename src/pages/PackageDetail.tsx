@@ -187,38 +187,42 @@ export const PackageDetail: React.FC = () => {
               >
                 <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Itinerary</h2>
                 <div className="space-y-4">
-                  {pkg.itinerary.map((item: any, idx: number) => (
-                    <div 
-                      key={idx} 
-                      className={`overflow-hidden rounded-3xl border transition-all duration-300 ${activeDay === item.day ? 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-white/20 shadow-lg' : 'bg-transparent border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/30'}`}
-                    >
-                      <button 
-                        onClick={() => setActiveDay(activeDay === item.day ? null : item.day)}
-                        className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer outline-none"
+                  {pkg.itinerary.map((item: any, idx: number) => {
+                    const dayNumber = item.day ?? idx + 1;
+                    const isDayActive = activeDay === dayNumber;
+                    return (
+                      <div 
+                        key={idx} 
+                        className={`overflow-hidden rounded-3xl border transition-all duration-300 ${isDayActive ? 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-white/20 shadow-lg' : 'bg-transparent border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/30'}`}
                       >
-                        <div className="flex items-center gap-4">
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shrink-0 transition-colors ${activeDay === item.day ? 'bg-[#FF9933] text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
-                            D{item.day}
+                        <button 
+                          onClick={() => setActiveDay(isDayActive ? null : dayNumber)}
+                          className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer outline-none"
+                        >
+                          <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shrink-0 transition-colors ${isDayActive ? 'bg-[#FF9933] text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
+                              D{dayNumber}
+                            </div>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title || `Day ${dayNumber}`}</h3>
                           </div>
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
-                        </div>
-                        <ChevronDown className={`transition-transform duration-300 text-gray-400 ${activeDay === item.day ? 'rotate-180' : ''}`} />
-                      </button>
-                      
-                      <AnimatePresence>
-                        {activeDay === item.day && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="px-6 pb-6 pt-2 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-white/5 ml-[76px]"
-                          >
-                            {item.description}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ))}
+                          <ChevronDown className={`transition-transform duration-300 text-gray-400 ${isDayActive ? 'rotate-180' : ''}`} />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {isDayActive && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="px-6 pb-6 pt-2 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-white/5 ml-[76px] whitespace-pre-line"
+                            >
+                              {item.description}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.section>
             )}
