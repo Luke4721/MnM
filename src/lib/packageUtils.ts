@@ -53,3 +53,73 @@ export function normalizeImageUrl(url?: string | null): string {
   if (!url) return '';
   return url.replace('.amazonaws.com/package-images/', '.amazonaws.com/blog-images/package-images/');
 }
+
+export interface FormattedPackagePrice {
+  rawPrice: number; // In INR, 0 if missing/unspecified
+  hasPrice: boolean; // True when a positive price exists
+  originalPriceINR?: number; // In INR if discount or strikethrough applies
+  discountPercentage?: number; // Integer percentage (e.g. 30 for 30% OFF)
+}
+
+/**
+ * Extracts and normalizes pricing and discount information from any package payload
+ * (supporting legacy DynamoDB schemas, string prices with currency symbols, and new fields).
+ */
+export function extractPackagePrice(pkg: any): FormattedPackagePrice {
+  if (!pkg) return { rawPrice: 0, hasPrice: false };
+
+  const candidates = [
+    pkg.priceINR,
+    pkg.startingPrice,
+    pkg.price,
+    pkg.discountPrice,
+    pkg.rate,
+  ];
+
+  let rawPrice = 0;
+  for (const candidate of candidates) {
+    if (typeof candidate === 'number' && !isNaN(candidate) && candidate > 0) {
+      rawPrice = Math.round(candidate);
+      break;
+    }
+    if (typeof candidate === 'string') {
+      const parsed = parseInt(candidate.replace(/[^0-9]/g, ''), 10);
+      if (!isNaN(parsed) && parsed > 0) {
+        rawPrice = parsed;
+        break;
+      }
+    }
+  }
+
+  // Discount percentage
+  let discountPercentage: number | undefined = undefined;
+  if (pkg.discountPercentage !== undefined && pkg.discountPercentage !== null && pkg.discountPercentage !== '') {
+    const d = Number(pkg.discountPercentage);
+    if (!isNaN(d) && d > 0 && d < 100) {
+      discountPercentage = Math.round(d);
+    }
+  }
+
+  // Original price
+  let originalPriceINR: number | undefined = undefined;
+  if (pkg.originalPrice) {
+    const orig = typeof pkg.originalPrice === 'number' ? pkg.originalPrice : parseInt(String(pkg.originalPrice).replace(/[^0-9]/g, ''), 10);
+    if (!isNaN(orig) && orig > rawPrice) {
+      originalPriceINR = Math.round(orig);
+      if (!discountPercentage && rawPrice > 0) {
+        discountPercentage = Math.round(((orig - rawPrice) / orig) * 100);
+      }
+    }
+  }
+
+  if (rawPrice > 0 && discountPercentage && discountPercentage > 0 && !originalPriceINR) {
+    originalPriceINR = Math.round(rawPrice / (1 - discountPercentage / 100));
+  }
+
+  return {
+    rawPrice,
+    hasPrice: rawPrice > 0,
+    originalPriceINR,
+    discountPercentage,
+  };
+}

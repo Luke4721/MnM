@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef } from 'react';
+import { Reorder, useDragControls } from 'framer-motion';
 import { usePackages } from '../../context/PackagesProvider';
 import { PackageImageManager } from '../components/PackageImageManager';
 import type { PackageGalleryImage } from '../../types/blogAdmin';
@@ -22,6 +23,10 @@ import {
   AlertTriangle,
   ChevronUp,
   ChevronDown,
+  GripVertical,
+  Check,
+  X,
+  Tag,
 } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { Card } from '../components/ui/Card';
@@ -38,6 +43,7 @@ const API_URL = PACKAGES_API_URL;
 type PackageTab = 'active' | 'expired';
 
 interface ItineraryDay {
+  id?: string;
   day?: number;
   title?: string;
   description?: string;
@@ -50,7 +56,10 @@ interface EditingPackage {
   description?: string;
   overview?: string;
   startingPrice?: string | number;
+  discountPercentage?: number | string;
   itinerary?: ItineraryDay[];
+  inclusions?: string[];
+  exclusions?: string[];
   [key: string]: unknown;
 }
 
@@ -77,6 +86,154 @@ const ExpiryBadge: React.FC<{ pkg: { expiryDate?: unknown } }> = ({ pkg }) => {
   );
 };
 
+interface ItineraryDayCardProps {
+  dayItem: ItineraryDay;
+  idx: number;
+  totalDays: number;
+  isExpanded: boolean;
+  onToggleExpand: () => void;
+  onUpdateDay: (index: number, field: 'title' | 'description', value: string) => void;
+  onRemoveDay: (index: number) => void;
+  onMoveDay: (index: number, direction: 'up' | 'down') => void;
+  onInsertBelow: (index: number) => void;
+  registerTitleRef: (index: number, el: HTMLInputElement | null) => void;
+}
+
+const ItineraryDayCard: React.FC<ItineraryDayCardProps> = ({
+  dayItem,
+  idx,
+  totalDays,
+  isExpanded,
+  onToggleExpand,
+  onUpdateDay,
+  onRemoveDay,
+  onMoveDay,
+  onInsertBelow,
+  registerTitleRef,
+}) => {
+  const dragControls = useDragControls();
+
+  return (
+    <Reorder.Item
+      value={dayItem}
+      id={dayItem.id || `day-${idx}`}
+      dragListener={false}
+      dragControls={dragControls}
+      className="rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-200/90 dark:border-zinc-700 shadow-sm overflow-hidden transition-shadow hover:shadow-md"
+    >
+      {/* Header bar: always visible, acts as accordion trigger */}
+      <div className="flex items-center justify-between gap-3 p-3.5 sm:p-4 bg-gray-50/70 dark:bg-zinc-800/60 border-b border-gray-200/70 dark:border-zinc-700/60 select-none">
+        <div className="flex items-center gap-2.5 min-w-0 flex-1">
+          {/* Drag Handle */}
+          <div
+            onPointerDown={(e) => dragControls.start(e)}
+            className="cursor-grab active:cursor-grabbing p-1.5 -ml-1 text-gray-400 hover:text-gray-700 dark:hover:text-zinc-200 rounded-lg hover:bg-gray-200/60 dark:hover:bg-zinc-700/60 touch-none shrink-0"
+            title="Drag to reorder day"
+          >
+            <GripVertical size={16} />
+          </div>
+
+          {/* Day Badge */}
+          <span className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#E67E22] to-[#FF9933] text-white flex items-center justify-center font-bold text-xs shadow-xs shrink-0">
+            D{dayItem.day || idx + 1}
+          </span>
+
+          {/* Title or summary button to toggle accordion */}
+          <button
+            type="button"
+            onClick={onToggleExpand}
+            className="text-left font-semibold text-xs sm:text-sm text-gray-900 dark:text-zinc-100 truncate hover:text-[#FF9933] transition-colors flex-1"
+          >
+            {dayItem.title || <span className="text-gray-400 italic">Day {idx + 1} (No title set)</span>}
+          </button>
+        </div>
+
+        {/* Action Controls */}
+        <div className="flex items-center gap-1 shrink-0">
+          <button
+            type="button"
+            disabled={idx === 0}
+            onClick={() => onMoveDay(idx, 'up')}
+            title="Move Day Up"
+            className="p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white rounded-lg hover:bg-gray-200/60 dark:hover:bg-zinc-700 disabled:opacity-20 disabled:hover:bg-transparent"
+          >
+            <ChevronUp size={15} />
+          </button>
+          <button
+            type="button"
+            disabled={idx === totalDays - 1}
+            onClick={() => onMoveDay(idx, 'down')}
+            title="Move Day Down"
+            className="p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white rounded-lg hover:bg-gray-200/60 dark:hover:bg-zinc-700 disabled:opacity-20 disabled:hover:bg-transparent"
+          >
+            <ChevronDown size={15} />
+          </button>
+          <button
+            type="button"
+            onClick={onToggleExpand}
+            title={isExpanded ? 'Collapse' : 'Expand'}
+            className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-zinc-200 rounded-lg hover:bg-gray-200/60 dark:hover:bg-zinc-700 transition-colors"
+          >
+            {isExpanded ? <ChevronUp size={16} className="text-[#FF9933]" /> : <ChevronDown size={16} />}
+          </button>
+          <button
+            type="button"
+            onClick={() => onRemoveDay(idx)}
+            title="Delete Day"
+            className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors ml-0.5"
+          >
+            <Trash2 size={15} />
+          </button>
+        </div>
+      </div>
+
+      {/* Expanded Content */}
+      {isExpanded && (
+        <div className="p-4 sm:p-5 space-y-4 bg-white dark:bg-zinc-800/90 animate-in fade-in duration-150">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
+              Day Title
+            </label>
+            <input
+              ref={(el) => registerTitleRef(idx, el)}
+              type="text"
+              value={dayItem.title || ''}
+              onChange={(e) => onUpdateDay(idx, 'title', e.target.value)}
+              placeholder="e.g. Arrival in Srinagar & Shikara Ride on Dal Lake"
+              className="w-full px-3.5 py-2 text-xs sm:text-sm bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF9933]/30 focus:border-[#FF9933] transition"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
+              Day Description &amp; Activities
+            </label>
+            <textarea
+              rows={3}
+              value={dayItem.description || ''}
+              onChange={(e) => onUpdateDay(idx, 'description', e.target.value)}
+              placeholder="Describe itinerary details, places visited, hotel check-in, meals included..."
+              className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF9933]/30 focus:border-[#FF9933] transition leading-relaxed"
+            />
+          </div>
+
+          {/* Contextual + Add Day Below Button directly under active day */}
+          <div className="pt-2 flex items-center justify-end border-t border-gray-100 dark:border-zinc-700/60">
+            <button
+              type="button"
+              onClick={() => onInsertBelow(idx)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#FF9933] hover:text-[#e07e1b] bg-amber-50/70 hover:bg-amber-100/70 dark:bg-amber-950/30 dark:hover:bg-amber-950/60 border border-amber-200/80 dark:border-amber-800/40 rounded-lg transition-colors"
+            >
+              <Plus size={13} />
+              Add Day Below
+            </button>
+          </div>
+        </div>
+      )}
+    </Reorder.Item>
+  );
+};
+
 export const AdminPackages: React.FC = () => {
   // allPackages = every DynamoDB record (expired included) — admin-only data.
   const { allPackages, refreshPackages, loading, createPackage } = usePackages();
@@ -96,6 +253,8 @@ export const AdminPackages: React.FC = () => {
   // Form State for Images
   const [featuredImage, setFeaturedImage] = useState<string>('');
   const [galleryImages, setGalleryImages] = useState<PackageGalleryImage[]>([]);
+  const [expandedDayIndex, setExpandedDayIndex] = useState<number | null>(0);
+  const titleInputRefs = useRef<Map<number, HTMLInputElement>>(new Map());
 
   const isEditingExisting = Boolean(editingPkg?.id);
 
@@ -110,6 +269,7 @@ export const AdminPackages: React.FC = () => {
     let initialItinerary: ItineraryDay[] = [];
     if (Array.isArray(pkg.itinerary) && pkg.itinerary.length > 0) {
       initialItinerary = pkg.itinerary.map((item, idx) => ({
+        id: (item as any).id || `day-${idx + 1}-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
         day: item.day ?? idx + 1,
         title: item.title || '',
         description: item.description || '',
@@ -121,7 +281,11 @@ export const AdminPackages: React.FC = () => {
       description: htmlDesc,
       overview: htmlDesc,
       itinerary: initialItinerary,
+      discountPercentage: pkg.discountPercentage !== undefined && pkg.discountPercentage !== null ? pkg.discountPercentage : '',
+      inclusions: Array.isArray(pkg.inclusions) ? [...pkg.inclusions] : [],
+      exclusions: Array.isArray(pkg.exclusions) ? [...pkg.exclusions] : [],
     });
+    setExpandedDayIndex(initialItinerary.length > 0 ? 0 : null);
 
     // Show the currently stored validity date in the date input (local YYYY-MM-DD).
     setExpiryInput(toDateInputValue(pkg.expiryDate));
@@ -147,7 +311,11 @@ export const AdminPackages: React.FC = () => {
       description: '',
       overview: '',
       itinerary: [],
+      discountPercentage: '',
+      inclusions: [],
+      exclusions: [],
     }); // no id => create mode
+    setExpandedDayIndex(null);
     setExpiryInput('');
     setFormErrors({});
     setFeaturedImage('');
@@ -158,24 +326,42 @@ export const AdminPackages: React.FC = () => {
     setEditingPkg(null);
     setExpiryInput('');
     setFormErrors({});
+    setExpandedDayIndex(null);
   };
 
   // Itinerary Dynamic Management Handlers
-  const handleAddDay = () => {
+  const handleInsertDay = (afterIndex?: number) => {
     setEditingPkg((prev) => {
       if (!prev) return prev;
       const currentList = prev.itinerary || [];
-      const newDayNumber = currentList.length + 1;
+      const insertAt = afterIndex !== undefined ? afterIndex + 1 : currentList.length;
+      const newDayNumber = insertAt + 1;
+      const newDayItem: ItineraryDay = {
+        id: `day-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+        day: newDayNumber,
+        title: `Day ${newDayNumber}: Exploration & Sightseeing`,
+        description: '',
+      };
+      const updatedList = [
+        ...currentList.slice(0, insertAt),
+        newDayItem,
+        ...currentList.slice(insertAt),
+      ].map((item, idx) => ({ ...item, day: idx + 1 }));
+
+      setExpandedDayIndex(insertAt);
+
+      // Smooth scroll and auto-focus on the newly added day title input
+      setTimeout(() => {
+        const inputEl = titleInputRefs.current.get(insertAt);
+        if (inputEl) {
+          inputEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          inputEl.focus();
+        }
+      }, 120);
+
       return {
         ...prev,
-        itinerary: [
-          ...currentList,
-          {
-            day: newDayNumber,
-            title: `Day ${newDayNumber}: Exploration & Sightseeing`,
-            description: '',
-          },
-        ],
+        itinerary: updatedList,
       };
     });
   };
@@ -187,6 +373,11 @@ export const AdminPackages: React.FC = () => {
       const updated = currentList
         .filter((_, i) => i !== index)
         .map((item, idx) => ({ ...item, day: idx + 1 }));
+      if (expandedDayIndex === index) {
+        setExpandedDayIndex(updated.length > 0 ? Math.min(index, updated.length - 1) : null);
+      } else if (expandedDayIndex !== null && expandedDayIndex > index) {
+        setExpandedDayIndex(expandedDayIndex - 1);
+      }
       return { ...prev, itinerary: updated };
     });
   };
@@ -212,7 +403,72 @@ export const AdminPackages: React.FC = () => {
       list[index] = list[targetIndex];
       list[targetIndex] = temp;
       const reindexed = list.map((item, idx) => ({ ...item, day: idx + 1 }));
+      setExpandedDayIndex(targetIndex);
       return { ...prev, itinerary: reindexed };
+    });
+  };
+
+  const handleReorderDays = (reordered: ItineraryDay[]) => {
+    const reindexed = reordered.map((item, idx) => ({ ...item, day: idx + 1 }));
+    setEditingPkg((prev) => (prev ? { ...prev, itinerary: reindexed } : prev));
+  };
+
+  // Inclusions and Exclusions Handlers
+  const handleAddInclusion = () => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        inclusions: [...(prev.inclusions || []), ''],
+      };
+    });
+  };
+
+  const handleUpdateInclusion = (index: number, value: string) => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const updated = [...(prev.inclusions || [])];
+      updated[index] = value;
+      return { ...prev, inclusions: updated };
+    });
+  };
+
+  const handleRemoveInclusion = (index: number) => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        inclusions: (prev.inclusions || []).filter((_, i) => i !== index),
+      };
+    });
+  };
+
+  const handleAddExclusion = () => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        exclusions: [...(prev.exclusions || []), ''],
+      };
+    });
+  };
+
+  const handleUpdateExclusion = (index: number, value: string) => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const updated = [...(prev.exclusions || [])];
+      updated[index] = value;
+      return { ...prev, exclusions: updated };
+    });
+  };
+
+  const handleRemoveExclusion = (index: number) => {
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        exclusions: (prev.exclusions || []).filter((_, i) => i !== index),
+      };
     });
   };
 
@@ -257,6 +513,31 @@ export const AdminPackages: React.FC = () => {
 
     try {
       const descHtml = editingPkg.description || editingPkg.overview || '';
+      const numericStartingPrice = parseInt(String(startingPrice).replace(/[^0-9]/g, ''), 10) || 0;
+      const discountRaw = editingPkg.discountPercentage;
+      const discountPercentage =
+        discountRaw !== undefined && discountRaw !== null && String(discountRaw).trim() !== ''
+          ? Math.min(99, Math.max(1, Number(discountRaw)))
+          : undefined;
+
+      const originalPrice =
+        discountPercentage && numericStartingPrice > 0
+          ? Math.round(numericStartingPrice / (1 - discountPercentage / 100))
+          : undefined;
+
+      const cleanedInclusions = (editingPkg.inclusions || [])
+        .map((s) => String(s).trim())
+        .filter((s) => s.length > 0);
+
+      const cleanedExclusions = (editingPkg.exclusions || [])
+        .map((s) => String(s).trim())
+        .filter((s) => s.length > 0);
+
+      const cleanedItinerary = (editingPkg.itinerary || []).map((it, idx) => ({
+        day: idx + 1,
+        title: it.title || `Day ${idx + 1}`,
+        description: it.description || '',
+      }));
 
       if (isEditingExisting) {
         const payload = {
@@ -264,10 +545,15 @@ export const AdminPackages: React.FC = () => {
           ...imageCompat,
           id: String(editingPkg.id),
           name,
-          startingPrice,
+          startingPrice: startingPrice || (numericStartingPrice > 0 ? `₹${numericStartingPrice.toLocaleString('en-IN')}` : ''),
+          priceINR: numericStartingPrice > 0 ? numericStartingPrice : undefined,
+          discountPercentage,
+          originalPrice,
           description: descHtml,
           overview: descHtml,
-          itinerary: editingPkg.itinerary || [],
+          itinerary: cleanedItinerary,
+          inclusions: cleanedInclusions,
+          exclusions: cleanedExclusions,
           expiryDate: expiryIso,
           updatedAt: new Date().toISOString(),
         };
@@ -296,8 +582,13 @@ export const AdminPackages: React.FC = () => {
               .replace(/^-+|-+$/g, '') || `package-${Date.now()}`,
           description: descHtml,
           overview: descHtml,
-          startingPrice,
-          itinerary: editingPkg.itinerary || [],
+          startingPrice: startingPrice || (numericStartingPrice > 0 ? `₹${numericStartingPrice.toLocaleString('en-IN')}` : ''),
+          priceINR: numericStartingPrice > 0 ? numericStartingPrice : undefined,
+          discountPercentage,
+          originalPrice,
+          itinerary: cleanedItinerary,
+          inclusions: cleanedInclusions,
+          exclusions: cleanedExclusions,
           expiryDate: expiryIso,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -506,14 +797,39 @@ export const AdminPackages: React.FC = () => {
                 placeholder="e.g. Majestic Kashmir Tour"
               />
 
-              <Input
-                label="Starting Price (INR / text)"
-                value={editingPkg.startingPrice || ''}
-                onChange={(e) =>
-                  setEditingPkg({ ...editingPkg, startingPrice: e.target.value })
-                }
-                placeholder="e.g. ₹24,999"
-              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Input
+                  label="Starting Price (INR / text)"
+                  value={editingPkg.startingPrice || ''}
+                  onChange={(e) =>
+                    setEditingPkg({ ...editingPkg, startingPrice: e.target.value })
+                  }
+                  placeholder="e.g. ₹24,999"
+                  helperText="Base starting price shown to travelers."
+                />
+
+                <Input
+                  label="Discount Percentage (% OFF)"
+                  type="number"
+                  min={0}
+                  max={99}
+                  value={
+                    editingPkg.discountPercentage !== undefined &&
+                    editingPkg.discountPercentage !== null
+                      ? String(editingPkg.discountPercentage)
+                      : ''
+                  }
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setEditingPkg({
+                      ...editingPkg,
+                      discountPercentage: val === '' ? '' : parseInt(val, 10),
+                    });
+                  }}
+                  placeholder="e.g. 30"
+                  helperText="Shows red '30% OFF' badge. Leave blank to hide."
+                />
+              </div>
             </div>
 
             {/* Package Validity / Expiry Date — MANDATORY */}
@@ -580,6 +896,167 @@ export const AdminPackages: React.FC = () => {
               />
             </div>
 
+            {/* Dynamic Inclusions & Exclusions */}
+            <div className="pt-6 border-t border-white/60 space-y-4">
+              <div>
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                  <Tag size={18} className="text-emerald-600" />
+                  What's Included &amp; Not Included
+                </h3>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Specify what services, meals, transfers, and activities are covered or excluded for travelers.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Inclusions Card */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-zinc-800/70 border border-emerald-200/80 dark:border-emerald-900/40 shadow-xs space-y-3">
+                  <div className="flex items-center justify-between gap-2 border-b border-gray-100 dark:border-zinc-700/60 pb-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                        <Check size={14} />
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-200">
+                        What's Included ({editingPkg.inclusions?.length || 0})
+                      </span>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      iconLeft={<Plus size={13} />}
+                      onClick={handleAddInclusion}
+                      className="text-xs text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
+                    >
+                      Add Item
+                    </Button>
+                  </div>
+
+                  {!editingPkg.inclusions || editingPkg.inclusions.length === 0 ? (
+                    <div className="p-4 text-center rounded-xl border border-dashed border-gray-200 dark:border-zinc-700 bg-gray-50/40 dark:bg-zinc-800/30">
+                      <p className="text-xs text-gray-400">No inclusions specified yet.</p>
+                      <button
+                        type="button"
+                        onClick={handleAddInclusion}
+                        className="mt-2 text-xs font-medium text-emerald-600 hover:underline"
+                      >
+                        + Add first inclusion item
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {editingPkg.inclusions.map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 ml-1" />
+                          <input
+                            type="text"
+                            value={item}
+                            onChange={(e) => handleUpdateInclusion(idx, e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                e.preventDefault();
+                                handleAddInclusion();
+                              }
+                            }}
+                            placeholder="e.g. 4 Star Hotel Accommodation with Breakfast"
+                            className="flex-1 px-3 py-1.5 text-xs bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveInclusion(idx)}
+                            className="p-1 text-gray-400 hover:text-rose-500 rounded hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                            title="Remove inclusion"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={handleAddInclusion}
+                        className="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-medium pt-1"
+                      >
+                        <Plus size={13} /> Add another inclusion
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Exclusions Card */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-zinc-800/70 border border-rose-200/80 dark:border-rose-900/40 shadow-xs space-y-3">
+                  <div className="flex items-center justify-between gap-2 border-b border-gray-100 dark:border-zinc-700/60 pb-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-lg bg-rose-100 dark:bg-rose-950/60 text-rose-600 flex items-center justify-center font-bold text-xs">
+                        <X size={14} />
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-200">
+                        Not Included ({editingPkg.exclusions?.length || 0})
+                      </span>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      iconLeft={<Plus size={13} />}
+                      onClick={handleAddExclusion}
+                      className="text-xs text-rose-600 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-950/30"
+                    >
+                      Add Item
+                    </Button>
+                  </div>
+
+                  {!editingPkg.exclusions || editingPkg.exclusions.length === 0 ? (
+                    <div className="p-4 text-center rounded-xl border border-dashed border-gray-200 dark:border-zinc-700 bg-gray-50/40 dark:bg-zinc-800/30">
+                      <p className="text-xs text-gray-400">No exclusions specified yet.</p>
+                      <button
+                        type="button"
+                        onClick={handleAddExclusion}
+                        className="mt-2 text-xs font-medium text-rose-600 hover:underline"
+                      >
+                        + Add first exclusion item
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {editingPkg.exclusions.map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0 ml-1" />
+                          <input
+                            type="text"
+                            value={item}
+                            onChange={(e) => handleUpdateExclusion(idx, e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                e.preventDefault();
+                                handleAddExclusion();
+                              }
+                            }}
+                            placeholder="e.g. Airfare, Personal Expenses, Camera charges"
+                            className="flex-1 px-3 py-1.5 text-xs bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-rose-500 focus:border-rose-500"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveExclusion(idx)}
+                            className="p-1 text-gray-400 hover:text-rose-500 rounded hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                            title="Remove exclusion"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={handleAddExclusion}
+                        className="inline-flex items-center gap-1 text-xs text-rose-600 hover:text-rose-700 font-medium pt-1"
+                      >
+                        <Plus size={13} /> Add another exclusion
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* Dynamic Day-by-Day Itinerary Manager */}
             <div className="pt-6 border-t border-white/60 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -590,7 +1067,7 @@ export const AdminPackages: React.FC = () => {
                     {editingPkg.itinerary?.length === 1 ? 'Day' : 'Days'})
                   </h3>
                   <p className="text-xs text-gray-500 mt-0.5">
-                    Plan daily schedule, sightseeing spots, meals, and activities for travelers.
+                    Plan daily schedule, sightseeing spots, and activities. Click any day to edit or expand. Drag handle to reorder.
                   </p>
                 </div>
                 <Button
@@ -598,7 +1075,7 @@ export const AdminPackages: React.FC = () => {
                   variant="secondary"
                   size="sm"
                   iconLeft={<Plus size={14} />}
-                  onClick={handleAddDay}
+                  onClick={() => handleInsertDay()}
                 >
                   Add Day
                 </Button>
@@ -614,83 +1091,40 @@ export const AdminPackages: React.FC = () => {
                     variant="outline"
                     size="sm"
                     iconLeft={<Plus size={13} />}
-                    onClick={handleAddDay}
+                    onClick={() => handleInsertDay()}
                     className="mt-3"
                   >
                     Add Day 1 Schedule
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-3">
+                <Reorder.Group
+                  axis="y"
+                  values={editingPkg.itinerary}
+                  onReorder={handleReorderDays}
+                  className="space-y-3"
+                >
                   {editingPkg.itinerary.map((dayItem, idx) => (
-                    <div
-                      key={idx}
-                      className="p-4 md:p-5 rounded-2xl bg-white/70 dark:bg-zinc-800/70 border border-gray-200/80 dark:border-zinc-700 shadow-xs space-y-3 transition-all"
-                    >
-                      <div className="flex items-center justify-between gap-2 border-b border-gray-100 dark:border-zinc-700/60 pb-2.5">
-                        <div className="flex items-center gap-2">
-                          <span className="w-8 h-8 rounded-lg bg-[#FF9933] text-white flex items-center justify-center font-bold text-xs shadow-xs">
-                            D{dayItem.day || idx + 1}
-                          </span>
-                          <span className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
-                            Day {dayItem.day || idx + 1} Itinerary
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            disabled={idx === 0}
-                            onClick={() => handleMoveDay(idx, 'up')}
-                            title="Move Day Up"
-                            className="p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 disabled:opacity-30 disabled:hover:bg-transparent"
-                          >
-                            <ChevronUp size={15} />
-                          </button>
-                          <button
-                            type="button"
-                            disabled={idx === (editingPkg.itinerary?.length || 1) - 1}
-                            onClick={() => handleMoveDay(idx, 'down')}
-                            title="Move Day Down"
-                            className="p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 disabled:opacity-30 disabled:hover:bg-transparent"
-                          >
-                            <ChevronDown size={15} />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveDay(idx)}
-                            title="Delete Day"
-                            className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors ml-1"
-                          >
-                            <Trash2 size={15} />
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-3">
-                        <Input
-                          label="Day Title"
-                          value={dayItem.title || ''}
-                          onChange={(e) => handleUpdateDay(idx, 'title', e.target.value)}
-                          placeholder="e.g. Arrival in Guwahati & Transfer to Shillong"
-                        />
-                        <div className="space-y-1">
-                          <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-zinc-300">
-                            Day Description &amp; Activities
-                          </label>
-                          <textarea
-                            rows={3}
-                            value={dayItem.description || ''}
-                            onChange={(e) =>
-                              handleUpdateDay(idx, 'description', e.target.value)
-                            }
-                            placeholder="Describe itinerary details, places visited, hotel check-in, meals included..."
-                            className="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 shadow-sm leading-relaxed"
-                          />
-                        </div>
-                      </div>
-                    </div>
+                    <ItineraryDayCard
+                      key={dayItem.id || `day-${idx}`}
+                      dayItem={dayItem}
+                      idx={idx}
+                      totalDays={editingPkg.itinerary?.length || 0}
+                      isExpanded={expandedDayIndex === idx}
+                      onToggleExpand={() =>
+                        setExpandedDayIndex(expandedDayIndex === idx ? null : idx)
+                      }
+                      onUpdateDay={handleUpdateDay}
+                      onRemoveDay={handleRemoveDay}
+                      onMoveDay={handleMoveDay}
+                      onInsertBelow={handleInsertDay}
+                      registerTitleRef={(index, el) => {
+                        if (el) titleInputRefs.current.set(index, el);
+                        else titleInputRefs.current.delete(index);
+                      }}
+                    />
                   ))}
-                </div>
+                </Reorder.Group>
               )}
             </div>
 

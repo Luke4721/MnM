@@ -7,6 +7,7 @@ import { usePackages } from '../context/PackagesProvider';
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { PageTransition } from '../components/PageTransition';
+import { extractPackagePrice } from '../lib/packageUtils';
 
 const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   const [error, setError] = React.useState(false);
@@ -79,7 +80,13 @@ export const CategoryDetail: React.FC = () => {
           {/* Grid Layout */}
           {categoryPackages.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categoryPackages.map((pkg, index) => (
+              {categoryPackages.map((pkg, index) => {
+                const priceData = extractPackagePrice(pkg);
+                const currentVal = priceData.hasPrice ? (convertPrice(priceData.rawPrice, true) as number) : 0;
+                const originalVal = priceData.originalPriceINR ? (convertPrice(priceData.originalPriceINR, true) as number) : null;
+                const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
+
+                return (
                 <motion.div
                   key={pkg.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -92,6 +99,11 @@ export const CategoryDetail: React.FC = () => {
                       <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                         <div style={{ height: '240px', position: 'relative' }}>
                           <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image || ''} alt={pkg.title || pkg.name || 'Package'} />
+                          {priceData.discountPercentage && priceData.discountPercentage > 0 && (
+                            <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider rounded-md shadow-md z-10">
+                              {priceData.discountPercentage}% OFF
+                            </div>
+                          )}
                           <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: '999px', color: 'white', fontSize: '0.8rem', fontWeight: 600 }}>
                             <MapPin size={12} style={{ display: 'inline', marginRight: '4px' }} />
                             {pkg.nights || pkg.duration}
@@ -103,16 +115,31 @@ export const CategoryDetail: React.FC = () => {
   
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
                             <div>
-                              <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>Starting from</span>
-                              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#FF9933' }}>
+                              <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>
+                                {priceData.hasPrice ? 'Starting from' : 'Pricing'}
+                              </span>
+                              {priceData.hasPrice ? (
+                                <div className="flex items-baseline gap-2">
+                                  {originalVal && originalVal > currentVal && (
+                                    <span className="text-gray-400 line-through text-xs font-semibold">
+                                      {symbol}{Math.round(originalVal).toLocaleString()}
+                                    </span>
+                                  )}
+                                  <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#FF9933' }}>
                                 <AnimatedNumber
-                                  value={convertPrice(Number(pkg.priceINR) || 0, true) as number}
+                                    value={currentVal}
                                   formatFn={(val: number) => {
                                     const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
                                     return `${symbol}${Math.round(val).toLocaleString()}`;
                                   }}
                                 />
-                              </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="text-sm font-bold text-[#FF9933] tracking-tight mt-1">
+                                  Price on request
+                                </div>
+                              )}
                             </div>
                             <button style={{
                               background: 'var(--text-color)',
@@ -134,7 +161,8 @@ export const CategoryDetail: React.FC = () => {
                     </TiltCard>
                   </Link>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center bg-white/50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-white/10 shadow-sm backdrop-blur-sm">

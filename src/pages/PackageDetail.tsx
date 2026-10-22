@@ -10,7 +10,7 @@ import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { usePackages } from '../context/PackagesProvider';
 import { sanitizeBlogHtml } from '../lib/sanitize';
-import { plainTextToHtml, normalizeImageUrl } from '../lib/packageUtils';
+import { plainTextToHtml, normalizeImageUrl, extractPackagePrice } from '../lib/packageUtils';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -62,11 +62,12 @@ export const PackageDetail: React.FC = () => {
   const imageUrl = normalizeImageUrl(pkg.heroImage || pkg.image_url || pkg.image || pkg.img);
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
   
+  const priceData = extractPackagePrice(pkg);
   const variants = pkg.variants && pkg.variants.length > 0 ? [
     {
       id: 'base',
       name: 'Standard',
-      priceINR: pkg.startingPrice || pkg.priceINR || 0,
+      priceINR: priceData.rawPrice,
       duration: pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days
     },
     ...pkg.variants
@@ -74,9 +75,10 @@ export const PackageDetail: React.FC = () => {
 
   const activeVariant = variants ? variants[selectedVariantIdx] : null;
   const nights = activeVariant ? activeVariant.duration : (pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days);
-  const priceValue = activeVariant ? activeVariant.priceINR : (pkg.startingPrice || pkg.priceINR || 0);
-
-  const convertedPrice = Math.round(convertPrice(Number(priceValue) || 0, true) as number);
+  const priceValue = activeVariant ? (Number(activeVariant.priceINR) || 0) : priceData.rawPrice;
+  const hasValidPrice = priceValue > 0;
+  const convertedPrice = hasValidPrice ? Math.round(convertPrice(priceValue, true) as number) : 0;
+  const originalPriceConverted = priceData.originalPriceINR && !activeVariant ? Math.round(convertPrice(priceData.originalPriceINR, true) as number) : 0;
   const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
 
   return (
@@ -127,6 +129,11 @@ export const PackageDetail: React.FC = () => {
                 <span className="px-4 py-1.5 rounded-full bg-[#FF9933] text-white text-xs font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)]">
                   {pkg.category}
                 </span>
+                {priceData.discountPercentage && priceData.discountPercentage > 0 && (
+                  <span className="px-4 py-1.5 rounded-full bg-red-600 text-white text-xs font-bold tracking-widest uppercase shadow-md flex items-center gap-1">
+                    {priceData.discountPercentage}% OFF
+                  </span>
+                )}
               </div>
               <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white drop-shadow-lg leading-tight mb-4">
                 {pkg.title ?? pkg.name}
@@ -214,7 +221,7 @@ export const PackageDetail: React.FC = () => {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: 'auto', opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              className="px-6 pb-6 pt-2 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-white/5 ml-[76px] whitespace-pre-line"
+                              className="px-6 pb-6 pt-2 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-white/5 ml-4 sm:ml-[76px] whitespace-pre-line text-justify break-words"
                             >
                               {item.description}
                             </motion.div>
@@ -300,16 +307,30 @@ export const PackageDetail: React.FC = () => {
                               </p>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid var(--glass-border, rgba(255,255,255,0.1))' }}>
                                 <div>
-                                  <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.7rem', display: 'block' }}>Starting from</span>
-                                  <div style={{ fontSize: '1rem', fontWeight: 700, color: '#FF9933' }}>
-                                    <AnimatedNumber
-                                      value={Math.round(convertPrice(relPkg.startingPrice || relPkg.priceINR || 0, true) as number)}
-                                      formatFn={(val: number) => {
-                                        const sym = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
-                                        return `${sym}${Math.round(val).toLocaleString()}`;
-                                      }}
-                                    />
-                                  </div>
+                                  {(() => {
+                                    const relPriceData = extractPackagePrice(relPkg);
+                                    const relCurrentVal = relPriceData.hasPrice ? Math.round(convertPrice(relPriceData.rawPrice, true) as number) : 0;
+                                    const sym = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
+
+                                    return relPriceData.hasPrice ? (
+                                      <>
+                                        <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.7rem', display: 'block' }}>Starting from</span>
+                                        <div style={{ fontSize: '1rem', fontWeight: 700, color: '#FF9933' }}>
+                                          <AnimatedNumber
+                                            value={relCurrentVal}
+                                            formatFn={(val: number) => `${sym}${Math.round(val).toLocaleString()}`}
+                                          />
+                                        </div>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.7rem', display: 'block' }}>Pricing</span>
+                                        <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FF9933' }}>
+                                          Price on request
+                                        </div>
+                                      </>
+                                    );
+                                  })()}
                                 </div>
                                 <button style={{
                                   background: '#FF9933',
@@ -347,15 +368,34 @@ export const PackageDetail: React.FC = () => {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF9933]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 
                 <div className="relative z-10">
-                  <div className="mb-2 text-gray-500 dark:text-gray-400 font-medium uppercase tracking-widest text-xs">
-                    Price from
+                  <div className="mb-2 text-gray-500 dark:text-gray-400 font-medium uppercase tracking-widest text-xs flex items-center justify-between">
+                    <span>{hasValidPrice ? 'Price from' : 'Pricing'}</span>
+                    {priceData.discountPercentage && priceData.discountPercentage > 0 && !activeVariant && (
+                      <span className="text-red-500 font-bold text-xs bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded-full border border-red-200 dark:border-red-900">
+                        {priceData.discountPercentage}% OFF
+                      </span>
+                    )}
                   </div>
-                  <div className="flex items-end gap-2 mb-8">
-                    <span className="text-5xl font-extrabold text-gray-900 dark:text-white tracking-tighter">
-                      {symbol}{convertedPrice.toLocaleString()}
-                    </span>
-                    <span className="text-gray-500 dark:text-gray-400 mb-1">/ person</span>
-                  </div>
+                  {hasValidPrice ? (
+                    <div className="flex items-baseline gap-2 mb-8">
+                      {originalPriceConverted > convertedPrice && (
+                        <span className="text-gray-400 line-through text-lg font-semibold">
+                          {symbol}{originalPriceConverted.toLocaleString()}
+                        </span>
+                      )}
+                      <span className="text-5xl font-extrabold text-gray-900 dark:text-white tracking-tighter">
+                        {symbol}{convertedPrice.toLocaleString()}
+                      </span>
+                      <span className="text-gray-500 dark:text-gray-400 mb-1">/ person</span>
+                    </div>
+                  ) : (
+                    <div className="mb-8">
+                      <div className="text-3xl font-extrabold text-[#FF9933] tracking-tight">
+                        Price on request
+                      </div>
+                      <p className="text-xs text-gray-400 mt-1">Contact our travel specialists for a customized quote.</p>
+                    </div>
+                  )}
 
                   <div className="space-y-4 mb-8">
                     <button className="w-full flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors">

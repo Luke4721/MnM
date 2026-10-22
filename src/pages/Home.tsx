@@ -11,6 +11,7 @@ import { ReelsCarousel } from '../components/ReelsCarousel';
 const HomeBlogSection = lazy(() => import('../components/HomeBlogSection'));
 import { Footer } from '../components/Footer';
 import siteSettings from '../data/site_settings.json';
+import { extractPackagePrice } from '../lib/packageUtils';
 
 export const Home: React.FC = () => {
   const { currency, convertPrice } = useCurrency();
@@ -327,8 +328,10 @@ export const Home: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {popularPackages.map((pkg, index) => {
-            const originalPrice = Math.round((convertPrice(Number(pkg.priceINR) || 0, true) as number) * 1.3);
-            const currentPrice = Math.round(convertPrice(Number(pkg.priceINR) || 0, true) as number);
+            const priceData = extractPackagePrice(pkg);
+            const currentPrice = priceData.hasPrice ? Math.round(convertPrice(priceData.rawPrice, true) as number) : 0;
+            const originalPrice = priceData.originalPriceINR ? Math.round(convertPrice(priceData.originalPriceINR, true) as number) : 0;
+
             const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
 
             return (
@@ -343,17 +346,34 @@ export const Home: React.FC = () => {
                   <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-2xl transition-all duration-300 h-full group hover:-translate-y-1">
                     <div className="h-56 relative overflow-hidden">
                       <img src={pkg.img || pkg.image_url || pkg.image} alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                      <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
-                        30% OFF
+                      {priceData.discountPercentage && priceData.discountPercentage > 0 ? (
+                        <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm shadow-sm z-10">
+                        {priceData.discountPercentage}% OFF
                       </div>
+                      ) : null}
                       <div className="absolute top-4 right-4 bg-[#f1f1f1] text-gray-900 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
                         {pkg.duration}
                       </div>
                     </div>
                     <div className="p-8 flex flex-col">
                       <div className="flex items-end gap-2 mb-2">
-                         <span className="text-gray-400 line-through text-sm font-semibold">{symbol}{originalPrice.toLocaleString()}</span>
-                         <span className="text-[#D97736] text-2xl font-extrabold">{symbol}{currentPrice.toLocaleString()}</span>
+                        {priceData.hasPrice ? (
+                          <>
+                            {originalPrice > currentPrice && (
+                              <span className="text-gray-400 line-through text-sm font-semibold">
+                                {symbol}{originalPrice.toLocaleString()}
+                              </span>
+                            )}
+                            <span className="text-[#D97736] text-2xl font-extrabold">
+                              {symbol}{currentPrice.toLocaleString()}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-[#D97736] text-xl font-extrabold">
+                            Price on request
+                          </span>
+                        )}
+
                       </div>
                       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 line-clamp-2">{pkg.name}</h3>
                       

@@ -9,7 +9,7 @@ import { AnimatedNumber } from '../components/AnimatedNumber';
 import { TiltCard } from '../components/TiltCard';
 import { PageTransition } from '../components/PageTransition';
 import { TravelSearchEngine } from '../components/TravelSearchEngine';
-import { normalizeImageUrl } from '../lib/packageUtils';
+import { normalizeImageUrl, extractPackagePrice } from '../lib/packageUtils';
 
 const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   const [error, setError] = React.useState(false);
@@ -80,7 +80,8 @@ export const Packages: React.FC = () => {
       }
 
       const budgetTier = filters.budget?.toLowerCase() || '';
-      const price = pkg.startingPrice || pkg.priceINR || 0;
+      const priceData = extractPackagePrice(pkg);
+      const price = priceData.rawPrice;
       const numericPrice = parseInt(String(price).replace(/[^0-9]/g, ''), 10) || 0;
       
       let matchesBudget = true;
@@ -151,7 +152,13 @@ export const Packages: React.FC = () => {
           <div className="w-full h-auto min-h-screen pb-24">
             {displayedPackages.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {displayedPackages.map((pkg, index) => (
+                {displayedPackages.map((pkg, index) => {
+                  const priceData = extractPackagePrice(pkg);
+                  const currentVal = priceData.hasPrice ? (convertPrice(priceData.rawPrice, true) as number) : 0;
+                  const originalVal = priceData.originalPriceINR ? (convertPrice(priceData.originalPriceINR, true) as number) : null;
+                  const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
+
+                  return (
                 <motion.div
                   key={pkg.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -164,6 +171,11 @@ export const Packages: React.FC = () => {
                       <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                         <div style={{ height: '240px', position: 'relative' }}>
                           <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image || ''} alt={pkg.title || pkg.name || 'Package'} />
+                          {priceData.discountPercentage && priceData.discountPercentage > 0 && (
+                            <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider rounded-md shadow-md z-10">
+                              {priceData.discountPercentage}% OFF
+                            </div>
+                          )}
                           <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: '999px', color: 'white', fontSize: '0.8rem', fontWeight: 600 }}>
                             <MapPin size={12} style={{ display: 'inline', marginRight: '4px' }} />
                             {pkg.nights || pkg.duration}
@@ -175,16 +187,31 @@ export const Packages: React.FC = () => {
   
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
                             <div>
-                              <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>Starting from</span>
-                              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97736' }}>
+                              <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>
+                                {priceData.hasPrice ? 'Starting from' : 'Pricing'}
+                              </span>
+                              {priceData.hasPrice ? (
+                                <div className="flex items-baseline gap-2">
+                                  {originalVal && originalVal > currentVal && (
+                                    <span className="text-gray-400 line-through text-xs font-semibold">
+                                      {symbol}{Math.round(originalVal).toLocaleString()}
+                                    </span>
+                                  )}
+                                  <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97736' }}>
                                 <AnimatedNumber
-                                  value={convertPrice(Number(pkg.priceINR) || 0, true) as number}
+                                    value={currentVal}
                                   formatFn={(val: number) => {
                                     const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
                                     return `${symbol}${Math.round(val).toLocaleString()}`;
                                   }}
                                 />
-                              </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="text-sm font-bold text-[#D97736] tracking-tight mt-1">
+                                  Price on request
+                                </div>
+                              )}
                             </div>
                             <button style={{
                               background: 'var(--text-color)',
@@ -206,7 +233,8 @@ export const Packages: React.FC = () => {
                     </TiltCard>
                   </Link>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center bg-white/50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-white/10 shadow-sm backdrop-blur-sm">

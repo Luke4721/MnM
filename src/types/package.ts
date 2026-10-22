@@ -24,6 +24,8 @@ export interface TourPackage {
   /** Pricing */
   startingPrice?: string | number;
   priceINR?: number;
+  originalPrice?: string | number;
+  discountPercentage?: number;
 
   /** Destination / location fields (legacy aliases supported). */
   destination?: string;
