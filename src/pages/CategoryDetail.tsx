@@ -1,32 +1,12 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { MapPin, ArrowRight } from 'lucide-react';
-import { useCurrency } from '../context/CurrencyProvider';
+import { ArrowRight } from 'lucide-react';
 import { usePackages } from '../context/PackagesProvider';
-import { AnimatedNumber } from '../components/AnimatedNumber';
-import { TiltCard } from '../components/TiltCard';
 import { PageTransition } from '../components/PageTransition';
-import { extractPackagePrice } from '../lib/packageUtils';
-
-const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
-  const [error, setError] = React.useState(false);
-  if (error || !src) {
-    return <div className="skeleton-image" style={{ width: '100%', height: '100%', backgroundColor: '#111827' }} />;
-  }
-  return (
-    <img
-      src={src}
-      alt={alt}
-      onError={() => setError(true)}
-      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-    />
-  );
-};
+import { PackageCard } from '../components/PackageCard';
 
 export const CategoryDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { currency, convertPrice } = useCurrency();
   const { packages: dbPackages } = usePackages();
   
   const formattedCategory = slug ? slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase() : '';
@@ -80,89 +60,9 @@ export const CategoryDetail: React.FC = () => {
           {/* Grid Layout */}
           {categoryPackages.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categoryPackages.map((pkg, index) => {
-                const priceData = extractPackagePrice(pkg);
-                const currentVal = priceData.hasPrice ? (convertPrice(priceData.rawPrice, true) as number) : 0;
-                const originalVal = priceData.originalPriceINR ? (convertPrice(priceData.originalPriceINR, true) as number) : null;
-                const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
-
-                return (
-                <motion.div
-                  key={pkg.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ delay: (index % 6) * 0.05 }}
-                >
-                  <Link to={`/packages/${pkg.slug || pkg.id}`} style={{ textDecoration: 'none' }}>
-                    <TiltCard>
-                      <div className="rounded-3xl bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
-                        <div style={{ height: '240px', position: 'relative' }}>
-                          <ImageWithFallback src={pkg.image_url || pkg.img || pkg.image || ''} alt={pkg.title || pkg.name || 'Package'} />
-                          {priceData.discountPercentage && priceData.discountPercentage > 0 && (
-                            <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider rounded-md shadow-md z-10">
-                              {priceData.discountPercentage}% OFF
-                            </div>
-                          )}
-                          <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: '999px', color: 'white', fontSize: '0.8rem', fontWeight: 600 }}>
-                            <MapPin size={12} style={{ display: 'inline', marginRight: '4px' }} />
-                            {pkg.nights || pkg.duration}
-                          </div>
-                        </div>
-                        <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{pkg.title || pkg.name}</h3>
-                          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-1 mb-3" style={{ flex: 1 }}>{pkg.location || pkg.locations}</p>
-  
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
-                            <div>
-                              <span className="text-gray-700 dark:text-gray-300" style={{ fontSize: '0.85rem', display: 'block' }}>
-                                {priceData.hasPrice ? 'Starting from' : 'Pricing'}
-                              </span>
-                              {priceData.hasPrice ? (
-                                <div className="flex items-baseline gap-2">
-                                  {originalVal && originalVal > currentVal && (
-                                    <span className="text-gray-400 line-through text-xs font-semibold">
-                                      {symbol}{Math.round(originalVal).toLocaleString()}
-                                    </span>
-                                  )}
-                                  <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#FF9933' }}>
-                                <AnimatedNumber
-                                    value={currentVal}
-                                  formatFn={(val: number) => {
-                                    const symbol = currency === 'INR' ? '₹' : currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency === 'RUB' ? '₽' : currency;
-                                    return `${symbol}${Math.round(val).toLocaleString()}`;
-                                  }}
-                                />
-                                  </div>
-                                </div>
-                              ) : (
-                                <div className="text-sm font-bold text-[#FF9933] tracking-tight mt-1">
-                                  Price on request
-                                </div>
-                              )}
-                            </div>
-                            <button style={{
-                              background: 'var(--text-color)',
-                              color: 'var(--bg-color)',
-                              border: 'none',
-                              width: '2.75rem',
-                              height: '2.75rem',
-                              borderRadius: '50%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              cursor: 'pointer'
-                            }}>
-                              <ArrowRight size={18} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </TiltCard>
-                  </Link>
-                </motion.div>
-                );
-              })}
+              {categoryPackages.map((pkg, index) => (
+                <PackageCard key={pkg.id} pkg={pkg} index={index} />
+              ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center bg-white/50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-white/10 shadow-sm backdrop-blur-sm">

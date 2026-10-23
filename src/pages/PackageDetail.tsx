@@ -14,6 +14,8 @@ import { sanitizeBlogHtml } from '../lib/sanitize';
 import { plainTextToHtml, normalizeImageUrl, extractPackagePrice } from '../lib/packageUtils';
 import { useSeo } from '../lib/useSeo';
 import { PUBLIC_SITE_URL } from '../../config/appConfig';
+import { PackageHeroSlideshow } from '../components/PackageHeroSlideshow';
+import { getPackagePreviewText } from '../components/PackageCard';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -43,7 +45,7 @@ export const PackageDetail: React.FC = () => {
         const pLoc = (p.destination || p.location || p.locations || p.highlights_old || '').toLowerCase();
         return pLoc === locLower || (pLoc && locLower && (pLoc.includes(locLower) || locLower.includes(pLoc)));
     }).slice(0, 3);
-  }, [locationForMemo, pkg?.id, dbPackages]);
+  }, [locationForMemo, pkg, dbPackages]);
 
   // Dynamic SEO Fields and Rich Snippets (unconditional hook execution)
   const packageTitle = pkg ? (pkg.title ?? pkg.name ?? 'Travel Package') : 'Travel Package';
@@ -142,6 +144,39 @@ export const PackageDetail: React.FC = () => {
     return [productSchema, touristTripSchema];
   }, [pkg, packageTitle, cleanOverview, pkgImageUrl, pkgPriceData.rawPrice]);
 
+  const heroSlides = React.useMemo(() => {
+    if (!pkg) return [];
+    const list: { url: string; alt: string; caption?: string }[] = [];
+    const seenUrls = new Set<string>();
+
+    const primaryUrl = normalizeImageUrl(pkg.heroImage || pkg.image_url || pkg.image || pkg.img);
+    if (primaryUrl) {
+      seenUrls.add(primaryUrl);
+      list.push({
+        url: primaryUrl,
+        alt: (pkg.title || pkg.name || 'Tour Package'),
+        caption: '',
+      });
+    }
+
+    if (Array.isArray(pkg.galleryImages)) {
+      for (const g of pkg.galleryImages) {
+        if (!g || !g.url) continue;
+        const normalized = normalizeImageUrl(g.url);
+        if (!seenUrls.has(normalized)) {
+          seenUrls.add(normalized);
+          list.push({
+            url: normalized,
+            alt: g.alt || (pkg.title || pkg.name || 'Tour Package'),
+            caption: g.caption || '',
+          });
+        }
+      }
+    }
+
+    return list;
+  }, [pkg]);
+
   useSeo(pkg ? {
     title: metaTitle,
     description: metaDescription,
@@ -173,7 +208,6 @@ export const PackageDetail: React.FC = () => {
   }
 
   // Handle compatibility for both schemas
-  const imageUrl = normalizeImageUrl(pkg.heroImage || pkg.image_url || pkg.image || pkg.img);
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
   
   const priceData = extractPackagePrice(pkg);
@@ -210,15 +244,14 @@ export const PackageDetail: React.FC = () => {
           <ChevronLeft className="group-hover:-translate-x-1 transition-transform" />
         </button>
 
-        {/* ABSOLUTE BACKGROUND - Ignores all parent padding */}
+        {/* ABSOLUTE BACKGROUND - Hero Slideshow (Featured + Gallery Images) */}
         <div className="absolute inset-x-0 top-0 h-[55vh] md:h-[70vh] z-0 overflow-hidden bg-black rounded-[24px]">
-          <img 
-            src={imageUrl} 
-            alt={packageTitle || location || 'Tour Package'} 
-            className="w-full h-full aspect-[16/9] object-cover animate-kenburns scale-105"
+          <PackageHeroSlideshow
+            slides={heroSlides}
+            packageTitle={packageTitle}
           />
           {/* Gradient fade into the background color */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f6] via-[#faf9f6]/20 to-transparent dark:from-black dark:via-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f6] via-[#faf9f6]/20 to-transparent dark:from-black dark:via-black/20 pointer-events-none" />
         </div>
 
         {/* CONTENT WRAPPER - Pushed down to sit over the fade */}
@@ -451,9 +484,20 @@ export const PackageDetail: React.FC = () => {
                               </div>
                             </div>
                             <div style={{ padding: '1rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                              <h3 className="text-base font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">{relPkg.title || relPkg.name}</h3>
-                              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-1 mb-2" style={{ flex: 1 }}>
+                              <h3 className="text-base font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1">{relPkg.title || relPkg.name}</h3>
+                              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-1 mb-2">
                                 {relPkg.location || relPkg.locations || relPkg.destination}
+                              </p>
+                              <p
+                                className="text-xs text-gray-600 dark:text-gray-400 line-clamp-3 mb-3 leading-relaxed flex-1"
+                                style={{
+                                  display: '-webkit-box',
+                                  WebkitLineClamp: 3,
+                                  WebkitBoxOrient: 'vertical',
+                                  overflow: 'hidden',
+                                }}
+                              >
+                                {getPackagePreviewText(relPkg)}
                               </p>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid var(--glass-border, rgba(255,255,255,0.1))' }}>
                                 <div>
