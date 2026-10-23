@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 export interface SeoTags {
   title: string;
   description: string;
+  keywords?: string;
   /** Absolute or site-relative image URL for og:image / twitter:image. */
   image?: string;
-  /** Path on this site, e.g. /blog/red-fort-delhi — canonical + og:url. */
+  /** Path on this site, e.g. /blog/red-fort-delhi or /packages/kerala — canonical + og:url. */
   canonicalPath?: string;
   type?: 'website' | 'article';
   /** Arbitrary JSON-LD object(s), rendered in a <script type="application/ld+json">. */
@@ -30,7 +31,7 @@ function upsertMeta(selector: string, attrs: Record<string, string>, created: El
  * navigating back to a page without SEO leaves the base index.html tags.
  */
 export function useSeo(seo: SeoTags): void {
-  const { title, description, image, canonicalPath, type, jsonLd } = seo;
+  const { title, description, keywords, image, canonicalPath, type, jsonLd } = seo;
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -48,7 +49,18 @@ export function useSeo(seo: SeoTags): void {
     const setTwitter = (name: string, content: string) =>
       setMeta(`meta[name="twitter:${name}"]`, { name: `twitter:${name}` }, content);
 
+    // Google Search Console Verification fallback
+    if (!document.head.querySelector('meta[name="google-site-verification"]')) {
+      const gsc = document.createElement('meta');
+      gsc.setAttribute('name', 'google-site-verification');
+      gsc.setAttribute('content', 'WtuP0fN8rJK2E9kANEcwIQWkGsIVXR6cqYcWxcACXww');
+      document.head.appendChild(gsc);
+    }
+
     setPlain('description', description);
+    if (keywords) {
+      setPlain('keywords', keywords);
+    }
     setOg('og:title', title);
     setOg('og:description', description);
     setOg('og:type', type || 'website');
@@ -58,11 +70,11 @@ export function useSeo(seo: SeoTags): void {
     setTwitter('description', description);
 
     const url = canonicalPath
-      ? `${window.location.origin}${canonicalPath}`
+      ? `${window.location.origin}${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`
       : window.location.href;
     setOg('og:url', url);
     if (image) {
-      const absolute = image.startsWith('http') ? image : `${window.location.origin}${image}`;
+      const absolute = image.startsWith('http') ? image : `${window.location.origin}${image.startsWith('/') ? image : `/${image}`}`;
       setOg('og:image', absolute);
       setTwitter('twitter:image', absolute);
     }
@@ -83,7 +95,7 @@ export function useSeo(seo: SeoTags): void {
         if (!item || typeof item !== 'object') continue;
         const s = document.createElement('script');
         s.type = 'application/ld+json';
-        s.setAttribute('data-seo', 'blog');
+        s.setAttribute('data-seo', 'jsonld');
         s.textContent = JSON.stringify(item);
         document.head.appendChild(s);
         ldScripts.push(s);
@@ -96,5 +108,5 @@ export function useSeo(seo: SeoTags): void {
       ldScripts.forEach((s) => s.remove());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, image, canonicalPath, type, JSON.stringify(jsonLd)]);
+  }, [title, description, keywords, image, canonicalPath, type, JSON.stringify(jsonLd)]);
 }

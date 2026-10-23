@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Save,
@@ -12,9 +12,16 @@ import {
   HelpCircle,
   Plus,
   Trash2,
+  Image as ImageIcon,
+  MapPin,
+  MoveUp,
+  MoveDown,
+  UploadCloud,
+  CheckCircle2,
 } from 'lucide-react';
 import { RichTextEditor } from '../components/RichTextEditor';
 import { ImageUpload } from '../components/ImageUpload';
+import { uploadImageToS3 } from '../lib/s3Service';
 import { generateSlug, blogFormSchema } from '../lib/blogValidation';
 import type { BlogItem, BlogFormData } from '../../types/blogAdmin';
 import { PageHeader } from '../components/ui/PageHeader';
@@ -59,6 +66,7 @@ export const AdminBlogEditor: React.FC = () => {
       ogImage: '',
     },
     relatedBlogIds: [],
+    imageGallery: [],
     faqs: [],
   });
 
@@ -107,6 +115,7 @@ export const AdminBlogEditor: React.FC = () => {
                 ogImage: b.seo?.ogImage || '',
               },
               relatedBlogIds: Array.isArray(b.relatedBlogIds) ? b.relatedBlogIds : [],
+              imageGallery: Array.isArray(b.imageGallery) ? b.imageGallery : [],
               faqs: Array.isArray(b.faqs) ? b.faqs : [],
             });
             setAutoSlugLocked(false);
@@ -218,6 +227,110 @@ export const AdminBlogEditor: React.FC = () => {
     setFormData((prev) => ({
       ...prev,
       faqs: (prev.faqs || []).filter((_, i) => i !== idx),
+    }));
+  };
+
+  // Gallery handlers
+  const [galleryUploadProgress, setGalleryUploadProgress] = useState<Record<string, number>>({});
+  const [isUploadingGallery, setIsUploadingGallery] = useState(false);
+  const galleryInputRef = useRef<HTMLInputElement>(null);
+
+  const handleGalleryUpload = async (files: FileList | File[]) => {
+    const fileArray = Array.from(files);
+    const validFiles = fileArray.filter((f) =>
+      ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(f.type.toLowerCase()),
+    );
+    if (validFiles.length === 0) {
+      toast.error('Please select valid images (JPG, PNG, WebP).');
+      return;
+    }
+
+    setIsUploadingGallery(true);
+    const slug = formData.slug || generateSlug(formData.title || 'blog');
+
+    for (let i = 0; i < validFiles.length; i++) {
+      const file = validFiles[i];
+      const taskId = `${file.name}-${Date.now()}-${i}`;
+      setGalleryUploadProgress((prev) => ({ ...prev, [taskId]: 5 }));
+
+      try {
+        const result = await uploadImageToS3({
+          file,
+          folder: 'blog-images',
+          slug,
+          maxWidth: 1920,
+          onProgress: (p) => {
+            setGalleryUploadProgress((prev) => ({ ...prev, [taskId]: p }));
+          },
+        });
+
+        // Derive auto location / alt suggestion from file name
+        const baseName = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+
+        setFormData((prev) => ({
+          ...prev,
+          imageGallery: [
+            ...(prev.imageGallery || []),
+            {
+              url: result.url,
+              location: baseName,
+              alt: baseName || prev.title,
+            },
+          ],
+        }));
+
+        setGalleryUploadProgress((prev) => {
+          const next = { ...prev };
+          delete next[taskId];
+          return next;
+        });
+      } catch (err: any) {
+        toast.error(`Failed to upload ${file.name}: ${err.message}`);
+      }
+    }
+
+    setIsUploadingGallery(false);
+    toast.success('Gallery images uploaded to S3 successfully!');
+  };
+
+  const handleUpdateGalleryImage = (
+    index: number,
+    field: 'location' | 'alt' | 'url',
+    value: string,
+  ) => {
+    setFormData((prev) => {
+      const updated = [...(prev.imageGallery || [])];
+      if (field === 'location') {
+        // Auto-populate alt text based on Location Name for accessibility
+        updated[index] = {
+          ...updated[index],
+          location: value,
+          alt: value ? value : prev.title,
+        };
+      } else {
+        updated[index] = {
+          ...updated[index],
+          [field]: value,
+        };
+      }
+      return { ...prev, imageGallery: updated };
+    });
+  };
+
+  const handleMoveGalleryImage = (fromIndex: number, toIndex: number) => {
+    setFormData((prev) => {
+      const gallery = [...(prev.imageGallery || [])];
+      if (toIndex < 0 || toIndex >= gallery.length) return prev;
+      const [moved] = gallery.splice(fromIndex, 1);
+      gallery.splice(toIndex, 0, moved);
+      return { ...prev, imageGallery: gallery };
+    });
+  };
+
+  const handleRemoveGalleryImage = (index: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      imageGallery: (prev.imageGallery || []).filter((_, idx) => idx !== index),
     }));
   };
 
@@ -676,12 +789,175 @@ export const AdminBlogEditor: React.FC = () => {
         </Card>
 
         {/* ============================================================== */}
-        {/* SECTION D: SEO & Meta Data */}
+        {/* SECTION D: Blog Image Gallery (Interactive Slideshow) */}
+        {/* ============================================================== */}
+        <Card className="p-6 md:p-8 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-white/40 pb-4 gap-3">
+            <div>
+              <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200/60">
+                Section D
+              </span>
+              <h2 className="text-lg font-bold text-gray-900 mt-2 flex items-center gap-2">
+                <ImageIcon size={18} className="text-indigo-600" /> Blog Image Gallery (with Locations)
+              </h2>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Upload photos with destination or landmark location names for the interactive hero slideshow.
+              </p>
+            </div>
+            <div>
+              <input
+                ref={galleryInputRef}
+                type="file"
+                multiple
+                accept="image/jpeg,image/png,image/webp"
+                className="hidden"
+                onChange={(e) => {
+                  if (e.target.files && e.target.files.length > 0) {
+                    handleGalleryUpload(e.target.files);
+                    e.target.value = '';
+                  }
+                }}
+              />
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                loading={isUploadingGallery}
+                iconLeft={<UploadCloud size={14} />}
+                onClick={() => galleryInputRef.current?.click()}
+              >
+                Upload Gallery Images
+              </Button>
+            </div>
+          </div>
+
+          {/* Upload Progress Bar if active */}
+          {Object.keys(galleryUploadProgress).length > 0 && (
+            <div className="p-4 bg-indigo-50/70 rounded-xl border border-indigo-100 space-y-2">
+              <div className="flex items-center justify-between text-xs font-semibold text-indigo-900">
+                <span>Uploading {Object.keys(galleryUploadProgress).length} image(s) to S3...</span>
+                <span>In Progress</span>
+              </div>
+              <div className="w-full bg-indigo-200/50 rounded-full h-1.5 overflow-hidden">
+                <div className="bg-indigo-600 h-full rounded-full animate-pulse w-3/4"></div>
+              </div>
+            </div>
+          )}
+
+          {(!formData.imageGallery || formData.imageGallery.length === 0) ? (
+            <div
+              onClick={() => galleryInputRef.current?.click()}
+              className="text-center py-10 border-2 border-dashed border-gray-200 hover:border-indigo-400 rounded-2xl bg-gray-50/40 hover:bg-indigo-50/20 transition-all cursor-pointer group"
+            >
+              <UploadCloud size={32} className="mx-auto text-gray-400 group-hover:text-indigo-600 mb-2 transition-colors" />
+              <p className="text-sm font-bold text-gray-700 group-hover:text-indigo-900">
+                Click to upload multiple gallery images
+              </p>
+              <p className="text-xs text-gray-400 mt-1 max-w-sm mx-auto">
+                Upload photos with location tags to enable the animated hero slideshow on the published blog.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between text-xs text-gray-500 font-medium">
+                <span>Total Photos: {formData.imageGallery.length} (use arrow buttons to reorder)</span>
+                <span className="text-indigo-600 font-semibold flex items-center gap-1">
+                  <CheckCircle2 size={13} /> Alt text auto-synced with Location Name
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {formData.imageGallery.map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 bg-white/70 rounded-2xl border border-gray-200/80 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-4 group"
+                  >
+                    {/* Thumbnail */}
+                    <div className="w-24 h-20 sm:w-28 sm:h-20 rounded-xl overflow-hidden bg-zinc-950 shrink-0 border border-gray-200 relative group/thumb">
+                      <img
+                        src={img.url}
+                        alt={img.alt || img.location || 'Gallery image'}
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-black/70 text-white font-mono text-[9px]">
+                        #{idx + 1}
+                      </span>
+                    </div>
+
+                    {/* Location Name & Accessibility Alt Text */}
+                    <div className="flex-1 w-full space-y-2">
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="text-[12px] font-semibold text-gray-700 flex items-center gap-1">
+                            <MapPin size={13} className="text-[#FF9933]" /> Location Name
+                          </label>
+                          <span className="text-[10px] text-gray-400 font-medium">
+                            Displayed on hero badge
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          value={img.location}
+                          onChange={(e) => handleUpdateGalleryImage(idx, 'location', e.target.value)}
+                          placeholder="e.g. Hadimba Devi Temple, Manali"
+                          className="w-full px-3.5 py-2 text-[13px] font-medium border border-gray-200 rounded-xl bg-gray-50/50 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 shadow-sm outline-none"
+                        />
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-500">
+                        <span className="font-semibold text-gray-600">SEO Alt Text:</span>
+                        <span className="font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100 truncate max-w-md">
+                          {img.alt || img.location || formData.title || 'Travel Photo'}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Action Controls: Move Up, Move Down, Delete */}
+                    <div className="flex items-center gap-1.5 self-end md:self-center shrink-0">
+                      <button
+                        type="button"
+                        disabled={idx === 0}
+                        onClick={() => handleMoveGalleryImage(idx, idx - 1)}
+                        className="p-2 rounded-xl text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 disabled:opacity-30 disabled:pointer-events-none transition-colors border border-gray-200"
+                        title="Move Up"
+                        aria-label="Move Up"
+                      >
+                        <MoveUp size={15} />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={!formData.imageGallery || idx === formData.imageGallery.length - 1}
+                        onClick={() => handleMoveGalleryImage(idx, idx + 1)}
+                        className="p-2 rounded-xl text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 disabled:opacity-30 disabled:pointer-events-none transition-colors border border-gray-200"
+                        title="Move Down"
+                        aria-label="Move Down"
+                      >
+                        <MoveDown size={15} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveGalleryImage(idx)}
+                        className="p-2 rounded-xl text-gray-400 hover:text-rose-600 hover:bg-rose-50 transition-colors border border-gray-200"
+                        title="Remove Image"
+                        aria-label="Remove Image"
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </Card>
+
+        {/* ============================================================== */}
+        {/* SECTION E: SEO & Meta Data */}
         {/* ============================================================== */}
         <Card className="p-6 md:p-8 space-y-4">
           <div className="border-b border-white/40 pb-3">
             <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200/60">
-              Section D
+              Section E
             </span>
             <h2 className="text-lg font-bold text-gray-900 mt-2 flex items-center gap-2">
               <Globe size={18} className="text-indigo-600" /> Search Engine Optimization (SEO)
@@ -753,13 +1029,13 @@ export const AdminBlogEditor: React.FC = () => {
         </Card>
 
         {/* ============================================================== */}
-        {/* SECTION E: Related Blogs */}
+        {/* SECTION F: Related Blogs */}
         {/* ============================================================== */}
         <Card className="p-6 md:p-8 space-y-4">
           <div className="border-b border-white/40 pb-3 flex items-center justify-between">
             <div>
               <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200/60">
-                Section E
+                Section F
               </span>
               <h2 className="text-lg font-bold text-gray-900 mt-2 flex items-center gap-2">
                 <BookOpen size={18} className="text-indigo-600" /> Related Blogs
@@ -823,13 +1099,13 @@ export const AdminBlogEditor: React.FC = () => {
         </Card>
 
         {/* ============================================================== */}
-        {/* SECTION F: Frequently Asked Questions (FAQPage Schema) */}
+        {/* SECTION G: Frequently Asked Questions (FAQPage Schema) */}
         {/* ============================================================== */}
         <Card className="p-6 md:p-8 space-y-6">
           <div className="flex items-center justify-between border-b border-white/40 pb-3">
             <div>
               <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200/60">
-                Section F
+                Section G
               </span>
               <h2 className="text-lg font-bold text-gray-900 mt-2">
                 Frequently Asked Questions (FAQ)

@@ -12,6 +12,8 @@ import { TiltCard } from '../components/TiltCard';
 import { usePackages } from '../context/PackagesProvider';
 import { sanitizeBlogHtml } from '../lib/sanitize';
 import { plainTextToHtml, normalizeImageUrl, extractPackagePrice } from '../lib/packageUtils';
+import { useSeo } from '../lib/useSeo';
+import { PUBLIC_SITE_URL } from '../../config/appConfig';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -42,6 +44,113 @@ export const PackageDetail: React.FC = () => {
         return pLoc === locLower || (pLoc && locLower && (pLoc.includes(locLower) || locLower.includes(pLoc)));
     }).slice(0, 3);
   }, [locationForMemo, pkg?.id, dbPackages]);
+
+  // Dynamic SEO Fields and Rich Snippets (unconditional hook execution)
+  const packageTitle = pkg ? (pkg.title ?? pkg.name ?? 'Travel Package') : 'Travel Package';
+  const pkgLocation = pkg ? (pkg.destination || pkg.location || pkg.locations || pkg.highlights_old || '') : '';
+  const pkgImageUrl = pkg ? normalizeImageUrl(pkg.heroImage || pkg.image_url || pkg.image || pkg.img) : '';
+  const pkgPriceData = pkg ? extractPackagePrice(pkg) : { rawPrice: 0, hasPrice: false };
+  const rawOverview = pkg ? (pkg.overview || pkg.description || '') : '';
+  const cleanOverview = rawOverview.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+  const truncatedOverview = cleanOverview.length > 158
+    ? `${cleanOverview.slice(0, 155).trim()}…`
+    : cleanOverview || (pkg ? `Explore ${packageTitle} in ${pkgLocation || 'India'}. Book customized travel packages with Monks & Monkeys Travels.` : '');
+
+  const metaTitle = (pkg?.seo as any)?.title || (pkg ? `${packageTitle} | Monks & Monkeys Travels` : 'Tour Packages | Monks & Monkeys Travels');
+  const metaDescription = (pkg?.seo as any)?.description || truncatedOverview;
+  const metaKeywords = (pkg?.seo as any)?.keywords || (pkg ? `${packageTitle}, ${pkgLocation}, travel package, tour, itinerary, holiday` : undefined);
+  const metaOgImage = (pkg?.seo as any)?.ogImage || pkgImageUrl;
+  const canonicalPath = pkg ? `/packages/${pkg.slug || pkg.id}` : '/packages';
+
+  const jsonLd = React.useMemo(() => {
+    if (!pkg) return undefined;
+
+    const canonicalUrl = `${PUBLIC_SITE_URL}/packages/${pkg.slug || pkg.id}`;
+    const absoluteHeroImage = pkgImageUrl.startsWith('http')
+      ? pkgImageUrl
+      : `${PUBLIC_SITE_URL}${pkgImageUrl.startsWith('/') ? pkgImageUrl : `/${pkgImageUrl}`}`;
+
+    const galleryUrls: string[] = Array.isArray(pkg.galleryImages)
+      ? pkg.galleryImages.map((g) => {
+          const u = normalizeImageUrl(g.url);
+          return u.startsWith('http') ? u : `${PUBLIC_SITE_URL}${u.startsWith('/') ? u : `/${u}`}`;
+        })
+      : [];
+
+    const allImages = [absoluteHeroImage, ...galleryUrls].filter(Boolean);
+    const numericPrice = pkgPriceData.rawPrice > 0 ? pkgPriceData.rawPrice : undefined;
+
+    // Schema: Product (Google Rich Results for Product / Pricing / Rating)
+    const productSchema: Record<string, any> = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: packageTitle,
+      description: cleanOverview || `${packageTitle} tour package by Monks & Monkeys Travels`,
+      image: allImages,
+      category: pkg.category || 'Tour Packages',
+      brand: {
+        '@type': 'Brand',
+        name: 'Monks & Monkeys Travels',
+      },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'INR',
+        price: numericPrice,
+        priceValidUntil: pkg.expiryDate ? pkg.expiryDate.slice(0, 10) : undefined,
+        availability: 'https://schema.org/InStock',
+        url: canonicalUrl,
+        seller: {
+          '@type': 'Organization',
+          name: 'Monks & Monkeys Travels',
+          url: PUBLIC_SITE_URL,
+        },
+      },
+    };
+
+    if (pkg.rating) {
+      productSchema.aggregateRating = {
+        '@type': 'AggregateRating',
+        ratingValue: pkg.rating,
+        reviewCount: pkg.reviewsCount || 1,
+        bestRating: 5,
+        worstRating: 1,
+      };
+    }
+
+    // Schema: TouristTrip
+    const touristTripSchema: Record<string, any> = {
+      '@context': 'https://schema.org',
+      '@type': 'TouristTrip',
+      name: packageTitle,
+      description: cleanOverview || `${packageTitle} tour package by Monks & Monkeys Travels`,
+      image: allImages,
+      touristType: ['Traveler', 'Family', 'Couples', 'Solo', 'Group'],
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'INR',
+        price: numericPrice,
+        availability: 'https://schema.org/InStock',
+        url: canonicalUrl,
+      },
+      provider: {
+        '@type': 'Organization',
+        name: 'Monks & Monkeys Travels',
+        url: PUBLIC_SITE_URL,
+      },
+    };
+
+    return [productSchema, touristTripSchema];
+  }, [pkg, packageTitle, cleanOverview, pkgImageUrl, pkgPriceData.rawPrice]);
+
+  useSeo(pkg ? {
+    title: metaTitle,
+    description: metaDescription,
+    keywords: metaKeywords,
+    image: metaOgImage,
+    canonicalPath,
+    type: 'website',
+    jsonLd,
+  } : { title: 'Tour Packages | Monks & Monkeys Travels', description: '' });
 
   if (loading) {
     return (
@@ -105,7 +214,7 @@ export const PackageDetail: React.FC = () => {
         <div className="absolute inset-x-0 top-0 h-[55vh] md:h-[70vh] z-0 overflow-hidden bg-black rounded-[24px]">
           <img 
             src={imageUrl} 
-            alt={pkg.title} 
+            alt={packageTitle || location || 'Tour Package'} 
             className="w-full h-full aspect-[16/9] object-cover animate-kenburns scale-105"
           />
           {/* Gradient fade into the background color */}
@@ -278,6 +387,42 @@ export const PackageDetail: React.FC = () => {
                 )}
               </motion.section>
             )}
+
+            {/* Package Photo Gallery (if images exist) */}
+            {pkg.galleryImages && pkg.galleryImages.length > 0 && (
+              <motion.section 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.75 }}
+                className="mb-16"
+              >
+                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Photo Gallery</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {pkg.galleryImages.map((gImg, gIdx) => {
+                    const gUrl = normalizeImageUrl(gImg.url);
+                    const gAlt = `${packageTitle} - ${gImg.alt || gImg.caption || location || `Photo ${gIdx + 1}`}`;
+                    return (
+                      <div
+                        key={gIdx}
+                        className="rounded-2xl overflow-hidden shadow-md bg-zinc-950 aspect-[4/3] relative group border border-gray-200/60 dark:border-white/10"
+                      >
+                        <img
+                          src={gUrl}
+                          alt={gAlt}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        {(gImg.caption || gImg.alt) && (
+                          <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white text-xs">
+                            {gImg.caption || gImg.alt}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.section>
+            )}
             
             {/* Related Packages */}
             {relatedPackages.length > 0 && (
@@ -299,7 +444,7 @@ export const PackageDetail: React.FC = () => {
                         <TiltCard>
                           <div className="rounded-[20px] bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                             <div style={{ height: '180px', position: 'relative' }}>
-                              <img src={normalizeImageUrl(relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage)} alt={relPkg.title || relPkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              <img src={normalizeImageUrl(relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage)} alt={relPkg.title || relPkg.name || relPkg.location || 'Tour Package'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.3rem 0.8rem', borderRadius: '999px', color: 'white', fontSize: '0.7rem', fontWeight: 600 }}>
                                 <MapPin size={10} style={{ display: 'inline', marginRight: '4px' }} />
                                 {relPkg.nights || relPkg.duration || (relPkg.durationNights ? `${relPkg.durationNights}N/${relPkg.durationDays}D` : '')}

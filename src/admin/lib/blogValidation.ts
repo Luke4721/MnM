@@ -32,6 +32,15 @@ export const blogFormSchema = z.object({
       keywords: '',
     }),
   relatedBlogIds: z.array(z.string()).default([]),
+  imageGallery: z
+    .array(
+      z.object({
+        url: z.string().min(1, 'Image URL is required'),
+        location: z.string().default(''),
+        alt: z.string().optional(),
+      })
+    )
+    .default([]),
   faqs: z
     .array(
       z.object({

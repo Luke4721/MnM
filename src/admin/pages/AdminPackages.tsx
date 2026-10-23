@@ -27,11 +27,12 @@ import {
   Check,
   X,
   Tag,
+  Globe,
 } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
+import { Input, Textarea } from '../components/ui/Input';
 import { ConfirmModal } from '../components/ui/Modal';
 import { useToast } from '../context/ToastContext';
 import { RichTextEditor } from '../components/RichTextEditor';
@@ -60,6 +61,12 @@ interface EditingPackage {
   itinerary?: ItineraryDay[];
   inclusions?: string[];
   exclusions?: string[];
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string;
+    ogImage?: string;
+  };
   [key: string]: unknown;
 }
 
@@ -314,6 +321,7 @@ export const AdminPackages: React.FC = () => {
       discountPercentage: '',
       inclusions: [],
       exclusions: [],
+      seo: { title: '', description: '', keywords: '' },
     }); // no id => create mode
     setExpandedDayIndex(null);
     setExpiryInput('');
@@ -592,6 +600,7 @@ export const AdminPackages: React.FC = () => {
           expiryDate: expiryIso,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
+          seo: editingPkg.seo,
           ...imageCompat,
         });
         toast.success(`"${name}" created successfully!`);
@@ -1150,6 +1159,63 @@ export const AdminPackages: React.FC = () => {
                 onFeaturedChange={(url) => setFeaturedImage(url)}
                 onGalleryChange={(images) => setGalleryImages(images)}
               />
+            </div>
+
+            {/* SEO & Search Engine Optimization Card */}
+            <div className="pt-6 border-t border-white/60 space-y-4">
+              <div>
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                  <Globe size={18} className="text-indigo-600" />
+                  Search Engine Optimization (SEO)
+                </h3>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Optional custom Google meta tags. If left empty, Google will automatically use the Package Title and a summary of the Overview.
+                </p>
+              </div>
+
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-zinc-800/70 border border-gray-200/80 dark:border-white/10 shadow-xs space-y-4">
+                <Input
+                  label="Meta Title (Optional)"
+                  value={editingPkg.seo?.title || ''}
+                  onChange={(e) =>
+                    setEditingPkg((prev) =>
+                      prev
+                        ? { ...prev, seo: { ...(prev.seo || {}), title: e.target.value } }
+                        : prev
+                    )
+                  }
+                  placeholder={`Default: ${editingPkg.name || 'Package Title'} | Monks & Monkeys Travels`}
+                />
+
+                <Textarea
+                  label="Meta Description (Optional)"
+                  rows={2}
+                  maxLength={500}
+                  showCount
+                  value={editingPkg.seo?.description || ''}
+                  onChange={(e) =>
+                    setEditingPkg((prev) =>
+                      prev
+                        ? { ...prev, seo: { ...(prev.seo || {}), description: e.target.value } }
+                        : prev
+                    )
+                  }
+                  placeholder="Default: First 150 characters of Overview..."
+                />
+
+                <Input
+                  label="Meta Keywords (Optional)"
+                  value={editingPkg.seo?.keywords || ''}
+                  onChange={(e) =>
+                    setEditingPkg((prev) =>
+                      prev
+                        ? { ...prev, seo: { ...(prev.seo || {}), keywords: e.target.value } }
+                        : prev
+                    )
+                  }
+                  placeholder="e.g. Kerala Tour, Munnar Houseboat, Wayanad Holiday Package"
+                />
+              </div>
             </div>
 
             {/* Action Buttons */}

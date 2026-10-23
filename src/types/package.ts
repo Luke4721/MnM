@@ -72,6 +72,14 @@ export interface TourPackage {
   inclusions?: string[];
   exclusions?: string[];
 
+  /** SEO & Metadata (optional explicit overrides; falls back to title/overview) */
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string;
+    ogImage?: string;
+  };
+
   /** DynamoDB timestamps */
   createdAt?: string;
   updatedAt?: string;

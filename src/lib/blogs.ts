@@ -25,6 +25,12 @@ export interface BlogFaq {
   answer: string;
 }
 
+export interface BlogGalleryImage {
+  url: string;
+  location: string;
+  alt?: string;
+}
+
 export interface Blog {
   id: string;
   title: string;
@@ -43,6 +49,7 @@ export interface Blog {
   seo?: BlogSeo;
   legacy?: BlogLegacy;
   faqs?: BlogFaq[];
+  imageGallery?: BlogGalleryImage[];
   /** Compat alias for featuredImage — the original pages read `image`. */
   image?: string;
   imageCaption?: string;

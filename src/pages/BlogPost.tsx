@@ -1,11 +1,33 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Clock, Calendar, BookOpen, Link2, Check, ChevronDown, HelpCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
-  blogBySlug, relatedBlogs, formatBlogDate, truncateExcerpt, sanitizeBlogHtml,
-  fetchBlogBySlug, optimizePostImages, getBlogFaqs, hasFaqInContent, SITE_URL,
-  type Blog, type BlogFaq
+  ArrowLeft,
+  Clock,
+  Calendar,
+  BookOpen,
+  Link2,
+  Check,
+  ChevronDown,
+  HelpCircle,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
+import {
+  blogBySlug,
+  relatedBlogs,
+  formatBlogDate,
+  truncateExcerpt,
+  sanitizeBlogHtml,
+  fetchBlogBySlug,
+  optimizePostImages,
+  getBlogFaqs,
+  hasFaqInContent,
+  SITE_URL,
+  type Blog,
+  type BlogFaq,
+  type BlogGalleryImage,
 } from '../lib/blogs';
 import { useSeo } from '../lib/useSeo';
 import { scrollToTop } from '../components/SmoothScroll';
@@ -83,6 +105,116 @@ const BlogFaqAccordion: React.FC<BlogFaqAccordionProps> = ({ faqs, title }) => {
   );
 };
 
+interface BlogImageSlideshowProps {
+  images: BlogGalleryImage[];
+  blogTitle: string;
+}
+
+export const BlogImageSlideshow: React.FC<BlogImageSlideshowProps> = ({ images, blogTitle }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (!images || images.length === 0) return null;
+
+  const currentImage = images[currentIndex] || images[0];
+  const hasMultiple = images.length > 1;
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const activeAlt = currentImage.alt || currentImage.location || blogTitle;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.2, duration: 0.6 }}
+      className="w-full mb-16"
+    >
+      <div className="w-full aspect-[16/9] rounded-[24px] overflow-hidden shadow-2xl relative bg-zinc-950 select-none group">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentImage.url}
+            src={currentImage.url}
+            alt={activeAlt}
+            width={1200}
+            height={675}
+            loading="eager"
+            fetchPriority="high"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: 'easeInOut' }}
+            className="w-full h-full aspect-[16/9] object-cover"
+          />
+        </AnimatePresence>
+
+        {/* Pill-shaped badge in the top-left corner */}
+        {currentImage.location && (
+          <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/60 backdrop-blur-md text-white text-xs sm:text-sm font-semibold shadow-lg border border-white/20 tracking-wide pointer-events-none">
+            <MapPin size={15} className="text-[#FF9933] shrink-0" />
+            <span className="truncate max-w-[220px] sm:max-w-xs">{currentImage.location}</span>
+          </div>
+        )}
+
+        {/* Navigation arrows */}
+        {hasMultiple && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous photo"
+              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white flex items-center justify-center transition-all border border-white/20 hover:scale-105 active:scale-95 shadow-xl cursor-pointer"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next photo"
+              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white flex items-center justify-center transition-all border border-white/20 hover:scale-105 active:scale-95 shadow-xl cursor-pointer"
+            >
+              <ChevronRight size={22} />
+            </button>
+
+            {/* Bottom-right counter badge */}
+            <div className="absolute bottom-4 right-4 z-20 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-mono tracking-wider border border-white/15">
+              {currentIndex + 1} / {images.length}
+            </div>
+
+            {/* Dot indicators */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Go to photo ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                    currentIndex === idx
+                      ? 'w-6 bg-[#FF9933]'
+                      : 'w-1.5 bg-white/60 hover:bg-white'
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {activeAlt && (
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 italic text-center mt-3">
+          {activeAlt}
+        </p>
+      )}
+    </motion.div>
+  );
+};
+
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -146,9 +278,9 @@ export const BlogPost: React.FC = () => {
       '@type': 'BlogPosting',
       headline: blog.title,
       description: blog.seo?.description || blog.excerpt,
-      image: [blog.featuredImage],
+      image: [blog.featuredImage, ...(blog.imageGallery?.map((g) => g.url) || [])].filter(Boolean),
       datePublished: blog.publishedAt,
-      dateModified: blog.publishedAt,
+      dateModified: blog.updatedAt || blog.publishedAt,
       articleSection: blog.category,
       keywords: blog.seo?.keywords || '',
       author: { '@type': 'Organization', name: 'Monks & Monkeys Travels' },
@@ -182,7 +314,8 @@ export const BlogPost: React.FC = () => {
   useSeo(blog ? {
     title: `${blog.seo?.title || blog.title} | Monks & Monkeys Travels`,
     description: blog.seo?.description || truncateExcerpt(blog.excerpt, 158),
-    image: blog.featuredImage,
+    keywords: blog.seo?.keywords,
+    image: blog.seo?.ogImage || blog.featuredImage,
     canonicalPath: `/blog/${blog.slug}`,
     type: 'article',
     jsonLd,
@@ -267,30 +400,34 @@ export const BlogPost: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Featured Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="w-full mb-16"
-        >
-          <div className="w-full aspect-[16/9] rounded-[24px] overflow-hidden shadow-2xl relative">
-            <img
-              src={blog.featuredImage}
-              alt={blog.imageAlt || blog.title}
-              width={1200}
-              height={675}
-              loading="eager"
-              fetchPriority="high"
-              className="w-full h-full aspect-[16/9] object-cover"
-            />
-          </div>
-          {(blog.imageAlt || blog.title) && (
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 italic text-center mt-3">
-              {blog.imageAlt || blog.title}
-            </p>
-          )}
-        </motion.div>
+        {/* Featured Image or Image Slideshow */}
+        {blog.imageGallery && blog.imageGallery.length > 0 ? (
+          <BlogImageSlideshow images={blog.imageGallery} blogTitle={blog.title} />
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="w-full mb-16"
+          >
+            <div className="w-full aspect-[16/9] rounded-[24px] overflow-hidden shadow-2xl relative">
+              <img
+                src={blog.featuredImage}
+                alt={blog.imageAlt || blog.title}
+                width={1200}
+                height={675}
+                loading="eager"
+                fetchPriority="high"
+                className="w-full h-full aspect-[16/9] object-cover"
+              />
+            </div>
+            {(blog.imageAlt || blog.title) && (
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 italic text-center mt-3">
+                {blog.imageAlt || blog.title}
+              </p>
+            )}
+          </motion.div>
+        )}
 
         {/* Article Content */}
         <motion.div

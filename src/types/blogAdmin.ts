@@ -10,6 +10,12 @@ export interface BlogFaq {
   answer: string;
 }
 
+export interface BlogGalleryImage {
+  url: string;
+  location: string;
+  alt?: string;
+}
+
 export interface BlogItem {
   id: string;
   title: string;
@@ -29,6 +35,7 @@ export interface BlogItem {
   tags?: string[];
   relatedBlogIds?: string[];
   image?: string;
+  imageGallery?: BlogGalleryImage[];
   faqs?: BlogFaq[];
   legacy?: {
     source?: string;
@@ -55,6 +62,7 @@ export interface BlogFormData {
   imageAlt: string;
   seo: BlogSeo;
   relatedBlogIds: string[];
+  imageGallery?: BlogGalleryImage[];
   faqs?: BlogFaq[];
 }
 

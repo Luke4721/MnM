@@ -320,6 +320,7 @@ export default async function handler(
         tags = [],
         relatedBlogIds = [],
         faqs = [],
+        imageGallery = [],
       } = body;
 
       if (!title || !slug || !content) {
@@ -362,6 +363,7 @@ export default async function handler(
         tags: Array.isArray(tags) ? tags : [],
         relatedBlogIds: Array.isArray(relatedBlogIds) ? relatedBlogIds : [],
         faqs: Array.isArray(faqs) ? faqs : [],
+        imageGallery: Array.isArray(imageGallery) ? imageGallery : [],
         createdAt: new Date().toISOString(),
       };
 
@@ -405,6 +407,7 @@ export default async function handler(
         tags = current.tags,
         relatedBlogIds = current.relatedBlogIds,
         faqs = current.faqs,
+        imageGallery = current.imageGallery,
       } = body;
 
       // Check slug collision
@@ -439,6 +442,7 @@ export default async function handler(
         tags: Array.isArray(tags) ? tags : current.tags || [],
         relatedBlogIds: Array.isArray(relatedBlogIds) ? relatedBlogIds : current.relatedBlogIds || [],
         faqs: Array.isArray(faqs) ? faqs : (current.faqs || []),
+        imageGallery: Array.isArray(imageGallery) ? imageGallery : (current.imageGallery || []),
         updatedAt: new Date().toISOString(),
       };
 
