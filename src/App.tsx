@@ -28,6 +28,7 @@ const AdminSettings = lazy(() => import('./admin/pages/AdminSettings').then((m) 
 const AdminPortal = lazy(() => import('./admin/pages/AdminPortal').then((m) => ({ default: m.AdminPortal })));
 const CommandCenter = lazy(() => import('./admin/pages/CommandCenter').then((m) => ({ default: m.CommandCenter })));
 const TelecallerApp = lazy(() => import('./admin/pages/TelecallerApp').then((m) => ({ default: m.TelecallerApp })));
+const CompanyBrain = lazy(() => import('./admin/pages/CompanyBrain').then((m) => ({ default: m.CompanyBrain })));
 import { AdminLayout } from './admin/components/AdminLayout';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
 import { AdminPackages } from './admin/pages/AdminPackages';
@@ -80,8 +81,10 @@ function App() {
             <Route path="/admin/portal" element={<AdminPortal />} />
             <Route path="/admin/command-center" element={<CommandCenter />} />
             <Route path="/admin/telecaller" element={<TelecallerApp />} />
+            <Route path="/admin/company-brain" element={<CompanyBrain />} />
             <Route path="/command-center" element={<CommandCenter />} />
             <Route path="/telecaller" element={<TelecallerApp />} />
+            <Route path="/company-brain" element={<CompanyBrain />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="dashboard" element={<AdminDashboard />} />
