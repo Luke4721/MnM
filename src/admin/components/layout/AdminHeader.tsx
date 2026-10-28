@@ -10,6 +10,7 @@ import {
   Folder,
   FileText,
   Inbox,
+  Layers,
   Sun,
   Moon,
 } from 'lucide-react';
@@ -100,6 +101,13 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
         icon: <FileText size={14} />,
         category: 'Management',
         page: 'Blogs',
+      };
+    }
+    if (path.startsWith('/admin/portal')) {
+      return {
+        icon: <Layers size={14} />,
+        category: 'Operations',
+        page: 'Portal',
       };
     }
     if (path.startsWith('/admin/inbox')) {

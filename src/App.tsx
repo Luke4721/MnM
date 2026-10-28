@@ -25,6 +25,7 @@ const AdminBlogEditor = lazy(() => import('./admin/pages/AdminBlogEditor').then(
 const AdminTeam = lazy(() => import('./admin/pages/AdminTeam').then((m) => ({ default: m.AdminTeam })));
 const AdminSupportRouting = lazy(() => import('./admin/pages/AdminSupportRouting').then((m) => ({ default: m.AdminSupportRouting })));
 const AdminSettings = lazy(() => import('./admin/pages/AdminSettings').then((m) => ({ default: m.AdminSettings })));
+const AdminPortal = lazy(() => import('./admin/pages/AdminPortal').then((m) => ({ default: m.AdminPortal })));
 import { AdminLayout } from './admin/components/AdminLayout';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
 import { AdminPackages } from './admin/pages/AdminPackages';
@@ -74,6 +75,7 @@ function App() {
           <Suspense fallback={<div className="min-h-screen" />}>
           <Routes location={location} key={location.pathname}>
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/portal" element={<AdminPortal />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="dashboard" element={<AdminDashboard />} />

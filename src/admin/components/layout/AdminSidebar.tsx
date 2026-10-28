@@ -8,6 +8,7 @@ import {
   Users,
   Headphones,
   Settings,
+  Layers,
   LogOut,
   X,
   ChevronLeft,
@@ -82,6 +83,12 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       label: 'Site Settings',
       to: '/admin/settings',
       icon: <Settings size={19} />,
+      matchPrefix: true,
+    },
+    {
+      label: 'Operations Portal',
+      to: '/admin/portal',
+      icon: <Layers size={19} />,
       matchPrefix: true,
     },
   ];
