@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Shield,
@@ -6,70 +6,27 @@ import {
   Lock,
   Unlock,
   CheckCircle2,
-  Settings,
-  RefreshCw,
   ArrowLeft,
   AlertTriangle,
   PhoneCall,
   Sliders,
-  X,
 } from 'lucide-react';
 import { isAdminAuthenticated, loginAdmin, logoutAdmin } from '../auth';
+import { CommandCenter } from './CommandCenter';
+import { TelecallerApp } from './TelecallerApp';
 
 const NAVBAR_HEIGHT_PX = 56;
 
-const DEFAULT_COMMAND_CENTER_URL =
-  (import.meta.env.VITE_RETOOL_COMMAND_CENTER_URL as string) ||
-  '[PASTE_YOUR_PUBLISHED_RETOOL_COMMAND_CENTER_URL_HERE]';
-
-const DEFAULT_TELECALLER_APP_URL =
-  (import.meta.env.VITE_RETOOL_TELECALLER_APP_URL as string) ||
-  '[PASTE_YOUR_PUBLISHED_RETOOL_TELECALLER_APP_URL_HERE]';
-
 export const AdminPortal: React.FC = () => {
-
   // Active Tab: "Command Center" or "Telecaller App"
   const [activeTab, setActiveTab] = useState<'command-center' | 'telecaller-app'>('command-center');
 
-  // Authentication State (supports existing auth provider and mock state toggle)
+  // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     return isAdminAuthenticated();
   });
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState('');
-
-  // Retool URLs (initialized with env vars or placeholder defaults; supports local edits)
-  const [commandCenterUrl, setCommandCenterUrl] = useState<string>(() => {
-    return (
-      localStorage.getItem('portal_retool_command_center_url') ||
-      DEFAULT_COMMAND_CENTER_URL
-    );
-  });
-  const [telecallerAppUrl, setTelecallerAppUrl] = useState<string>(() => {
-    return (
-      localStorage.getItem('portal_retool_telecaller_app_url') ||
-      DEFAULT_TELECALLER_APP_URL
-    );
-  });
-
-  // URL Config Modal
-  const [showConfigModal, setShowConfigModal] = useState(false);
-  const [tempCommandCenterUrl, setTempCommandCenterUrl] = useState(commandCenterUrl);
-  const [tempTelecallerAppUrl, setTempTelecallerAppUrl] = useState(telecallerAppUrl);
-  const [iframeKey, setIframeKey] = useState(0);
-
-  // Sync scroll locking removal for full viewport display
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.classList.remove('lenis');
-    document.body.classList.remove('lenis');
-
-    return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    };
-  }, []);
 
   const handlePasswordLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,35 +54,6 @@ export const AdminPortal: React.FC = () => {
     setIsAuthenticated(false);
   };
 
-  const handleSaveUrls = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleanCmd = tempCommandCenterUrl.trim() || DEFAULT_COMMAND_CENTER_URL;
-    const cleanTele = tempTelecallerAppUrl.trim() || DEFAULT_TELECALLER_APP_URL;
-
-    setCommandCenterUrl(cleanCmd);
-    setTelecallerAppUrl(cleanTele);
-    localStorage.setItem('portal_retool_command_center_url', cleanCmd);
-    localStorage.setItem('portal_retool_telecaller_app_url', cleanTele);
-    setShowConfigModal(false);
-    setIframeKey((prev) => prev + 1);
-  };
-
-  const handleResetUrls = () => {
-    setCommandCenterUrl(DEFAULT_COMMAND_CENTER_URL);
-    setTelecallerAppUrl(DEFAULT_TELECALLER_APP_URL);
-    setTempCommandCenterUrl(DEFAULT_COMMAND_CENTER_URL);
-    setTempTelecallerAppUrl(DEFAULT_TELECALLER_APP_URL);
-    localStorage.removeItem('portal_retool_command_center_url');
-    localStorage.removeItem('portal_retool_telecaller_app_url');
-    setShowConfigModal(false);
-    setIframeKey((prev) => prev + 1);
-  };
-
-  const currentUrl = activeTab === 'command-center' ? commandCenterUrl : telecallerAppUrl;
-  const isPlaceholderUrl =
-    currentUrl.includes('PASTE_YOUR_PUBLISHED_RETOOL') ||
-    (!currentUrl.startsWith('http://') && !currentUrl.startsWith('https://'));
-
   // ---------------------------------------------------------------------------
   // AUTHENTICATION GATE
   // ---------------------------------------------------------------------------
@@ -146,9 +74,11 @@ export const AdminPortal: React.FC = () => {
               <span className="text-xs font-semibold uppercase tracking-wider text-amber-400/90 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
                 Restricted Operations Portal
               </span>
-              <h1 className="text-2xl font-bold text-white tracking-tight pt-2">Admin Authentication Required</h1>
+              <h1 className="text-2xl font-bold text-white tracking-tight pt-2">
+                Admin Authentication Required
+              </h1>
               <p className="text-sm text-slate-400">
-                This internal portal integrates live Retool Command Center &amp; Telecaller applications. You must be an authenticated administrator to proceed.
+                This internal portal integrates native Command Center &amp; Telecaller applications. You must be an authenticated administrator to proceed.
               </p>
             </div>
 
@@ -226,13 +156,13 @@ export const AdminPortal: React.FC = () => {
   // AUTHENTICATED PORTAL VIEW
   // ---------------------------------------------------------------------------
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden bg-slate-950 text-slate-100 font-sans select-none">
+    <div className="min-h-screen w-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
       {/* =====================================================================
           TOP NAVIGATION BAR (Exact Height: 56px)
           Tabs: "Command Center" and "Telecaller App"
       ===================================================================== */}
       <header
-        className="w-full bg-slate-900 border-b border-slate-800/80 px-3 sm:px-4 flex items-center justify-between shrink-0 z-30"
+        className="w-full bg-slate-900 border-b border-slate-800/90 px-3 sm:px-6 flex items-center justify-between shrink-0 sticky top-0 z-30 shadow-sm"
         style={{ height: `${NAVBAR_HEIGHT_PX}px` }}
       >
         {/* Left: Branding & Back to Dashboard */}
@@ -252,8 +182,8 @@ export const AdminPortal: React.FC = () => {
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <div className="flex items-baseline gap-1.5">
               <span className="font-semibold text-sm text-white tracking-tight">Operations Portal</span>
-              <span className="hidden md:inline-block text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                Retool
+              <span className="hidden md:inline-block text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Native React
               </span>
             </div>
           </div>
@@ -291,38 +221,13 @@ export const AdminPortal: React.FC = () => {
           </button>
         </nav>
 
-        {/* Right: Controls (Refresh, URL Config, Auth Toggle, Logout) */}
+        {/* Right: Controls (Auth Toggle, Logout) */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Reload Iframe */}
-          <button
-            type="button"
-            onClick={() => setIframeKey((prev) => prev + 1)}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
-            title="Reload current dashboard"
-          >
-            <RefreshCw size={14} />
-          </button>
-
-          {/* Configure URLs */}
-          <button
-            type="button"
-            onClick={() => {
-              setTempCommandCenterUrl(commandCenterUrl);
-              setTempTelecallerAppUrl(telecallerAppUrl);
-              setShowConfigModal(true);
-            }}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700/70 text-slate-300 hover:text-white text-xs font-medium transition-colors"
-            title="Configure Retool URLs"
-          >
-            <Settings size={14} />
-            <span className="hidden lg:inline">Configure URLs</span>
-          </button>
-
           {/* Auth State Toggle / Lock */}
           <button
             type="button"
             onClick={handleToggleMockAuth}
-            className="flex items-center gap-1 px-2 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-medium transition-colors"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-medium transition-colors"
             title="Admin authenticated. Click to toggle auth state."
           >
             <Shield size={13} />
@@ -341,152 +246,13 @@ export const AdminPortal: React.FC = () => {
         </div>
       </header>
 
-      {/* Placeholder Warning Banner (if URLs haven't been replaced with real Retool URLs) */}
-      {isPlaceholderUrl && (
-        <div className="bg-amber-500/10 border-b border-amber-500/30 px-3 sm:px-4 py-2 flex items-center justify-between text-xs text-amber-200 z-20 shrink-0">
-          <div className="flex items-center gap-2 overflow-hidden">
-            <AlertTriangle size={15} className="text-amber-400 shrink-0" />
-            <span className="truncate">
-              <strong>Retool URL placeholder:</strong> Currently pointing to{' '}
-              <code className="bg-slate-900/80 px-1.5 py-0.5 rounded text-amber-300 font-mono text-[11px]">
-                {currentUrl}
-              </code>
-              . Replace it in code, configure via <code>.env.local</code>, or click Configure to preview live.
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              setTempCommandCenterUrl(commandCenterUrl);
-              setTempTelecallerAppUrl(telecallerAppUrl);
-              setShowConfigModal(true);
-            }}
-            className="underline hover:text-white ml-3 shrink-0 font-medium cursor-pointer"
-          >
-            Set URL
-          </button>
-        </div>
-      )}
-
       {/* =====================================================================
-          MAIN IFRAME CONTAINER
-          Takes up 100vh minus navbar height (and banner if visible)
+          MAIN NATIVE COMPONENT CONTAINER (Replaces Iframes)
       ===================================================================== */}
-      <main
-        className="flex-1 w-full relative overflow-hidden bg-slate-950"
-        style={{
-          height: `calc(100vh - ${NAVBAR_HEIGHT_PX}px)`,
-        }}
-      >
-        {activeTab === 'command-center' && (
-          <iframe
-            key={`cmd-${iframeKey}`}
-            src={commandCenterUrl}
-            title="Command Center"
-            width="100%"
-            height="100%"
-            style={{ border: 'none' }}
-            allow="clipboard-write"
-            className="w-full h-full block"
-          />
-        )}
-
-        {activeTab === 'telecaller-app' && (
-          <iframe
-            key={`tele-${iframeKey}`}
-            src={telecallerAppUrl}
-            title="Telecaller App"
-            width="100%"
-            height="100%"
-            style={{ border: 'none' }}
-            allow="clipboard-write"
-            className="w-full h-full block"
-          />
-        )}
+      <main className="flex-1 w-full bg-slate-50 overflow-y-auto">
+        {activeTab === 'command-center' && <CommandCenter />}
+        {activeTab === 'telecaller-app' && <TelecallerApp />}
       </main>
-
-      {/* =====================================================================
-          RETOOL URL CONFIGURATION MODAL
-      ===================================================================== */}
-      {showConfigModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
-              <div className="flex items-center gap-2">
-                <Settings size={18} className="text-blue-400" />
-                <h3 className="font-semibold text-white text-base">Configure Retool Dashboard URLs</h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowConfigModal(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            <form onSubmit={handleSaveUrls} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
-                  Command Center Retool URL
-                </label>
-                <input
-                  type="text"
-                  value={tempCommandCenterUrl}
-                  onChange={(e) => setTempCommandCenterUrl(e.target.value)}
-                  placeholder="https://your-org.retool.com/embedded/public/..."
-                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-xs placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <p className="text-[11px] text-slate-400 mt-1">
-                  Default placeholder: <code>[PASTE_YOUR_PUBLISHED_RETOOL_COMMAND_CENTER_URL_HERE]</code>
-                </p>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
-                  Telecaller App Retool URL
-                </label>
-                <input
-                  type="text"
-                  value={tempTelecallerAppUrl}
-                  onChange={(e) => setTempTelecallerAppUrl(e.target.value)}
-                  placeholder="https://your-org.retool.com/embedded/public/..."
-                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-xs placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <p className="text-[11px] text-slate-400 mt-1">
-                  Default placeholder: <code>[PASTE_YOUR_PUBLISHED_RETOOL_TELECALLER_APP_URL_HERE]</code>
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
-                <button
-                  type="button"
-                  onClick={handleResetUrls}
-                  className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
-                >
-                  Reset to Defaults
-                </button>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setShowConfigModal(false)}
-                    className="px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:bg-slate-800 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-md shadow-blue-600/30"
-                  >
-                    Save &amp; Apply
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

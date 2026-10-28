@@ -71,17 +71,30 @@ const devApiPlugin = (): Plugin => ({
 })
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), devApiPlugin(), committedConfigWarningPlugin()],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-router-dom')) {
-            return 'vendor';
-          }
-          if (id.includes('blogs_index.json')) {
-            return 'blogs-index';
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  return {
+    define: {
+      'process.env.REACT_APP_OPENROUTER_API_KEY': JSON.stringify(
+        env.REACT_APP_OPENROUTER_API_KEY ||
+        env.VITE_OPENROUTER_API_KEY ||
+        process.env.REACT_APP_OPENROUTER_API_KEY ||
+        process.env.VITE_OPENROUTER_API_KEY ||
+        ''
+      ),
+      'process.env': {},
+    },
+    plugins: [react(), devApiPlugin(), committedConfigWarningPlugin()],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/react') || id.includes('node_modules/react-router-dom')) {
+              return 'vendor';
+            }
+            if (id.includes('blogs_index.json')) {
+              return 'blogs-index';
+            }
           }
         }
       }

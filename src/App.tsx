@@ -26,6 +26,8 @@ const AdminTeam = lazy(() => import('./admin/pages/AdminTeam').then((m) => ({ de
 const AdminSupportRouting = lazy(() => import('./admin/pages/AdminSupportRouting').then((m) => ({ default: m.AdminSupportRouting })));
 const AdminSettings = lazy(() => import('./admin/pages/AdminSettings').then((m) => ({ default: m.AdminSettings })));
 const AdminPortal = lazy(() => import('./admin/pages/AdminPortal').then((m) => ({ default: m.AdminPortal })));
+const CommandCenter = lazy(() => import('./admin/pages/CommandCenter').then((m) => ({ default: m.CommandCenter })));
+const TelecallerApp = lazy(() => import('./admin/pages/TelecallerApp').then((m) => ({ default: m.TelecallerApp })));
 import { AdminLayout } from './admin/components/AdminLayout';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
 import { AdminPackages } from './admin/pages/AdminPackages';
@@ -76,6 +78,10 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/portal" element={<AdminPortal />} />
+            <Route path="/admin/command-center" element={<CommandCenter />} />
+            <Route path="/admin/telecaller" element={<TelecallerApp />} />
+            <Route path="/command-center" element={<CommandCenter />} />
+            <Route path="/telecaller" element={<TelecallerApp />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="dashboard" element={<AdminDashboard />} />
