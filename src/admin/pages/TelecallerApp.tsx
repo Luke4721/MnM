@@ -40,7 +40,7 @@ const INITIAL_LEADS: Lead[] = [
     budget: '₹2,50,000',
     leadScore: 94,
     status: 'Hot Lead',
-    phone: '+919815297280',
+    phone: '+917696213652',
     email: 'ananya.sharma@example.com',
     dates: 'Nov 15 - Nov 22, 2026',
     pax: '2 Adults (Honeymoon)',
@@ -269,10 +269,10 @@ concierge@mnmtravels.com | +91 98152 97280`;
   /**
    * 2. Trigger Bolna Call via Bolna API
    * Uses import.meta.env.VITE_BOLNA_KEY and import.meta.env.VITE_BOLNA_AGENT_ID
-   * Payload EXACTLY matches user specification:
+   * Payload:
    * {
    *   "agent_id": env.BOLNA_AGENT_ID,
-   *   "recipient_phone_number": "+919815297280",
+   *   "recipient_phone_number": selectedLead.phone (strict E.164),
    *   "user_data": {
    *     "lead_name": selectedLead.name,
    *     "destination": selectedLead.destination,
@@ -288,8 +288,12 @@ concierge@mnmtravels.com | +91 98152 97280`;
     const bolnaKey = import.meta.env.VITE_BOLNA_KEY || '';
     const bolnaAgentId = import.meta.env.VITE_BOLNA_AGENT_ID || 'bolna-telecaller-v1';
 
-    // The phone number must be formatted as +919815297280 (no spaces).
-    const formattedPhoneNumber = '+919815297280';
+    // Format selected lead's phone number to strict E.164 (strips spaces and dashes, ensures leading '+')
+    const rawPhone = selectedLead.phone || '';
+    const cleanPhone = rawPhone.replace(/[\s\-]/g, '');
+    const formattedPhoneNumber = cleanPhone.startsWith('+')
+      ? cleanPhone
+      : (cleanPhone ? `+${cleanPhone}` : '');
 
     const payload = {
       agent_id: bolnaAgentId,
@@ -728,7 +732,7 @@ concierge@mnmtravels.com | +91 98152 97280`;
                   onClick={handleTriggerBolnaCall}
                   disabled={isTriggeringCall}
                   className="w-full py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm text-white bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
-                  title="Make POST request to Bolna AI with +919815297280"
+                  title={`Make POST request to Bolna AI with ${selectedLead?.phone || ''}`}
                 >
                   {isTriggeringCall ? (
                     <>
@@ -747,7 +751,7 @@ concierge@mnmtravels.com | +91 98152 97280`;
               {/* Endpoint transparency footer */}
               <div className="pt-2 text-[10px] text-slate-400 flex items-center justify-between border-t border-slate-100 font-mono">
                 <span>AI: VITE_OPENROUTER_KEY</span>
-                <span>Voice: Bolna (+919815297280)</span>
+                <span>Voice: Bolna ({selectedLead?.phone || 'E.164'})</span>
               </div>
             </div>
           </div>
