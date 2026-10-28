@@ -182,7 +182,7 @@ Audit Status: Escalated to Executive Operations Desk`;
           'X-Title': 'MNM Command Center',
         },
         body: JSON.stringify({
-          model: 'google/gemini-2.0-flash-001',
+          model: 'google/gemini-2.5-flash',
           messages: [
             {
               role: 'system',

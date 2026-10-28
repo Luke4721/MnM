@@ -283,7 +283,7 @@ ${contextText}`;
           'X-Title': 'MNM Company Brain',
         },
         body: JSON.stringify({
-          model: 'google/gemini-2.0-flash-001',
+          model: 'google/gemini-2.5-flash',
           messages: [
             {
               role: 'system',
@@ -402,7 +402,7 @@ ${contextText}`;
                   <h3 className="text-sm font-bold text-slate-900 leading-tight">
                     Company Brain AI Agent
                   </h3>
-                  <p className="text-[11px] text-slate-400">Model: OpenRouter / Gemini 2.0 Flash</p>
+                  <p className="text-[11px] text-slate-400">Model: OpenRouter / Gemini 2.5 Flash</p>
                 </div>
               </div>
 

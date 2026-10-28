@@ -220,7 +220,7 @@ concierge@mnmtravels.com | +91 98152 97280`;
           'X-Title': 'MNM Telecaller App',
         },
         body: JSON.stringify({
-          model: 'google/gemini-2.0-flash-001',
+          model: 'google/gemini-2.5-flash',
           messages: [
             {
               role: 'system',
