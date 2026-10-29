@@ -7,6 +7,21 @@ import { AnimatedNumber } from './AnimatedNumber';
 import { TiltCard } from './TiltCard';
 import { normalizeImageUrl, extractPackagePrice } from '../lib/packageUtils';
 
+export function getPackageDuration(pkg: any): string {
+  if (Array.isArray(pkg?.itinerary) && pkg.itinerary.length > 0) {
+    const days = pkg.itinerary.length;
+    const nights = Math.max(0, days - 1);
+    return `${nights} Nights / ${days} Days`;
+  }
+  if (pkg?.duration) return pkg.duration;
+  if (pkg?.durationNights && pkg?.durationDays) {
+    return `${pkg.durationNights} Nights / ${pkg.durationDays} Days`;
+  }
+  if (pkg?.nights) return pkg.nights;
+  if (pkg?.days) return pkg.days;
+  return '';
+}
+
 export function getPackagePreviewText(pkg: any): string {
   const rawText =
     pkg?.overview ||
@@ -65,10 +80,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, index = 0 }) => {
   const title = pkg.title || pkg.name || 'Tour Package';
   const location = pkg.location || pkg.locations || pkg.destination || '';
   const previewText = getPackagePreviewText(pkg);
-  const duration =
-    pkg.nights ||
-    pkg.duration ||
-    (pkg.durationNights ? `${pkg.durationNights}N / ${pkg.durationDays}D` : '');
+  const duration = getPackageDuration(pkg);
 
   return (
     <motion.div
@@ -114,7 +126,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, index = 0 }) => {
 
               {/* Uniform 3-Line Preview Truncation */}
               <p
-                className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 mb-6 leading-relaxed flex-1"
+                className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 mb-6 leading-relaxed flex-1 text-justify"
                 style={{
                   display: '-webkit-box',
                   WebkitLineClamp: 3,

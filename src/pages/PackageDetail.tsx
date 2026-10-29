@@ -15,7 +15,7 @@ import { plainTextToHtml, normalizeImageUrl, extractPackagePrice } from '../lib/
 import { useSeo } from '../lib/useSeo';
 import { PUBLIC_SITE_URL } from '../../config/appConfig';
 import { PackageHeroSlideshow } from '../components/PackageHeroSlideshow';
-import { getPackagePreviewText } from '../components/PackageCard';
+import { getPackagePreviewText, getPackageDuration } from '../components/PackageCard';
 
 export const PackageDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -209,6 +209,7 @@ export const PackageDetail: React.FC = () => {
 
   // Handle compatibility for both schemas
   const location = pkg.destination || pkg.location || pkg.locations || pkg.highlights_old;
+  const packageDuration = getPackageDuration(pkg);
   
   const priceData = extractPackagePrice(pkg);
   const variants = pkg.variants && pkg.variants.length > 0 ? [
@@ -216,13 +217,13 @@ export const PackageDetail: React.FC = () => {
       id: 'base',
       name: 'Standard',
       priceINR: priceData.rawPrice,
-      duration: pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days
+      duration: packageDuration
     },
     ...pkg.variants
   ] : null;
 
   const activeVariant = variants ? variants[selectedVariantIdx] : null;
-  const nights = activeVariant ? activeVariant.duration : (pkg.durationNights ? `${pkg.durationNights} Nights / ${pkg.durationDays} Days` : pkg.nights || pkg.duration || pkg.days);
+  const nights = activeVariant ? (activeVariant.duration || packageDuration) : packageDuration;
   const priceValue = activeVariant ? (Number(activeVariant.priceINR) || 0) : priceData.rawPrice;
   const hasValidPrice = priceValue > 0;
   const convertedPrice = hasValidPrice ? Math.round(convertPrice(priceValue, true) as number) : 0;
@@ -480,7 +481,7 @@ export const PackageDetail: React.FC = () => {
                               <img src={normalizeImageUrl(relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage)} alt={relPkg.title || relPkg.name || relPkg.location || 'Tour Package'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.3rem 0.8rem', borderRadius: '999px', color: 'white', fontSize: '0.7rem', fontWeight: 600 }}>
                                 <MapPin size={10} style={{ display: 'inline', marginRight: '4px' }} />
-                                {relPkg.nights || relPkg.duration || (relPkg.durationNights ? `${relPkg.durationNights}N/${relPkg.durationDays}D` : '')}
+                                {getPackageDuration(relPkg)}
                               </div>
                             </div>
                             <div style={{ padding: '1rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -489,7 +490,7 @@ export const PackageDetail: React.FC = () => {
                                 {relPkg.location || relPkg.locations || relPkg.destination}
                               </p>
                               <p
-                                className="text-xs text-gray-600 dark:text-gray-400 line-clamp-3 mb-3 leading-relaxed flex-1"
+                                className="text-xs text-gray-600 dark:text-gray-400 line-clamp-3 mb-3 leading-relaxed flex-1 text-justify"
                                 style={{
                                   display: '-webkit-box',
                                   WebkitLineClamp: 3,

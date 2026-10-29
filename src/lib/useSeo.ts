@@ -53,7 +53,7 @@ export function useSeo(seo: SeoTags): void {
     if (!document.head.querySelector('meta[name="google-site-verification"]')) {
       const gsc = document.createElement('meta');
       gsc.setAttribute('name', 'google-site-verification');
-      gsc.setAttribute('content', 'WtuP0fN8rJK2E9kANEcwIQWkGsIVXR6cqYcWxcACXww');
+      gsc.setAttribute('content', 'dCAme0sYM-0VHlqd_ObPjyXSIQXY05Ap_fLFLiKn2KQ');
       document.head.appendChild(gsc);
     }
 

@@ -264,7 +264,7 @@ export const BlogPost: React.FC = () => {
     };
   }, [slug, navigate]);
 
-  const related = useMemo(() => (blog ? relatedBlogs(blog, 4) : []), [blog]);
+  const related = useMemo(() => (blog ? relatedBlogs(blog, 6) : []), [blog]);
   const shareUrl = blog ? `${SITE_URL}/blog/${blog.slug}` : '';
 
   const blogFaqs = useMemo(() => getBlogFaqs(blog), [blog]);
@@ -509,7 +509,7 @@ export const BlogPost: React.FC = () => {
                 More from {blog.category}
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {related.map((rel) => (
                 <Link key={rel.id} to={`/blog/${rel.slug}`} className="group no-underline">
                   <div className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/60 dark:border-white/10 rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(217,119,54,0.1)] transition-all duration-500 hover:-translate-y-1.5 flex flex-col h-full">

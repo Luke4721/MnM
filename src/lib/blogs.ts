@@ -123,25 +123,52 @@ export async function fetchBlogBySlug(slug?: string): Promise<Blog | undefined> 
 }
 
 /** Related blogs: honour admin selections if present, falling back to same
- *  category first, newest first, padded with recent posts from other categories. */
-export function relatedBlogs(current: Blog, count = 4): Blog[] {
+ *  category first, newest first, padded with recent posts from other categories.
+ *  Always ensures returning exactly `count` items (default 6) whenever available. */
+export function relatedBlogs(current: Blog, count = 6): Blog[] {
+  const result: Blog[] = [];
+  const seenSlugs = new Set<string>();
+  if (current.slug) seenSlugs.add(current.slug);
+  if (current.id) seenSlugs.add(current.id);
+
+  const addBlog = (b: Blog | undefined | null) => {
+    if (!b) return;
+    if (b.status && b.status !== 'published') return;
+    if (b.deletedAt) return;
+    if (seenSlugs.has(b.slug) || (b.id && seenSlugs.has(b.id))) return;
+    seenSlugs.add(b.slug);
+    if (b.id) seenSlugs.add(b.id);
+    result.push(b);
+  };
+
+  // 1. First priority: Admin-selected related blog IDs
   if (Array.isArray(current.relatedBlogIds) && current.relatedBlogIds.length > 0) {
     const idMap = new Map<string, Blog>(blogs.map((b: Blog) => [b.id, b]));
-    const selected = current.relatedBlogIds
-      .map((id: string) => idMap.get(id))
-      .filter((b): b is Blog => !!b && b.status === 'published' && b.slug !== current.slug);
-    if (selected.length > 0) {
-      return selected.slice(0, count);
+    for (const id of current.relatedBlogIds) {
+      addBlog(idMap.get(id));
+      if (result.length >= count) return result.slice(0, count);
     }
   }
 
+  // 2. Second priority: Same category published blogs (newest first)
   const sameCategory = publishedBlogs.filter(
-    (b) => b.slug !== current.slug && b.category === current.category,
+    (b) => b.category === current.category && !seenSlugs.has(b.slug) && (!b.id || !seenSlugs.has(b.id)),
   );
+  for (const b of sameCategory) {
+    addBlog(b);
+    if (result.length >= count) return result.slice(0, count);
+  }
+
+  // 3. Third priority: Pad remaining slots with other recent published blogs
   const others = publishedBlogs.filter(
-    (b) => b.slug !== current.slug && b.category !== current.category,
+    (b) => !seenSlugs.has(b.slug) && (!b.id || !seenSlugs.has(b.id)),
   );
-  return [...sameCategory, ...others].slice(0, count);
+  for (const b of others) {
+    addBlog(b);
+    if (result.length >= count) return result.slice(0, count);
+  }
+
+  return result.slice(0, count);
 }
 
 /** "15 Aug 2025" from the ISO publishedAt, falling back to the legacy

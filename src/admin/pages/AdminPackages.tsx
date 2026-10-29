@@ -56,6 +56,11 @@ interface EditingPackage {
   slug?: string;
   description?: string;
   overview?: string;
+  duration?: string;
+  nights?: string;
+  days?: string;
+  durationNights?: number;
+  durationDays?: number;
   startingPrice?: string | number;
   discountPercentage?: number | string;
   itinerary?: ItineraryDay[];
@@ -283,8 +288,16 @@ export const AdminPackages: React.FC = () => {
       }));
     }
 
+    const itinCount = initialItinerary.length;
+    const autoDuration = itinCount > 0 ? `${Math.max(0, itinCount - 1)} Nights / ${itinCount} Days` : '';
+    const initialDuration = pkg.duration || pkg.nights || autoDuration;
+
     setEditingPkg({
       ...pkg,
+      duration: initialDuration,
+      nights: initialDuration,
+      durationNights: itinCount > 0 ? Math.max(0, itinCount - 1) : pkg.durationNights,
+      durationDays: itinCount > 0 ? itinCount : pkg.durationDays,
       description: htmlDesc,
       overview: htmlDesc,
       itinerary: initialItinerary,
@@ -317,6 +330,8 @@ export const AdminPackages: React.FC = () => {
     setEditingPkg({
       description: '',
       overview: '',
+      duration: '',
+      nights: '',
       itinerary: [],
       discountPercentage: '',
       inclusions: [],
@@ -356,6 +371,10 @@ export const AdminPackages: React.FC = () => {
         ...currentList.slice(insertAt),
       ].map((item, idx) => ({ ...item, day: idx + 1 }));
 
+      const totalDays = updatedList.length;
+      const totalNights = Math.max(0, totalDays - 1);
+      const calculatedDuration = `${totalNights} Nights / ${totalDays} Days`;
+
       setExpandedDayIndex(insertAt);
 
       // Smooth scroll and auto-focus on the newly added day title input
@@ -370,6 +389,10 @@ export const AdminPackages: React.FC = () => {
       return {
         ...prev,
         itinerary: updatedList,
+        duration: calculatedDuration,
+        nights: calculatedDuration,
+        durationNights: totalNights,
+        durationDays: totalDays,
       };
     });
   };
@@ -386,7 +409,16 @@ export const AdminPackages: React.FC = () => {
       } else if (expandedDayIndex !== null && expandedDayIndex > index) {
         setExpandedDayIndex(expandedDayIndex - 1);
       }
-      return { ...prev, itinerary: updated };
+      const totalDays = updated.length;
+      const calculatedDuration = totalDays > 0 ? `${Math.max(0, totalDays - 1)} Nights / ${totalDays} Days` : '';
+      return {
+        ...prev,
+        itinerary: updated,
+        duration: calculatedDuration,
+        nights: calculatedDuration,
+        durationNights: totalDays > 0 ? Math.max(0, totalDays - 1) : undefined,
+        durationDays: totalDays > 0 ? totalDays : undefined,
+      };
     });
   };
 
@@ -418,7 +450,17 @@ export const AdminPackages: React.FC = () => {
 
   const handleReorderDays = (reordered: ItineraryDay[]) => {
     const reindexed = reordered.map((item, idx) => ({ ...item, day: idx + 1 }));
-    setEditingPkg((prev) => (prev ? { ...prev, itinerary: reindexed } : prev));
+    setEditingPkg((prev) => {
+      if (!prev) return prev;
+      const totalDays = reindexed.length;
+      const calculatedDuration = totalDays > 0 ? `${Math.max(0, totalDays - 1)} Nights / ${totalDays} Days` : '';
+      return {
+        ...prev,
+        itinerary: reindexed,
+        duration: prev.duration || calculatedDuration,
+        nights: prev.nights || calculatedDuration,
+      };
+    });
   };
 
   // Inclusions and Exclusions Handlers
@@ -547,12 +589,21 @@ export const AdminPackages: React.FC = () => {
         description: it.description || '',
       }));
 
+      const totalDays = cleanedItinerary.length;
+      const calculatedDuration = totalDays > 0 ? `${Math.max(0, totalDays - 1)} Nights / ${totalDays} Days` : '';
+      const finalDuration = editingPkg.duration || calculatedDuration || undefined;
+      const finalNights = totalDays > 0 ? Math.max(0, totalDays - 1) : undefined;
+
       if (isEditingExisting) {
         const payload = {
           ...editingPkg,
           ...imageCompat,
           id: String(editingPkg.id),
           name,
+          duration: finalDuration,
+          nights: finalDuration,
+          durationNights: finalNights,
+          durationDays: totalDays > 0 ? totalDays : undefined,
           startingPrice: startingPrice || (numericStartingPrice > 0 ? `₹${numericStartingPrice.toLocaleString('en-IN')}` : ''),
           priceINR: numericStartingPrice > 0 ? numericStartingPrice : undefined,
           discountPercentage,
@@ -590,6 +641,10 @@ export const AdminPackages: React.FC = () => {
               .replace(/^-+|-+$/g, '') || `package-${Date.now()}`,
           description: descHtml,
           overview: descHtml,
+          duration: finalDuration,
+          nights: finalDuration,
+          durationNights: finalNights,
+          durationDays: totalDays > 0 ? totalDays : undefined,
           startingPrice: startingPrice || (numericStartingPrice > 0 ? `₹${numericStartingPrice.toLocaleString('en-IN')}` : ''),
           priceINR: numericStartingPrice > 0 ? numericStartingPrice : undefined,
           discountPercentage,
@@ -806,7 +861,7 @@ export const AdminPackages: React.FC = () => {
                 placeholder="e.g. Majestic Kashmir Tour"
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <Input
                   label="Starting Price (INR / text)"
                   value={editingPkg.startingPrice || ''}
@@ -837,6 +892,21 @@ export const AdminPackages: React.FC = () => {
                   }}
                   placeholder="e.g. 30"
                   helperText="Shows red '30% OFF' badge. Leave blank to hide."
+                />
+
+                <Input
+                  label="Trip Duration"
+                  value={editingPkg.duration || ''}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setEditingPkg({
+                      ...editingPkg,
+                      duration: val,
+                      nights: val,
+                    });
+                  }}
+                  placeholder="e.g. 5 Nights / 6 Days"
+                  helperText="Auto-updates from itinerary (X Nights / Y Days)."
                 />
               </div>
             </div>
@@ -1074,6 +1144,11 @@ export const AdminPackages: React.FC = () => {
                     <CalendarClock size={18} className="text-amber-500" />
                     Day-by-Day Itinerary ({editingPkg.itinerary?.length || 0}{' '}
                     {editingPkg.itinerary?.length === 1 ? 'Day' : 'Days'})
+                    {editingPkg.duration && (
+                      <span className="ml-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60">
+                        {editingPkg.duration}
+                      </span>
+                    )}
                   </h3>
                   <p className="text-xs text-gray-500 mt-0.5">
                     Plan daily schedule, sightseeing spots, and activities. Click any day to edit or expand. Drag handle to reorder.
