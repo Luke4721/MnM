@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 declare global {
@@ -9,6 +10,18 @@ declare global {
 }
 
 const LanguagePrompt: React.FC = () => {
+  let isPathAdmin = false;
+  try {
+    const location = useLocation();
+    isPathAdmin = location.pathname.startsWith('/admin');
+  } catch {
+    isPathAdmin = typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
+  }
+
+  // Never render language prompt on admin routes
+  if (isPathAdmin || (typeof window !== 'undefined' && window.location.pathname.startsWith('/admin'))) {
+    return null;
+  }
   const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {

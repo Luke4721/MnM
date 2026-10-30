@@ -17,6 +17,31 @@ function recordResult(testName, action, expected, actual, status, screenshotPath
   console.log(`[${status}] ${testName} -> ${action}: ${actual}`);
 }
 
+/**
+ * Dismisses the "Choose Language" modal if present without triggering destructive page reload
+ */
+async function dismissLanguageModalIfPresent(page) {
+  try {
+    const isModalOpen = await page.evaluate(() => {
+      const heading = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Choose Language'));
+      if (heading) {
+        localStorage.setItem('languageSelected', 'en');
+        const overlay = heading.closest('.fixed.inset-0') || heading.closest('.fixed');
+        if (overlay) overlay.remove();
+        return true;
+      }
+      return false;
+    });
+
+    if (isModalOpen) {
+      console.log('Language modal detected on public page -> Cleanly dismissed for testing.');
+      await new Promise(r => setTimeout(r, 400));
+    }
+  } catch (err) {
+    console.log('Error dismissing language modal:', err.message);
+  }
+}
+
 async function run() {
   console.log('Starting E2E Puppeteer Test Suite against', BASE_URL);
 
@@ -28,24 +53,106 @@ async function run() {
 
   const page = await browser.newPage();
 
-  // Listen to console errors if any
   page.on('console', msg => {
     if (msg.type() === 'error') console.log('PAGE ERROR:', msg.text());
   });
 
   try {
     // -------------------------------------------------------------
+    // STRICT VERIFICATION: Language Modal Isolation & Preservation
+    // -------------------------------------------------------------
+    console.log('\n--- Running Strict Verification: Language Modal Isolation ---');
+
+    // Verification 1: Ensure Language Modal NEVER renders on /admin/packages
+    await page.evaluateOnNewDocument(() => {
+      localStorage.setItem('admin_auth', 'true');
+      localStorage.removeItem('languageSelected'); // Language unselected
+    });
+
+    await page.goto(`${BASE_URL}/admin/packages`, { waitUntil: 'networkidle0', timeout: 30000 });
+    await page.waitForSelector('button', { timeout: 10000 });
+    await new Promise(r => setTimeout(r, 800));
+
+    const hasLanguageModalOnAdmin = await page.evaluate(() => {
+      const heading = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Choose Language'));
+      return !!heading;
+    });
+
+    const ssVerifAdmin = path.join(SCREENSHOT_DIR, 'verification_admin_no_language_modal.png');
+    await page.screenshot({ path: ssVerifAdmin, fullPage: false });
+
+    if (!hasLanguageModalOnAdmin) {
+      recordResult(
+        'Verification 1: Admin Route Isolation',
+        'Navigate to /admin/packages with unselected language',
+        'NO Language Modal rendered on admin route',
+        'Language Modal is completely absent (returns null)',
+        'PASS',
+        ssVerifAdmin
+      );
+    } else {
+      recordResult(
+        'Verification 1: Admin Route Isolation',
+        'Navigate to /admin/packages with unselected language',
+        'NO Language Modal rendered on admin route',
+        'Language Modal is still visible on admin route!',
+        'FAIL',
+        ssVerifAdmin
+      );
+    }
+
+    // Verification 2: Ensure Language Modal STILL SHOWS on / (Homepage) in fresh incognito context
+    console.log('\n--- Verifying Public Language Modal on Homepage in Incognito ---');
+    const incognitoContext = await browser.createBrowserContext();
+    const incognitoPage = await incognitoContext.newPage();
+    await incognitoPage.setViewport({ width: 1400, height: 900 });
+
+    await incognitoPage.goto(`${BASE_URL}/`, { waitUntil: 'networkidle0', timeout: 30000 });
+    await new Promise(r => setTimeout(r, 1200));
+
+    const hasLanguageModalOnHome = await incognitoPage.evaluate(() => {
+      const heading = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Choose Language'));
+      return !!heading;
+    });
+
+    const ssVerifHome = path.join(SCREENSHOT_DIR, 'verification_homepage_language_modal_visible.png');
+    await incognitoPage.screenshot({ path: ssVerifHome, fullPage: false });
+    await incognitoContext.close();
+
+    if (hasLanguageModalOnHome) {
+      recordResult(
+        'Verification 2: Public Route Preservation',
+        'Navigate to / (Homepage) in clean incognito window',
+        'Language Modal renders and is visible for public/Russian clients',
+        'Language Modal successfully appears on Homepage',
+        'PASS',
+        ssVerifHome
+      );
+    } else {
+      recordResult(
+        'Verification 2: Public Route Preservation',
+        'Navigate to / (Homepage) in clean incognito window',
+        'Language Modal renders and is visible for public/Russian clients',
+        'Language Modal did not appear on Homepage!',
+        'FAIL',
+        ssVerifHome
+      );
+    }
+
+    // -------------------------------------------------------------
     // TEST 1: The "International" Filter Fix (Public)
     // -------------------------------------------------------------
     console.log('\n--- Running Test 1: The International Filter Fix ---');
     await page.goto(`${BASE_URL}/packages`, { waitUntil: 'networkidle0', timeout: 30000 });
     await page.waitForSelector('h1', { timeout: 10000 });
-    // Wait for package cards to render
     await page.waitForFunction(() => document.querySelectorAll('h3, .group').length > 5, { timeout: 10000 });
+
+    // Dismiss language modal on test page to ensure clean screenshot
+    await dismissLanguageModalIfPresent(page);
+    await new Promise(r => setTimeout(r, 400));
 
     const getVisiblePackageTitles = async () => {
       return await page.evaluate(() => {
-        // Collect titles of all cards rendered in the packages grid
         const cards = Array.from(document.querySelectorAll('.grid .group, .grid h3, .grid a'));
         return cards.map(el => el.textContent || '').join(' | ');
       });
@@ -64,7 +171,7 @@ async function run() {
         'Test 1: Public Packages',
         'Navigate to /packages (All Filter)',
         'Winter Jeep, Winter Fairy Tale, Kathmandu & Pokhara visible on /packages',
-        'All 3 packages visible on initial load',
+        'All 3 packages visible on initial load without modal overlay',
         'PASS',
         ss1_1
       );
@@ -95,8 +202,9 @@ async function run() {
       throw new Error('International filter button not found!');
     }
 
-    // Wait for filtered list to settle
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 800));
+    await dismissLanguageModalIfPresent(page);
+
     const ss1_2 = path.join(SCREENSHOT_DIR, 'test1_2_international_filter.png');
     await page.screenshot({ path: ss1_2, fullPage: false });
 
@@ -110,7 +218,7 @@ async function run() {
         'Test 1: International Filter',
         'Click "International" filter pill',
         '3 target packages remain visible under International filter',
-        'All 3 packages STILL visible and rendered',
+        'All 3 packages STILL visible and rendered cleanly',
         'PASS',
         ss1_2
       );
@@ -141,7 +249,9 @@ async function run() {
       throw new Error('India filter button not found!');
     }
 
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 800));
+    await dismissLanguageModalIfPresent(page);
+
     const ss1_3 = path.join(SCREENSHOT_DIR, 'test1_3_india_filter.png');
     await page.screenshot({ path: ss1_3, fullPage: false });
 
@@ -174,15 +284,9 @@ async function run() {
     // TEST 2: The Admin UI Category Selector
     // -------------------------------------------------------------
     console.log('\n--- Running Test 2: The Admin UI Category Selector ---');
-    // Pre-authenticate admin via localStorage
-    await page.evaluateOnNewDocument(() => {
-      localStorage.setItem('admin_auth', 'true');
-    });
-
     await page.goto(`${BASE_URL}/admin/packages`, { waitUntil: 'networkidle0', timeout: 30000 });
     await page.waitForSelector('button', { timeout: 10000 });
 
-    // Click "New Package" button
     console.log('Clicking New Package button in Admin...');
     const clickedNew = await page.evaluate(() => {
       const btns = Array.from(document.querySelectorAll('button'));
@@ -199,7 +303,7 @@ async function run() {
     }
 
     await page.waitForSelector('form', { timeout: 5000 });
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 600));
 
     // Inspect "Category / Type" dropdown
     const selectData = await page.evaluate(() => {
@@ -231,7 +335,7 @@ async function run() {
         'Test 2: Admin UI Category Selector',
         'Open New Package modal/form in AdminPackages',
         'Category / Type dropdown visible with "India" and "International" options',
-        `Dropdown found with options: ${JSON.stringify(selectData.options.map(o => o.text))}`,
+        `Dropdown cleanly rendered with options: ${JSON.stringify(selectData.options.map(o => o.text))}`,
         'PASS',
         ss2
       );
@@ -280,7 +384,8 @@ async function run() {
     // Verify on /packages under "India"
     await page.goto(`${BASE_URL}/packages`, { waitUntil: 'networkidle0', timeout: 30000 });
     await page.waitForSelector('h1', { timeout: 10000 });
-    await new Promise(r => setTimeout(r, 1000));
+    await dismissLanguageModalIfPresent(page);
+    await new Promise(r => setTimeout(r, 600));
 
     // Click "India"
     await page.evaluate(() => {
@@ -289,6 +394,7 @@ async function run() {
       if (btn) btn.click();
     });
     await new Promise(r => setTimeout(r, 800));
+    await dismissLanguageModalIfPresent(page);
 
     const ss3_1 = path.join(SCREENSHOT_DIR, 'test3_1_lifecycle_india.png');
     await page.screenshot({ path: ss3_1, fullPage: false });
@@ -301,7 +407,7 @@ async function run() {
         'Test 3: Lifecycle - Phase 1 (Create India)',
         'Create package with category="India", verify under India filter',
         'Test package visible under India filter',
-        `Package "${testPackageName}" rendered successfully under India filter`,
+        `Package "${testPackageName}" rendered successfully without overlay`,
         'PASS',
         ss3_1
       );
@@ -336,7 +442,8 @@ async function run() {
     // Reload /packages and click "International"
     await page.goto(`${BASE_URL}/packages`, { waitUntil: 'networkidle0', timeout: 30000 });
     await page.waitForSelector('h1', { timeout: 10000 });
-    await new Promise(r => setTimeout(r, 1000));
+    await dismissLanguageModalIfPresent(page);
+    await new Promise(r => setTimeout(r, 600));
 
     await page.evaluate(() => {
       const btns = Array.from(document.querySelectorAll('button'));
@@ -344,6 +451,7 @@ async function run() {
       if (btn) btn.click();
     });
     await new Promise(r => setTimeout(r, 800));
+    await dismissLanguageModalIfPresent(page);
 
     const ss3_2 = path.join(SCREENSHOT_DIR, 'test3_2_lifecycle_international.png');
     await page.screenshot({ path: ss3_2, fullPage: false });
@@ -356,7 +464,7 @@ async function run() {
         'Test 3: Lifecycle - Phase 2 (Edit International)',
         'Update package to category="International", verify under International filter',
         'Test package moved and rendered under International filter',
-        `Package "${testPackageName}" correctly moved to International filter`,
+        `Package "${testPackageName}" cleanly rendered under International filter`,
         'PASS',
         ss3_2
       );
@@ -382,7 +490,8 @@ async function run() {
     console.log('\n--- Running Test 4: URL Route Filtering (CategoryDetail.tsx) ---');
     await page.goto(`${BASE_URL}/category/international`, { waitUntil: 'networkidle0', timeout: 30000 });
     await page.waitForSelector('h1', { timeout: 10000 });
-    await new Promise(r => setTimeout(r, 1000));
+    await dismissLanguageModalIfPresent(page);
+    await new Promise(r => setTimeout(r, 800));
 
     const ss4 = path.join(SCREENSHOT_DIR, 'test4_category_detail_international.png');
     await page.screenshot({ path: ss4, fullPage: false });
@@ -401,7 +510,7 @@ async function run() {
         'Test 4: URL Route Filtering',
         'Direct navigate to /category/international',
         'Winter Jeep, Winter Fairy Tale, Kathmandu & Pokhara rendered on CategoryDetail',
-        'All 3 packages rendered on /category/international',
+        'All 3 packages cleanly rendered on /category/international without overlay',
         'PASS',
         ss4
       );
