@@ -56,7 +56,11 @@ export const Packages: React.FC = () => {
         if (activeCatLower === 'international') {
           matchesCategory = pkgCategory === 'international' || pkgType === 'international';
         } else if (activeCatLower === 'india') {
-          matchesCategory = pkgCategory === 'india' || pkgType === 'domestic' || pkgType === 'india';
+          matchesCategory =
+            pkgCategory === 'india' ||
+            pkgType === 'domestic' ||
+            pkgType === 'india' ||
+            (pkgCategory !== 'international' && pkgType !== 'international' && (pkgCategory !== '' || pkgType !== ''));
         } else {
           matchesCategory = pkgCategory === activeCatLower || pkgType === activeCatLower;
         }
