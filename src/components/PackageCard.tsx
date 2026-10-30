@@ -37,17 +37,31 @@ export function getPackagePreviewText(pkg: any): string {
   return `Explore breathtaking destinations with our handpicked tour package featuring seamless itineraries, expert guides, and unforgettable travel experiences.`;
 }
 
-const ImageWithFallback: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
-  const [error, setError] = React.useState(false);
-  const normalizedSrc = normalizeImageUrl(src);
-  if (error || !normalizedSrc) {
-    return <div className="skeleton-image w-full h-full bg-zinc-900" />;
-  }
+export const DEFAULT_PACKAGE_FALLBACK_IMAGE = '/images/hires/beauty-of-kashmir_fixed.jpg';
+
+const ImageWithFallback: React.FC<{ src?: string | null; alt: string }> = ({ src, alt }) => {
+  const normalizedSrc = normalizeImageUrl(src || '');
+  const [imgSrc, setImgSrc] = React.useState<string>(normalizedSrc || DEFAULT_PACKAGE_FALLBACK_IMAGE);
+  const [hasFailed, setHasFailed] = React.useState(false);
+
+  React.useEffect(() => {
+    const updated = normalizeImageUrl(src || '');
+    setImgSrc(updated || DEFAULT_PACKAGE_FALLBACK_IMAGE);
+    setHasFailed(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (!hasFailed && imgSrc !== DEFAULT_PACKAGE_FALLBACK_IMAGE) {
+      setHasFailed(true);
+      setImgSrc(DEFAULT_PACKAGE_FALLBACK_IMAGE);
+    }
+  };
+
   return (
     <img
-      src={normalizedSrc}
+      src={imgSrc}
       alt={alt}
-      onError={() => setError(true)}
+      onError={handleError}
       loading="lazy"
       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
     />
@@ -96,7 +110,17 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, index = 0 }) => {
             {/* Media Hero */}
             <div className="h-60 relative overflow-hidden bg-zinc-950 shrink-0">
               <ImageWithFallback
-                src={pkg.image_url || pkg.img || pkg.image || pkg.heroImage || ''}
+                src={
+                  pkg.featuredImage ||
+                  pkg.image_url ||
+                  pkg.heroImage ||
+                  pkg.image ||
+                  pkg.img ||
+                  (Array.isArray(pkg.galleryImages) && pkg.galleryImages[0]?.url) ||
+                  (Array.isArray(pkg.gallery) && pkg.gallery[0]?.url) ||
+                  (Array.isArray(pkg.images) && pkg.images[0]) ||
+                  ''
+                }
                 alt={title}
               />
               {priceData.discountPercentage && priceData.discountPercentage > 0 && (

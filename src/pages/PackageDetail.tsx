@@ -478,7 +478,24 @@ export const PackageDetail: React.FC = () => {
                         <TiltCard>
                           <div className="rounded-[20px] bg-white dark:bg-zinc-900/60 border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02] flex flex-col h-full">
                             <div style={{ height: '180px', position: 'relative' }}>
-                              <img src={normalizeImageUrl(relPkg.image_url || relPkg.img || relPkg.image || relPkg.heroImage)} alt={relPkg.title || relPkg.name || relPkg.location || 'Tour Package'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              <img
+                                src={
+                                  normalizeImageUrl(
+                                    relPkg.featuredImage ||
+                                    relPkg.image_url ||
+                                    relPkg.img ||
+                                    relPkg.image ||
+                                    relPkg.heroImage ||
+                                    (Array.isArray(relPkg.galleryImages) && relPkg.galleryImages[0]?.url) ||
+                                    ''
+                                  ) || '/images/hires/beauty-of-kashmir_fixed.jpg'
+                                }
+                                onError={(e) => {
+                                  e.currentTarget.src = '/images/hires/beauty-of-kashmir_fixed.jpg';
+                                }}
+                                alt={relPkg.title || relPkg.name || relPkg.location || 'Tour Package'}
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                              />
                               <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', padding: '0.3rem 0.8rem', borderRadius: '999px', color: 'white', fontSize: '0.7rem', fontWeight: 600 }}>
                                 <MapPin size={10} style={{ display: 'inline', marginRight: '4px' }} />
                                 {getPackageDuration(relPkg)}

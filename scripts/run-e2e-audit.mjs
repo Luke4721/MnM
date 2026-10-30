@@ -151,6 +151,26 @@ async function run() {
     await dismissLanguageModalIfPresent(page);
     await new Promise(r => setTimeout(r, 400));
 
+    const checkCardImages = async () => {
+      return await page.evaluate(() => {
+        const cards = Array.from(document.querySelectorAll('a[href^="/packages/"]'));
+        if (!cards.length) return { count: 0, hasBlackSquare: false, firstCardValidImage: false };
+        const first = cards[0];
+        const img = first.querySelector('img');
+        const skeleton = first.querySelector('.skeleton-image');
+        const isBlackSquare = !!skeleton || (img && img.complete && img.naturalWidth === 0);
+        const hasValidImage = !!img && img.complete && img.naturalWidth > 0 && !skeleton;
+        return {
+          count: cards.length,
+          firstTitle: first.querySelector('h3')?.textContent?.trim() || '',
+          hasBlackSquare: isBlackSquare,
+          firstCardValidImage: hasValidImage,
+          imgSrc: img ? img.src : null,
+          naturalWidth: img ? img.naturalWidth : 0
+        };
+      });
+    };
+
     const getVisiblePackageTitles = async () => {
       return await page.evaluate(() => {
         const cards = Array.from(document.querySelectorAll('.grid .group, .grid h3, .grid a'));
@@ -162,16 +182,17 @@ async function run() {
     const hasWinterJeep = titlesAll.includes('Winter Jeep Tour');
     const hasWinterFairy = titlesAll.includes('Winter Fairy Tale in the Uimon');
     const hasKathmandu = titlesAll.includes('Kathmandu & Pokhara');
+    const imgStatusAll = await checkCardImages();
 
     const ss1_1 = path.join(SCREENSHOT_DIR, 'test1_1_all_packages.png');
     await page.screenshot({ path: ss1_1, fullPage: false });
 
-    if (hasWinterJeep && hasWinterFairy && hasKathmandu) {
+    if (hasWinterJeep && hasWinterFairy && hasKathmandu && !imgStatusAll.hasBlackSquare && imgStatusAll.firstCardValidImage) {
       recordResult(
         'Test 1: Public Packages',
         'Navigate to /packages (All Filter)',
-        'Winter Jeep, Winter Fairy Tale, Kathmandu & Pokhara visible on /packages',
-        'All 3 packages visible on initial load without modal overlay',
+        'Winter Jeep, Winter Fairy Tale, Kathmandu & Pokhara visible on /packages, valid image on first card',
+        `All 3 packages visible. First card ("${imgStatusAll.firstTitle}") image loaded cleanly (w=${imgStatusAll.naturalWidth}px, no black square)`,
         'PASS',
         ss1_1
       );
@@ -179,8 +200,8 @@ async function run() {
       recordResult(
         'Test 1: Public Packages',
         'Navigate to /packages (All Filter)',
-        'Winter Jeep, Winter Fairy Tale, Kathmandu & Pokhara visible',
-        `Missing packages. Found: Jeep=${hasWinterJeep}, Fairy=${hasWinterFairy}, Kathmandu=${hasKathmandu}`,
+        'Winter Jeep, Winter Fairy Tale, Kathmandu & Pokhara visible, valid image on first card',
+        `Failed: Jeep=${hasWinterJeep}, Fairy=${hasWinterFairy}, Kathmandu=${hasKathmandu}, blackSquare=${imgStatusAll.hasBlackSquare}, validImg=${imgStatusAll.firstCardValidImage}`,
         'FAIL',
         ss1_1
       );
@@ -212,13 +233,14 @@ async function run() {
     const hasWinterJeepIntl = titlesIntl.includes('Winter Jeep Tour');
     const hasWinterFairyIntl = titlesIntl.includes('Winter Fairy Tale in the Uimon');
     const hasKathmanduIntl = titlesIntl.includes('Kathmandu & Pokhara');
+    const imgStatusIntl = await checkCardImages();
 
-    if (hasWinterJeepIntl && hasWinterFairyIntl && hasKathmanduIntl) {
+    if (hasWinterJeepIntl && hasWinterFairyIntl && hasKathmanduIntl && !imgStatusIntl.hasBlackSquare && imgStatusIntl.firstCardValidImage) {
       recordResult(
         'Test 1: International Filter',
         'Click "International" filter pill',
-        '3 target packages remain visible under International filter',
-        'All 3 packages STILL visible and rendered cleanly',
+        '3 target packages remain visible under International filter with proper images',
+        `All 3 packages visible. First card ("${imgStatusIntl.firstTitle}") image loaded cleanly (w=${imgStatusIntl.naturalWidth}px, no black square)`,
         'PASS',
         ss1_2
       );
@@ -226,8 +248,8 @@ async function run() {
       recordResult(
         'Test 1: International Filter',
         'Click "International" filter pill',
-        '3 target packages remain visible under International filter',
-        `Missing under International filter. Jeep=${hasWinterJeepIntl}, Fairy=${hasWinterFairyIntl}, Kathmandu=${hasKathmanduIntl}`,
+        '3 target packages remain visible under International filter with proper images',
+        `Failed: Jeep=${hasWinterJeepIntl}, Fairy=${hasWinterFairyIntl}, Kathmandu=${hasKathmanduIntl}, blackSquare=${imgStatusIntl.hasBlackSquare}, validImg=${imgStatusIntl.firstCardValidImage}`,
         'FAIL',
         ss1_2
       );
@@ -259,22 +281,23 @@ async function run() {
     const hasWinterJeepIndia = titlesIndia.includes('Winter Jeep Tour');
     const hasWinterFairyIndia = titlesIndia.includes('Winter Fairy Tale in the Uimon');
     const hasKathmanduIndia = titlesIndia.includes('Kathmandu & Pokhara');
+    const imgStatusIndia = await checkCardImages();
 
-    if (!hasWinterJeepIndia && !hasWinterFairyIndia && !hasKathmanduIndia) {
+    if (!hasWinterJeepIndia && !hasWinterFairyIndia && !hasKathmanduIndia && !imgStatusIndia.hasBlackSquare && imgStatusIndia.firstCardValidImage) {
       recordResult(
-        'Test 1: India Filter (Exclusion)',
+        'Test 1: India Filter (Exclusion & Image Loading)',
         'Click "India" filter pill',
-        '3 International packages are hidden from India filter',
-        'All 3 packages successfully hidden from India view',
+        '3 International packages hidden from India filter, proper image on first India card',
+        `All 3 packages hidden. First India card ("${imgStatusIndia.firstTitle}") image loaded cleanly (w=${imgStatusIndia.naturalWidth}px, no black square)`,
         'PASS',
         ss1_3
       );
     } else {
       recordResult(
-        'Test 1: India Filter (Exclusion)',
+        'Test 1: India Filter (Exclusion & Image Loading)',
         'Click "India" filter pill',
-        '3 International packages are hidden from India filter',
-        `Packages erroneously visible under India filter. Jeep=${hasWinterJeepIndia}, Fairy=${hasWinterFairyIndia}, Kathmandu=${hasKathmanduIndia}`,
+        '3 International packages hidden from India filter, proper image on first India card',
+        `Failed: hidden=${!hasWinterJeepIndia && !hasWinterFairyIndia && !hasKathmanduIndia}, blackSquare=${imgStatusIndia.hasBlackSquare}, validImg=${imgStatusIndia.firstCardValidImage}`,
         'FAIL',
         ss1_3
       );
@@ -401,13 +424,14 @@ async function run() {
 
     let indiaTitles = await getVisiblePackageTitles();
     const foundUnderIndia = indiaTitles.includes(testPackageName);
+    const imgStatusPhase1 = await checkCardImages();
 
-    if (foundUnderIndia) {
+    if (foundUnderIndia && !imgStatusPhase1.hasBlackSquare && imgStatusPhase1.firstCardValidImage) {
       recordResult(
         'Test 3: Lifecycle - Phase 1 (Create India)',
         'Create package with category="India", verify under India filter',
-        'Test package visible under India filter',
-        `Package "${testPackageName}" rendered successfully without overlay`,
+        'Test package visible under India filter with valid image fallback (no black square)',
+        `Package "${testPackageName}" rendered successfully without overlay. First card image loaded (w=${imgStatusPhase1.naturalWidth}px, no black square).`,
         'PASS',
         ss3_1
       );
@@ -415,8 +439,8 @@ async function run() {
       recordResult(
         'Test 3: Lifecycle - Phase 1 (Create India)',
         'Create package with category="India", verify under India filter',
-        'Test package visible under India filter',
-        `Package not found in visible cards. Titles: ${indiaTitles.slice(0, 100)}...`,
+        'Test package visible under India filter with valid image fallback (no black square)',
+        `Package test failed: found=${foundUnderIndia}, blackSquare=${imgStatusPhase1.hasBlackSquare}, validImg=${imgStatusPhase1.firstCardValidImage}`,
         'FAIL',
         ss3_1
       );
@@ -458,13 +482,14 @@ async function run() {
 
     let intlTitles = await getVisiblePackageTitles();
     const foundUnderIntl = intlTitles.includes(testPackageName);
+    const imgStatusPhase2 = await checkCardImages();
 
-    if (foundUnderIntl) {
+    if (foundUnderIntl && !imgStatusPhase2.hasBlackSquare && imgStatusPhase2.firstCardValidImage) {
       recordResult(
         'Test 3: Lifecycle - Phase 2 (Edit International)',
         'Update package to category="International", verify under International filter',
-        'Test package moved and rendered under International filter',
-        `Package "${testPackageName}" cleanly rendered under International filter`,
+        'Test package moved and rendered under International filter with valid image fallback (no black square)',
+        `Package "${testPackageName}" cleanly rendered under International filter. First card image loaded (w=${imgStatusPhase2.naturalWidth}px, no black square).`,
         'PASS',
         ss3_2
       );
@@ -472,8 +497,8 @@ async function run() {
       recordResult(
         'Test 3: Lifecycle - Phase 2 (Edit International)',
         'Update package to category="International", verify under International filter',
-        'Test package moved and rendered under International filter',
-        `Package not found under International filter.`,
+        'Test package moved and rendered under International filter with valid image fallback (no black square)',
+        `Package test failed: found=${foundUnderIntl}, blackSquare=${imgStatusPhase2.hasBlackSquare}, validImg=${imgStatusPhase2.firstCardValidImage}`,
         'FAIL',
         ss3_2
       );
