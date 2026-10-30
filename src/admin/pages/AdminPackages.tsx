@@ -33,6 +33,7 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input, Textarea } from '../components/ui/Input';
+import { Select } from '../components/ui/Select';
 import { ConfirmModal } from '../components/ui/Modal';
 import { useToast } from '../context/ToastContext';
 import { RichTextEditor } from '../components/RichTextEditor';
@@ -54,6 +55,8 @@ interface EditingPackage {
   id?: string | number;
   name?: string;
   slug?: string;
+  category?: string;
+  type?: string;
   description?: string;
   overview?: string;
   duration?: string;
@@ -292,8 +295,15 @@ export const AdminPackages: React.FC = () => {
     const autoDuration = itinCount > 0 ? `${Math.max(0, itinCount - 1)} Nights / ${itinCount} Days` : '';
     const initialDuration = pkg.duration || pkg.nights || autoDuration;
 
+    const isIntl =
+      (pkg.category || '').toLowerCase() === 'international' ||
+      (pkg.type || '').toLowerCase() === 'international';
+    const initialCategory = isIntl ? 'International' : (pkg.category || pkg.type || 'India');
+
     setEditingPkg({
       ...pkg,
+      category: initialCategory,
+      type: initialCategory,
       duration: initialDuration,
       nights: initialDuration,
       durationNights: itinCount > 0 ? Math.max(0, itinCount - 1) : pkg.durationNights,
@@ -328,6 +338,8 @@ export const AdminPackages: React.FC = () => {
 
   const startCreating = () => {
     setEditingPkg({
+      category: 'India',
+      type: 'India',
       description: '',
       overview: '',
       duration: '',
@@ -593,6 +605,10 @@ export const AdminPackages: React.FC = () => {
       const calculatedDuration = totalDays > 0 ? `${Math.max(0, totalDays - 1)} Nights / ${totalDays} Days` : '';
       const finalDuration = editingPkg.duration || calculatedDuration || undefined;
       const finalNights = totalDays > 0 ? Math.max(0, totalDays - 1) : undefined;
+      const selectedCategory =
+        (editingPkg.category || editingPkg.type || '').toLowerCase() === 'international'
+          ? 'International'
+          : 'India';
 
       if (isEditingExisting) {
         const payload = {
@@ -600,6 +616,8 @@ export const AdminPackages: React.FC = () => {
           ...imageCompat,
           id: String(editingPkg.id),
           name,
+          category: selectedCategory,
+          type: selectedCategory,
           duration: finalDuration,
           nights: finalDuration,
           durationNights: finalNights,
@@ -632,6 +650,8 @@ export const AdminPackages: React.FC = () => {
           id: String(Date.now()),
           name,
           title: name,
+          category: selectedCategory,
+          type: selectedCategory,
           slug:
             name
               .toLowerCase()
@@ -754,6 +774,15 @@ export const AdminPackages: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="font-bold text-gray-900 text-sm">{pkg.name}</span>
             <ExpiryBadge pkg={pkg} />
+            <span
+              className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                (pkg.category || pkg.type || '').toLowerCase() === 'international'
+                  ? 'bg-purple-100 text-purple-700 border border-purple-200'
+                  : 'bg-blue-100 text-blue-700 border border-blue-200'
+              }`}
+            >
+              {(pkg.category || pkg.type || '').toLowerCase() === 'international' ? 'International' : 'India'}
+            </span>
           </div>
           <div className="text-xs text-gray-400 mt-0.5">
             {pkg.destination || pkg.location || pkg.locations || '—'}
@@ -848,18 +877,43 @@ export const AdminPackages: React.FC = () => {
         <Card className="p-6 md:p-8">
           <form onSubmit={handleSave} className="space-y-8">
             {/* Basic Package Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <Input
-                label="Package Name"
-                required
-                value={editingPkg.name || ''}
-                onChange={(e) => {
-                  setEditingPkg({ ...editingPkg, name: e.target.value });
-                  if (formErrors.name) setFormErrors({ ...formErrors, name: '' });
-                }}
-                error={formErrors.name || undefined}
-                placeholder="e.g. Majestic Kashmir Tour"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+              <div className="md:col-span-8">
+                <Input
+                  label="Package Name"
+                  required
+                  value={editingPkg.name || ''}
+                  onChange={(e) => {
+                    setEditingPkg({ ...editingPkg, name: e.target.value });
+                    if (formErrors.name) setFormErrors({ ...formErrors, name: '' });
+                  }}
+                  error={formErrors.name || undefined}
+                  placeholder="e.g. Majestic Kashmir Tour"
+                />
+              </div>
+
+              <div className="md:col-span-4">
+                <Select
+                  label="Category / Type"
+                  required
+                  value={
+                    (editingPkg.category || editingPkg.type || '').toLowerCase() === 'international'
+                      ? 'International'
+                      : 'India'
+                  }
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setEditingPkg((prev) =>
+                      prev ? { ...prev, category: val, type: val } : prev
+                    );
+                  }}
+                  helperText="Choose Inbound (India) or Outbound (International)."
+                >
+                  <option value="India">India (Inbound)</option>
+                  <option value="International">International (Outbound)</option>
+                </Select>
+              </div>
+            </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <Input
@@ -909,7 +963,6 @@ export const AdminPackages: React.FC = () => {
                   helperText="Auto-updates from itinerary (X Nights / Y Days)."
                 />
               </div>
-            </div>
 
             {/* Package Validity / Expiry Date — MANDATORY */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">

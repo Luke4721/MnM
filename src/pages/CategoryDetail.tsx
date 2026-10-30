@@ -11,7 +11,18 @@ export const CategoryDetail: React.FC = () => {
   
   const formattedCategory = slug ? slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase() : '';
   
-  const categoryPackages = dbPackages.filter(pkg => (pkg.category || '').toLowerCase() === (slug || '').toLowerCase());
+  const targetSlug = (slug || '').toLowerCase();
+  const categoryPackages = dbPackages.filter((pkg) => {
+    const pkgCategory = (pkg.category || '').toLowerCase();
+    const pkgType = (pkg.type || '').toLowerCase();
+    if (targetSlug === 'international') {
+      return pkgCategory === 'international' || pkgType === 'international';
+    }
+    if (targetSlug === 'india') {
+      return pkgCategory === 'india' || pkgType === 'domestic' || pkgType === 'india';
+    }
+    return pkgCategory === targetSlug || pkgType === targetSlug;
+  });
   
   const heroImage = categoryPackages.length > 0 
     ? (categoryPackages[0].image_url || categoryPackages[0].img || categoryPackages[0].image)

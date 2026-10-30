@@ -275,7 +275,7 @@ export const PackageDetail: React.FC = () => {
                   </span>
                 )}
                 <span className="px-4 py-1.5 rounded-full bg-[#FF9933] text-white text-xs font-bold tracking-widest uppercase shadow-[0_4px_14px_rgba(255,0,60,0.4)]">
-                  {pkg.category}
+                  {pkg.category || pkg.type || 'Tour Package'}
                 </span>
                 {priceData.discountPercentage && priceData.discountPercentage > 0 && (
                   <span className="px-4 py-1.5 rounded-full bg-red-600 text-white text-xs font-bold tracking-widest uppercase shadow-md flex items-center gap-1">

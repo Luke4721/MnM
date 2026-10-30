@@ -47,11 +47,26 @@ export const Packages: React.FC = () => {
 
   const filteredPackages = useMemo(() => {
     return dbPackages.filter((pkg) => {
-      const matchesCategory = activeCategory === 'All' || pkg.category === activeCategory;
+      const activeCatLower = activeCategory.toLowerCase();
+      const pkgCategory = (pkg.category || '').toLowerCase();
+      const pkgType = (pkg.type || '').toLowerCase();
+
+      let matchesCategory = activeCategory === 'All';
+      if (!matchesCategory) {
+        if (activeCatLower === 'international') {
+          matchesCategory = pkgCategory === 'international' || pkgType === 'international';
+        } else if (activeCatLower === 'india') {
+          matchesCategory = pkgCategory === 'india' || pkgType === 'domestic' || pkgType === 'india';
+        } else {
+          matchesCategory = pkgCategory === activeCatLower || pkgType === activeCatLower;
+        }
+      }
+
       const matchesSearch =
         (pkg.title || pkg.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
         (pkg.location || pkg.locations || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (pkg.category || '').toLowerCase().includes(searchQuery.toLowerCase());
+        (pkg.category || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (pkg.type || '').toLowerCase().includes(searchQuery.toLowerCase());
         
       let matchesDuration = true;
       if (filters.duration) {
