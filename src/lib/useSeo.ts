@@ -50,11 +50,14 @@ export function useSeo(seo: SeoTags): void {
       setMeta(`meta[name="twitter:${name}"]`, { name: `twitter:${name}` }, content);
 
     // Google Search Console Verification fallback
-    if (!document.head.querySelector('meta[name="google-site-verification"]')) {
-      const gsc = document.createElement('meta');
+    let gsc = document.head.querySelector<HTMLMetaElement>('meta[name="google-site-verification"]');
+    if (!gsc) {
+      gsc = document.createElement('meta');
       gsc.setAttribute('name', 'google-site-verification');
-      gsc.setAttribute('content', 'dCAme0sYM-0VHlqd_ObPjyXSIQXY05Ap_fLFLiKn2KQ');
+      gsc.setAttribute('content', 'dCAme0sYM-0VHIqd_ObPjyXSIQxY05Ap_fLFLiKn2KQ');
       document.head.appendChild(gsc);
+    } else if (gsc.getAttribute('content') !== 'dCAme0sYM-0VHIqd_ObPjyXSIQxY05Ap_fLFLiKn2KQ') {
+      gsc.setAttribute('content', 'dCAme0sYM-0VHIqd_ObPjyXSIQxY05Ap_fLFLiKn2KQ');
     }
 
     setPlain('description', description);
